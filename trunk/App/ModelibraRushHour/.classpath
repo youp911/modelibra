@@ -13,7 +13,7 @@
 	<classpathentry kind="lib" path="WEB-INF/lib/log4j-1.2.13.jar"/>
 	<classpathentry kind="lib" path="WEB-INF/lib/mail.jar"/>
 	<classpathentry kind="lib" path="WEB-INF/lib/Modelibra.jar"/>
-	<classpathentry kind="lib" path="WEB-INF/lib/ModelibraWicket.jar"/>
+	<classpathentry kind="lib" path="WEB-INF/lib/ModelibraWicket.jar" sourcepath="/ModelibraWicket"/>
 	<classpathentry kind="lib" path="WEB-INF/lib/ognl-2.6.7.jar"/>
 	<classpathentry kind="lib" path="WEB-INF/lib/org.mortbay.jetty-4.2.22.jar"/>
 	<classpathentry kind="lib" path="WEB-INF/lib/servlet-api.jar"/>
