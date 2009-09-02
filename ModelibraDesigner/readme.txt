@@ -1,0 +1,1 @@
+See the start document in the doc directory.
