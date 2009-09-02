@@ -39,7 +39,7 @@
 <!ELEMENT author (CDATA)>
 <!ELEMENT packageCode (CDATA)>
 <!ELEMENT persistent (true, false)>
-<!ELEMENT persistenceType (xml, jdbc, db4o)>
+<!ELEMENT persistenceType (xml)>
 <!ELEMENT persistenceRelativePath (CDATA)>
 <!ELEMENT persistenceConfig (CDATA)>
 <!ELEMENT defaultLoadSave (true, false)>
