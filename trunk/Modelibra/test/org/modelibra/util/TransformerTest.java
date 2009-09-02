@@ -15,11 +15,10 @@ import org.modelibra.type.Email;
 public class TransformerTest {
 
 	@Test
-	@Ignore
 	public void integerStringToInteger() throws Exception {
 		String string = "17";
 		Integer integer = Transformer.integer(string);
-		//assertEquals(17, integer);
+		assertEquals(new Integer(string), integer);
 	}
 
 	@Test(expected = TypeRuntimeException.class)
@@ -47,11 +46,10 @@ public class TransformerTest {
 	}
 
 	@Test
-	@Ignore
 	public void longStringToLong() throws Exception {
 		String string = "123456789123456789";
 		Long longInteger = Transformer.longInteger(string);
-		//assertEquals(123456789123456789l, longInteger);
+		assertEquals(new Long(string), longInteger);
 	}
 
 	@Test(expected = TypeRuntimeException.class)
@@ -67,11 +65,10 @@ public class TransformerTest {
 	}
 
 	@Test
-	@Ignore
 	public void floatStringToFloat() throws Exception {
 		String string = "9.9";
 		Float floatDecimal = Transformer.floatDecimal(string);
-		//assertEquals(9.9f, floatDecimal);
+		assertEquals(new Float(string), floatDecimal);
 	}
 
 	@Test(expected = TypeRuntimeException.class)
@@ -87,11 +84,10 @@ public class TransformerTest {
 	}
 
 	@Test
-	@Ignore
 	public void doubleStringToDouble() throws Exception {
 		String string = "123456789123456789.123456789123456789";
 		Double doubleDecimal = Transformer.doubleDecimal(string);
-		//assertEquals(123456789123456789.123456789123456789d, doubleDecimal);
+		assertEquals(new Double(string), doubleDecimal);
 	}
 
 	@Test(expected = TypeRuntimeException.class)
