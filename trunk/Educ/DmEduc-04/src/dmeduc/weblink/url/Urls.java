@@ -2,18 +2,12 @@ package dmeduc.weblink.url;
 
 import java.util.Comparator;
 import java.util.Date;
-import java.util.List;
 
-import org.josql.Query;
-import org.josql.QueryExecutionException;
-import org.josql.QueryParseException;
-import org.josql.QueryResults;
 import org.modelibra.Entities;
 import org.modelibra.IDomainModel;
 import org.modelibra.ISelector;
 import org.modelibra.Oid;
 import org.modelibra.PropertySelector;
-import org.modelibra.exception.ModelibraRuntimeException;
 import org.modelibra.type.EasyDate;
 
 import dmeduc.weblink.category.Category;
@@ -261,31 +255,6 @@ public class Urls extends Entities<Url> {
 			firstCreationDate = webLink.getCreationDate();
 		}
 		return firstCreationDate;
-	}
-
-	/**
-	 * Gets the minimal (first) url creation date. JoSQL used.
-	 * 
-	 * http://josql.sourceforge.net/
-	 */
-	public Date getMinCreationDate() {
-		Date minCreationDate = null;
-		try {
-			List<Url> urlsList = getList();
-			String sqlStatement = "SELECT min(creationDate) "
-					+ "FROM dmeduc.weblink.url.Url " + "LIMIT 1, 1";
-			Query query = new Query();
-			query.parse(sqlStatement);
-			QueryResults queryResults = query.execute(urlsList);
-			List<?> selectionList = queryResults.getResults();
-			List<?> rowColumnList = (List<?>) selectionList.get(0);
-			minCreationDate = (Date) rowColumnList.get(0);
-		} catch (QueryParseException e) {
-			throw new ModelibraRuntimeException(e);
-		} catch (QueryExecutionException e) {
-			throw new ModelibraRuntimeException(e);
-		}
-		return minCreationDate;
 	}
 
 	/**
