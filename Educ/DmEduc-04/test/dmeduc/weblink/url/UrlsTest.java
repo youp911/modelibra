@@ -437,23 +437,6 @@ public class UrlsTest {
 	}
 
 	@Test
-	public void minimalCreationDateRetrieval() throws Exception {
-		frameworkCategoryUrls.createUrl(frameworkCategory, "Struts",
-				"http://struts.apache.org/", null, new EasyDate(2007, 4, 3),
-				false);
-		frameworkCategoryUrls.createUrl(frameworkCategory, "Wicket",
-				"http://wicket.apache.org/", "Web component framework.",
-				new EasyDate(2008, 6, 22), true);
-		frameworkCategoryUrls.createUrl(frameworkCategory, "Modelibra",
-				"http://www.modelibra.org/", "Domain model framework.",
-				new EasyDate(2008, 3, 27), true);
-		Date urlMinimalCreationDate = frameworkCategoryUrls
-				.getMinCreationDate();
-
-		assertTrue(urlMinimalCreationDate.before(new Date()));
-	}
-
-	@Test
 	public void descriptionKeywordSelection() throws Exception {
 		frameworkCategoryUrls.createUrl(frameworkCategory, "Struts",
 				"http://struts.apache.org/", null, new EasyDate(2007, 4, 3),
