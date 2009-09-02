@@ -111,8 +111,7 @@ public class UrlsTest {
 		String link = "http://www.modelibra.org/";
 		String category = "Framework";
 		urls.createUrl(name, link, category);
-		Url notUniqueUrl = urls
-				.createUrl(name, link, category);
+		Url notUniqueUrl = urls.createUrl(name, link, category);
 
 		assertNull(notUniqueUrl);
 		assertFalse(urls.contain(notUniqueUrl));
@@ -663,7 +662,7 @@ public class UrlsTest {
 		assertTrue(categoryUrls.getErrors().isEmpty());
 
 		Url updatedUrl = categoryUrls.getUrlByName(name);
-		
+
 		assertTrue(updatedUrl.getDescription().equals(description));
 	}
 
@@ -758,21 +757,6 @@ public class UrlsTest {
 
 		assertEquals(todayApprovedUrls.size(), counter);
 
-	}
-
-	@Test
-	public void minimalCreationDateRetrieval() throws Exception {
-		urls.createUrl("Dzenan Ridjanovic", "http://drdb.fsa.ulaval.ca/", null,
-				new EasyDate(2007, 4, 3), false, "Personal");
-		urls.createUrl("Wicket", "http://wicket.apache.org/",
-				"Web component framework.", new EasyDate(2008, 6, 22), true,
-				"Framework");
-		urls.createUrl("Modelibra", "http://www.modelibra.org/",
-				"Domain model framework.", new EasyDate(2008, 3, 27), true,
-				"Framework");
-		Date urlFirstCreationDate = urls.getMinCreationDate();
-
-		assertTrue(urlFirstCreationDate.before(new Date()));
 	}
 
 	@After
