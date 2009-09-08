@@ -29,5 +29,6 @@
 	<classpathentry kind="lib" path="WEB-INF/lib-specific/wicket-contrib-tinymce-1.3-20080820.220937-205.jar"/>
 	<classpathentry kind="lib" path="WEB-INF/lib-specific/wicket-datetime-1.3.1.jar"/>
 	<classpathentry kind="lib" path="WEB-INF/lib-specific/wicket-ioc-1.3.1.jar"/>
+	<classpathentry kind="lib" path="WEB-INF/lib-specific/commons-collections-3.1.jar"/>
 	<classpathentry kind="output" path="WEB-INF/classes"/>
 </classpath>
