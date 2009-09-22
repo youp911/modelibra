@@ -33,7 +33,7 @@ public class CheckoutPage extends SalesAppPage {
 			@Override
 			public void onClick() {
 				Carts carts = getCarts();
-				carts.remove(getCart());
+				carts.remove(getCart()); // do we need this?
 				setResponsePage(contextPage);
 			}
 		});
