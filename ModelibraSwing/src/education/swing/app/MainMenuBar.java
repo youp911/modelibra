@@ -21,9 +21,6 @@ import org.modelibra.swing.domain.DomainModelsTableFrame;
 import org.modelibra.util.NatLang;
 
 import education.data.ModelibraData;
-import education.library.member.Members;
-import education.swing.library.book.BookEssentialPropertiesRandomDisplayFrame;
-import education.swing.library.member.MemberBorrowedBooksFrame;
 
 @SuppressWarnings("serial")
 public class MainMenuBar extends JMenuBar implements IHistoryObserver {
@@ -41,10 +38,6 @@ public class MainMenuBar extends JMenuBar implements IHistoryObserver {
 
 	private JMenu menuModel;
 	private JMenuItem menuDomains;
-
-	private JMenu menuDisplay;
-	private JMenuItem menuDisplayBooks;
-	private JMenuItem menuDisplayMemberBooks;
 
 	private JMenu menuHelp;
 	private JMenuItem menuHelpAbout;
@@ -64,11 +57,6 @@ public class MainMenuBar extends JMenuBar implements IHistoryObserver {
 
 		menuModel = new JMenu(natLang.getText("data"));
 		menuDomains = new JMenuItem(natLang.getText("Domains") + "...");
-
-		menuDisplay = new JMenu(natLang.getText("display"));
-		menuDisplayBooks = new JMenuItem(natLang.getText("Books") + "...");
-		menuDisplayMemberBooks = new JMenuItem(natLang.getText("Members")
-				+ "...");
 
 		menuHelp = new JMenu(natLang.getText("help"));
 		menuHelpAbout = new JMenuItem(natLang.getText("about") + "...");
@@ -101,22 +89,6 @@ public class MainMenuBar extends JMenuBar implements IHistoryObserver {
 			}
 		});
 
-		menuDisplayBooks.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				displayDownRight(mainFrame,
-						new BookEssentialPropertiesRandomDisplayFrame(mainFrame
-								.getNatLang()));
-			}
-		});
-
-		menuDisplayMemberBooks.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				Members members = ModelibraData.get().getModel().getMembers();
-				displayDownRight(mainFrame, new MemberBorrowedBooksFrame(
-						members.first(), mainFrame.getNatLang()));
-			}
-		});
-
 		menuHelpAbout.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				displayCenter(mainFrame, new AboutDialog(mainFrame));
@@ -126,14 +98,11 @@ public class MainMenuBar extends JMenuBar implements IHistoryObserver {
 		menuFile.add(menuFileExit);
 		menuEdit.add(menuEditUndo);
 		menuModel.add(menuDomains);
-		menuDisplay.add(menuDisplayBooks);
-		menuDisplay.add(menuDisplayMemberBooks);
 		menuHelp.add(menuHelpAbout);
 
 		add(menuFile);
 		add(menuEdit);
 		add(menuModel);
-		add(menuDisplay);
 		add(menuHelp);
 	}
 
