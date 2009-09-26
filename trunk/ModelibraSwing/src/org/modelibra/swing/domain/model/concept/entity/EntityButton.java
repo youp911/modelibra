@@ -6,8 +6,8 @@ import java.awt.event.ActionListener;
 import org.modelibra.IEntities;
 import org.modelibra.IEntity;
 import org.modelibra.ModelSession;
-import org.modelibra.swing.ModelibraButton;
-import org.modelibra.swing.ModelibraFrame;
+import org.modelibra.swing.widget.ModelibraButton;
+import org.modelibra.swing.widget.ModelibraFrame;
 import org.modelibra.util.NatLang;
 
 @SuppressWarnings("serial")

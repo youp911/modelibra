@@ -8,7 +8,7 @@ import org.modelibra.IEntity;
 import org.modelibra.ModelSession;
 import org.modelibra.action.EntitiesAction;
 import org.modelibra.action.RemoveAction;
-import org.modelibra.swing.ModelibraButton;
+import org.modelibra.swing.widget.ModelibraButton;
 import org.modelibra.util.NatLang;
 
 @SuppressWarnings("serial")

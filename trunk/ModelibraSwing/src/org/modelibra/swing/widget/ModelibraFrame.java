@@ -1,20 +1,33 @@
-package org.modelibra.swing;
+package org.modelibra.swing.widget;
 
 import java.awt.Point;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.swing.JFrame;
-import javax.swing.JPanel;
 
 import org.modelibra.IEntities;
+import org.modelibra.swing.IModelibraConstants;
 import org.modelibra.util.NatLang;
 
 @SuppressWarnings("serial")
-public abstract class ModelibraPanel extends JPanel implements
+public abstract class ModelibraFrame extends JFrame implements
 		IModelibraConstants {
 
-	public ModelibraPanel() {
-		// setSize(new Dimension(PANEL_WIDTH, PANEL_HEIGHT));
+	private List<ModelibraFrame> childFrameList = new ArrayList<ModelibraFrame>();
+
+	public ModelibraFrame() {
+		// setSize(new Dimension(FRAME_WIDTH, FRAME_HEIGHT));
+	}
+
+	public void addChildFrame(ModelibraFrame childFrame) {
+		childFrameList.add(childFrame);
+	}
+
+	public void closeChildFrames() {
+		for (ModelibraFrame childFrame : childFrameList) {
+			childFrame.exit();
+		}
 	}
 
 	/**
@@ -37,6 +50,11 @@ public abstract class ModelibraPanel extends JPanel implements
 		child.setVisible(true);
 	}
 
+	public void exit() {
+		closeChildFrames();
+		dispose();
+	}
+	
 	protected String getErrorMsgs(IEntities<?> entities) {
 		List<String> errorMsgList = entities.getErrors().getErrorList();
 		String errorMsgs = " ";

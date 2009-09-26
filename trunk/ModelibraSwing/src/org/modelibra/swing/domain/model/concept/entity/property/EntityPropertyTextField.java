@@ -3,16 +3,17 @@ package org.modelibra.swing.domain.model.concept.entity.property;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.JTextField;
+
 import org.modelibra.IEntities;
 import org.modelibra.IEntity;
 import org.modelibra.ModelSession;
 import org.modelibra.action.EntitiesAction;
 import org.modelibra.action.UpdateAction;
 import org.modelibra.config.PropertyConfig;
-import org.modelibra.swing.ModelibraTextField;
 
 @SuppressWarnings("serial")
-public abstract class EntityPropertyTextField extends ModelibraTextField {
+public abstract class EntityPropertyTextField extends JTextField {
 
 	private PropertyBridge propertyBridge;
 
@@ -36,8 +37,7 @@ public abstract class EntityPropertyTextField extends ModelibraTextField {
 					if (propertyBridge.isSetProperty()) {
 						if (add) {
 							message("accepted");
-						}
-						else {
+						} else {
 							message("empty");
 							EntitiesAction action = new UpdateAction(
 									modelSession, entities, entity,

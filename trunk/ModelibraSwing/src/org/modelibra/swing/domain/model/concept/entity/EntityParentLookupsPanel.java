@@ -14,8 +14,8 @@ import org.modelibra.IEntities;
 import org.modelibra.IEntity;
 import org.modelibra.ModelSession;
 import org.modelibra.config.NeighborConfig;
-import org.modelibra.swing.ModelibraPanel;
 import org.modelibra.swing.domain.model.concept.entity.neighbor.EntityParentLookupPanel;
+import org.modelibra.swing.widget.ModelibraPanel;
 import org.modelibra.util.NatLang;
 
 @SuppressWarnings("serial")

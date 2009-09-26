@@ -3,16 +3,17 @@ package org.modelibra.swing.domain.model.concept.entity.property;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.JCheckBox;
+
 import org.modelibra.IEntities;
 import org.modelibra.IEntity;
 import org.modelibra.ModelSession;
 import org.modelibra.action.EntitiesAction;
 import org.modelibra.action.UpdateAction;
 import org.modelibra.config.PropertyConfig;
-import org.modelibra.swing.ModelibraCheckBox;
 
 @SuppressWarnings("serial")
-public abstract class EntityPropertyCheckBox extends ModelibraCheckBox {
+public abstract class EntityPropertyCheckBox extends JCheckBox {
 
 	private PropertyBridge propertyBridge;
 

@@ -1,7 +1,7 @@
 package org.modelibra.swing.domain.model.concept;
 
 import org.modelibra.config.ConceptConfig;
-import org.modelibra.swing.ModelibraTable;
+import org.modelibra.swing.widget.ModelibraTable;
 
 @SuppressWarnings("serial")
 public class ConceptTable extends ModelibraTable {

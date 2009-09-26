@@ -2,16 +2,17 @@ package org.modelibra.swing.domain.model.concept.entity;
 
 import java.util.List;
 
+import javax.swing.table.AbstractTableModel;
+
 import org.modelibra.IEntities;
 import org.modelibra.IEntity;
 import org.modelibra.ModelSession;
 import org.modelibra.action.EntitiesAction;
 import org.modelibra.action.UpdateAction;
 import org.modelibra.config.PropertyConfig;
-import org.modelibra.swing.ModelibraTableModel;
 
 @SuppressWarnings("serial")
-public abstract class EntityTableModel extends ModelibraTableModel {
+public abstract class EntityTableModel extends AbstractTableModel {
 
 	private boolean displayOnly;
 	private ModelSession modelSession;
@@ -27,8 +28,8 @@ public abstract class EntityTableModel extends ModelibraTableModel {
 				.getList();
 	}
 
-	public EntityTableModel(boolean displayOnly, final ModelSession modelSession,
-			final IEntities<?> entities,
+	public EntityTableModel(boolean displayOnly,
+			final ModelSession modelSession, final IEntities<?> entities,
 			final List<PropertyConfig> propertyConfigList) {
 		this(displayOnly, modelSession, entities);
 		this.propertyConfigList = propertyConfigList;
