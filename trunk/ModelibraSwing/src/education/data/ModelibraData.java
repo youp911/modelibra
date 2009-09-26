@@ -68,10 +68,4 @@ public class ModelibraData {
 		return getDomain().getLibrary();
 	}
 
-	public void close() {
-		if (persistentEducation != null) {
-			persistentEducation.close();
-		}
-	}
-
 }

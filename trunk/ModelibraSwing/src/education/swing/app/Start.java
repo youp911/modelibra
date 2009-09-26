@@ -7,6 +7,8 @@ import javax.swing.JApplet;
 import org.modelibra.util.NatLang;
 import org.modelibra.util.PropertiesLoader;
 
+import education.data.ModelibraData;
+
 @SuppressWarnings("serial")
 public class Start extends JApplet {
 
@@ -35,7 +37,8 @@ public class Start extends JApplet {
 		String textResources = configurator.getProperty("textResources");
 		NatLang natLang = new NatLang();
 		natLang.setNaturalLanguage(language, textResources);
-		mainFrame = new MainFrame(natLang, imageRelativePath);
+		mainFrame = new MainFrame(ModelibraData.get().getModel(), natLang,
+				imageRelativePath);
 		mainFrame.setLocation(MAIN_FRAME_X, MAIN_FRAME_Y);
 	}
 

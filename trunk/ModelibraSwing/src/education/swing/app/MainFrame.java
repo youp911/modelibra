@@ -10,11 +10,11 @@ import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import org.modelibra.IDomainModel;
+import org.modelibra.ModelSession;
 import org.modelibra.swing.widget.ModelibraFrame;
 import org.modelibra.util.NatLang;
 import org.modelibra.util.PathLocator;
-
-import education.data.ModelibraData;
 
 @SuppressWarnings("serial")
 public class MainFrame extends ModelibraFrame {
@@ -30,7 +30,12 @@ public class MainFrame extends ModelibraFrame {
 	private JPanel imagePanel = new JPanel();
 	private JLabel imageLabel;
 
-	public MainFrame(NatLang natLang, String imageRelativePath) {
+	private IDomainModel domainModel;
+	private ModelSession modelSession;
+
+	public MainFrame(IDomainModel domainModel, NatLang natLang,
+			String imageRelativePath) {
+		this.domainModel = domainModel;
 		this.natLang = natLang;
 
 		addWindowListener(new WindowAdapter() {
@@ -42,7 +47,8 @@ public class MainFrame extends ModelibraFrame {
 
 		mainMenuBar = new MainMenuBar(this);
 		setJMenuBar(mainMenuBar);
-		mainMenuBar.setSession(ModelibraData.get().getModel().getSession());
+
+		modelSession = domainModel.getNewSession();
 
 		Container cp = getContentPane();
 		cp.setLayout(new BorderLayout());
@@ -60,12 +66,19 @@ public class MainFrame extends ModelibraFrame {
 		pack();
 	}
 
+	public IDomainModel getDomainModel() {
+		return domainModel;
+	}
+
+	public ModelSession getModelSession() {
+		return modelSession;
+	}
+
 	public NatLang getNatLang() {
 		return natLang;
 	}
 
 	public void exit() {
-		ModelibraData.get().close();
 		dispose();
 		if (!Start.isApplet) {
 			System.exit(0);
