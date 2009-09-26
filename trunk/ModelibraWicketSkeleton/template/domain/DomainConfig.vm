@@ -6,8 +6,7 @@ import org.modelibra.config.Config;
 import org.modelibra.config.DomainConfig;
 
 /**
- * Provides the $DomainCode configuration. The dmConfig.properties file must be 
- * included in the same directory.
+ * Provides the $DomainCode configuration.
  * 
  * @author $author
  * @version $today
