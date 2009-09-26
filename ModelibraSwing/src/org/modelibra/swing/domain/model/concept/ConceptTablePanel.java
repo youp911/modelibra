@@ -16,9 +16,9 @@ import org.modelibra.ModelSession;
 import org.modelibra.config.ConceptConfig;
 import org.modelibra.config.DomainConfig;
 import org.modelibra.config.ModelConfig;
-import org.modelibra.swing.ModelibraFrame;
-import org.modelibra.swing.ModelibraPanel;
 import org.modelibra.swing.domain.model.concept.entity.EntityTableFrame;
+import org.modelibra.swing.widget.ModelibraFrame;
+import org.modelibra.swing.widget.ModelibraPanel;
 import org.modelibra.util.NatLang;
 
 import education.data.ModelibraData;

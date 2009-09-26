@@ -8,7 +8,7 @@ import org.modelibra.IEntity;
 import org.modelibra.config.ConceptConfig;
 import org.modelibra.config.NeighborConfig;
 import org.modelibra.config.PropertyConfig;
-import org.modelibra.swing.ModelibraPanel;
+import org.modelibra.swing.widget.ModelibraPanel;
 import org.modelibra.util.NatLang;
 
 @SuppressWarnings("serial")

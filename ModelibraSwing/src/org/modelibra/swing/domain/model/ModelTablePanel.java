@@ -9,8 +9,8 @@ import javax.swing.JScrollPane;
 
 import org.modelibra.ModelSession;
 import org.modelibra.config.ModelConfig;
-import org.modelibra.swing.ModelibraFrame;
-import org.modelibra.swing.ModelibraPanel;
+import org.modelibra.swing.widget.ModelibraFrame;
+import org.modelibra.swing.widget.ModelibraPanel;
 import org.modelibra.util.NatLang;
 
 @SuppressWarnings("serial")

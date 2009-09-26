@@ -16,8 +16,8 @@ import javax.swing.KeyStroke;
 import org.modelibra.ModelSession;
 import org.modelibra.action.IHistoryObserver;
 import org.modelibra.config.Config;
-import org.modelibra.swing.ModelibraPanel;
 import org.modelibra.swing.domain.DomainModelsTableFrame;
+import org.modelibra.swing.widget.ModelibraPanel;
 import org.modelibra.util.NatLang;
 
 import education.data.ModelibraData;

@@ -2,11 +2,12 @@ package org.modelibra.swing.domain.model.concept;
 
 import java.util.List;
 
+import javax.swing.table.AbstractTableModel;
+
 import org.modelibra.config.ConceptConfig;
-import org.modelibra.swing.ModelibraTableModel;
 
 @SuppressWarnings("serial")
-public abstract class ConceptTableModel extends ModelibraTableModel {
+public abstract class ConceptTableModel extends AbstractTableModel {
 
 	private List<ConceptConfig> conceptConfigList;
 

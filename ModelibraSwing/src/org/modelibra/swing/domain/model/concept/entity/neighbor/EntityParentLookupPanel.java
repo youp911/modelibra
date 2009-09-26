@@ -18,7 +18,7 @@ import org.modelibra.action.EntitiesAction;
 import org.modelibra.action.UpdateAction;
 import org.modelibra.config.NeighborConfig;
 import org.modelibra.exception.ModelibraRuntimeException;
-import org.modelibra.swing.ModelibraPanel;
+import org.modelibra.swing.widget.ModelibraPanel;
 import org.modelibra.util.NatLang;
 
 @SuppressWarnings("serial")

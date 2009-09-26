@@ -9,7 +9,7 @@ import org.modelibra.action.AddAction;
 import org.modelibra.action.EntitiesAction;
 import org.modelibra.action.RemoveAction;
 import org.modelibra.action.UpdateAction;
-import org.modelibra.swing.ModelibraTable;
+import org.modelibra.swing.widget.ModelibraTable;
 
 @SuppressWarnings("serial")
 public class EntityTable extends ModelibraTable implements Observer {

@@ -10,7 +10,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-import org.modelibra.swing.ModelibraFrame;
+import org.modelibra.swing.widget.ModelibraFrame;
 import org.modelibra.util.NatLang;
 import org.modelibra.util.PathLocator;
 

@@ -1,9 +1,11 @@
-package org.modelibra.swing;
+package org.modelibra.swing.widget;
 
 import java.awt.Point;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
+
+import org.modelibra.swing.IModelibraConstants;
 
 @SuppressWarnings("serial")
 public abstract class ModelibraButton extends JButton implements

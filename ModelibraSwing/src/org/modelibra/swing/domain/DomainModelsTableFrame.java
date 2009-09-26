@@ -15,10 +15,10 @@ import org.modelibra.ModelSession;
 import org.modelibra.config.ConceptConfig;
 import org.modelibra.config.DomainConfig;
 import org.modelibra.config.ModelConfig;
-import org.modelibra.swing.ModelibraFrame;
 import org.modelibra.swing.domain.model.ModelTable;
 import org.modelibra.swing.domain.model.ModelTablePanel;
 import org.modelibra.swing.domain.model.concept.ConceptTablePanel;
+import org.modelibra.swing.widget.ModelibraFrame;
 import org.modelibra.util.NatLang;
 
 @SuppressWarnings("serial")

@@ -1,7 +1,7 @@
 package org.modelibra.swing.domain.model;
 
 import org.modelibra.config.ModelConfig;
-import org.modelibra.swing.ModelibraTable;
+import org.modelibra.swing.widget.ModelibraTable;
 
 @SuppressWarnings("serial")
 public class ModelTable extends ModelibraTable {

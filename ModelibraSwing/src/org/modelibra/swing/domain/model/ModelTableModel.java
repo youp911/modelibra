@@ -2,11 +2,12 @@ package org.modelibra.swing.domain.model;
 
 import java.util.List;
 
+import javax.swing.table.AbstractTableModel;
+
 import org.modelibra.config.ModelConfig;
-import org.modelibra.swing.ModelibraTableModel;
 
 @SuppressWarnings("serial")
-public abstract class ModelTableModel extends ModelibraTableModel {
+public abstract class ModelTableModel extends AbstractTableModel {
 
 	private List<ModelConfig> modelConfigList;
 

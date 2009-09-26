@@ -9,7 +9,7 @@ import org.modelibra.IEntity;
 import org.modelibra.ModelSession;
 import org.modelibra.config.PropertyConfig;
 import org.modelibra.swing.IModelibraConstants;
-import org.modelibra.swing.ModelibraFrame;
+import org.modelibra.swing.widget.ModelibraFrame;
 import org.modelibra.util.NatLang;
 
 @SuppressWarnings("serial")

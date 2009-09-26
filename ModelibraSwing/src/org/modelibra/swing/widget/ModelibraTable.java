@@ -1,14 +1,15 @@
-package org.modelibra.swing;
+package org.modelibra.swing.widget;
 
 import javax.swing.JTable;
+import javax.swing.table.AbstractTableModel;
 
 @SuppressWarnings("serial")
 public abstract class ModelibraTable extends JTable {
 
-	public ModelibraTable(ModelibraTableModel modelibraTableModel) {
+	public ModelibraTable(AbstractTableModel modelibraTableModel) {
 		super(modelibraTableModel);
 	}
-	
+
 	public void setSelectedRow(int ix) {
 		if (getRowCount() <= 0)
 			return;

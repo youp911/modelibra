@@ -21,9 +21,9 @@ import org.modelibra.action.AddAction;
 import org.modelibra.action.EntitiesAction;
 import org.modelibra.config.NeighborConfig;
 import org.modelibra.config.PropertyConfig;
-import org.modelibra.swing.ModelibraFrame;
-import org.modelibra.swing.ModelibraPanel;
 import org.modelibra.swing.domain.model.concept.entity.neighbor.EntityNeighborButton;
+import org.modelibra.swing.widget.ModelibraFrame;
+import org.modelibra.swing.widget.ModelibraPanel;
 import org.modelibra.util.NatLang;
 
 @SuppressWarnings("serial")
