@@ -19,8 +19,7 @@ import org.modelibra.config.Config;
 import org.modelibra.config.DomainConfig;
 
 /**
- * Provides the Education configuration. The dmConfig.properties file must be
- * included in the same directory.
+ * Provides the Education configuration.
  * 
  * @author Dzenan Ridjanovic
  * @version 2009-03-04
