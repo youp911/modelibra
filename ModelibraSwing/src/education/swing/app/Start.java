@@ -2,24 +2,20 @@ package education.swing.app;
 
 import java.util.Properties;
 
+import org.modelibra.swing.IModelibraConstants;
 import org.modelibra.swing.main.MainFrame;
 import org.modelibra.util.NatLang;
 import org.modelibra.util.PropertiesLoader;
 
 import education.data.ModelibraData;
 
-@SuppressWarnings("serial")
-public class Start {
-
-	public static final String APP_CONFIG_LOCAL_PATH = "Start.properties";
-	public static final int MAIN_FRAME_X = 0;
-	public static final int MAIN_FRAME_Y = 0;
+public class Start implements IModelibraConstants {
 
 	private MainFrame mainFrame;
 
 	public Start() {
 		Properties configurator = PropertiesLoader.load(Start.class,
-				Start.APP_CONFIG_LOCAL_PATH);
+				APP_CONFIG_LOCAL_PATH);
 		String language = configurator.getProperty("lang");
 		String textResources = configurator.getProperty("textResources");
 		NatLang natLang = new NatLang();
