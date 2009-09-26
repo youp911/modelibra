@@ -20,8 +20,6 @@ import org.modelibra.swing.domain.DomainModelsTableFrame;
 import org.modelibra.swing.widget.ModelibraPanel;
 import org.modelibra.util.NatLang;
 
-import education.data.ModelibraData;
-
 @SuppressWarnings("serial")
 public class MainMenuBar extends JMenuBar implements IHistoryObserver {
 
@@ -43,7 +41,6 @@ public class MainMenuBar extends JMenuBar implements IHistoryObserver {
 	private JMenuItem menuHelpAbout;
 
 	private MainFrame mainFrame;
-	private ModelSession session;
 
 	public MainMenuBar(final MainFrame mainFrame) {
 		this.mainFrame = mainFrame;
@@ -69,8 +66,9 @@ public class MainMenuBar extends JMenuBar implements IHistoryObserver {
 
 		menuEditUndo.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if (session != null) {
-					session.getHistory().undo();
+				ModelSession modelSession = mainFrame.getModelSession();
+				if (modelSession != null) {
+					modelSession.getHistory().undo();
 				}
 			}
 		});
@@ -79,10 +77,10 @@ public class MainMenuBar extends JMenuBar implements IHistoryObserver {
 
 		menuDomains.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Config config = ModelibraData.get().getConfig();
+				Config config = mainFrame.getDomainModel().getModelConfig()
+						.getDomainConfig().getConfig();
 				DomainModelsTableFrame domainModelsDisplayTableFrame = new DomainModelsTableFrame(
-						ModelibraData.get().getModel().getSession(), config
-								.getDomainsConfig()
+						mainFrame.getModelSession(), config.getDomainsConfig()
 								.getSpecificDomainConfigList(), mainFrame
 								.getNatLang());
 				displayDownRight(mainFrame, domainModelsDisplayTableFrame);
@@ -170,13 +168,6 @@ public class MainMenuBar extends JMenuBar implements IHistoryObserver {
 		childLocation.setLocation(childX, childY);
 		child.setLocation(childLocation);
 		child.setVisible(true);
-	}
-
-	public void setSession(ModelSession session) {
-		this.session = session;
-		if (session != null) {
-			session.getHistory().addHistoryObserver(this);
-		}
 	}
 
 	public void noHistory() {
