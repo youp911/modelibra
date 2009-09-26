@@ -1,7 +1,6 @@
-package education.swing.app;
+package org.modelibra.swing.main;
 
 import java.awt.BorderLayout;
-import java.awt.Color;
 import java.awt.Container;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
@@ -12,14 +11,13 @@ import javax.swing.JPanel;
 
 import org.modelibra.IDomainModel;
 import org.modelibra.ModelSession;
+import org.modelibra.swing.IModelibraConstants;
 import org.modelibra.swing.widget.ModelibraFrame;
 import org.modelibra.util.NatLang;
 import org.modelibra.util.PathLocator;
 
 @SuppressWarnings("serial")
-public class MainFrame extends ModelibraFrame {
-
-	public static final Color MAIN_COLOR = Color.LIGHT_GRAY;
+public class MainFrame extends ModelibraFrame implements IModelibraConstants {
 
 	private NatLang natLang;
 	private MainMenuBar mainMenuBar;
@@ -33,8 +31,7 @@ public class MainFrame extends ModelibraFrame {
 	private IDomainModel domainModel;
 	private ModelSession modelSession;
 
-	public MainFrame(IDomainModel domainModel, NatLang natLang,
-			String imageRelativePath) {
+	public MainFrame(IDomainModel domainModel, NatLang natLang) {
 		this.domainModel = domainModel;
 		this.natLang = natLang;
 
@@ -56,10 +53,10 @@ public class MainFrame extends ModelibraFrame {
 		cp.add(southPanel, BorderLayout.SOUTH);
 		cp.add(centerPanel, BorderLayout.CENTER);
 		centerPanel.add(imagePanel);
-		imagePanel.setBackground(MAIN_COLOR);
+		imagePanel.setBackground(APP_COLOR);
 		PathLocator pathLocator = new PathLocator();
-		ImageIcon imageIcon = pathLocator.getImageIcon(AboutDialog.class,
-				imageRelativePath);
+		ImageIcon imageIcon = pathLocator.getImageIcon(MainFrame.class,
+				APP_IMAGE_RELATIVE_PATH);
 		imageLabel = new JLabel(imageIcon);
 		imagePanel.add(imageLabel);
 
@@ -80,9 +77,7 @@ public class MainFrame extends ModelibraFrame {
 
 	public void exit() {
 		dispose();
-		if (!Start.isApplet) {
-			System.exit(0);
-		}
+		System.exit(0);
 	}
 
 }
