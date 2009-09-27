@@ -25,7 +25,7 @@ public class ConceptTablePanel extends ModelibraPanel {
 
 	public ConceptTablePanel(final ModelibraFrame contextFrame,
 			final ModelSession modelSession,
-			final List<ConceptConfig> conceptConfigList, final NatLang natLang) {
+			List<ConceptConfig> conceptConfigList, final NatLang natLang) {
 		ConceptTableModel entryConceptTableModel = new ConceptTableModel(
 				conceptConfigList) {
 			protected String getText(String key) {

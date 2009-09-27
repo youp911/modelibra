@@ -15,7 +15,7 @@ public class App implements IConstants {
 
 	private MainFrame mainFrame;
 
-	public App(final IDomain domain, final NatLang natLang) {
+	public App(IDomain domain, NatLang natLang) {
 		this.domain = domain;
 		this.natLang = natLang;
 		mainFrame = new MainFrame(this);

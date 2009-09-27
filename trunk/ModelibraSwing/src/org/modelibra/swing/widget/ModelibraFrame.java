@@ -18,7 +18,7 @@ public abstract class ModelibraFrame extends JFrame implements IConstants {
 
 	private List<ModelibraFrame> childFrameList = new ArrayList<ModelibraFrame>();
 
-	public ModelibraFrame(final App app) {
+	public ModelibraFrame(App app) {
 		this.app = app;
 	}
 
