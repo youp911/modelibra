@@ -13,12 +13,10 @@ public class App implements IConstants {
 
 	private NatLang natLang;
 
-	private MainFrame mainFrame;
-
 	public App(IDomain domain, NatLang natLang) {
 		this.domain = domain;
 		this.natLang = natLang;
-		mainFrame = new MainFrame(this);
+		MainFrame mainFrame = new MainFrame(this);
 		mainFrame.setLocation(MAIN_FRAME_X, MAIN_FRAME_Y);
 		mainFrame.setVisible(true);
 	}
