@@ -1,16 +1,16 @@
-package org.modelibra.swing;
+package org.modelibra.swing.app;
 
 import java.awt.Color;
 import java.awt.Dimension;
 
-public interface IModelibraConstants {
+public interface IAppConstants {
 
 	public static final String APP_CONFIG_LOCAL_PATH = "Start.properties";
 	public static final int MAIN_FRAME_X = 0;
 	public static final int MAIN_FRAME_Y = 0;
 
-	public static final Color APP_COLOR = Color.LIGHT_GRAY;
-	public static final String APP_IMAGE_RELATIVE_PATH = "modelibra.jpg";
+	public static final Color BACKGROUND_COLOR = Color.LIGHT_GRAY;
+	public static final String MODELIBRA_IMAGE_RELATIVE_PATH = "modelibra.jpg";
 
 	public static final double FRAME_DISPLAY_INCREMENT = 32;
 

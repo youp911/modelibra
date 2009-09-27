@@ -1,4 +1,4 @@
-package org.modelibra.swing.main;
+package org.modelibra.swing.app;
 
 import java.awt.BorderLayout;
 import java.awt.Container;
@@ -13,13 +13,12 @@ import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-import org.modelibra.swing.IModelibraConstants;
 import org.modelibra.util.NatLang;
 import org.modelibra.util.PathLocator;
 
 @SuppressWarnings("serial")
 public class AboutDialog extends JDialog implements ActionListener,
-		IModelibraConstants {
+		IAppConstants {
 
 	private JButton button;
 
@@ -54,14 +53,14 @@ public class AboutDialog extends JDialog implements ActionListener,
 		centerPanel.add(textPanel, BorderLayout.SOUTH);
 		PathLocator pathLocator = new PathLocator();
 		ImageIcon imageIcon = pathLocator.getImageIcon(AboutDialog.class,
-				APP_IMAGE_RELATIVE_PATH);
+				MODELIBRA_IMAGE_RELATIVE_PATH);
 		JLabel imageLabel;
 		imageLabel = new JLabel(imageIcon);
-		imagePanel.setBackground(APP_COLOR);
+		imagePanel.setBackground(BACKGROUND_COLOR);
 		imagePanel.add(imageLabel);
 
 		textPanel.setLayout(new BoxLayout(textPanel, BoxLayout.Y_AXIS));
-		textPanel.setBackground(APP_COLOR);
+		textPanel.setBackground(BACKGROUND_COLOR);
 		JLabel label0 = new JLabel();
 		JLabel label1 = new JLabel();
 		JLabel label2 = new JLabel();

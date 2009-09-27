@@ -7,12 +7,12 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 import org.modelibra.IEntities;
-import org.modelibra.swing.IModelibraConstants;
+import org.modelibra.swing.app.IAppConstants;
 import org.modelibra.util.NatLang;
 
 @SuppressWarnings("serial")
 public abstract class ModelibraPanel extends JPanel implements
-		IModelibraConstants {
+		IAppConstants {
 
 	public ModelibraPanel() {
 		// setSize(new Dimension(PANEL_WIDTH, PANEL_HEIGHT));

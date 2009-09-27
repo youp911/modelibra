@@ -5,11 +5,11 @@ import java.awt.Point;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 
-import org.modelibra.swing.IModelibraConstants;
+import org.modelibra.swing.app.IAppConstants;
 
 @SuppressWarnings("serial")
 public abstract class ModelibraButton extends JButton implements
-		IModelibraConstants {
+		IAppConstants {
 
 	public ModelibraButton() {
 		super();
