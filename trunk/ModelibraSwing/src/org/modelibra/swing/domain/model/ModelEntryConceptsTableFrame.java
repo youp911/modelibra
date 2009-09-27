@@ -31,8 +31,6 @@ public class ModelEntryConceptsTableFrame extends ModelibraFrame implements
 
 	private ModelTable modelTable;
 
-	private ModelTablePanel modelTablePanel;
-
 	private ConceptTablePanel entryConceptTablePanel;
 
 	public ModelEntryConceptsTableFrame(App app, ModelSession modelSession,
