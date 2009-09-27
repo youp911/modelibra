@@ -39,7 +39,7 @@ public class MainMenuBar extends JMenuBar implements IHistoryObserver {
 
 	public MainMenuBar(final MainFrame mainFrame) {
 		this.mainFrame = mainFrame;
-		NatLang natLang = mainFrame.getNatLang();
+		NatLang natLang = mainFrame.getApp().getNatLang();
 
 		menuFile = new JMenu(natLang.getText("file"));
 		menuFileExit = new JMenuItem(natLang.getText("exit"));
@@ -61,7 +61,7 @@ public class MainMenuBar extends JMenuBar implements IHistoryObserver {
 
 		menuEditUndo.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				ModelSession modelSession = mainFrame.getModelSession();
+				ModelSession modelSession = mainFrame.getApp().getModelSession();
 				if (modelSession != null) {
 					modelSession.getHistory().undo();
 				}
