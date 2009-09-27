@@ -5,18 +5,15 @@ import java.awt.Container;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
-import javax.swing.ImageIcon;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import org.modelibra.IDomainModel;
 import org.modelibra.ModelSession;
 import org.modelibra.swing.widget.ModelibraFrame;
 import org.modelibra.util.NatLang;
-import org.modelibra.util.PathLocator;
 
 @SuppressWarnings("serial")
-public class MainFrame extends ModelibraFrame implements IAppConstants {
+public class MainFrame extends ModelibraFrame implements IConstants {
 
 	private NatLang natLang;
 	private MainMenuBar mainMenuBar;
@@ -24,8 +21,6 @@ public class MainFrame extends ModelibraFrame implements IAppConstants {
 	private JPanel northPanel = new JPanel();
 	private JPanel centerPanel = new JPanel();
 	private JPanel southPanel = new JPanel();
-	private JPanel imagePanel = new JPanel();
-	private JLabel imageLabel;
 
 	private IDomainModel domainModel;
 	private ModelSession modelSession;
@@ -44,26 +39,23 @@ public class MainFrame extends ModelibraFrame implements IAppConstants {
 		mainMenuBar = new MainMenuBar(this);
 		setJMenuBar(mainMenuBar);
 
-		modelSession = domainModel.getNewSession();
+		setModelSession(domainModel.getNewSession());
 
 		Container cp = getContentPane();
 		cp.setLayout(new BorderLayout());
 		cp.add(northPanel, BorderLayout.NORTH);
 		cp.add(southPanel, BorderLayout.SOUTH);
 		cp.add(centerPanel, BorderLayout.CENTER);
-		centerPanel.add(imagePanel);
-		imagePanel.setBackground(BACKGROUND_COLOR);
-		PathLocator pathLocator = new PathLocator();
-		ImageIcon imageIcon = pathLocator.getImageIcon(MainFrame.class,
-				MODELIBRA_IMAGE_RELATIVE_PATH);
-		imageLabel = new JLabel(imageIcon);
-		imagePanel.add(imageLabel);
 
 		pack();
 	}
 
 	public IDomainModel getDomainModel() {
 		return domainModel;
+	}
+	
+	public void setModelSession(ModelSession modelSession) {
+		this.modelSession = modelSession;
 	}
 
 	public ModelSession getModelSession() {

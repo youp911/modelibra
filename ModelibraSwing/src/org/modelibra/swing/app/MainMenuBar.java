@@ -23,11 +23,6 @@ import org.modelibra.util.NatLang;
 @SuppressWarnings("serial")
 public class MainMenuBar extends JMenuBar implements IHistoryObserver {
 
-	public static final int MAIN_FRAME_X = 0;
-	public static final int MAIN_FRAME_Y = 0;
-	public static final int PEOPLE_FRAME_WIDTH = 512;
-	public static final int PEOPLE_FRAME_HEIGHT = 160;
-
 	private JMenu menuFile;
 	private JMenuItem menuFileExit;
 

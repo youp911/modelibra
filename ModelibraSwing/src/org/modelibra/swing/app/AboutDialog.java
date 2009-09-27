@@ -18,7 +18,7 @@ import org.modelibra.util.PathLocator;
 
 @SuppressWarnings("serial")
 public class AboutDialog extends JDialog implements ActionListener,
-		IAppConstants {
+		IConstants {
 
 	private JButton button;
 
