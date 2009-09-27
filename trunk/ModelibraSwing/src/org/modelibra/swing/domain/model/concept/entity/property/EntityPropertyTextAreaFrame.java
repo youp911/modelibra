@@ -8,7 +8,7 @@ import org.modelibra.IEntities;
 import org.modelibra.IEntity;
 import org.modelibra.ModelSession;
 import org.modelibra.config.PropertyConfig;
-import org.modelibra.swing.IModelibraConstants;
+import org.modelibra.swing.app.IAppConstants;
 import org.modelibra.swing.widget.ModelibraFrame;
 import org.modelibra.util.NatLang;
 
@@ -27,8 +27,8 @@ public class EntityPropertyTextAreaFrame extends ModelibraFrame {
 		addTitle(natLang);
 		addPropertyTextArea(displayOnly, add, modelSession, entities, entity,
 				propertyConfig, natLang);
-		setSize(IModelibraConstants.FRAME_WIDTH,
-				IModelibraConstants.FRAME_HEIGHT);
+		setSize(IAppConstants.FRAME_WIDTH,
+				IAppConstants.FRAME_HEIGHT);
 	}
 
 	protected void addTitle(NatLang natLang) {

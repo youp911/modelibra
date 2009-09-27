@@ -1,4 +1,4 @@
-package org.modelibra.swing.main;
+package org.modelibra.swing.app;
 
 import java.awt.Dimension;
 import java.awt.Point;

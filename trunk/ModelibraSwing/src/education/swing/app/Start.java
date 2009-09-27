@@ -2,14 +2,14 @@ package education.swing.app;
 
 import java.util.Properties;
 
-import org.modelibra.swing.IModelibraConstants;
-import org.modelibra.swing.main.MainFrame;
+import org.modelibra.swing.app.IAppConstants;
+import org.modelibra.swing.app.MainFrame;
 import org.modelibra.util.NatLang;
 import org.modelibra.util.PropertiesLoader;
 
 import education.data.ModelibraData;
 
-public class Start implements IModelibraConstants {
+public class Start implements IAppConstants {
 
 	private MainFrame mainFrame;
 

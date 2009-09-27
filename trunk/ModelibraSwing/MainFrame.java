@@ -1,4 +1,4 @@
-package org.modelibra.swing.main;
+package education.swing.app;
 
 import java.awt.BorderLayout;
 import java.awt.Container;
@@ -11,13 +11,14 @@ import javax.swing.JPanel;
 
 import org.modelibra.IDomainModel;
 import org.modelibra.ModelSession;
-import org.modelibra.swing.IModelibraConstants;
+import org.modelibra.swing.app.IAppConstants;
+import org.modelibra.swing.app.MainMenuBar;
 import org.modelibra.swing.widget.ModelibraFrame;
 import org.modelibra.util.NatLang;
 import org.modelibra.util.PathLocator;
 
 @SuppressWarnings("serial")
-public class MainFrame extends ModelibraFrame implements IModelibraConstants {
+public class MainFrame extends ModelibraFrame implements IAppConstants {
 
 	private NatLang natLang;
 	private MainMenuBar mainMenuBar;
@@ -53,10 +54,10 @@ public class MainFrame extends ModelibraFrame implements IModelibraConstants {
 		cp.add(southPanel, BorderLayout.SOUTH);
 		cp.add(centerPanel, BorderLayout.CENTER);
 		centerPanel.add(imagePanel);
-		imagePanel.setBackground(APP_COLOR);
+		imagePanel.setBackground(BACKGROUND_COLOR);
 		PathLocator pathLocator = new PathLocator();
 		ImageIcon imageIcon = pathLocator.getImageIcon(MainFrame.class,
-				APP_IMAGE_RELATIVE_PATH);
+				MODELIBRA_IMAGE_RELATIVE_PATH);
 		imageLabel = new JLabel(imageIcon);
 		imagePanel.add(imageLabel);
 
