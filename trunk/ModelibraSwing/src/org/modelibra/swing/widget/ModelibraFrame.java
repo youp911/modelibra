@@ -7,12 +7,12 @@ import java.util.List;
 import javax.swing.JFrame;
 
 import org.modelibra.IEntities;
-import org.modelibra.swing.app.IAppConstants;
+import org.modelibra.swing.app.IConstants;
 import org.modelibra.util.NatLang;
 
 @SuppressWarnings("serial")
 public abstract class ModelibraFrame extends JFrame implements
-		IAppConstants {
+		IConstants {
 
 	private List<ModelibraFrame> childFrameList = new ArrayList<ModelibraFrame>();
 
