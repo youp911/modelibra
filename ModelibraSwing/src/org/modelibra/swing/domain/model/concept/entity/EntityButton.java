@@ -22,7 +22,7 @@ public abstract class EntityButton extends ModelibraButton {
 			public void actionPerformed(ActionEvent e) {
 				IEntity<?> entity = getEntity();
 				if (entity != null) {
-					ModelibraFrame modelibraFrame = new EntityAttributesFrame(
+					ModelibraFrame modelibraFrame = new EntityAttributesFrame(contentFrame.getApp(),
 							internalContext, displayOnly, false, modelSession,
 							entities, entity, entity.getConceptConfig()
 									.getPropertiesConfig()

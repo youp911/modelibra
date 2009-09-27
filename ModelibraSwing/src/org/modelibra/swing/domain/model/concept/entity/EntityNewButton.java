@@ -28,9 +28,10 @@ public class EntityNewButton extends ModelibraButton {
 				IEntity<?> defaultEntity = entityBridge.createDefaultEntity();
 				if (defaultEntity != null) {
 					ModelibraFrame modelibraFrame = new EntityAttributesFrame(
-							internalContext, false, true, modelSession,
-							entities, defaultEntity, defaultEntity
-									.getConceptConfig().getPropertiesConfig()
+							contentFrame.getApp(), internalContext, false,
+							true, modelSession, entities, defaultEntity,
+							defaultEntity.getConceptConfig()
+									.getPropertiesConfig()
 									.getPropertyConfigWithoutReferenceList(),
 							defaultEntity.getConceptConfig()
 									.getNeighborsConfig().getList(), natLang);

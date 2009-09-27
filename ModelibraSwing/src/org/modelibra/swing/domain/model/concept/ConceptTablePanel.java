@@ -14,14 +14,11 @@ import org.modelibra.IDomainModel;
 import org.modelibra.IEntities;
 import org.modelibra.ModelSession;
 import org.modelibra.config.ConceptConfig;
-import org.modelibra.config.DomainConfig;
 import org.modelibra.config.ModelConfig;
 import org.modelibra.swing.domain.model.concept.entity.EntityTableFrame;
 import org.modelibra.swing.widget.ModelibraFrame;
 import org.modelibra.swing.widget.ModelibraPanel;
 import org.modelibra.util.NatLang;
-
-import education.data.ModelibraData;
 
 @SuppressWarnings("serial")
 public class ConceptTablePanel extends ModelibraPanel {
@@ -56,17 +53,15 @@ public class ConceptTablePanel extends ModelibraPanel {
 					if (currentConceptConfig.isDisplay()) {
 						ModelConfig modelConfig = currentConceptConfig
 								.getModelConfig();
-						DomainConfig domainConfig = modelConfig
-								.getDomainConfig();
-
-						IDomainModel model = ModelibraData.get().getModel(
-								domainConfig.getCode(), modelConfig.getCode());
+						IDomainModel model = contextFrame.getApp()
+								.getDomainModel(modelConfig.getCode());
 						IEntities<?> entities = model
 								.getEntry(currentConceptConfig.getCode());
 
 						ModelibraFrame entityTableFrame = new EntityTableFrame(
-								true, true, modelSession, entities,
-								currentConceptConfig.getPropertiesConfig()
+								contextFrame.getApp(), true, true,
+								modelSession, entities, currentConceptConfig
+										.getPropertiesConfig()
 										.getEssentialPropertyConfigList(),
 								currentConceptConfig.getNeighborsConfig()
 										.getList(), natLang);
@@ -87,17 +82,16 @@ public class ConceptTablePanel extends ModelibraPanel {
 					if (currentConceptConfig.isUpdate()) {
 						ModelConfig modelConfig = currentConceptConfig
 								.getModelConfig();
-						DomainConfig domainConfig = modelConfig
-								.getDomainConfig();
 
-						IDomainModel model = ModelibraData.get().getModel(
-								domainConfig.getCode(), modelConfig.getCode());
+						IDomainModel model = contextFrame.getApp()
+								.getDomainModel(modelConfig.getCode());
 						IEntities<?> entities = model
 								.getEntry(currentConceptConfig.getCode());
 
 						ModelibraFrame entityTableFrame = new EntityTableFrame(
-								true, false, modelSession, entities,
-								currentConceptConfig.getPropertiesConfig()
+								contextFrame.getApp(), true, false,
+								modelSession, entities, currentConceptConfig
+										.getPropertiesConfig()
 										.getEssentialPropertyConfigList(),
 								currentConceptConfig.getNeighborsConfig()
 										.getList(), natLang);
