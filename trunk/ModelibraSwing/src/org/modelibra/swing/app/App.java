@@ -6,17 +6,18 @@ import org.modelibra.ModelSession;
 import org.modelibra.util.NatLang;
 
 public class App implements IConstants {
-	
+
 	private IDomain domain;
 
 	private ModelSession modelSession;
-	
+
 	private NatLang natLang;
 
 	private MainFrame mainFrame;
 
-	public App(IDomain domain) {
+	public App(final IDomain domain, final NatLang natLang) {
 		this.domain = domain;
+		this.natLang = natLang;
 		mainFrame = new MainFrame(this);
 		mainFrame.setLocation(MAIN_FRAME_X, MAIN_FRAME_Y);
 		mainFrame.setVisible(true);
@@ -25,7 +26,7 @@ public class App implements IConstants {
 	public IDomain getDomain() {
 		return domain;
 	}
-	
+
 	public IDomainModel getDomainModel(String modelCode) {
 		if (domain != null) {
 			return domain.getModel(modelCode);
@@ -39,10 +40,6 @@ public class App implements IConstants {
 
 	public ModelSession getModelSession() {
 		return modelSession;
-	}
-	
-	public void setNatLang(NatLang natLang) {
-		this.natLang = natLang;
 	}
 
 	public NatLang getNatLang() {

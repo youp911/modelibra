@@ -13,10 +13,11 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.KeyStroke;
 
+import org.modelibra.IDomain;
 import org.modelibra.ModelSession;
 import org.modelibra.action.IHistoryObserver;
 import org.modelibra.config.Config;
-import org.modelibra.swing.domain.DomainModelsTableFrame;
+import org.modelibra.swing.domain.model.ModelEntryConceptsTableFrame;
 import org.modelibra.swing.widget.ModelibraPanel;
 import org.modelibra.util.NatLang;
 
@@ -30,7 +31,7 @@ public class MainMenuBar extends JMenuBar implements IHistoryObserver {
 	private JMenuItem menuEditUndo;
 
 	private JMenu menuModel;
-	private JMenuItem menuDomains;
+	private JMenuItem menuModels;
 
 	private JMenu menuHelp;
 	private JMenuItem menuHelpAbout;
@@ -48,7 +49,7 @@ public class MainMenuBar extends JMenuBar implements IHistoryObserver {
 		menuEditUndo = new JMenuItem(natLang.getText("undo"));
 
 		menuModel = new JMenu(natLang.getText("data"));
-		menuDomains = new JMenuItem(natLang.getText("Domains") + "...");
+		menuModels = new JMenuItem(natLang.getText("Models") + "...");
 
 		menuHelp = new JMenu(natLang.getText("help"));
 		menuHelpAbout = new JMenuItem(natLang.getText("about") + "...");
@@ -61,7 +62,8 @@ public class MainMenuBar extends JMenuBar implements IHistoryObserver {
 
 		menuEditUndo.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				ModelSession modelSession = mainFrame.getApp().getModelSession();
+				ModelSession modelSession = mainFrame.getApp()
+						.getModelSession();
 				if (modelSession != null) {
 					modelSession.getHistory().undo();
 				}
@@ -70,15 +72,15 @@ public class MainMenuBar extends JMenuBar implements IHistoryObserver {
 		menuEditUndo.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_Z,
 				ActionEvent.CTRL_MASK));
 
-		menuDomains.addActionListener(new ActionListener() {
+		menuModels.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Config config = mainFrame.getDomainModel().getModelConfig()
-						.getDomainConfig().getConfig();
-				DomainModelsTableFrame domainModelsDisplayTableFrame = new DomainModelsTableFrame(
-						mainFrame.getModelSession(), config.getDomainsConfig()
-								.getSpecificDomainConfigList(), mainFrame
-								.getNatLang());
-				displayDownRight(mainFrame, domainModelsDisplayTableFrame);
+				App app = mainFrame.getApp();
+				IDomain domain = app.getDomain();
+				Config config = app.getDomain().getDomainConfig().getConfig();
+				ModelEntryConceptsTableFrame modelEntryConceptsDisplayTableFrame = new ModelEntryConceptsTableFrame(
+						app.getModelSession(), domain.getDomainConfig()
+								.getModelConfigList(), app.getNatLang());
+				displayDownRight(mainFrame, modelEntryConceptsDisplayTableFrame);
 			}
 		});
 
@@ -90,7 +92,7 @@ public class MainMenuBar extends JMenuBar implements IHistoryObserver {
 
 		menuFile.add(menuFileExit);
 		menuEdit.add(menuEditUndo);
-		menuModel.add(menuDomains);
+		menuModel.add(menuModels);
 		menuHelp.add(menuHelpAbout);
 
 		add(menuFile);

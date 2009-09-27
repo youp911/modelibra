@@ -15,21 +15,20 @@ public class Start {
 
 	public static final String APP_CONFIG_LOCAL_PATH = "Start.properties";
 
-	public Start() {	
+	public Start() {
 		EducationConfig educationConfig = new EducationConfig();
 		DomainConfig domainConfig = educationConfig.getDomainConfig();
 		Education education = new Education(domainConfig);
 		new PersistentEducation(education);
-		
+
 		Properties configurator = PropertiesLoader.load(Start.class,
 				APP_CONFIG_LOCAL_PATH);
 		String language = configurator.getProperty("lang");
 		String textResources = configurator.getProperty("textResources");
 		NatLang natLang = new NatLang();
 		natLang.setNaturalLanguage(language, textResources);
-		
-		App app = new App(education);
-		app.setNatLang(natLang);
+
+		new App(education, natLang);
 	}
 
 	/**
