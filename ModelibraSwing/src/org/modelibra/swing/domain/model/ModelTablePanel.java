@@ -18,9 +18,9 @@ public class ModelTablePanel extends ModelibraPanel {
 
 	private ModelTable modelTable;
 
-	public ModelTablePanel(final ModelibraFrame contextFrame,
-			final ModelSession modelSession,
-			final List<ModelConfig> modelConfigList, final NatLang natLang) {
+	public ModelTablePanel(ModelibraFrame contextFrame,
+			ModelSession modelSession, List<ModelConfig> modelConfigList,
+			final NatLang natLang) {
 		ModelTableModel modelDisplayTableModel = new ModelTableModel(
 				modelConfigList) {
 			protected String getText(String key) {
