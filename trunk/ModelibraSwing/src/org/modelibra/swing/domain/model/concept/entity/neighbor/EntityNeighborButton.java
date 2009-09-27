@@ -42,6 +42,7 @@ public abstract class EntityNeighborButton extends ModelibraButton {
 										internalContext = true;
 									}
 									ModelibraFrame modelibraFrame = new EntityAttributesFrame(
+											contentFrame.getApp(),
 											internalContext,
 											displayOnly,
 											false,
@@ -77,6 +78,7 @@ public abstract class EntityNeighborButton extends ModelibraButton {
 									internalContext = true;
 								}
 								ModelibraFrame entityTableFrame = new EntityTableFrame(
+										contentFrame.getApp(),
 										internalContext,
 										displayOnly,
 										modelSession,

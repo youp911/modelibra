@@ -7,17 +7,23 @@ import java.util.List;
 import javax.swing.JFrame;
 
 import org.modelibra.IEntities;
+import org.modelibra.swing.app.App;
 import org.modelibra.swing.app.IConstants;
 import org.modelibra.util.NatLang;
 
 @SuppressWarnings("serial")
-public abstract class ModelibraFrame extends JFrame implements
-		IConstants {
+public abstract class ModelibraFrame extends JFrame implements IConstants {
+
+	private App app;
 
 	private List<ModelibraFrame> childFrameList = new ArrayList<ModelibraFrame>();
 
-	public ModelibraFrame() {
-		// setSize(new Dimension(FRAME_WIDTH, FRAME_HEIGHT));
+	public ModelibraFrame(final App app) {
+		this.app = app;
+	}
+
+	public App getApp() {
+		return app;
 	}
 
 	public void addChildFrame(ModelibraFrame childFrame) {
@@ -54,7 +60,7 @@ public abstract class ModelibraFrame extends JFrame implements
 		closeChildFrames();
 		dispose();
 	}
-	
+
 	protected String getErrorMsgs(IEntities<?> entities) {
 		List<String> errorMsgList = entities.getErrors().getErrorList();
 		String errorMsgs = " ";

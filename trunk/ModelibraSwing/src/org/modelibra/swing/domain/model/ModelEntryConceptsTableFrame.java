@@ -13,6 +13,7 @@ import javax.swing.event.ListSelectionListener;
 import org.modelibra.ModelSession;
 import org.modelibra.config.ConceptConfig;
 import org.modelibra.config.ModelConfig;
+import org.modelibra.swing.app.App;
 import org.modelibra.swing.app.IConstants;
 import org.modelibra.swing.domain.model.concept.ConceptTablePanel;
 import org.modelibra.swing.widget.ModelibraFrame;
@@ -34,8 +35,9 @@ public class ModelEntryConceptsTableFrame extends ModelibraFrame implements
 
 	private ConceptTablePanel entryConceptTablePanel;
 
-	public ModelEntryConceptsTableFrame(ModelSession modelSession,
+	public ModelEntryConceptsTableFrame(App app, ModelSession modelSession,
 			List<ModelConfig> modelConfigList, NatLang natLang) {
+		super(app);
 		this.modelSession = modelSession;
 		this.natLang = natLang;
 		addWindowListener(new WindowAdapter() {

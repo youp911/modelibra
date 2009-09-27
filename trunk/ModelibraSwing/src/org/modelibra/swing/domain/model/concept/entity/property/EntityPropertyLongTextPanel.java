@@ -55,8 +55,9 @@ public class EntityPropertyLongTextPanel extends ModelibraPanel {
 			textButton.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					ModelibraFrame modelibraFrame = new EntityPropertyTextAreaFrame(
-							displayOnly, add, modelSession, entities, entity,
-							propertyConfig, natLang);
+							contextFrame.getApp(), displayOnly, add,
+							modelSession, entities, entity, propertyConfig,
+							natLang);
 					if (contextFrame == null) {
 						displayDownRight(modelibraFrame);
 					} else {

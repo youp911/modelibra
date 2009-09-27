@@ -10,16 +10,18 @@ import org.modelibra.IEntities;
 import org.modelibra.ModelSession;
 import org.modelibra.config.NeighborConfig;
 import org.modelibra.config.PropertyConfig;
+import org.modelibra.swing.app.App;
 import org.modelibra.swing.widget.ModelibraFrame;
 import org.modelibra.util.NatLang;
 
 @SuppressWarnings("serial")
 public class EntityTableFrame extends ModelibraFrame {
 
-	public EntityTableFrame(boolean internalContext, boolean displayOnly,
-			ModelSession modelSession, IEntities<?> entities,
-			List<PropertyConfig> propertyConfigList,
+	public EntityTableFrame(App app, boolean internalContext,
+			boolean displayOnly, ModelSession modelSession,
+			IEntities<?> entities, List<PropertyConfig> propertyConfigList,
 			List<NeighborConfig> neighborConfigList, NatLang natLang) {
+		super(app);
 		addWindowListener(new WindowAdapter() {
 			@Override
 			public void windowClosing(WindowEvent e) {

@@ -8,12 +8,10 @@ import org.modelibra.swing.widget.ModelibraFrame;
 @SuppressWarnings("serial")
 public class MainFrame extends ModelibraFrame implements IConstants {
 
-	private App app;
-
 	private MainMenuBar mainMenuBar;
 
 	public MainFrame(App app) {
-		this.app = app;
+		super(app);
 		addWindowListener(new WindowAdapter() {
 			public void windowClosing(WindowEvent e) {
 				exit();
@@ -25,10 +23,6 @@ public class MainFrame extends ModelibraFrame implements IConstants {
 		setJMenuBar(mainMenuBar);
 
 		pack();
-	}
-
-	public App getApp() {
-		return app;
 	}
 
 	public void exit() {
