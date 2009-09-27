@@ -17,15 +17,14 @@ import org.modelibra.util.NatLang;
 import org.modelibra.util.PathLocator;
 
 @SuppressWarnings("serial")
-public class AboutDialog extends JDialog implements ActionListener,
-		IConstants {
+public class AboutDialog extends JDialog implements ActionListener, IConstants {
 
 	private JButton button;
 
 	public AboutDialog(MainFrame mainFrame) {
 		super(mainFrame);
 
-		NatLang natLang = mainFrame.getNatLang();
+		NatLang natLang = mainFrame.getApp().getNatLang();
 
 		String about = natLang.getText("about");
 		setTitle(about);

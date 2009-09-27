@@ -5,7 +5,6 @@ import java.awt.Dimension;
 
 public interface IConstants {
 
-	public static final String APP_CONFIG_LOCAL_PATH = "Start.properties";
 	public static final int MAIN_FRAME_X = 0;
 	public static final int MAIN_FRAME_Y = 0;
 
