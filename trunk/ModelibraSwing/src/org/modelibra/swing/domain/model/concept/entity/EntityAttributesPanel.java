@@ -61,7 +61,7 @@ public class EntityAttributesPanel extends ModelibraPanel implements Observer {
 		}
 	}
 
-	protected void addMessage() {
+	private void addMessage() {
 		JPanel messagePanel = new JPanel();
 		messageLabel = new JLabel("");
 		messagePanel.add(messageLabel);
@@ -108,9 +108,6 @@ public class EntityAttributesPanel extends ModelibraPanel implements Observer {
 		if (neighborConfigList != null && neighborConfigList.size() > 0) {
 			for (NeighborConfig neighborConfig : neighborConfigList) {
 				if (neighborConfig.isParent() && neighborConfig.isExternal()) {
-					// if
-					// (!neighborConfig.getDestinationConceptConfig().equalOid(
-					// entity.getConceptConfig())) {
 					if (internalContext) {
 						externalParentNeighborConfigList.add(neighborConfig);
 					}
@@ -142,8 +139,7 @@ public class EntityAttributesPanel extends ModelibraPanel implements Observer {
 			List<NeighborConfig> neighborConfigList) {
 		List<NeighborConfig> parentNeighborConfigList = getParentNeighborConfigList(neighborConfigList);
 		if (parentNeighborConfigList.size() > 0) {
-			add(new EntityAbsorbedParentsPanel(contentFrame, entity,
-					parentNeighborConfigList));
+			add(new EntityAbsorbedParentsPanel(entity, parentNeighborConfigList));
 		}
 	}
 

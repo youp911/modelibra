@@ -9,30 +9,26 @@ import javax.swing.JLabel;
 
 import org.modelibra.IEntities;
 import org.modelibra.IEntity;
-import org.modelibra.ModelSession;
 import org.modelibra.config.PropertyConfig;
 import org.modelibra.swing.widget.ModelibraFrame;
 import org.modelibra.swing.widget.ModelibraPanel;
 import org.modelibra.type.PropertyClass;
-import org.modelibra.util.NatLang;
 import org.modelibra.util.TextHandler;
 
 @SuppressWarnings("serial")
 public class EntityPropertyLongTextPanel extends ModelibraPanel {
 
-	public EntityPropertyLongTextPanel(final ModelibraFrame contentFrame,
-			boolean displayOnly, boolean add, ModelSession modelSession,
-			IEntities<?> entities, IEntity<?> entity,
-			PropertyConfig propertyConfig, NatLang natLang) {
-		addPropertyLongText(contentFrame, displayOnly, add, modelSession,
-				entities, entity, propertyConfig, natLang);
+	public EntityPropertyLongTextPanel(ModelibraFrame contentFrame,
+			boolean displayOnly, boolean add, IEntities<?> entities,
+			IEntity<?> entity, PropertyConfig propertyConfig) {
+		addPropertyLongText(contentFrame, displayOnly, add, entities, entity,
+				propertyConfig);
 	}
 
-	protected void addPropertyLongText(final ModelibraFrame contextFrame,
+	protected void addPropertyLongText(final ModelibraFrame contentFrame,
 			final boolean displayOnly, final boolean add,
-			final ModelSession modelSession, final IEntities<?> entities,
-			final IEntity<?> entity, final PropertyConfig propertyConfig,
-			final NatLang natLang) {
+			final IEntities<?> entities, final IEntity<?> entity,
+			final PropertyConfig propertyConfig) {
 		if (propertyConfig.getPropertyClass().equals(PropertyClass.getString())
 				&& propertyConfig.getDisplayLengthInt() > MIN_LONG_TEXT_LENGTH) {
 			int displayTextLength = entity.getConceptConfig().getModelConfig()
@@ -55,14 +51,13 @@ public class EntityPropertyLongTextPanel extends ModelibraPanel {
 			textButton.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					ModelibraFrame modelibraFrame = new EntityPropertyTextAreaFrame(
-							contextFrame.getApp(), displayOnly, add,
-							modelSession, entities, entity, propertyConfig,
-							natLang);
-					if (contextFrame == null) {
+							contentFrame.getApp(), displayOnly, add, entities,
+							entity, propertyConfig);
+					if (contentFrame == null) {
 						displayDownRight(modelibraFrame);
 					} else {
-						contextFrame.displayDownRight(modelibraFrame);
-						contextFrame.addChildFrame(modelibraFrame);
+						contentFrame.displayDownRight(modelibraFrame);
+						contentFrame.addChildFrame(modelibraFrame);
 					}
 				}
 			});

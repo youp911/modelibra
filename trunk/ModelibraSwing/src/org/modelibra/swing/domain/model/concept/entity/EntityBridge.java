@@ -91,7 +91,7 @@ public class EntityBridge {
 			for (NeighborConfig parentNeighborConfig : parentNeighborConfigList) {
 				if (parentNeighborConfig.isParent()) {
 					if (newEntity.getParentNeighbor(parentNeighborConfig
-							.getCode()) == null) {	
+							.getCode()) == null) {
 						IEntity<?> firstParent = null;
 						IEntities<?> lookupEntities = getLookupEntities(
 								newEntity, parentNeighborConfig);
@@ -116,9 +116,6 @@ public class EntityBridge {
 			NeighborConfig parentNeighborConfig) {
 		ConceptConfig parentConceptConfig = parentNeighborConfig
 				.getDestinationConceptConfig();
-
-		// final IEntities<?> parentEntities = entities.getModel().getEntry(
-		// parentConceptConfig.getCode());
 
 		// to support lookup of non-entry concepts
 		IEntities<?> lookupEntities = ((DomainModel) newEntity.getModel())

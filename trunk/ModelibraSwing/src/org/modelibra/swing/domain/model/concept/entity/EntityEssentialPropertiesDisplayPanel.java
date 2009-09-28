@@ -9,13 +9,12 @@ import org.modelibra.IEntity;
 import org.modelibra.config.PropertyConfig;
 import org.modelibra.swing.widget.ModelibraFrame;
 import org.modelibra.swing.widget.ModelibraPanel;
-import org.modelibra.util.NatLang;
 
 @SuppressWarnings("serial")
 public class EntityEssentialPropertiesDisplayPanel extends ModelibraPanel {
 
 	public EntityEssentialPropertiesDisplayPanel(ModelibraFrame contentFrame,
-			IEntities<?> entities, IEntity<?> entity, NatLang natLang) {
+			IEntities<?> entities, IEntity<?> entity) {
 		JPanel entityPropertiesPanel;
 		if (entities.size() > 0) {
 			List<PropertyConfig> essentialPropertyConfigList = entities
