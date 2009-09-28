@@ -8,12 +8,7 @@ import javax.swing.JFrame;
 import org.modelibra.swing.app.IConstants;
 
 @SuppressWarnings("serial")
-public abstract class ModelibraButton extends JButton implements
-		IConstants {
-
-	public ModelibraButton() {
-		super();
-	}
+public abstract class ModelibraButton extends JButton implements IConstants {
 
 	/**
 	 * Displays a child frame down and right of this button.

@@ -11,12 +11,7 @@ import org.modelibra.swing.app.IConstants;
 import org.modelibra.util.NatLang;
 
 @SuppressWarnings("serial")
-public abstract class ModelibraPanel extends JPanel implements
-		IConstants {
-
-	public ModelibraPanel() {
-		// setSize(new Dimension(PANEL_WIDTH, PANEL_HEIGHT));
-	}
+public abstract class ModelibraPanel extends JPanel implements IConstants {
 
 	/**
 	 * Displays a child frame down and right of this panel.
