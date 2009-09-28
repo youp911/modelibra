@@ -7,24 +7,21 @@ import java.util.List;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 
-import org.modelibra.ModelSession;
 import org.modelibra.config.ModelConfig;
 import org.modelibra.swing.widget.ModelibraFrame;
 import org.modelibra.swing.widget.ModelibraPanel;
-import org.modelibra.util.NatLang;
 
 @SuppressWarnings("serial")
 public class ModelTablePanel extends ModelibraPanel {
 
 	private ModelTable modelTable;
 
-	public ModelTablePanel(ModelibraFrame contextFrame,
-			ModelSession modelSession, List<ModelConfig> modelConfigList,
-			final NatLang natLang) {
+	public ModelTablePanel(final ModelibraFrame contextFrame,
+			List<ModelConfig> modelConfigList) {
 		ModelTableModel modelDisplayTableModel = new ModelTableModel(
 				modelConfigList) {
 			protected String getText(String key) {
-				return natLang.getText(key);
+				return contextFrame.getApp().getNatLang().getText(key);
 			}
 		};
 		modelTable = new ModelTable(modelDisplayTableModel);
