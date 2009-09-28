@@ -5,7 +5,6 @@ import java.awt.event.ActionListener;
 
 import org.modelibra.IEntities;
 import org.modelibra.IEntity;
-import org.modelibra.ModelSession;
 import org.modelibra.swing.widget.ModelibraButton;
 import org.modelibra.swing.widget.ModelibraFrame;
 import org.modelibra.util.NatLang;
@@ -13,22 +12,21 @@ import org.modelibra.util.NatLang;
 @SuppressWarnings("serial")
 public abstract class EntityButton extends ModelibraButton {
 
-	public EntityButton(final boolean internalContext,
-			final ModelibraFrame contentFrame, final boolean displayOnly,
-			final ModelSession modelSession, final IEntities<?> entities,
-			final NatLang natLang) {
-		setButtonName(displayOnly, natLang);
+	public EntityButton(final ModelibraFrame contentFrame,
+			final boolean internalContext, final boolean displayOnly,
+			final IEntities<?> entities) {
+		setButtonName(displayOnly, contentFrame.getApp().getNatLang());
 		addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				IEntity<?> entity = getEntity();
 				if (entity != null) {
-					ModelibraFrame modelibraFrame = new EntityAttributesFrame(contentFrame.getApp(),
-							internalContext, displayOnly, false, modelSession,
-							entities, entity, entity.getConceptConfig()
-									.getPropertiesConfig()
+					ModelibraFrame modelibraFrame = new EntityAttributesFrame(
+							contentFrame.getApp(), internalContext,
+							displayOnly, false, entities, entity, entity
+									.getConceptConfig().getPropertiesConfig()
 									.getPropertyConfigWithoutReferenceList(),
 							entity.getConceptConfig().getNeighborsConfig()
-									.getList(), natLang);
+									.getList());
 					contentFrame.displayDownRight(modelibraFrame);
 					contentFrame.addChildFrame(modelibraFrame);
 				}

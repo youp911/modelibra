@@ -8,7 +8,6 @@ import java.util.List;
 
 import org.modelibra.IEntities;
 import org.modelibra.IEntity;
-import org.modelibra.ModelSession;
 import org.modelibra.config.NeighborConfig;
 import org.modelibra.config.PropertyConfig;
 import org.modelibra.swing.app.App;
@@ -19,10 +18,9 @@ import org.modelibra.util.NatLang;
 public class EntityAttributesFrame extends ModelibraFrame {
 
 	public EntityAttributesFrame(App app, boolean internalContext,
-			boolean displayOnly, boolean add, ModelSession modelSession,
-			IEntities<?> entities, IEntity<?> entity,
-			List<PropertyConfig> propertyConfigList,
-			List<NeighborConfig> neighborConfigList, NatLang natLang) {
+			boolean displayOnly, boolean add, IEntities<?> entities,
+			IEntity<?> entity, List<PropertyConfig> propertyConfigList,
+			List<NeighborConfig> neighborConfigList) {
 		super(app);
 		addWindowListener(new WindowAdapter() {
 			@Override
@@ -30,10 +28,9 @@ public class EntityAttributesFrame extends ModelibraFrame {
 				exit();
 			}
 		});
-		addTitle(entity, natLang);
-		addAttributes(internalContext, displayOnly, add, modelSession,
-				entities, entity, propertyConfigList, neighborConfigList,
-				natLang);
+		addTitle(entity, app.getNatLang());
+		addAttributes(internalContext, displayOnly, add, entities, entity,
+				propertyConfigList, neighborConfigList);
 		pack();
 	}
 
@@ -42,14 +39,14 @@ public class EntityAttributesFrame extends ModelibraFrame {
 	}
 
 	protected void addAttributes(boolean internalContext, boolean displayOnly,
-			boolean add, ModelSession modelSession, IEntities<?> entities,
-			IEntity<?> entity, List<PropertyConfig> propertyConfigList,
-			List<NeighborConfig> neighborConfigList, NatLang natLang) {
+			boolean add, IEntities<?> entities, IEntity<?> entity,
+			List<PropertyConfig> propertyConfigList,
+			List<NeighborConfig> neighborConfigList) {
 		Container container = getContentPane();
 		container.setLayout(new BorderLayout());
-		container.add(new EntityAttributesPanel(internalContext, this,
-				displayOnly, add, modelSession, entities, entity,
-				propertyConfigList, neighborConfigList, natLang));
+		container.add(new EntityAttributesPanel(this, internalContext,
+				displayOnly, add, entities, entity, propertyConfigList,
+				neighborConfigList));
 	}
 
 }

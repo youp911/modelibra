@@ -14,12 +14,10 @@ import javax.swing.JPanel;
 import org.modelibra.Entity;
 import org.modelibra.IEntities;
 import org.modelibra.IEntity;
-import org.modelibra.ModelSession;
 import org.modelibra.config.PropertyConfig;
 import org.modelibra.swing.domain.model.concept.entity.property.EntityPropertyWidgetPanel;
 import org.modelibra.swing.widget.ModelibraFrame;
 import org.modelibra.swing.widget.ModelibraPanel;
-import org.modelibra.util.NatLang;
 
 @SuppressWarnings("serial")
 public class EntityPropertiesPanel extends ModelibraPanel implements Observer {
@@ -30,42 +28,35 @@ public class EntityPropertiesPanel extends ModelibraPanel implements Observer {
 
 	private boolean add;
 
-	private ModelSession modelSession;
-
 	private IEntities<?> entities;
 
 	private IEntity<?> entity;
 
 	private List<PropertyConfig> propertyConfigList;
 
-	private NatLang natLang;
-
 	public EntityPropertiesPanel(ModelibraFrame contentFrame,
-			boolean displayOnly, boolean add, ModelSession modelSession,
-			IEntities<?> entities, IEntity<?> entity,
-			List<PropertyConfig> propertyConfigList, NatLang natLang) {
+			boolean displayOnly, boolean add, IEntities<?> entities,
+			IEntity<?> entity, List<PropertyConfig> propertyConfigList) {
 		this.contentFrame = contentFrame;
 		this.displayOnly = displayOnly;
 		this.add = add;
-		this.modelSession = modelSession;
 		this.entities = entities;
 		this.entity = entity;
 		this.propertyConfigList = propertyConfigList;
-		this.natLang = natLang;
 
 		((Entity<?>) entity).addObserver(this);
 		setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 
-		addTitle(entity, natLang);
-		addProperties(contentFrame, displayOnly, add, modelSession, entities,
-				entity, propertyConfigList, natLang);
+		addTitle(contentFrame, entity);
+		addProperties(contentFrame, displayOnly, add, entities, entity,
+				propertyConfigList);
 	}
 
-	protected void addTitle(IEntity<?> entity, NatLang natLang) {
+	protected void addTitle(ModelibraFrame contentFrame, IEntity<?> entity) {
 		JPanel titlePanel = new JPanel();
 		titlePanel.setBackground(Color.WHITE);
-		titlePanel.add(new JLabel(natLang.getText(entity.getConceptConfig()
-				.getCode())));
+		titlePanel.add(new JLabel(contentFrame.getApp().getNatLang().getText(
+				entity.getConceptConfig().getCode())));
 		add(titlePanel);
 	}
 
@@ -81,17 +72,15 @@ public class EntityPropertiesPanel extends ModelibraPanel implements Observer {
 	}
 
 	protected void addProperties(ModelibraFrame contentFrame,
-			boolean displayOnly, boolean add, ModelSession modelSession,
-			IEntities<?> entities, IEntity<?> entity,
-			List<PropertyConfig> propertyConfigList, NatLang natLang) {
+			boolean displayOnly, boolean add, IEntities<?> entities,
+			IEntity<?> entity, List<PropertyConfig> propertyConfigList) {
 		JPanel propertiesPanel = new JPanel();
 		propertiesPanel.setLayout(new GridLayout(
 				getPropertyWithoutReferenceCount(propertyConfigList), 2, 4, 4));
 		for (PropertyConfig propertyConfig : propertyConfigList) {
 			if (!propertyConfig.isReference()) {
 				propertiesPanel.add(new EntityPropertyWidgetPanel(contentFrame,
-						displayOnly, add, modelSession, entities, entity,
-						propertyConfig, natLang));
+						displayOnly, add, entities, entity, propertyConfig));
 			}
 		}
 		add(propertiesPanel);
@@ -111,10 +100,10 @@ public class EntityPropertiesPanel extends ModelibraPanel implements Observer {
 								if (propertyPanel.getPropertyName().equals(
 										propertyConfig.getCode())) {
 									removeAll();
-									addTitle(entity, natLang);
+									addTitle(contentFrame, entity);
 									addProperties(contentFrame, displayOnly,
-											add, modelSession, entities,
-											entity, propertyConfigList, natLang);
+											add, entities, entity,
+											propertyConfigList);
 									validate();
 									contentFrame.pack();
 								}

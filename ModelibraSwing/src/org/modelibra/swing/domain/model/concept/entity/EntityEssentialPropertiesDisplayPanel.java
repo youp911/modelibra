@@ -21,9 +21,8 @@ public class EntityEssentialPropertiesDisplayPanel extends ModelibraPanel {
 			List<PropertyConfig> essentialPropertyConfigList = entities
 					.getConceptConfig().getPropertiesConfig()
 					.getEssentialPropertyConfigList();
-			entityPropertiesPanel = new EntityPropertiesPanel(contentFrame, true,
-					false, null, entities, entity, essentialPropertyConfigList,
-					natLang);
+			entityPropertiesPanel = new EntityPropertiesPanel(contentFrame,
+					true, false, entities, entity, essentialPropertyConfigList);
 		} else {
 			entityPropertiesPanel = new JPanel();
 		}

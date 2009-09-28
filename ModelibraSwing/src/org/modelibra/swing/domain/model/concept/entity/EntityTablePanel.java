@@ -10,7 +10,6 @@ import javax.swing.JScrollPane;
 
 import org.modelibra.IEntities;
 import org.modelibra.IEntity;
-import org.modelibra.ModelSession;
 import org.modelibra.config.NeighborConfig;
 import org.modelibra.config.PropertyConfig;
 import org.modelibra.exception.ModelibraRuntimeException;
@@ -30,11 +29,10 @@ public class EntityTablePanel extends ModelibraPanel {
 
 	private EntityTable entityTable;
 
-	public EntityTablePanel(boolean internalContext,
-			ModelibraFrame contentFrame, boolean displayOnly,
-			ModelSession modelSession, IEntities<?> entities,
-			List<PropertyConfig> propertyConfigList,
-			List<NeighborConfig> neighborConfigList, NatLang natLang) {
+	public EntityTablePanel(ModelibraFrame contentFrame,
+			boolean internalContext, boolean displayOnly,
+			IEntities<?> entities, List<PropertyConfig> propertyConfigList,
+			List<NeighborConfig> neighborConfigList) {
 		this.internalContext = internalContext;
 		this.contentFrame = contentFrame;
 		entities.getErrors().empty();
@@ -49,8 +47,7 @@ public class EntityTablePanel extends ModelibraPanel {
 					"There are no essential properties for this concept.");
 		}
 
-		entityTable = createTable(displayOnly, modelSession, entities,
-				propertyConfigList, natLang);
+		entityTable = createTable(displayOnly, entities, propertyConfigList);
 		entityTable.setSelectedRow(0);
 		JScrollPane tableScrollPane = new JScrollPane(entityTable);
 
@@ -61,34 +58,32 @@ public class EntityTablePanel extends ModelibraPanel {
 		add(tableScrollPane, BorderLayout.CENTER);
 		add(buttonPanel, BorderLayout.SOUTH);
 
-		addDisplayButton(buttonPanel, contentFrame, modelSession, entities,
-				natLang);
+		addDisplayButton(buttonPanel, contentFrame, entities);
 		if (!displayOnly) {
-			addNewButton(contentFrame, buttonPanel, modelSession, entities,
-					natLang);
-			addEditButton(buttonPanel, contentFrame, modelSession, entities,
-					natLang);
-			addRemoveButton(buttonPanel, modelSession, entities, natLang);
+			addNewButton(buttonPanel, entities);
+			addEditButton(buttonPanel, entities);
+			addRemoveButton(buttonPanel, entities);
 		}
 		// Neighbor buttons for navigation
 		if (neighborConfigList != null) {
-			addNeighborButtons(buttonPanel, contentFrame, displayOnly,
-					modelSession, neighborConfigList, natLang);
+			addNeighborButtons(buttonPanel, displayOnly, neighborConfigList);
 		}
 	}
 
 	protected EntityTable createTable(boolean displayOnly,
-			ModelSession modelSession, final IEntities<?> entities,
-			List<PropertyConfig> propertyConfigList, final NatLang natLang) {
+			final IEntities<?> entities, List<PropertyConfig> propertyConfigList) {
 		EntityTableModel entityTableModel = new EntityTableModel(displayOnly,
-				modelSession, entities, propertyConfigList) {
+				contentFrame.getApp().getModelSession(), entities,
+				propertyConfigList) {
 			protected String getText(String key) {
-				return natLang.getText(key);
+				return contentFrame.getApp().getNatLang().getText(key);
 			}
 
 			protected void error(String key) {
-				setMessage(natLang.getText(key) + " "
-						+ getErrorMsgsByKeys(entities, natLang));
+				setMessage(contentFrame.getApp().getNatLang().getText(key)
+						+ " "
+						+ getErrorMsgsByKeys(entities, contentFrame.getApp()
+								.getNatLang()));
 			}
 
 			protected void noError() {
@@ -99,28 +94,23 @@ public class EntityTablePanel extends ModelibraPanel {
 	}
 
 	protected void addDisplayButton(JPanel buttonPanel,
-			ModelibraFrame contentFrame, ModelSession modelSession,
-			IEntities<?> entities, NatLang natLang) {
-		buttonPanel.add(new EntityButton(internalContext, contentFrame, true,
-				modelSession, entities, natLang) {
+			ModelibraFrame contentFrame, IEntities<?> entities) {
+		buttonPanel.add(new EntityButton(contentFrame, internalContext, true,
+				entities) {
 			protected IEntity<?> getEntity() {
 				return entityTable.getCurrentEntity();
 			}
 		});
 	}
 
-	protected void addNewButton(ModelibraFrame contentFrame,
-			JPanel buttonPanel, ModelSession modelSession,
-			final IEntities<?> entities, final NatLang natLang) {
-		buttonPanel.add(new EntityNewButton(internalContext, contentFrame,
-				modelSession, entities, natLang));
+	protected void addNewButton(JPanel buttonPanel, final IEntities<?> entities) {
+		buttonPanel.add(new EntityNewButton(contentFrame, internalContext,
+				entities));
 	}
 
-	protected void addEditButton(JPanel buttonPanel,
-			ModelibraFrame contentFrame, ModelSession modelSession,
-			IEntities<?> entities, NatLang natLang) {
-		buttonPanel.add(new EntityButton(internalContext, contentFrame, false,
-				modelSession, entities, natLang) {
+	protected void addEditButton(JPanel buttonPanel, IEntities<?> entities) {
+		buttonPanel.add(new EntityButton(contentFrame, internalContext, false,
+				entities) {
 			protected IEntity<?> getEntity() {
 				return entityTable.getCurrentEntity();
 			}
@@ -128,28 +118,25 @@ public class EntityTablePanel extends ModelibraPanel {
 	}
 
 	protected void addRemoveButton(JPanel buttonPanel,
-			ModelSession modelSession, final IEntities<?> entities,
-			final NatLang natLang) {
-		buttonPanel
-				.add(new EntityRemoveButton(modelSession, entities, natLang) {
-					protected IEntity<?> getEntity() {
-						return entityTable.getCurrentEntity();
-					}
+			final IEntities<?> entities) {
+		buttonPanel.add(new EntityRemoveButton(contentFrame, entities) {
+			protected IEntity<?> getEntity() {
+				return entityTable.getCurrentEntity();
+			}
 
-					protected void message(String key) {
-						setMessage(natLang.getText(key) + " "
-								+ getErrorMsgsByKeys(entities, natLang));
-					}
-				});
+			protected void message(String key) {
+				NatLang natLang = contentFrame.getApp().getNatLang();
+				setMessage(natLang.getText(key) + " "
+						+ getErrorMsgsByKeys(entities, natLang));
+			}
+		});
 	}
 
-	protected void addNeighborButtons(JPanel buttonPanel,
-			ModelibraFrame contentFrame, boolean displayOnly,
-			ModelSession modelSession, List<NeighborConfig> neighborConfigList,
-			NatLang natLang) {
+	protected void addNeighborButtons(JPanel buttonPanel, boolean displayOnly,
+			List<NeighborConfig> neighborConfigList) {
 		for (NeighborConfig neighborConfig : neighborConfigList) {
 			buttonPanel.add(new EntityNeighborButton(contentFrame, displayOnly,
-					modelSession, neighborConfig, natLang) {
+					neighborConfig) {
 				protected IEntity<?> getEntity() {
 					return entityTable.getCurrentEntity();
 				}

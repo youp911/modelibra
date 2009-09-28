@@ -18,8 +18,9 @@ import org.modelibra.util.NatLang;
 public abstract class EntityNeighborButton extends ModelibraButton {
 
 	public EntityNeighborButton(final ModelibraFrame contentFrame,
-			final boolean displayOnly, final ModelSession modelSession,
-			final NeighborConfig neighborConfig, final NatLang natLang) {
+			final boolean displayOnly, final NeighborConfig neighborConfig) {
+		NatLang natLang = contentFrame.getApp().getNatLang();
+		ModelSession modelSession = contentFrame.getApp().getModelSession();
 		setButtonName(neighborConfig, natLang);
 		if (neighborConfig.isDisplay()) {
 			if (neighborConfig.isParent()) {
@@ -46,7 +47,6 @@ public abstract class EntityNeighborButton extends ModelibraButton {
 											internalContext,
 											displayOnly,
 											false,
-											modelSession,
 											parentEntities,
 											parentEntity,
 											neighborConceptConfig
@@ -54,7 +54,7 @@ public abstract class EntityNeighborButton extends ModelibraButton {
 													.getPropertyConfigWithoutReferenceList(),
 											neighborConceptConfig
 													.getNeighborsConfig()
-													.getList(), natLang);
+													.getList());
 									contentFrame
 											.displayDownRight(modelibraFrame);
 									contentFrame.addChildFrame(modelibraFrame);
@@ -81,14 +81,12 @@ public abstract class EntityNeighborButton extends ModelibraButton {
 										contentFrame.getApp(),
 										internalContext,
 										displayOnly,
-										modelSession,
 										neighborEntities,
 										neighborConceptConfig
 												.getPropertiesConfig()
 												.getEssentialPropertyConfigList(),
 										neighborConceptConfig
-												.getNeighborsConfig().getList(),
-										natLang);
+												.getNeighborsConfig().getList());
 								contentFrame.displayDownRight(entityTableFrame);
 								contentFrame.addChildFrame(entityTableFrame);
 							}
