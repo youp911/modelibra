@@ -61,12 +61,11 @@ public class ConceptTablePanel extends ModelibraPanel {
 								.getEntry(currentConceptConfig.getCode());
 
 						ModelibraFrame entityTableFrame = new EntityTableFrame(
-								contextFrame.getApp(), true, true,
-								modelSession, entities, currentConceptConfig
-										.getPropertiesConfig()
+								contextFrame.getApp(), true, true, entities,
+								currentConceptConfig.getPropertiesConfig()
 										.getEssentialPropertyConfigList(),
 								currentConceptConfig.getNeighborsConfig()
-										.getList(), natLang);
+										.getList());
 						contextFrame.displayDownRight(entityTableFrame);
 						contextFrame.addChildFrame(entityTableFrame);
 					}
@@ -91,12 +90,11 @@ public class ConceptTablePanel extends ModelibraPanel {
 								.getEntry(currentConceptConfig.getCode());
 
 						ModelibraFrame entityTableFrame = new EntityTableFrame(
-								contextFrame.getApp(), true, false,
-								modelSession, entities, currentConceptConfig
-										.getPropertiesConfig()
+								contextFrame.getApp(), true, false, entities,
+								currentConceptConfig.getPropertiesConfig()
 										.getEssentialPropertyConfigList(),
 								currentConceptConfig.getNeighborsConfig()
-										.getList(), natLang);
+										.getList());
 						contextFrame.displayDownRight(entityTableFrame);
 						contextFrame.addChildFrame(entityTableFrame);
 					}

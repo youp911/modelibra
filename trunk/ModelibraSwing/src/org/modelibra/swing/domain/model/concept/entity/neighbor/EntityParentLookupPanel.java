@@ -13,11 +13,11 @@ import javax.swing.JPanel;
 import org.modelibra.Entities;
 import org.modelibra.IEntities;
 import org.modelibra.IEntity;
-import org.modelibra.ModelSession;
 import org.modelibra.action.EntitiesAction;
 import org.modelibra.action.UpdateAction;
 import org.modelibra.config.NeighborConfig;
 import org.modelibra.exception.ModelibraRuntimeException;
+import org.modelibra.swing.widget.ModelibraFrame;
 import org.modelibra.swing.widget.ModelibraPanel;
 import org.modelibra.util.NatLang;
 
@@ -28,10 +28,9 @@ public class EntityParentLookupPanel extends ModelibraPanel {
 
 	private ParentLookupBridge parentLookupBridge;
 
-	public EntityParentLookupPanel(boolean add,
-			final ModelSession modelSession, final IEntities<?> entities,
-			final IEntity<?> entity, NeighborConfig parentNeighborConfig,
-			NatLang natLang) {
+	public EntityParentLookupPanel(ModelibraFrame contentFrame, boolean add,
+			final IEntities<?> entities, final IEntity<?> entity,
+			NeighborConfig parentNeighborConfig) {
 		if (add) {
 			parentLookupBridge = new ParentLookupBridge(entity,
 					parentNeighborConfig);
@@ -41,26 +40,26 @@ public class EntityParentLookupPanel extends ModelibraPanel {
 		}
 		if (parentNeighborConfig.isUpdate() && parentNeighborConfig.isParent()) {
 			setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
-			addLookupLabels(parentNeighborConfig, natLang);
-			addParentLookup(add, modelSession, entities, entity, natLang);
+			addLookupLabels(contentFrame, parentNeighborConfig);
+			addParentLookup(contentFrame, add, entities, entity);
 		}
 	}
 
-	protected void addLookupLabels(NeighborConfig neighborConfig,
-			NatLang natLang) {
+	protected void addLookupLabels(ModelibraFrame contentFrame,
+			NeighborConfig neighborConfig) {
 		JPanel messagePanel = new JPanel();
-		messagePanel.add(new JLabel(natLang.getText(neighborConfig
-				.getConceptConfig().getCode()
-				+ "." + neighborConfig.getCode())
+		messagePanel.add(new JLabel(contentFrame.getApp().getNatLang().getText(
+				neighborConfig.getConceptConfig().getCode() + "."
+						+ neighborConfig.getCode())
 				+ ": "));
 		messageLabel = new JLabel("");
 		messagePanel.add(messageLabel);
 		add(messagePanel);
 	}
 
-	protected void addParentLookup(final boolean add,
-			final ModelSession modelSession, final IEntities<?> entities,
-			final IEntity<?> entity, final NatLang natLang) {
+	protected void addParentLookup(final ModelibraFrame contentFrame,
+			final boolean add, final IEntities<?> entities,
+			final IEntity<?> entity) {
 		IEntities<?> lookupEntities = parentLookupBridge.getLookupEntities();
 		if (lookupEntities != null) {
 			List<String> entityStringList = ((Entities<?>) lookupEntities)
@@ -100,11 +99,13 @@ public class EntityParentLookupPanel extends ModelibraPanel {
 					parentLookupBridge.setParentEntity(lookedupEntity);
 					clearMessage();
 					if (!add) {
-						EntitiesAction action = new UpdateAction(modelSession,
-								entities, entity, parentLookupBridge
-										.getEntity());
+						EntitiesAction action = new UpdateAction(contentFrame
+								.getApp().getModelSession(), entities, entity,
+								parentLookupBridge.getEntity());
 						action.execute();
 						if (!action.isExecuted()) {
+							NatLang natLang = contentFrame.getApp()
+									.getNatLang();
 							setMessage(natLang.getText("updateNot") + " "
 									+ getErrorMsgsByKeys(entities, natLang));
 						}

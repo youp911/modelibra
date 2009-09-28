@@ -16,7 +16,6 @@ import javax.swing.JPanel;
 import org.modelibra.Entity;
 import org.modelibra.IEntities;
 import org.modelibra.IEntity;
-import org.modelibra.ModelSession;
 import org.modelibra.action.AddAction;
 import org.modelibra.action.EntitiesAction;
 import org.modelibra.config.NeighborConfig;
@@ -37,17 +36,14 @@ public class EntityAttributesPanel extends ModelibraPanel implements Observer {
 
 	private List<NeighborConfig> neighborConfigList;
 
-	private NatLang natLang;
-
-	public EntityAttributesPanel(boolean internalContext,
-			ModelibraFrame contentFrame, boolean displayOnly, boolean add,
-			ModelSession modelSession, final IEntities<?> entities,
-			IEntity<?> entity, List<PropertyConfig> propertyConfigList,
-			List<NeighborConfig> neighborConfigList, NatLang natLang) {
+	public EntityAttributesPanel(ModelibraFrame contentFrame,
+			boolean internalContext, boolean displayOnly, boolean add,
+			final IEntities<?> entities, IEntity<?> entity,
+			List<PropertyConfig> propertyConfigList,
+			List<NeighborConfig> neighborConfigList) {
 		this.contentFrame = contentFrame;
 		this.entity = entity;
 		this.neighborConfigList = neighborConfigList;
-		this.natLang = natLang;
 
 		entities.getErrors().empty();
 
@@ -55,15 +51,13 @@ public class EntityAttributesPanel extends ModelibraPanel implements Observer {
 		setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 
 		addMessage();
-		addProperties(contentFrame, displayOnly, add, modelSession, entities,
-				entity, propertyConfigList, natLang);
-		addExternalParentLookups(internalContext, displayOnly, add,
-				modelSession, entities, entity, neighborConfigList, natLang);
-		addNeighborButtons(contentFrame, displayOnly, modelSession, entity,
-				neighborConfigList, natLang);
-		addAbsorbedParents(entity, neighborConfigList, natLang);
+		addProperties(displayOnly, add, entities, entity, propertyConfigList);
+		addExternalParentLookups(internalContext, displayOnly, add, entities,
+				entity, neighborConfigList);
+		addNeighborButtons(displayOnly, entity, neighborConfigList);
+		addAbsorbedParents(entity, neighborConfigList);
 		if (add) {
-			addAction(modelSession, entities, entity, natLang);
+			addAction(entities, entity);
 		}
 	}
 
@@ -74,24 +68,22 @@ public class EntityAttributesPanel extends ModelibraPanel implements Observer {
 		add(messagePanel);
 	}
 
-	protected void addProperties(ModelibraFrame contextFrame,
-			boolean displayOnly, boolean add, ModelSession modelSession,
+	protected void addProperties(boolean displayOnly, boolean add,
 			IEntities<?> entities, IEntity<?> entity,
-			List<PropertyConfig> propertyConfigList, NatLang natLang) {
-		add(new EntityPropertiesPanel(contextFrame, displayOnly, add,
-				modelSession, entities, entity, propertyConfigList, natLang));
+			List<PropertyConfig> propertyConfigList) {
+		add(new EntityPropertiesPanel(contentFrame, displayOnly, add, entities,
+				entity, propertyConfigList));
 	}
 
 	protected void addExternalParentLookups(boolean internalContext,
-			boolean displayOnly, boolean add, ModelSession modelSession,
-			IEntities<?> entities, IEntity<?> entity,
-			List<NeighborConfig> neighborConfigList, NatLang natLang) {
+			boolean displayOnly, boolean add, IEntities<?> entities,
+			IEntity<?> entity, List<NeighborConfig> neighborConfigList) {
 		if (!displayOnly) {
 			List<NeighborConfig> externalParentNeighborConfigList = getExternalParentNeighborConfigList(
 					internalContext, entity, neighborConfigList);
 			if (externalParentNeighborConfigList.size() > 0) {
-				add(new EntityParentLookupsPanel(add, modelSession, entities,
-						entity, externalParentNeighborConfigList, natLang));
+				add(new EntityParentLookupsPanel(contentFrame, add, entities,
+						entity, externalParentNeighborConfigList));
 			}
 		}
 	}
@@ -129,15 +121,13 @@ public class EntityAttributesPanel extends ModelibraPanel implements Observer {
 	}
 
 	// for all neighbors
-	protected void addNeighborButtons(ModelibraFrame contextFrame,
-			boolean displayOnly, ModelSession modelSession,
-			final IEntity<?> entity, List<NeighborConfig> neighborConfigList,
-			NatLang natLang) {
+	protected void addNeighborButtons(boolean displayOnly,
+			final IEntity<?> entity, List<NeighborConfig> neighborConfigList) {
 		if (neighborConfigList != null && neighborConfigList.size() > 0) {
 			JPanel neighborButtonsPanel = new JPanel();
 			for (NeighborConfig neighborConfig : neighborConfigList) {
-				neighborButtonsPanel.add(new EntityNeighborButton(contextFrame,
-						displayOnly, modelSession, neighborConfig, natLang) {
+				neighborButtonsPanel.add(new EntityNeighborButton(contentFrame,
+						displayOnly, neighborConfig) {
 					protected IEntity<?> getEntity() {
 						return entity;
 					}
@@ -149,25 +139,25 @@ public class EntityAttributesPanel extends ModelibraPanel implements Observer {
 
 	// absorptions of essential properties of parent neighbors
 	protected void addAbsorbedParents(IEntity<?> entity,
-			List<NeighborConfig> neighborConfigList, NatLang natLang) {
+			List<NeighborConfig> neighborConfigList) {
 		List<NeighborConfig> parentNeighborConfigList = getParentNeighborConfigList(neighborConfigList);
 		if (parentNeighborConfigList.size() > 0) {
-			add(new EntityAbsorbedParentsPanel(entity,
-					parentNeighborConfigList, natLang));
+			add(new EntityAbsorbedParentsPanel(contentFrame, entity,
+					parentNeighborConfigList));
 		}
 	}
 
-	protected void addAction(final ModelSession modelSession,
-			final IEntities<?> entities, final IEntity<?> entity,
-			final NatLang natLang) {
+	protected void addAction(final IEntities<?> entities,
+			final IEntity<?> entity) {
 		JPanel actionPanel = new JPanel();
 		add(actionPanel);
+		final NatLang natLang = contentFrame.getApp().getNatLang();
 		JButton addButton = new JButton(natLang.getText("add"));
 		addButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				setMessage(natLang.getText("empty"));
-				EntitiesAction action = new AddAction(modelSession, entities,
-						entity);
+				EntitiesAction action = new AddAction(contentFrame.getApp()
+						.getModelSession(), entities, entity);
 				action.execute();
 				if (!action.isExecuted()) {
 					setMessage(natLang.getText("addNot") + " "
@@ -186,7 +176,6 @@ public class EntityAttributesPanel extends ModelibraPanel implements Observer {
 	}
 
 	// implemented from Observer
-	// see Book.setPersonOid
 	public void update(Observable o, Object arg) {
 		if (o == entity) {
 			if (arg instanceof PropertyConfig) {
@@ -197,31 +186,11 @@ public class EntityAttributesPanel extends ModelibraPanel implements Observer {
 							remove(component);
 						}
 					}
-					addAbsorbedParents(entity, neighborConfigList, natLang);
+					addAbsorbedParents(entity, neighborConfigList);
 					contentFrame.pack();
 				}
 			}
 		}
 	}
-
-	// implemented from Observer
-	// see Book.setPerson
-	// update is not called when setPerson is used instead of setPersonOid
-	// public void update(Observable o, Object arg) {
-	// if (o == entity) {
-	// if (arg instanceof NeighborConfig) {
-	// NeighborConfig neighborConfig = (NeighborConfig) arg;
-	// if (neighborConfig.isParent()) {
-	// for (Component component : getComponents()) {
-	// if (component instanceof EntityAbsorbedParentsPanel) {
-	// remove(component);
-	// }
-	// }
-	// addAbsorbedParents(entity, neighborConfigList, natLang);
-	// contextFrame.pack();
-	// }
-	// }
-	// }
-	// }
 
 }

@@ -7,20 +7,18 @@ import java.awt.event.WindowEvent;
 import java.util.List;
 
 import org.modelibra.IEntities;
-import org.modelibra.ModelSession;
 import org.modelibra.config.NeighborConfig;
 import org.modelibra.config.PropertyConfig;
 import org.modelibra.swing.app.App;
 import org.modelibra.swing.widget.ModelibraFrame;
-import org.modelibra.util.NatLang;
 
 @SuppressWarnings("serial")
 public class EntityTableFrame extends ModelibraFrame {
 
 	public EntityTableFrame(App app, boolean internalContext,
-			boolean displayOnly, ModelSession modelSession,
-			IEntities<?> entities, List<PropertyConfig> propertyConfigList,
-			List<NeighborConfig> neighborConfigList, NatLang natLang) {
+			boolean displayOnly, IEntities<?> entities,
+			List<PropertyConfig> propertyConfigList,
+			List<NeighborConfig> neighborConfigList) {
 		super(app);
 		addWindowListener(new WindowAdapter() {
 			@Override
@@ -28,25 +26,25 @@ public class EntityTableFrame extends ModelibraFrame {
 				exit();
 			}
 		});
-		addTitle(entities, natLang);
-		addEntityTable(internalContext, displayOnly, modelSession, entities,
-				propertyConfigList, neighborConfigList, natLang);
+		addTitle(entities);
+		addEntityTable(internalContext, displayOnly, entities,
+				propertyConfigList, neighborConfigList);
 		pack();
 	}
 
-	protected void addTitle(IEntities<?> entities, NatLang natLang) {
-		setTitle(natLang.getText(entities.getConceptConfig().getEntitiesCode()));
+	protected void addTitle(IEntities<?> entities) {
+		setTitle(this.getApp().getNatLang().getText(
+				entities.getConceptConfig().getEntitiesCode()));
 	}
 
 	protected void addEntityTable(boolean internalContext, boolean displayOnly,
-			ModelSession modelSession, IEntities<?> entities,
-			List<PropertyConfig> propertyConfigList,
-			List<NeighborConfig> neighborConfigList, NatLang natLang) {
+			IEntities<?> entities, List<PropertyConfig> propertyConfigList,
+			List<NeighborConfig> neighborConfigList) {
 		Container container = getContentPane();
 		container.setLayout(new BorderLayout());
-		EntityTablePanel entityTablePanel = new EntityTablePanel(
-				internalContext, this, displayOnly, modelSession, entities,
-				propertyConfigList, neighborConfigList, natLang);
+		EntityTablePanel entityTablePanel = new EntityTablePanel(this,
+				internalContext, displayOnly, entities, propertyConfigList,
+				neighborConfigList);
 		container.add(entityTablePanel);
 	}
 
