@@ -24,8 +24,10 @@ import org.modelibra.util.NatLang;
 public class ConceptTablePanel extends ModelibraPanel {
 
 	public ConceptTablePanel(final ModelibraFrame contextFrame,
-			final ModelSession modelSession,
-			List<ConceptConfig> conceptConfigList, final NatLang natLang) {
+			List<ConceptConfig> conceptConfigList) {
+		final NatLang natLang = contextFrame.getApp().getNatLang();
+		final ModelSession modelSession = contextFrame.getApp()
+				.getModelSession();
 		ConceptTableModel entryConceptTableModel = new ConceptTableModel(
 				conceptConfigList) {
 			protected String getText(String key) {

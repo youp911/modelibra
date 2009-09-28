@@ -10,7 +10,6 @@ import javax.swing.BoxLayout;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
-import org.modelibra.ModelSession;
 import org.modelibra.config.ConceptConfig;
 import org.modelibra.config.ModelConfig;
 import org.modelibra.swing.app.App;
@@ -23,42 +22,38 @@ import org.modelibra.util.NatLang;
 public class ModelEntryConceptsTableFrame extends ModelibraFrame implements
 		ListSelectionListener, IConstants {
 
-	private ModelSession modelSession;
-
-	private NatLang natLang;
-
 	private Container container;
 
 	private ModelTable modelTable;
 
 	private ConceptTablePanel entryConceptTablePanel;
 
-	public ModelEntryConceptsTableFrame(App app, ModelSession modelSession,
-			List<ModelConfig> modelConfigList, NatLang natLang) {
+	public ModelEntryConceptsTableFrame(App app,
+			List<ModelConfig> modelConfigList) {
 		super(app);
-		this.modelSession = modelSession;
-		this.natLang = natLang;
+
 		addWindowListener(new WindowAdapter() {
 			public void windowClosing(WindowEvent e) {
 				exit();
 			}
 		});
+		NatLang natLang = app.getNatLang();
 		setTitle(natLang.getText("Models"));
 		container = getContentPane();
 		ModelTablePanel modelTablePanel = new ModelTablePanel(this,
-				modelSession, modelConfigList, natLang);
+				modelConfigList);
 		container.setLayout(new BoxLayout(container, BoxLayout.Y_AXIS));
 		container.add(modelTablePanel);
 
 		if (modelConfigList.isEmpty()) {
-			entryConceptTablePanel = new ConceptTablePanel(this, modelSession,
-					new ArrayList<ConceptConfig>(), natLang);
+			entryConceptTablePanel = new ConceptTablePanel(this,
+					new ArrayList<ConceptConfig>());
 		} else {
 			ModelConfig modelConfig = modelConfigList.get(0);
 			List<ConceptConfig> entryConceptConfigList = modelConfig
 					.getConceptsConfig().getEntryConceptConfigList();
-			entryConceptTablePanel = new ConceptTablePanel(this, modelSession,
-					entryConceptConfigList, natLang);
+			entryConceptTablePanel = new ConceptTablePanel(this,
+					entryConceptConfigList);
 		}
 		container.add(entryConceptTablePanel);
 
@@ -77,7 +72,7 @@ public class ModelEntryConceptsTableFrame extends ModelibraFrame implements
 				List<ConceptConfig> entryConceptConfigList = modelConfig
 						.getConceptsConfig().getEntryConceptConfigList();
 				entryConceptTablePanel = new ConceptTablePanel(this,
-						modelSession, entryConceptConfigList, natLang);
+						entryConceptConfigList);
 				container.add(entryConceptTablePanel);
 			}
 		}
