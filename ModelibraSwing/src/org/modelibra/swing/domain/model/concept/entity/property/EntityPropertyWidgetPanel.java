@@ -6,7 +6,6 @@ import javax.swing.JPanel;
 
 import org.modelibra.IEntities;
 import org.modelibra.IEntity;
-import org.modelibra.ModelSession;
 import org.modelibra.config.PropertyConfig;
 import org.modelibra.swing.widget.ModelibraFrame;
 import org.modelibra.swing.widget.ModelibraPanel;
@@ -29,8 +28,7 @@ public class EntityPropertyWidgetPanel extends ModelibraPanel {
 		this.propertyConfig = propertyConfig;
 		setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 		addPropertyLabels(propertyConfig);
-		addPropertyWidget(contentFrame, displayOnly, add, entities, entity,
-				propertyConfig);
+		addPropertyWidget(displayOnly, add, entities, entity, propertyConfig);
 	}
 
 	protected void addPropertyLabels(PropertyConfig propertyConfig) {
@@ -44,15 +42,13 @@ public class EntityPropertyWidgetPanel extends ModelibraPanel {
 		add(messagePanel);
 	}
 
-	protected void addPropertyWidget(ModelibraFrame contentFrame,
-			final boolean displayOnly, final boolean add,
-			final IEntities<?> entities, final IEntity<?> entity,
-			final PropertyConfig propertyConfig) {
-		ModelSession modelSession = contentFrame.getApp().getModelSession();
+	protected void addPropertyWidget(final boolean displayOnly,
+			final boolean add, final IEntities<?> entities,
+			final IEntity<?> entity, final PropertyConfig propertyConfig) {
 		final NatLang natLang = contentFrame.getApp().getNatLang();
 		if (propertyConfig.getPropertyClass()
 				.equals(PropertyClass.getBoolean())) {
-			add(new EntityPropertyCheckBox(displayOnly, add, modelSession,
+			add(new EntityPropertyCheckBox(contentFrame, displayOnly, add,
 					entities, entity, propertyConfig) {
 				protected void message(String key) {
 					setMessage(natLang.getText(key) + " "
@@ -62,7 +58,7 @@ public class EntityPropertyWidgetPanel extends ModelibraPanel {
 		} else if (propertyConfig.getPropertyClass().equals(
 				PropertyClass.getString())
 				&& propertyConfig.isScramble()) {
-			add(new EntityPropertyPasswordField(displayOnly, add, modelSession,
+			add(new EntityPropertyPasswordField(contentFrame, displayOnly, add,
 					entities, entity, propertyConfig) {
 				protected void message(String key) {
 					setMessage(natLang.getText(key) + " "
@@ -73,9 +69,9 @@ public class EntityPropertyWidgetPanel extends ModelibraPanel {
 				PropertyClass.getString())
 				&& propertyConfig.getDisplayLengthInt() > MIN_LONG_TEXT_LENGTH) {
 			add(new EntityPropertyLongTextPanel(contentFrame, displayOnly, add,
-					modelSession, entities, entity, propertyConfig, natLang));
+					entities, entity, propertyConfig));
 		} else {
-			add(new EntityPropertyTextField(displayOnly, add, modelSession,
+			add(new EntityPropertyTextField(contentFrame, displayOnly, add,
 					entities, entity, propertyConfig) {
 				protected void message(String key) {
 					setMessage(natLang.getText(key) + " "

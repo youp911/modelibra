@@ -5,7 +5,6 @@ import java.awt.event.ActionListener;
 
 import org.modelibra.IEntities;
 import org.modelibra.IEntity;
-import org.modelibra.ModelSession;
 import org.modelibra.config.ConceptConfig;
 import org.modelibra.config.NeighborConfig;
 import org.modelibra.swing.domain.model.concept.entity.EntityAttributesFrame;
@@ -20,7 +19,6 @@ public abstract class EntityNeighborButton extends ModelibraButton {
 	public EntityNeighborButton(final ModelibraFrame contentFrame,
 			final boolean displayOnly, final NeighborConfig neighborConfig) {
 		NatLang natLang = contentFrame.getApp().getNatLang();
-		ModelSession modelSession = contentFrame.getApp().getModelSession();
 		setButtonName(neighborConfig, natLang);
 		if (neighborConfig.isDisplay()) {
 			if (neighborConfig.isParent()) {

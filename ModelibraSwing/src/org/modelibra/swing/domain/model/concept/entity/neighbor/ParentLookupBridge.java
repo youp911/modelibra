@@ -25,14 +25,12 @@ public class ParentLookupBridge {
 	}
 
 	public void setParentEntity(IEntity<?> parentEntity) {
-		getEntity().setParentNeighbor(getParentNeighborName(),
-				parentEntity);
+		getEntity().setParentNeighbor(getParentNeighborName(), parentEntity);
 	}
 
 	public IEntity<?> getParentEntity() {
 		if (parentNeighborConfig.isParent()) {
-			return getEntity().getParentNeighbor(
-					getParentNeighborName());
+			return getEntity().getParentNeighbor(getParentNeighborName());
 		}
 		return null;
 	}
@@ -49,13 +47,9 @@ public class ParentLookupBridge {
 		ConceptConfig parentConceptConfig = parentNeighborConfig
 				.getDestinationConceptConfig();
 
-		// final IEntities<?> parentEntities = entities.getModel().getEntry(
-		// parentConceptConfig.getCode());
-
 		// to support lookup of non-entry concepts
-		IEntities<?> lookupEntities = ((DomainModel) getEntity()
-				.getModel()).getSpecificModelEntities(parentConceptConfig
-				.getEntitiesCode());
+		IEntities<?> lookupEntities = ((DomainModel) getEntity().getModel())
+				.getSpecificModelEntities(parentConceptConfig.getEntitiesCode());
 		return lookupEntities;
 	}
 

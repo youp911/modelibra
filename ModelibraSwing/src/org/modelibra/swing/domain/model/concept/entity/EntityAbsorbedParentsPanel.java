@@ -8,22 +8,19 @@ import org.modelibra.IEntity;
 import org.modelibra.config.ConceptConfig;
 import org.modelibra.config.NeighborConfig;
 import org.modelibra.config.PropertyConfig;
-import org.modelibra.swing.widget.ModelibraFrame;
 import org.modelibra.swing.widget.ModelibraPanel;
-import org.modelibra.util.NatLang;
 
 @SuppressWarnings("serial")
 public class EntityAbsorbedParentsPanel extends ModelibraPanel {
 
-	public EntityAbsorbedParentsPanel(ModelibraFrame contentFrame,
-			IEntity<?> entity, List<NeighborConfig> neighborConfigList) {
+	public EntityAbsorbedParentsPanel(IEntity<?> entity,
+			List<NeighborConfig> neighborConfigList) {
 		setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
-		addAbsorbedParents(entity, neighborConfigList, contentFrame.getApp()
-				.getNatLang());
+		addAbsorbedParents(entity, neighborConfigList);
 	}
 
 	protected void addAbsorbedParents(IEntity<?> entity,
-			List<NeighborConfig> neighborConfigList, NatLang natLang) {
+			List<NeighborConfig> neighborConfigList) {
 		for (final NeighborConfig neighborConfig : neighborConfigList) {
 			if (neighborConfig.isParent() && neighborConfig.isAbsorb()) {
 				IEntity<?> parentEntity = entity

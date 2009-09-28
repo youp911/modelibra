@@ -58,7 +58,7 @@ public class EntityTablePanel extends ModelibraPanel {
 		add(tableScrollPane, BorderLayout.CENTER);
 		add(buttonPanel, BorderLayout.SOUTH);
 
-		addDisplayButton(buttonPanel, contentFrame, entities);
+		addDisplayButton(buttonPanel, entities);
 		if (!displayOnly) {
 			addNewButton(buttonPanel, entities);
 			addEditButton(buttonPanel, entities);
@@ -93,8 +93,7 @@ public class EntityTablePanel extends ModelibraPanel {
 		return new EntityTable(entityTableModel);
 	}
 
-	protected void addDisplayButton(JPanel buttonPanel,
-			ModelibraFrame contentFrame, IEntities<?> entities) {
+	protected void addDisplayButton(JPanel buttonPanel, IEntities<?> entities) {
 		buttonPanel.add(new EntityButton(contentFrame, internalContext, true,
 				entities) {
 			protected IEntity<?> getEntity() {

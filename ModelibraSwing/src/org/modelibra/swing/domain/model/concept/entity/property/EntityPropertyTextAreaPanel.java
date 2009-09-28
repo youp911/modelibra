@@ -12,7 +12,6 @@ import javax.swing.JTextArea;
 
 import org.modelibra.IEntities;
 import org.modelibra.IEntity;
-import org.modelibra.ModelSession;
 import org.modelibra.action.EntitiesAction;
 import org.modelibra.action.UpdateAction;
 import org.modelibra.config.PropertyConfig;
@@ -33,9 +32,8 @@ public class EntityPropertyTextAreaPanel extends ModelibraPanel {
 	private PropertyBridge propertyBridge;
 
 	public EntityPropertyTextAreaPanel(ModelibraFrame contentFrame,
-			boolean displayOnly, final boolean add, ModelSession modelSession,
-			IEntities<?> entities, IEntity<?> entity,
-			PropertyConfig propertyConfig, NatLang natLang) {
+			boolean displayOnly, final boolean add, IEntities<?> entities,
+			IEntity<?> entity, PropertyConfig propertyConfig) {
 		this.contentFrame = contentFrame;
 		if (add) {
 			propertyBridge = new PropertyBridge(entity, propertyConfig);
@@ -43,12 +41,10 @@ public class EntityPropertyTextAreaPanel extends ModelibraPanel {
 			propertyBridge = new PropertyBridge(entity.copy(), propertyConfig);
 		}
 		setLayout(new BorderLayout());
-		addPropertyLabels(propertyConfig, natLang);
-		addPropertyTextArea(displayOnly, modelSession, entities, entity,
-				propertyConfig, natLang);
+		addPropertyLabels(propertyConfig, contentFrame.getApp().getNatLang());
+		addPropertyTextArea(displayOnly, entities, entity, propertyConfig);
 		if (!displayOnly) {
-			addPropertyUpdateButton(modelSession, add, entities, entity,
-					propertyConfig, natLang);
+			addPropertyUpdateButton(add, entities, entity, propertyConfig);
 		}
 	}
 
@@ -65,9 +61,8 @@ public class EntityPropertyTextAreaPanel extends ModelibraPanel {
 	}
 
 	protected void addPropertyTextArea(boolean displayOnly,
-			ModelSession modelSession, IEntities<?> entities,
-			IEntity<?> entity, PropertyConfig propertyConfig,
-			final NatLang natLang) {
+			IEntities<?> entities, IEntity<?> entity,
+			PropertyConfig propertyConfig) {
 		if (propertyConfig.getPropertyClass().equals(PropertyClass.getString())
 				&& propertyConfig.getDisplayLengthInt() > MIN_LONG_TEXT_LENGTH) {
 			jTextArea = new JTextArea();
@@ -80,29 +75,35 @@ public class EntityPropertyTextAreaPanel extends ModelibraPanel {
 		}
 	}
 
-	protected void addPropertyUpdateButton(final ModelSession modelSession,
-			final boolean add, final IEntities<?> entities,
-			final IEntity<?> entity, PropertyConfig propertyConfig,
-			final NatLang natLang) {
+	protected void addPropertyUpdateButton(final boolean add,
+			final IEntities<?> entities, final IEntity<?> entity,
+			PropertyConfig propertyConfig) {
 		JPanel buttonPanel = new JPanel();
-		JButton updateButton = new JButton(natLang.getText("update"));
+		JButton updateButton = new JButton(contentFrame.getApp().getNatLang()
+				.getText("update"));
 		updateButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				String propertyValueString = jTextArea.getText();
 				propertyBridge.setProperty(propertyValueString);
 				if (propertyBridge.isSetProperty()) {
-					setMessage(natLang.getText("empty"));
+					setMessage(contentFrame.getApp().getNatLang().getText(
+							"empty"));
 					if (!add) {
-						EntitiesAction action = new UpdateAction(modelSession,
-								entities, entity, propertyBridge.getEntity());
+						EntitiesAction action = new UpdateAction(contentFrame
+								.getApp().getModelSession(), entities, entity,
+								propertyBridge.getEntity());
 						action.execute();
 						if (!action.isExecuted()) {
-							setMessage(natLang.getText("updateNot") + " "
-									+ getErrorMsgsByKeys(entities, natLang));
+							setMessage(contentFrame.getApp().getNatLang()
+									.getText("updateNot")
+									+ " "
+									+ getErrorMsgsByKeys(entities, contentFrame
+											.getApp().getNatLang()));
 						}
 					}
 				} else {
-					setMessage(natLang.getText("invalidType"));
+					setMessage(contentFrame.getApp().getNatLang().getText(
+							"invalidType"));
 				}
 			}
 		});

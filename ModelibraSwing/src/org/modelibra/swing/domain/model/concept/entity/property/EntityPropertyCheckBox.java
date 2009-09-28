@@ -7,19 +7,20 @@ import javax.swing.JCheckBox;
 
 import org.modelibra.IEntities;
 import org.modelibra.IEntity;
-import org.modelibra.ModelSession;
 import org.modelibra.action.EntitiesAction;
 import org.modelibra.action.UpdateAction;
 import org.modelibra.config.PropertyConfig;
+import org.modelibra.swing.widget.ModelibraFrame;
 
 @SuppressWarnings("serial")
 public abstract class EntityPropertyCheckBox extends JCheckBox {
 
 	private PropertyBridge propertyBridge;
 
-	public EntityPropertyCheckBox(boolean displayOnly, final boolean add,
-			final ModelSession modelSession, final IEntities<?> entities,
-			final IEntity<?> entity, final PropertyConfig propertyConfig) {
+	public EntityPropertyCheckBox(final ModelibraFrame contentFrame,
+			boolean displayOnly, final boolean add,
+			final IEntities<?> entities, final IEntity<?> entity,
+			final PropertyConfig propertyConfig) {
 		if (add) {
 			propertyBridge = new PropertyBridge(entity, propertyConfig);
 		} else {
@@ -40,8 +41,9 @@ public abstract class EntityPropertyCheckBox extends JCheckBox {
 						} else {
 							message("empty");
 							EntitiesAction action = new UpdateAction(
-									modelSession, entities, entity,
-									propertyBridge.getEntity());
+									contentFrame.getApp().getModelSession(),
+									entities, entity, propertyBridge
+											.getEntity());
 							action.execute();
 							if (!action.isExecuted()) {
 								message("updateNot");
