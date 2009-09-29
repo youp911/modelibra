@@ -14,6 +14,7 @@ import org.modelibra.wicket.view.ViewModel;
 import chapter01.Index;
 import chapter02.Hello;
 import chapter02.HelloSun;
+import chapter04.section02.WicketModel;
 
 /**
  * Application home page.
@@ -68,6 +69,16 @@ public class HomePage extends WebPage {
 			}
 		};
 		add(chapter02Link02);
+
+		// Chapter 03: See WicketInActionWithModelibra
+
+		// Chapter 04
+		Link chapter04Link01 = new Link("chapter04Link01") {
+			public void onClick() {
+				setResponsePage(new WicketModel());
+			}
+		};
+		add(chapter04Link01);
 	}
 
 }
