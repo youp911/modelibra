@@ -15,6 +15,8 @@ import chapter01.Index;
 import chapter02.Hello;
 import chapter02.HelloSun;
 import chapter04.section02.WicketModel;
+import chapter04.section03.DetachableModel;
+import chapter04.section04.NestedModel;
 
 /**
  * Application home page.
@@ -72,13 +74,29 @@ public class HomePage extends WebPage {
 
 		// Chapter 03: See WicketInActionWithModelibra
 
-		// Chapter 04
+		// Chapter 04 Section 02
 		Link chapter04Link01 = new Link("chapter04Link01") {
 			public void onClick() {
 				setResponsePage(new WicketModel());
 			}
 		};
 		add(chapter04Link01);
+
+		// Chapter 04 Section 03
+		Link chapter04Link02 = new Link("chapter04Link02") {
+			public void onClick() {
+				setResponsePage(new DetachableModel());
+			}
+		};
+		add(chapter04Link02);
+
+		// Chapter 04 Section 04
+		Link chapter04Link03 = new Link("chapter04Link03") {
+			public void onClick() {
+				setResponsePage(new NestedModel());
+			}
+		};
+		add(chapter04Link03);
 	}
 
 }
