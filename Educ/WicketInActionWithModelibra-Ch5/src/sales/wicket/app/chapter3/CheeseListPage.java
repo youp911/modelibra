@@ -60,7 +60,6 @@ public class CheeseListPage extends SalesAppPage {
 						currentCart.getCartCheeses().add(cartCheese);
 						if (target != null) {
 							target.addComponent(shoppingCartPanel);
-
 						}
 
 					}
