@@ -1,6 +1,6 @@
 package second;
 
-public class EntitiesFactory implements IEntitiesFactory {
+public class SalesModelFactory implements IEntitiesFactory {
 
 	public IEntities<?> createEntities(String name) {
 		IEntities<?> entities = null;

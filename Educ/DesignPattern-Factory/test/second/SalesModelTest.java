@@ -14,7 +14,7 @@ public class SalesModelTest {
 
 	@BeforeClass
 	public static void beforeTests() throws Exception {
-		salesModel = new SalesModel(new EntitiesFactory());
+		salesModel = new SalesModel(new SalesModelFactory());
 	}
 
 	@Test
