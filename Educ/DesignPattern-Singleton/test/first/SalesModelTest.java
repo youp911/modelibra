@@ -15,7 +15,7 @@ public class SalesModelTest {
 	@BeforeClass
 	public static void beforeTests() throws Exception {
 		app = App.getApp();
-		app.setModel(new SalesModel(new EntitiesFactory()));
+		app.setModel(new SalesModel(new SalesModelFactory()));
 	}
 
 	@Test
