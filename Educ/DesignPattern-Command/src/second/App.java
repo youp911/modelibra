@@ -20,5 +20,9 @@ public class App implements IApp {
 	public void setModel(IModel model) {
 		this.model = model;
 	}
+	
+	protected Object clone() {
+		throw new RuntimeException("Singleton");
+	}
 
 }
