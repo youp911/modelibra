@@ -21,8 +21,4 @@ public class App implements IApp {
 		this.model = model;
 	}
 
-	protected Object clone() {
-		throw new RuntimeException("Singleton");
-	}
-
 }
