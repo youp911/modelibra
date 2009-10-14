@@ -21,6 +21,7 @@ public class App implements IApp {
 		this.model = model;
 	}
 
+	@Override
 	protected Object clone() throws CloneNotSupportedException {
 		throw new CloneNotSupportedException("Singleton");
 	}
