@@ -2,7 +2,7 @@ package first;
 
 public class App implements IApp {
 
-	private static App app = new App();
+	private static App app = new App(); // eager initialization; thread-safe
 
 	private IModel model;
 
