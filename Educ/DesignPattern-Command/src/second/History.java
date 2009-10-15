@@ -4,9 +4,9 @@ import java.util.ArrayList;
 
 public class History implements IHistory {
 
-	private int cursor = 0;
-
 	private ArrayList<IAction> actions = new ArrayList<IAction>();
+
+	private int cursor = 0;
 
 	public void add(IAction action) {
 		if (!actions.contains(action)) {
