@@ -19,11 +19,4 @@ public abstract class Action implements IAction {
 		return false;
 	}
 
-	public boolean isUndone() {
-		if (getStatus().equals("undone")) {
-			return true;
-		}
-		return false;
-	}
-
 }
