@@ -22,12 +22,12 @@ public class SalesModel extends Model {
 	}
 	
 	public boolean addClients(Clients clients) {
-		return this.addEntities("Clients", clients);
+		return addEntities("Clients", clients);
 	}
 
 	
 	public boolean addProducts(Products products) {
-		return this.addEntities("Products", products);
+		return addEntities("Products", products);
 	}
 	
 	public Clients getClients() {
