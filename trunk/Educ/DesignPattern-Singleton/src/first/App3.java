@@ -10,7 +10,7 @@ public class App3 implements IApp {
 	}
 
 	// double check locking
-	public static synchronized App3 getApp() {
+	public static App3 getApp() {
 		if (app == null) {
 			synchronized (App3.class) {
 				if (app == null) {
