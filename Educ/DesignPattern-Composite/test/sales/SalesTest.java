@@ -19,12 +19,13 @@ public class SalesTest extends ModelTestTemplate {
 
 	protected IModel prepareModel() {
 		sales = new Model(new SalesFactory());
+		sales.createEntities("Clients");
+		sales.createEntities("Products");
 		return sales;
 	}
 
 	protected void prepareEntities() {
-		sales.createEntities("Clients");
-		sales.createEntities("Products");
+		
 	}
 
 	Clients getClients() {
