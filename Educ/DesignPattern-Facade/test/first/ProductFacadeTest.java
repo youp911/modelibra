@@ -21,7 +21,7 @@ public class ProductFacadeTest {
 	}
 
 	@Test
-	public void mapAdaptedToReference() throws Exception {
+	public void facadeToReference() throws Exception {
 		ProductFacade product = new ProductFacade(reference);
 		product.setOid(1000L);
 		product.setName("Core Java Data Objects");
