@@ -19,11 +19,13 @@ public class SalesTest extends ModelTestTemplate {
 
 	protected IModel prepareModel() {
 		sales = new Model(new SalesFactory());
+		sales.createEntities("Clients");
+		sales.createEntities("Products");
 		return sales;
 	}
 
 	protected void prepareEntities() {
-		Clients clients = (Clients) sales.createEntities("Clients");
+		Clients clients = getClients();
 		Client client01 = new Client();
 		client01.setOid(1010L);
 		client01.setName("Google");
@@ -33,7 +35,7 @@ public class SalesTest extends ModelTestTemplate {
 		client02.setName("Oracle");
 		clients.add(client02);
 
-		Products products = (Products) sales.createEntities("Products");
+		Products products = getProducts();
 		Product product01 = new Product();
 		product01.setOid(2010L);
 		product01.setName("Core Java Data Objects");
