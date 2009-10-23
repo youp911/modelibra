@@ -21,7 +21,7 @@ public abstract class Entities<T extends IEntity<T>> extends Observable
 		return persistent;
 	}
 	
-	public synchronized List<T> getList() {
+	public List<T> getList() {
 		return new ArrayList<T>(entityList);
 	}
 
