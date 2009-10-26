@@ -1,9 +1,8 @@
 package org.ieducnews;
 
-import static org.junit.Assert.assertTrue;
-
 import java.util.ArrayList;
 
+import org.junit.Assert;
 import org.junit.Test;
 
 public class WebLinkTest {
@@ -22,8 +21,8 @@ public class WebLinkTest {
 		webLinks.add(webLink01);
 		webLinks.add(webLink02);
 
-		assertTrue(webLinks.contains(webLink01));
-		assertTrue(webLinks.contains(webLink02));
+		Assert.assertTrue(webLinks.contains(webLink01));
+		Assert.assertTrue(webLinks.contains(webLink02));
 	}
 
 }
