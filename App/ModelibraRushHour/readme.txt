@@ -1,2 +1,0 @@
-ModelibraSwing not used.
-
