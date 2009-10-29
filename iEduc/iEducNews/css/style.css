@@ -6,6 +6,10 @@ body {
 	padding: 0px;
 }
 
+img {
+	border: none;
+}
+
 a {
 	color: black;
 	text-decoration: none;
