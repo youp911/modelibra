@@ -11,12 +11,12 @@ img {
 }
 
 a {
-	color: black;
+	color: #66563E;
 	text-decoration: none;
 }
 
 a:hover {
-	color: #796649;
+	color: #A78F6D;
 }
 
 /* divisions */
@@ -30,15 +30,14 @@ a:hover {
 
 #header{
 	background-image: url(img/header.png);
-	height: 111px;
+	height: 77px;
 	padding-bottom:10px;
 	background-repeat: no-repeat;
 }
 
 #header_logo{
-	height: 75px;
+	height: 39px;
 	float: left;
-	width: auto;
 }
 
 #content{
@@ -74,7 +73,7 @@ a:hover {
 	clear: both;
 	font-size: 16px;
 	font-weight: bold;
-	margin-top:7px;
+
 }
 
 #menu ul {
@@ -84,7 +83,7 @@ a:hover {
 	border: none;
 	padding-right: 0;
 	padding-left: 0;
-	
+	margin-top: 8px;
 }
 
 #menu ul li {
@@ -92,7 +91,7 @@ a:hover {
 	padding-right: 15px;
 	padding-left: 15px;
 	border-right-width: 1px;
-	border-right-style: dashed;
+	border-right-style: solid;
 	border-right-color: #CCC;	
 	
 }
