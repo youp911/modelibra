@@ -14,6 +14,7 @@ public class WebApp extends WebApplication {
 		return HomePage.class;
 	}
 
+	@Override
 	protected void init() {
 		webLinks = new ArrayList();
 
