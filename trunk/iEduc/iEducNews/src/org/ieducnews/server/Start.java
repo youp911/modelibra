@@ -6,12 +6,10 @@ import org.mortbay.jetty.Server;
 
 public class Start {
 
-	public static final String CONFIG_FILE_NAME = "jetty-config.xml";
-
 	public static void main(String[] args) {
 		Server jettyServer = null;
 		try {
-			URL jettyConfig = Start.class.getResource(CONFIG_FILE_NAME);
+			URL jettyConfig = Start.class.getResource("jetty-config.xml");
 			if (jettyConfig != null) {
 				jettyServer = new Server(jettyConfig);
 				jettyServer.start();
