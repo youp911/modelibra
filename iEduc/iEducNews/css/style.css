@@ -48,8 +48,8 @@ a:hover {
 	background-color: #FFF;
 }
 
-/*Liste de liens*/
-#liste_liens{
+/*List of linkss*/
+#links-list{
 	background-image: url(img/content_bottom.png);
 	background-repeat: no-repeat;
 	background-position: bottom;
@@ -58,7 +58,7 @@ a:hover {
 	min-height:600px;
 }
 
-#liste_liens li{
+#links-list li{
 	color: gray;
 	border-bottom-width: 1px;
 	border-bottom-style: dotted;
@@ -90,10 +90,6 @@ a:hover {
 	display: inline;
 	padding-right: 15px;
 	padding-left: 15px;
-	border-right-width: 1px;
-	border-right-style: solid;
-	border-right-color: #CCC;	
-	
 }
 
 #menu ul li a
@@ -107,11 +103,11 @@ a:hover {
 }
 
 /*Class*/
-.specifications {
+.link-spec {
 	font-size: 12px;
 }
 
-.active {
+.active-link {
 	color: #ffb33b !important;
 	background-image: url(img/menu_active.png);
 	background-repeat: no-repeat;
