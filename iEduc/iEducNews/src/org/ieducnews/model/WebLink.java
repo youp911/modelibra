@@ -21,5 +21,10 @@ public class WebLink {
 	public String getLink() {
 		return link;
 	}
+	
+	public void output() {
+		System.out.println("name: " + getName());
+		System.out.println("link: " + getLink());
+	}
 
 }
