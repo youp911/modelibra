@@ -19,11 +19,6 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.modelibra.IDomain;
 
-import sales.cheesestore.cheese.Cheese;
-import sales.cheesestore.cheese.Cheeses;
-import sales.cheesestore.discount.Discount;
-import sales.cheesestore.discount.Discounts;
-
 /**
  * CheeseStore specific model.
  * 
