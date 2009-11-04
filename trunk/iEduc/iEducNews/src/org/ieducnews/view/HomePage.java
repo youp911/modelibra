@@ -11,7 +11,7 @@ import org.ieducnews.model.WebLink;
 import org.ieducnews.model.WebLinks;
 
 @SuppressWarnings("all")
-public class HomePage extends WebPage {
+public class HomePage extends BasePage {
 
 	public HomePage() {
 		WebApp webApp = (WebApp) getApplication();
