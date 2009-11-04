@@ -9,7 +9,7 @@ public class WebLinksTest {
 	private static DomainModel domainModel;
 
 	@BeforeClass
-	public static void prepareTester() {
+	public static void createModel() {
 		domainModel = new DomainModel();
 	}
 
