@@ -1,9 +1,8 @@
 package org.ieducnews.view;
 
-import static org.junit.Assert.assertEquals;
-
 import org.apache.wicket.protocol.http.WebApplication;
 import org.apache.wicket.util.tester.WicketTester;
+import org.junit.Assert;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
@@ -21,7 +20,7 @@ public class WebAppTest {
 
 	@Test
 	public void defineHomePage() throws Exception {
-		assertEquals(HomePage.class, app.getHomePage());
+		Assert.assertEquals(HomePage.class, app.getHomePage());
 	}
 
 	@Test
