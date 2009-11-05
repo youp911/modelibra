@@ -41,26 +41,16 @@ a:hover {
 	padding-left: 4px;	
 }
 
-
-#content{
+#content_top{
 	background-image: url(img/content_top.png);
 	background-repeat: no-repeat;
 	background-position: top;
 	background-color: #FFF;
-	padding-top:5px;
+	height: 7px;
+	background-color: white;
 }
 
-#bottom_content{
-	background-image: url(img/content_bottom.png);
-	background-repeat: no-repeat;
-	height:7px;
-	background-position: bottom;
-}
-
-/*List of links*/
-#links-list{
-	background-color: #FFF;
-	padding-right: 15px;
+#content{
 	border-right-width: 2px;
 	border-left-width: 2px;
 	border-top-style: none;
@@ -69,7 +59,22 @@ a:hover {
 	border-right-color: #383838;
 	border-left-color: #383838;
 	padding-bottom: 1px;
+	padding-top:5px;
+	background-color: white;
+	min-height:600px;
+}
 
+#content_bottom{
+	background-image: url(img/content_bottom.png);
+	background-repeat: no-repeat;
+	height:7px;
+	background-position: bottom;
+	background-color: white;
+}
+
+/*List of links*/
+#links-list{
+	padding-right: 15px;
 }
 
 #links-list li{
@@ -87,12 +92,8 @@ a:hover {
 
 /*Main Text Page*/
 #main-text{
-	background-image: url(img/content_bottom.png);
-	background-repeat: no-repeat;
-	background-position: bottom;
 	background-color: #FFF;
 	padding-right: 15px;
-	min-height:600px;
 	margin: 20px;
 	color:#66563E;
 }
