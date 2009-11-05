@@ -1,7 +1,7 @@
 /*Tag*/
 body {
 	text-align: center;
-	background-color: #f2f1f0;
+	background-color: #FBFBFB;
 	margin: 0px;
 	padding: 0px;
 }
@@ -11,18 +11,18 @@ img {
 }
 
 a {
-	color: #66563E;
+	color: #383838;
 	text-decoration: none;
 }
 
 a:hover {
-	color: #A78F6D;
+	color: #4ac4df;
 }
 
 /* divisions */
 
 #container{
-	width: 980px;
+	width: 960px;
 	margin-right: auto;
 	margin-left: auto;
 	text-align: left;
@@ -30,7 +30,7 @@ a:hover {
 
 #header{
 	background-image: url(img/header.png);
-	height: 77px;
+	height: 70px;
 	padding-bottom:10px;
 	background-repeat: no-repeat;
 }
@@ -38,24 +38,38 @@ a:hover {
 #header_logo{
 	height: 39px;
 	float: left;
+	padding-left: 4px;	
 }
+
 
 #content{
 	background-image: url(img/content_top.png);
 	background-repeat: no-repeat;
 	background-position: top;
-	padding-top:1px;
 	background-color: #FFF;
+	padding-top:5px;
+}
+
+#bottom_content{
+	background-image: url(img/content_bottom.png);
+	background-repeat: no-repeat;
+	height:7px;
+	background-position: bottom;
 }
 
 /*List of links*/
 #links-list{
-	background-image: url(img/content_bottom.png);
-	background-repeat: no-repeat;
-	background-position: bottom;
 	background-color: #FFF;
 	padding-right: 15px;
-	min-height:600px;
+	border-right-width: 2px;
+	border-left-width: 2px;
+	border-top-style: none;
+	border-right-style: solid;
+	border-left-style: solid;
+	border-right-color: #383838;
+	border-left-color: #383838;
+	padding-bottom: 1px;
+
 }
 
 #links-list li{
@@ -65,6 +79,10 @@ a:hover {
 	border-bottom-color: #CCC;
 	padding-top: 5px;
 	padding-bottom: 5px;
+}
+
+#links-list li:hover {
+	background-color: #F9F9F9;
 }
 
 /*Main Text Page*/
@@ -92,36 +110,37 @@ a:hover {
 /*Menu*/
 #menu{
 	float: left;
-	clear: both;
 	font-size: 16px;
-	font-weight: bold;
-
+	padding-top: 12px;
+	padding-left: 10px;
 }
 
 #menu ul {
-	height:30px;
 	list-style: none;
 	margin: 0;
 	border: none;
 	padding-right: 0;
 	padding-left: 0;
-	margin-top: 8px;
 }
 
 #menu ul li {
 	display: inline;
 	padding-right: 15px;
 	padding-left: 15px;
+	border-right-width: 1px;
+	border-right-style: dotted;
+	border-right-color: #4ac4df;	
 }
 
 #menu ul li a
 {
-	color: white;
+	color: #f2f4df;
+	letter-spacing: 2px;
 }
 
 #menu ul li a:hover
 {
-	color: #f6dfba;
+	color: #4ac4df;
 }
 
 #menu ul li.selected
