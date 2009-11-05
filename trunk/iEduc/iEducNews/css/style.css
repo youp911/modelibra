@@ -105,7 +105,6 @@ a:hover {
 	width: 96%;
 	margin: 20px;
 	letter-spacing: 2px;
-	color:#A78F6D;
 }
 
 /*Menu*/
@@ -152,6 +151,57 @@ a:hover {
 	background-position: center bottom;
 	padding-bottom:10px;
 }
+
+/*Footer*/
+#footer{
+	height:140px;
+	background-image: url(img/footer.png);
+	background-repeat: no-repeat;
+	margin-top: 25px;
+}
+
+#footer_section{
+	width: 300px;
+	height:140px;
+	clear: none;
+	float: left;
+	padding-left: 15px;
+}
+
+#footer_section h1{
+	border-bottom-width: 1px;
+	border-bottom-style: dashed;
+	border-bottom-color: #CCC;
+	color: #f2f4df;
+	letter-spacing: 2px;
+	font-size: 12px;
+	font-weight: bold;
+	padding-top: 3px;
+}
+
+#footer_section ul{
+	margin: 0px;
+	padding-top: 0px;
+	padding-right: 0px;
+	padding-bottom: 0px;
+	padding-left: 10px;
+}
+
+#footer_section li{
+	color: #f2f4df;
+	list-style-type: none;
+}
+
+#footer_section a{
+	color: #f2f4df;
+	font-size: 12px;
+	font-weight: normal;
+}
+
+#footer_section a:hover{
+	color: #4ac4df;
+}
+
 
 /*Class*/
 .link-spec {
