@@ -67,6 +67,28 @@ a:hover {
 	padding-bottom: 5px;
 }
 
+/*Main Text Page*/
+#main-text{
+	background-image: url(img/content_bottom.png);
+	background-repeat: no-repeat;
+	background-position: bottom;
+	background-color: #FFF;
+	padding-right: 15px;
+	min-height:600px;
+	margin: 20px;
+	color:#66563E;
+}
+
+#title{
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+	border-bottom-color: #CCC;
+	width: 96%;
+	margin: 20px;
+	letter-spacing: 2px;
+	color:#A78F6D;
+}
+
 /*Menu*/
 #menu{
 	float: left;
