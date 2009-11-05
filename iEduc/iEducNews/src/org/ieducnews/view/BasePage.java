@@ -15,6 +15,7 @@ public class BasePage extends WebPage {
 
 	public BasePage() {
 		add(new MenuPanel("menuPanel"));
+		add(new FooterPanel("footerPanel"));
 	}
 
 }
