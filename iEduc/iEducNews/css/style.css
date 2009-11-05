@@ -102,6 +102,15 @@ a:hover {
 	color: #f6dfba;
 }
 
+#menu ul li.selected
+{
+	color: #ffb33b !important;
+	background-image: url(img/menu_active.png);
+	background-repeat: no-repeat;
+	background-position: center bottom;
+	padding-bottom:10px;
+}
+
 /*Class*/
 .link-spec {
 	font-size: 12px;
