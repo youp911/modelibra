@@ -8,8 +8,16 @@ public class MenuPanel extends Panel{
 
 	public MenuPanel(String id) {
 		super(id);
+		
+		add(new Link("new") {
+			@Override
+			public void onClick() {
+				setResponsePage(new HomePage());
+			}
 
-		add(new BookmarkablePageLink("new", HomePage.class));
+		});
+		
+		add(new BookmarkablePageLink("aboutus", AboutUsPage.class));
 	}
 
 }
