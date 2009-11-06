@@ -1,24 +1,15 @@
 package org.ieducnews.view;
 
 import org.apache.wicket.markup.html.link.BookmarkablePageLink;
-import org.apache.wicket.markup.html.link.Link;
 import org.apache.wicket.markup.html.panel.Panel;
 
 @SuppressWarnings("all")
-public class FooterPanel extends Panel{
+public class FooterPanel extends Panel {
 
 	public FooterPanel(String id) {
 		super(id);
-		
-		add(new Link("newPage") {
-			@Override
-			public void onClick() {
-				setResponsePage(new HomePage());
-			}
-
-		});
-		
-		add(new BookmarkablePageLink("aboutPage", AboutPage.class));
+		add(new NewLink("newLink"));
+		add(new BookmarkablePageLink("aboutLink", AboutPage.class));
 	}
 
 }
