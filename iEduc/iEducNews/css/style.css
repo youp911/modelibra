@@ -1,4 +1,5 @@
-/*Tag*/
+/*Tags*/
+
 body {
 	text-align: center;
 	background-color: white;
@@ -19,38 +20,38 @@ a:hover {
 	color: #4ac4df;
 }
 
-/* divisions */
+/* Divisions */
 
-#container{
+#container {
 	width: 960px;
 	margin-right: auto;
 	margin-left: auto;
 	text-align: left;
 }
 
-#header{
+#header {
 	background-image: url(img/header.png);
 	height: 70px;
 	padding-bottom:10px;
 	background-repeat: no-repeat;
 }
 
-#header_logo{
+#header_logo {
 	height: 39px;
 	float: left;
 	padding-left: 4px;	
 }
 
-#content_top{
+#content_top {
 	background-image: url(img/content_top.png);
 	background-repeat: no-repeat;
 	background-position: top;
-	background-color: #FFF;
+	background-color: #ffffff;
 	height: 7px;
 	background-color: white;
 }
 
-#content{
+#content {
 	border-right-width: 2px;
 	border-left-width: 2px;
 	border-top-style: none;
@@ -64,7 +65,7 @@ a:hover {
 	min-height:600px;
 }
 
-#content_bottom{
+#content_bottom {
 	background-image: url(img/content_bottom.png);
 	background-repeat: no-repeat;
 	height:7px;
@@ -72,43 +73,46 @@ a:hover {
 	background-color: white;
 }
 
-/*List of links*/
-#links-list{
+/* List of links */
+
+#links_list {
 	padding-right: 15px;
 }
 
-#links-list li{
+#links_list li {
 	color: gray;
 	border-bottom-width: 1px;
 	border-bottom-style: dotted;
-	border-bottom-color: #CCC;
+	border-bottom-color: #cccccc;
 	padding-top: 5px;
 	padding-bottom: 5px;
 }
 
-#links-list li:hover {
-	background-color: #FBFBFB;
+#links_list li:hover {
+	background-color: #fbfbfb;
 }
 
-/*Main Text Page*/
-#main-text{
-	background-color: #FFF;
+/* Main Text */
+
+#main_text {
+	background-color: #ffffff;
 	padding-right: 15px;
 	margin: 20px;
 	color:#66563E;
 }
 
-#title{
+#title {
 	border-bottom-width: 1px;
 	border-bottom-style: solid;
-	border-bottom-color: #CCC;
+	border-bottom-color: #cccccc;
 	width: 96%;
 	margin: 20px;
 	letter-spacing: 2px;
 }
 
-/*Menu*/
-#menu{
+/* Menu */
+
+#menu {
 	float: left;
 	font-size: 16px;
 	padding-top: 12px;
@@ -132,19 +136,16 @@ a:hover {
 	border-right-color: #4ac4df;	
 }
 
-#menu ul li a
-{
+#menu ul li a {
 	color: #f2f4df;
 	letter-spacing: 2px;
 }
 
-#menu ul li a:hover
-{
+#menu ul li a:hover {
 	color: #4ac4df;
 }
 
-#menu ul li.selected
-{
+#menu ul li.selected {
 	color: #ffb33b !important;
 	background-image: url(img/menu_active.png);
 	background-repeat: no-repeat;
@@ -152,15 +153,16 @@ a:hover {
 	padding-bottom:10px;
 }
 
-/*Footer*/
-#footer{
+/* Footer */
+
+#footer {
 	height:140px;
 	background-image: url(img/footer.png);
 	background-repeat: no-repeat;
 	margin-top: 25px;
 }
 
-#footer_section{
+#footer_section {
 	width: 300px;
 	height:140px;
 	clear: none;
@@ -168,10 +170,10 @@ a:hover {
 	padding-left: 15px;
 }
 
-#footer_section h1{
+#footer_section h1 {
 	border-bottom-width: 1px;
 	border-bottom-style: dashed;
-	border-bottom-color: #CCC;
+	border-bottom-color: #cccccc;
 	color: #f2f4df;
 	letter-spacing: 2px;
 	font-size: 12px;
@@ -179,7 +181,7 @@ a:hover {
 	padding-top: 3px;
 }
 
-#footer_section ul{
+#footer_section ul {
 	margin: 0px;
 	padding-top: 0px;
 	padding-right: 0px;
@@ -187,28 +189,29 @@ a:hover {
 	padding-left: 10px;
 }
 
-#footer_section li{
+#footer_section li {
 	color: #f2f4df;
 	list-style-type: none;
 }
 
-#footer_section a{
+#footer_section a {
 	color: #f2f4df;
 	font-size: 12px;
 	font-weight: normal;
 }
 
-#footer_section a:hover{
+#footer_section a:hover {
 	color: #4ac4df;
 }
 
 
-/*Class*/
-.link-spec {
+/* CSS Classes */
+
+.link_spec {
 	font-size: 12px;
 }
 
-.active-link {
+.active_link {
 	color: #ffb33b !important;
 	background-image: url(img/menu_active.png);
 	background-repeat: no-repeat;
