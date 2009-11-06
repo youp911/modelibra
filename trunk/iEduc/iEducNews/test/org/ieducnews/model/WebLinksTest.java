@@ -35,7 +35,7 @@ public class WebLinksTest {
 	}
 
 	@Test
-	public void webLinksOrdered() throws Exception {
+	public void webLinksOrderedByName() throws Exception {
 		WebLinks webLinks = domainModel.getWebLinks();
 		WebLinks orderedWebLinks = webLinks.orderByName();
 
