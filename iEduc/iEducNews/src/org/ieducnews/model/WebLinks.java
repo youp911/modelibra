@@ -5,13 +5,16 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
-@SuppressWarnings("all")
 public class WebLinks {
 
-	private List webLinksList = new ArrayList();
+	private List<WebLink> webLinksList = new ArrayList<WebLink>();
 
 	public void add(WebLink webLink) {
 		webLinksList.add(webLink);
+	}
+	
+	public boolean remove(WebLink webLink) {
+		return webLinksList.remove(webLink);
 	}
 
 	public boolean contains(WebLink webLink) {
@@ -26,44 +29,37 @@ public class WebLinks {
 		return webLinksList.isEmpty();
 	}
 
-	public List getList() {
-		return new ArrayList(webLinksList);
+	public List<WebLink> getList() {
+		return new ArrayList<WebLink>(webLinksList);
 	}
 
-	private void setList(List list) {
+	private void setList(List<WebLink> list) {
 		webLinksList = list;
 	}
 
-	public WebLinks orderByName() {
+	public WebLinks orderByName(boolean ascending) {
 		WebLinks orderedWebLinks = new WebLinks();
-		List list = getList();
+		List<WebLink> list = getList();
 		Collections.sort(list, new NameComparator());
+		if (!ascending) {
+			Collections.reverse(list);
+		}
 		orderedWebLinks.setList(list);
 		return orderedWebLinks;
 	}
 
+	public WebLinks orderByName() {
+		return orderByName(true);
+	}
+
 	public void output(String title) {
 		System.out.println(title);
-		for (Object linkObject : webLinksList) {
-			WebLink webLink = (WebLink) linkObject;
+		for (WebLink webLink : webLinksList) {
 			webLink.output();
 		}
 	}
 
-	@SuppressWarnings("all")
-	private class NameComparator implements Comparator {
-
-		public int compare(Object entity1, Object entity2)
-				throws IllegalArgumentException {
-			if (entity1 instanceof WebLink && entity2 instanceof WebLink) {
-				WebLink webLink1 = (WebLink) entity1;
-				WebLink webLink2 = (WebLink) entity2;
-				return compareWebLinks(webLink1, webLink2);
-			} else {
-				throw new IllegalArgumentException();
-			}
-		}
-
+	private class NameComparator implements Comparator<WebLink> {
 		/**
 		 * Compares two web links by comparing the name properties.
 		 * 
@@ -75,7 +71,7 @@ public class WebLinks {
 		 *         the second one, < 0 if the second value is greater than the
 		 *         first one
 		 */
-		private int compareWebLinks(WebLink webLink1, WebLink webLink2) {
+		public int compare(WebLink webLink1, WebLink webLink2) {
 			int result = 0;
 			String name1 = webLink1.getName();
 			String name2 = webLink2.getName();
