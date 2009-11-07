@@ -1,11 +1,40 @@
 package org.ieducnews.model;
 
-public class DomainModel {
+import java.io.BufferedInputStream;
+import java.io.BufferedOutputStream;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInput;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutput;
+import java.io.ObjectOutputStream;
+import java.io.Serializable;
+
+import org.ieducnews.model.config.ModelProperties;
+
+public class DomainModel implements Serializable {
+
+	private static final long serialVersionUID = 1;
+
+	private File file;
 
 	private WebLinks webLinks = new WebLinks();
 
 	public DomainModel() {
+		ModelProperties modelProperties = new ModelProperties(
+				ModelProperties.class);
+		createFile(modelProperties);
+	}
+
+	public DomainModel(ModelProperties modelProperties) {
 		init();
+		createFile(modelProperties);
+	}
+
+	private void createFile(ModelProperties modelProperties) {
+		file = new File(modelProperties.getFilePath());
 	}
 
 	private void init() {
@@ -39,6 +68,39 @@ public class DomainModel {
 
 	public WebLinks getWebLinks() {
 		return webLinks;
+	}
+
+	public DomainModel load() {
+		try {
+			if (file.exists()) {
+				BufferedInputStream buffer = new BufferedInputStream(
+						new FileInputStream(file));
+				ObjectInput i = new ObjectInputStream(buffer);
+				return (DomainModel) i.readObject();
+			}
+			return this;
+		} catch (ClassNotFoundException e1) {
+			throw new RuntimeException(e1);
+		} catch (IOException e2) {
+			throw new RuntimeException(e2);
+		}
+	}
+
+	public void save() {
+		try {
+			if (!file.exists()) {
+				file.createNewFile();
+				System.out.println("Model file created: "
+						+ file.getAbsolutePath());
+			}
+			BufferedOutputStream buffer = new BufferedOutputStream(
+					new FileOutputStream(file));
+			ObjectOutput o = new ObjectOutputStream(buffer);
+			o.writeObject(this);
+			buffer.close();
+		} catch (IOException e) {
+			throw new RuntimeException(e);
+		}
 	}
 
 }
