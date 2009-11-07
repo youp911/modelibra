@@ -11,6 +11,7 @@ public class WebApp extends WebApplication {
 	protected void init() {
 		super.init();
 		domainModel = new DomainModel();
+		domainModel = domainModel.load();
 	}
 
 	public Class<HomePage> getHomePage() {

@@ -1,5 +1,7 @@
 package org.ieducnews.model;
 
+import org.ieducnews.model.config.ModelProperties;
+import org.junit.AfterClass;
 import org.junit.Assert;
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -10,28 +12,10 @@ public class WebLinksTest {
 
 	@BeforeClass
 	public static void createModel() {
-		domainModel = new DomainModel();
-	}
-
-	@Test
-	public void webLinksCreated() throws Exception {
-		WebLinks webLinks = domainModel.getWebLinks();
-
-		WebLink webLink01 = new WebLink();
-		webLink01.setName("TechCrunch");
-		webLink01.setLink("http://www.techcrunch.com/");
-
-		WebLink webLink02 = new WebLink();
-		webLink02.setName("Hacker News");
-		webLink02.setLink("http://news.ycombinator.com/");
-
-		webLinks.add(webLink01);
-		webLinks.add(webLink02);
-
-		Assert.assertTrue(webLinks.contains(webLink01));
-		Assert.assertTrue(webLinks.contains(webLink02));
-
-		Assert.assertEquals(7, webLinks.size());
+		ModelProperties modelProperties = new ModelProperties(
+				WebLinksTest.class);
+		domainModel = new DomainModel(modelProperties);
+		domainModel = domainModel.load();
 	}
 
 	@Test
@@ -89,6 +73,11 @@ public class WebLinksTest {
 
 		webLinks.add(gregorianCalendar);
 		Assert.assertTrue(webLinks.remove(gregorianCalendar));
+	}
+
+	@AfterClass
+	public static void saveModel() {
+		domainModel.save();
 	}
 
 }

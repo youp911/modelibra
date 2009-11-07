@@ -1,18 +1,21 @@
 package org.ieducnews.model;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
-public class WebLinks {
+public class WebLinks implements Serializable {
+
+	private static final long serialVersionUID = 1;
 
 	private List<WebLink> webLinksList = new ArrayList<WebLink>();
 
 	public void add(WebLink webLink) {
 		webLinksList.add(webLink);
 	}
-	
+
 	public boolean remove(WebLink webLink) {
 		return webLinksList.remove(webLink);
 	}

@@ -1,6 +1,10 @@
 package org.ieducnews.model;
 
-public class WebLink {
+import java.io.Serializable;
+
+public class WebLink implements Serializable {
+	
+	private static final long serialVersionUID = 1;
 
 	private String name;
 
