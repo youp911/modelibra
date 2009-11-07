@@ -12,6 +12,7 @@ public class MenuPanel extends Panel {
 		super(id);
 		add(new NewLink("newLink"));
 		add(new BookmarkablePageLink<WebPage>("aboutLink", AboutPage.class));
+		add(new BookmarkablePageLink<WebPage>("submit", AddWebLink.class));
 	}
 
 }
