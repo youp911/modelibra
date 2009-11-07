@@ -9,7 +9,6 @@ import org.apache.wicket.markup.html.list.ListView;
 import org.ieducnews.model.WebLink;
 import org.ieducnews.model.WebLinks;
 
-@SuppressWarnings("all")
 public class HomePage extends BasePage {
 
 	public HomePage() {
@@ -21,7 +20,9 @@ public class HomePage extends BasePage {
 
 	private class WebLinksListView extends ListView {
 
-		private WebLinksListView(String wicketId, List webLinks) {
+		private static final long serialVersionUID = 1;
+
+		private WebLinksListView(String wicketId, List<WebLink> webLinks) {
 			super(wicketId, webLinks);
 		}
 

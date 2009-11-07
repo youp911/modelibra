@@ -3,7 +3,6 @@ package org.ieducnews.view;
 import org.apache.wicket.protocol.http.WebApplication;
 import org.ieducnews.model.DomainModel;
 
-@SuppressWarnings("all")
 public class WebApp extends WebApplication {
 
 	private DomainModel domainModel;
@@ -14,7 +13,7 @@ public class WebApp extends WebApplication {
 		domainModel = new DomainModel();
 	}
 
-	public Class getHomePage() {
+	public Class<HomePage> getHomePage() {
 		return HomePage.class;
 	}
 
