@@ -18,7 +18,7 @@ public class HomePage extends BasePage {
 		add(new WebLinksListView("webLinksList", orderedWebLinks.getList()));
 	}
 
-	private class WebLinksListView extends ListView {
+	private class WebLinksListView extends ListView<WebLink> {
 
 		private static final long serialVersionUID = 1;
 
@@ -26,8 +26,8 @@ public class HomePage extends BasePage {
 			super(wicketId, webLinks);
 		}
 
-		protected void populateItem(ListItem listItem) {
-			WebLink webLink = (WebLink) listItem.getModelObject();
+		protected void populateItem(ListItem<WebLink> listItem) {
+			WebLink webLink = listItem.getModelObject();
 			listItem.add(new ExternalLink("linkUrl", webLink.getLink(), webLink
 					.getName()));
 			listItem.add(new Label("linkLabel", webLink.getLink()));

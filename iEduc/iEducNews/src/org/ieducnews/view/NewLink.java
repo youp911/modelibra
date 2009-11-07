@@ -1,8 +1,9 @@
 package org.ieducnews.view;
 
+import org.apache.wicket.markup.html.WebPage;
 import org.apache.wicket.markup.html.link.Link;
 
-public class NewLink extends Link {
+public class NewLink extends Link<WebPage> {
 
 	private static final long serialVersionUID = 1;
 
