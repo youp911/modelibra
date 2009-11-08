@@ -258,3 +258,11 @@ a:hover {
 	background-position: center bottom;
 	padding-bottom:10px;
 }
+
+.name_textfield {
+	width: 500px;	
+	}
+	
+.link_textfield {
+	width: 900px;
+	}
