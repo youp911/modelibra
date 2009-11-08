@@ -24,6 +24,15 @@ public class WebLinks implements Serializable {
 		return webLinksList.contains(webLink);
 	}
 
+	public boolean contains(String name) {
+		for (WebLink webLink : webLinksList) {
+			if (webLink.getName().equals(name)) {
+				return true;
+			}
+		}
+		return false;
+	}
+
 	public int size() {
 		return webLinksList.size();
 	}

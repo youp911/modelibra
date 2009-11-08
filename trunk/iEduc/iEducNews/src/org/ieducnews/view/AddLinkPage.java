@@ -50,9 +50,13 @@ public class AddLinkPage extends BasePage {
 
 		@Override
 		public void onSubmit() {
-			webLinks.add(webLink);
-			webApp.getDomainModel().save();
-			setResponsePage(new HomePage());
+			if (webLinks.contains(webLink.getName())) {
+				error("this name exists already.");
+			} else {
+				webLinks.add(webLink);
+				webApp.getDomainModel().save();
+				setResponsePage(new HomePage());
+			}
 		}
 	}
 
