@@ -1,33 +1,34 @@
 package org.ieducnews.view;
 
-import java.io.File;
-
 import org.apache.wicket.markup.html.form.Button;
 import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.markup.html.form.RequiredTextField;
 import org.apache.wicket.markup.html.panel.FeedbackPanel;
 import org.apache.wicket.markup.html.panel.Panel;
-import org.apache.wicket.model.CompoundPropertyModel;
 import org.apache.wicket.util.tester.FormTester;
 import org.apache.wicket.util.tester.WicketTester;
-import org.apache.wicket.validation.validator.UrlValidator;
 import org.ieducnews.model.DomainModel;
-import org.ieducnews.model.WebLink;
 import org.ieducnews.model.WebLinks;
+import org.ieducnews.model.WebLinksTest;
 import org.ieducnews.model.config.ModelProperties;
 import org.ieducnews.view.weblink.AddLinkPage;
 import org.junit.AfterClass;
-import org.junit.Assert;
-import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
 public class AddLinkPageTest {
 
+	private static DomainModel domainModel;
+
 	private static WicketTester tester;
-	
-	@Before
-	public void prepareTester() {
+
+	@BeforeClass
+	public static void beforeTests() {
+		ModelProperties modelProperties = new ModelProperties(
+				WebLinksTest.class);
+		domainModel = new DomainModel(modelProperties);
+		domainModel = domainModel.load();
+
 		tester = new WicketTester(new WebApp());
 		tester.setupRequestAndResponse();
 		tester.startPage(AddLinkPage.class);
@@ -43,78 +44,73 @@ public class AddLinkPageTest {
 		tester.assertComponent("feedback", FeedbackPanel.class);
 		tester.assertComponent("footer", Panel.class);
 	}
-	
+
 	@Test
-	public void nameRequiered() {
-		//given
+	public void nameRequiredError() {
+		// given
 		FormTester formTester = tester.newFormTester("form");
 		formTester.setValue("link", "http://www.testlink.com");
-		
-		//Sumbit
+
+		// submit
 		formTester.submit("save");
-		
-		//Required fields messages are displayed
-		tester.assertErrorMessages(new String[]{
-			"name is required."
-		});
+
+		// required name message is displayed
+		tester.assertErrorMessages(new String[] { "name is required." });
 	}
-	
+
 	@Test
-	public void linkRequiered() {
-		//given
+	public void linkRequiredError() {
+		// given
 		FormTester formTester = tester.newFormTester("form");
 		formTester.setValue("name", "This is a test name");
-		
-		//Sumbit
+
+		// submit
 		formTester.submit("save");
-		
-		//Required fields messages are displayed
-		tester.assertErrorMessages(new String[]{
-			"link is required."
-		});
-		
+
+		// required link message is displayed
+		tester.assertErrorMessages(new String[] { "link is required." });
 	}
-	
+
 	@Test
-	public void submitLink() {
-		//given
+	public void submitValidWebLink() {
+		// given
 		FormTester formTester = tester.newFormTester("form");
 		formTester.setValue("name", "Test Name");
 		formTester.setValue("link", "http://www.testlink.com");
-		
-		//Sumbit
+
+		// submit
 		formTester.submit("save");
-		
-		//No messages
+
+		// no messages
 		tester.assertNoErrorMessage();
 		tester.assertNoInfoMessage();
-		
-		//Redirection
+
+		// redirection
 		tester.assertRenderedPage(HomePage.class);
 	}
-	
+
 	@Test
-	public void existingName() {
-		//given
+	public void existingNameError() {
+		// given
 		FormTester formTester = tester.newFormTester("form");
-		
-		//Previous entry
+
+		// previous entry
 		formTester.setValue("name", "Test Name");
 		formTester.setValue("link", "http://www.testlink.com");
-		
-		//Sumbit
+
+		// submit
 		formTester.submit("save");
-		
-		//Required fields messages are displayed
-		tester.assertErrorMessages(new String[]{
-			"this name exists already."
-		});
-		
+
+		// unique name message is displayed
+		tester
+				.assertErrorMessages(new String[] { "this name exists already." });
+
 	}
-	
+
 	@AfterClass
-	public static void afterTest() {
-		//TODO Remove test link
+	public static void afterTests() {
+		WebLinks webLinks = domainModel.getWebLinks();
+		webLinks.remove("Test Name");
 	}
 
 }

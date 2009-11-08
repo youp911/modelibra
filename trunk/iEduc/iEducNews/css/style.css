@@ -1,4 +1,4 @@
-/*Tags*/
+/* Tags */
 
 body {
 	text-align: center;
@@ -219,17 +219,19 @@ a:hover {
 }
 
 /* Feebackpanel */
-#feedback ul{
+
+#feedback ul {
 	list-style-type: lower-roman;
 	font-weight: bold;
 }
 
-#feedback span{
-	color: #9F0000;
+#feedback span {
+	color: #9f0000;
 }
 
 /* Navigator */
-#navigator{
+
+#navigator {
 	font-size: 14px;
 	text-decoration:none;
 	font-style: normal;
@@ -237,11 +239,11 @@ a:hover {
 	width: 100%;
 }
 
-#navigator em{
+#navigator em {
 	font-style: normal;
 }
 
-#navigator a{
+#navigator a {
 	color: #4ac4df;
 }
 
@@ -261,8 +263,8 @@ a:hover {
 
 .name_textfield {
 	width: 500px;	
-	}
+}
 	
 .link_textfield {
 	width: 900px;
-	}
+}
