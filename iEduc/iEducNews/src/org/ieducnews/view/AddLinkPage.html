@@ -5,13 +5,13 @@
 	<div id="title">Submit a link</div>
 	<div id="main_text">
 		<form wicket:id="form">
-			name<br/>
+			<span>name</span><br/>
 			<input type="text" wicket:id="name" size="88"/><br/><br/>
-			link<br/>
-			<input type="text" wicket:id="link" size="110"/><br/><br/>
+			<span>link</span><br/>
+			<input type="text" wicket:id="link" size="120"/><br/><br/>
 			<input type="submit" wicket:id="save" value="submit"/>
 		</form>
-		<div wicket:id="feedback"></div>
+		<div wicket:id="feedback" id="feedback"></div>
 	</div>
 </wicket:extend>
 
