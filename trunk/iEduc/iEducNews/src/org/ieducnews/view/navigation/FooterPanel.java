@@ -3,7 +3,7 @@ package org.ieducnews.view.navigation;
 import org.apache.wicket.markup.html.WebPage;
 import org.apache.wicket.markup.html.link.BookmarkablePageLink;
 import org.apache.wicket.markup.html.panel.Panel;
-import org.ieducnews.view.generic.NewLink;
+import org.ieducnews.view.generic.HomeLink;
 import org.ieducnews.view.staticpages.AboutPage;
 import org.ieducnews.view.weblink.AddLinkPage;
 
@@ -13,7 +13,7 @@ public class FooterPanel extends Panel {
 
 	public FooterPanel(String id) {
 		super(id);
-		add(new NewLink("new"));
+		add(new HomeLink("new"));
 		add(new BookmarkablePageLink<WebPage>("about", AboutPage.class));
 		add(new BookmarkablePageLink<WebPage>("submit", AddLinkPage.class));
 	}
