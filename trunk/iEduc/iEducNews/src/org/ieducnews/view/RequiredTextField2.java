@@ -3,23 +3,23 @@ package org.ieducnews.view;
 import org.apache.wicket.markup.html.form.TextField;
 import org.apache.wicket.model.IModel;
 
-public class RequiredTextField extends TextField {
+public class RequiredTextField2 extends TextField {
 
-	public RequiredTextField(String id) {
+	public RequiredTextField2(String id) {
 		super(id);
 	}
 
-	public RequiredTextField(String id, Class type) {
+	public RequiredTextField2(String id, Class type) {
 		super(id, type);
 		setRequired(true);
 	}
 
-	public RequiredTextField(String id, IModel model) {
+	public RequiredTextField2(String id, IModel model) {
 		super(id, model);
 		setRequired(true);
 	}
 
-	public RequiredTextField(String id, IModel model, Class type) {
+	public RequiredTextField2(String id, IModel model, Class type) {
 		super(id, model, type);
 		setRequired(true);
 	}

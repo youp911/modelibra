@@ -10,8 +10,9 @@ public class FooterPanel extends Panel {
 
 	public FooterPanel(String id) {
 		super(id);
-		add(new NewLink("newLink"));
-		add(new BookmarkablePageLink<WebPage>("aboutLink", AboutPage.class));
+		add(new NewLink("new"));
+		add(new BookmarkablePageLink<WebPage>("about", AboutPage.class));
+		add(new BookmarkablePageLink<WebPage>("submit", AddLinkPage.class));
 	}
 
 }

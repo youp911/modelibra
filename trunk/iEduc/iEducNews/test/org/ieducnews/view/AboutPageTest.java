@@ -17,8 +17,8 @@ public class AboutPageTest {
 
 	@Test
 	public void containComponents() {
-		tester.assertComponent("menuPanel", Panel.class);
-		tester.assertComponent("footerPanel", Panel.class);
+		tester.assertComponent("menu", Panel.class);
+		tester.assertComponent("footer", Panel.class);
 	}
 
 }

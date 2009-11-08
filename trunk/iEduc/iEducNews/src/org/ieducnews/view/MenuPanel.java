@@ -10,9 +10,9 @@ public class MenuPanel extends Panel {
 
 	public MenuPanel(String id) {
 		super(id);
-		add(new NewLink("newLink"));
-		add(new BookmarkablePageLink<WebPage>("aboutLink", AboutPage.class));
-		add(new BookmarkablePageLink<WebPage>("submit", AddWebLink.class));
+		add(new NewLink("new"));
+		add(new BookmarkablePageLink<WebPage>("submit", AddLinkPage.class));
+		add(new BookmarkablePageLink<WebPage>("about", AboutPage.class));
 	}
 
 }
