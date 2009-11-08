@@ -233,6 +233,8 @@ a:hover {
 	font-size: 14px;
 	text-decoration:none;
 	font-style: normal;
+	text-align: center;
+	width: 100%;
 }
 
 #navigator em{
