@@ -228,7 +228,20 @@ a:hover {
 	color: #9F0000;
 }
 
-	
+/* Navigator */
+#navigator{
+	font-size: 14px;
+	text-decoration:none;
+	font-style: normal;
+}
+
+#navigator em{
+	font-style: normal;
+}
+
+#navigator a{
+	color: #4ac4df;
+}
 
 /* CSS Classes */
 
