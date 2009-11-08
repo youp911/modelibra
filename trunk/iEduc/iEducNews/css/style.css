@@ -101,6 +101,20 @@ a:hover {
 	color:#66563E;
 }
 
+#main_text input{
+	color:#000;
+	font-size: 16px;
+	margin-left: 10px;
+}
+
+#main_text span{
+	color:#000;
+	font-size: 16px;
+	font-weight: bold;
+	letter-spacing: 1px;
+	margin-left: 10px;
+}
+
 #title {
 	border-bottom-width: 1px;
 	border-bottom-style: solid;
@@ -204,6 +218,17 @@ a:hover {
 	color: #4ac4df;
 }
 
+/* Feebackpanel */
+#feedback ul{
+	list-style-type: lower-roman;
+	font-weight: bold;
+}
+
+#feedback span{
+	color: #9F0000;
+}
+
+	
 
 /* CSS Classes */
 
