@@ -1,4 +1,4 @@
-package org.ieducnews.view;
+package org.ieducnews.view.weblink;
 
 import org.apache.wicket.markup.html.form.Button;
 import org.apache.wicket.markup.html.form.Form;
@@ -8,6 +8,9 @@ import org.apache.wicket.model.CompoundPropertyModel;
 import org.apache.wicket.validation.validator.UrlValidator;
 import org.ieducnews.model.WebLink;
 import org.ieducnews.model.WebLinks;
+import org.ieducnews.view.BasePage;
+import org.ieducnews.view.HomePage;
+import org.ieducnews.view.WebApp;
 
 public class AddLinkPage extends BasePage {
 

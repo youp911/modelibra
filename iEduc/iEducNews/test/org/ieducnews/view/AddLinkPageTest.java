@@ -6,6 +6,7 @@ import org.apache.wicket.markup.html.form.RequiredTextField;
 import org.apache.wicket.markup.html.panel.FeedbackPanel;
 import org.apache.wicket.markup.html.panel.Panel;
 import org.apache.wicket.util.tester.WicketTester;
+import org.ieducnews.view.weblink.AddLinkPage;
 import org.junit.BeforeClass;
 import org.junit.Test;
 

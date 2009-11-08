@@ -2,6 +2,7 @@ package org.ieducnews.view;
 
 import org.apache.wicket.markup.html.panel.Panel;
 import org.apache.wicket.util.tester.WicketTester;
+import org.ieducnews.view.staticpages.AboutPage;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
