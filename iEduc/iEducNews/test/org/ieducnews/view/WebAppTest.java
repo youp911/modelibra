@@ -13,7 +13,7 @@ public class WebAppTest {
 	private static WebApplication app;
 
 	@BeforeClass
-	public static void prepareTester() {
+	public static void beforeTests() {
 		app = new WebApp();
 		tester = new WicketTester(app);
 	}

@@ -11,7 +11,7 @@ public class WebLinksTest {
 	private static DomainModel domainModel;
 
 	@BeforeClass
-	public static void createModel() {
+	public static void beforeTests() {
 		ModelProperties modelProperties = new ModelProperties(
 				WebLinksTest.class);
 		domainModel = new DomainModel(modelProperties);
@@ -76,7 +76,7 @@ public class WebLinksTest {
 	}
 
 	@AfterClass
-	public static void saveModel() {
+	public static void afterTests() {
 		domainModel.save();
 	}
 

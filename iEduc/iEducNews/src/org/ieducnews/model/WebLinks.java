@@ -19,6 +19,15 @@ public class WebLinks implements Serializable {
 	public boolean remove(WebLink webLink) {
 		return webLinksList.remove(webLink);
 	}
+	
+	public boolean remove(String name) {
+		for (WebLink webLink : webLinksList) {
+			if (webLink.getName().equals(name)) {
+				return remove(webLink);
+			}
+		}
+		return false;
+	}
 
 	public boolean contains(WebLink webLink) {
 		return webLinksList.contains(webLink);

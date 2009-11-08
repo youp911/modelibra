@@ -11,7 +11,7 @@ public class AboutPageTest {
 	private static WicketTester tester;
 
 	@BeforeClass
-	public static void prepareTester() {
+	public static void beforeTests() {
 		tester = new WicketTester(new WebApp());
 		tester.startPage(AboutPage.class);
 	}
