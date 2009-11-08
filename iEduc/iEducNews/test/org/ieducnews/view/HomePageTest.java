@@ -18,9 +18,9 @@ public class HomePageTest {
 
 	@Test
 	public void containComponents() {
-		tester.assertComponent("menuPanel", Panel.class);
-		tester.assertComponent("webLinksList", ListView.class);
-		tester.assertComponent("footerPanel", Panel.class);
+		tester.assertComponent("menu", Panel.class);
+		tester.assertComponent("webLinks", ListView.class);
+		tester.assertComponent("footer", Panel.class);
 	}
 
 }

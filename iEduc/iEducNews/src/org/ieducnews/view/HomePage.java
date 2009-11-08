@@ -15,7 +15,7 @@ public class HomePage extends BasePage {
 		WebApp webApp = (WebApp) getApplication();
 		WebLinks webLinks = webApp.getDomainModel().getWebLinks();
 		WebLinks orderedWebLinks = webLinks.orderByName();
-		add(new WebLinksListView("webLinksList", orderedWebLinks.getList()));
+		add(new WebLinksListView("webLinks", orderedWebLinks.getList()));
 	}
 
 	private class WebLinksListView extends ListView<WebLink> {
