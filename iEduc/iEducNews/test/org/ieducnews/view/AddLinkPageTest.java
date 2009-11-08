@@ -1,12 +1,16 @@
 package org.ieducnews.view;
 
+import java.io.File;
+
 import org.apache.wicket.markup.html.form.Button;
 import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.markup.html.form.RequiredTextField;
 import org.apache.wicket.markup.html.panel.FeedbackPanel;
 import org.apache.wicket.markup.html.panel.Panel;
+import org.apache.wicket.model.CompoundPropertyModel;
 import org.apache.wicket.util.tester.FormTester;
 import org.apache.wicket.util.tester.WicketTester;
+import org.apache.wicket.validation.validator.UrlValidator;
 import org.ieducnews.model.DomainModel;
 import org.ieducnews.model.WebLink;
 import org.ieducnews.model.WebLinks;
@@ -15,19 +19,19 @@ import org.ieducnews.view.weblink.AddLinkPage;
 import org.junit.AfterClass;
 import org.junit.Assert;
 import org.junit.Before;
+import org.junit.BeforeClass;
 import org.junit.Test;
 
 public class AddLinkPageTest {
 
 	private static WicketTester tester;
-
+	
 	@Before
 	public void prepareTester() {
 		tester = new WicketTester(new WebApp());
 		tester.setupRequestAndResponse();
 		tester.startPage(AddLinkPage.class);
 	}
-	
 
 	@Test
 	public void containComponents() {
@@ -39,23 +43,6 @@ public class AddLinkPageTest {
 		tester.assertComponent("feedback", FeedbackPanel.class);
 		tester.assertComponent("footer", Panel.class);
 	}
-	
-	/* Create a new Link
-	@Test
-	public void submitLink() {
-		//given
-		FormTester formTester = tester.newFormTester("form");
-		formTester.setValue("name", "Test Name");
-		formTester.setValue("link", "http://www.testlink.com");
-		
-		//Sumbit
-		formTester.submit("save");
-		
-		//No messages
-		tester.assertNoErrorMessage();
-		tester.assertNoInfoMessage();
-		
-	}*/
 	
 	@Test
 	public void nameRequiered() {
@@ -70,7 +57,6 @@ public class AddLinkPageTest {
 		tester.assertErrorMessages(new String[]{
 			"name is required."
 		});
-		
 	}
 	
 	@Test
@@ -90,13 +76,31 @@ public class AddLinkPageTest {
 	}
 	
 	@Test
+	public void submitLink() {
+		//given
+		FormTester formTester = tester.newFormTester("form");
+		formTester.setValue("name", "Test Name");
+		formTester.setValue("link", "http://www.testlink.com");
+		
+		//Sumbit
+		formTester.submit("save");
+		
+		//No messages
+		tester.assertNoErrorMessage();
+		tester.assertNoInfoMessage();
+		
+		//Redirection
+		tester.assertRenderedPage(HomePage.class);
+	}
+	
+	@Test
 	public void existingName() {
 		//given
 		FormTester formTester = tester.newFormTester("form");
 		
-		//Name from the DomainModel init()
-		formTester.setValue("name", "Hacker News");
-		formTester.setValue("link", "http://news.ycombinator.com/");
+		//Previous entry
+		formTester.setValue("name", "Test Name");
+		formTester.setValue("link", "http://www.testlink.com");
 		
 		//Sumbit
 		formTester.submit("save");
@@ -106,6 +110,11 @@ public class AddLinkPageTest {
 			"this name exists already."
 		});
 		
+	}
+	
+	@AfterClass
+	public static void afterTest() {
+		//TODO Remove test link
 	}
 
 }
