@@ -4,11 +4,11 @@ import org.apache.wicket.markup.html.WebPage;
 import org.apache.wicket.markup.html.link.Link;
 import org.ieducnews.view.HomePage;
 
-public class NewLink extends Link<WebPage> {
+public class HomeLink extends Link<WebPage> {
 
 	private static final long serialVersionUID = 1;
 
-	public NewLink(String wicketId) {
+	public HomeLink(String wicketId) {
 		super(wicketId);
 	}
 
