@@ -5,6 +5,7 @@ import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.markup.html.form.RequiredTextField;
 import org.apache.wicket.markup.html.panel.FeedbackPanel;
 import org.apache.wicket.model.CompoundPropertyModel;
+import org.apache.wicket.validation.validator.UrlValidator;
 import org.ieducnews.model.WebLink;
 import org.ieducnews.model.WebLinks;
 
@@ -22,6 +23,7 @@ public class AddLinkPage extends BasePage {
 		form.add(nameField);
 		RequiredTextField<String> linkField = new RequiredTextField<String>(
 				"link");
+		linkField.add(new UrlValidator());
 		form.add(linkField);
 		form.add(new SaveButton("save", webApp, webLinks, webLink));
 		add(form);
