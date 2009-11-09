@@ -30,7 +30,7 @@ public class AddLinkPageTest {
 		domainModel = domainModel.load();
 
 		tester = new WicketTester(new WebApp());
-		tester.setupRequestAndResponse();
+		// tester.setupRequestAndResponse();
 		tester.startPage(AddLinkPage.class);
 	}
 
@@ -110,7 +110,10 @@ public class AddLinkPageTest {
 	@AfterClass
 	public static void afterTests() {
 		WebLinks webLinks = domainModel.getWebLinks();
-		webLinks.remove("Test Name");
+		if (webLinks.contains("Test Name")) {
+			webLinks.remove("Test Name");
+			domainModel.save();
+		}
 	}
 
 }
