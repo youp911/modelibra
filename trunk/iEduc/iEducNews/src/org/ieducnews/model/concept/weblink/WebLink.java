@@ -1,4 +1,4 @@
-package org.ieducnews.model;
+package org.ieducnews.model.concept.weblink;
 
 import java.io.Serializable;
 
