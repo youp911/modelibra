@@ -19,21 +19,24 @@ import org.junit.Test;
 public class AddLinkPageTest {
 
 	private static DomainModel domainModel;
+	
+	private static WebApp webApp;
 
 	private static WicketTester tester;
 
 	@BeforeClass
-	public static void beforeClass() {
+	public static void beforeTests() {
 		ModelProperties modelProperties = new ModelProperties(
 				AddLinkPageTest.class);
 		domainModel = new DomainModel(modelProperties);
 		domainModel = domainModel.load();
+		
+		webApp = new WebApp();
+		webApp.setDomainModel(domainModel);
 	}
 	
 	@Before
-	public void beforeTests() {
-		WebApp webApp = new WebApp();
-		webApp.setDomainModel(domainModel);
+	public void beforeTest() {
 		tester = new WicketTester(webApp);
 		tester.startPage(AddLinkPage.class);
 	}
