@@ -73,7 +73,7 @@ public class DomainModel implements Serializable {
 	public DomainModel load() {
 		try {
 			if (!file.exists()) {
-				init();
+				//init();
 				save();
 			} 
 			BufferedInputStream buffer = new BufferedInputStream(
