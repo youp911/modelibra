@@ -12,6 +12,7 @@ import org.ieducnews.model.WebLinks;
 import org.ieducnews.model.config.ModelProperties;
 import org.ieducnews.view.weblink.AddLinkPage;
 import org.junit.AfterClass;
+import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
@@ -22,16 +23,18 @@ public class AddLinkPageTest {
 	private static WicketTester tester;
 
 	@BeforeClass
-	public static void beforeTests() {
+	public static void beforeClass() {
 		ModelProperties modelProperties = new ModelProperties(
 				AddLinkPageTest.class);
 		domainModel = new DomainModel(modelProperties);
 		domainModel = domainModel.load();
-
+	}
+	
+	@Before
+	public void beforeTests() {
 		WebApp webApp = new WebApp();
 		webApp.setDomainModel(domainModel);
 		tester = new WicketTester(webApp);
-		// tester.setupRequestAndResponse();
 		tester.startPage(AddLinkPage.class);
 	}
 
