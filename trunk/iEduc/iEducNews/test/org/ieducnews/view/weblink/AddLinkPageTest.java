@@ -1,4 +1,4 @@
-package org.ieducnews.view;
+package org.ieducnews.view.weblink;
 
 import org.apache.wicket.markup.html.form.Button;
 import org.apache.wicket.markup.html.form.Form;
@@ -10,6 +10,8 @@ import org.apache.wicket.util.tester.WicketTester;
 import org.ieducnews.model.DomainModel;
 import org.ieducnews.model.WebLinks;
 import org.ieducnews.model.config.ModelProperties;
+import org.ieducnews.view.HomePage;
+import org.ieducnews.view.WebApp;
 import org.ieducnews.view.weblink.AddLinkPage;
 import org.junit.AfterClass;
 import org.junit.Before;
