@@ -2,6 +2,8 @@ package org.ieducnews.view;
 
 import org.apache.wicket.markup.html.panel.Panel;
 import org.apache.wicket.util.tester.WicketTester;
+import org.ieducnews.model.DomainModel;
+import org.ieducnews.model.config.ModelProperties;
 import org.ieducnews.view.staticpages.AboutPage;
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -12,7 +14,15 @@ public class AboutPageTest {
 
 	@BeforeClass
 	public static void beforeTests() {
-		tester = new WicketTester(new WebApp());
+		ModelProperties modelProperties = new ModelProperties(
+				AboutPageTest.class);
+		DomainModel domainModel = new DomainModel(modelProperties);
+		domainModel = domainModel.load();
+
+		WebApp webApp = new WebApp();
+		webApp.setDomainModel(domainModel);
+
+		tester = new WicketTester(webApp);
 		tester.startPage(AboutPage.class);
 	}
 
