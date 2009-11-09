@@ -18,6 +18,7 @@ import javax.mail.internet.AddressException;
 
 import org.ieducnews.model.concept.member.Member;
 import org.ieducnews.model.concept.member.Members;
+import org.ieducnews.model.concept.member.Member.SecurityRole;
 import org.ieducnews.model.concept.weblink.WebLink;
 import org.ieducnews.model.concept.weblink.WebLinks;
 import org.ieducnews.model.config.ModelProperties;
@@ -94,7 +95,7 @@ public class DomainModel implements Serializable {
 		}
 		member01.setAccount("dzenanr");
 		member01.setPassword("dr");
-		member01.setRole("admin");
+		member01.setRole(SecurityRole.ADMIN);
 		member01.setApproved(true);
 
 		Member member02 = new Member();
@@ -108,7 +109,7 @@ public class DomainModel implements Serializable {
 		}
 		member02.setAccount("pascald");
 		member02.setPassword("pd");
-		member02.setRole("admin");
+		member02.setRole(SecurityRole.ADMIN);
 		member02.setApproved(true);
 
 		members.add(member01);

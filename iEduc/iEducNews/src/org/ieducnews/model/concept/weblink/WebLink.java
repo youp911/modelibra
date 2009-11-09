@@ -2,6 +2,7 @@ package org.ieducnews.model.concept.weblink;
 
 import java.io.Serializable;
 import java.net.URL;
+import java.util.Date;
 
 public class WebLink implements Serializable {
 
@@ -11,7 +12,7 @@ public class WebLink implements Serializable {
 
 	private URL link;
 
-	private String creationDate;
+	private Date creationDate = new Date();
 
 	public void setName(String name) {
 		this.name = name;
@@ -29,11 +30,11 @@ public class WebLink implements Serializable {
 		return link;
 	}
 
-	public void setCreationDate(String creationDate) {
+	public void setCreationDate(Date creationDate) {
 		this.creationDate = creationDate;
 	}
 
-	public String getCreationDate() {
+	public Date getCreationDate() {
 		return creationDate;
 	}
 
