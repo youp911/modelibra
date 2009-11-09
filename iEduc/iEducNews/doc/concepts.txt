@@ -36,3 +36,9 @@ AddLinkPage
 		
 UrlConverter
 EmailConverter
+
+MenuPanelTest
+	MenuPanelSource
+FooterPanelTest
+	FooterPanelSource
+	
