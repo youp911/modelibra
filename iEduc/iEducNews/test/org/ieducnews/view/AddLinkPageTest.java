@@ -19,7 +19,7 @@ import org.junit.Test;
 public class AddLinkPageTest {
 
 	private static DomainModel domainModel;
-	
+
 	private static WebApp webApp;
 
 	private static WicketTester tester;
@@ -30,11 +30,11 @@ public class AddLinkPageTest {
 				AddLinkPageTest.class);
 		domainModel = new DomainModel(modelProperties);
 		domainModel = domainModel.load();
-		
+
 		webApp = new WebApp();
 		webApp.setDomainModel(domainModel);
 	}
-	
+
 	@Before
 	public void beforeTest() {
 		tester = new WicketTester(webApp);
@@ -51,7 +51,7 @@ public class AddLinkPageTest {
 		tester.assertComponent("feedback", FeedbackPanel.class);
 		tester.assertComponent("footer", Panel.class);
 	}
-	
+
 	@Test
 	public void nameRequiredError() {
 		// given
