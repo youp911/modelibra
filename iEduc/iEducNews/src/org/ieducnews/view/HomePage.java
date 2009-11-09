@@ -12,6 +12,8 @@ import org.ieducnews.model.WebLinks;
 
 public class HomePage extends BasePage {
 
+	public static final int NUMBER_OF_LINKS_ON_ONE_PAGE = 16;
+
 	public HomePage() {
 		WebApp webApp = (WebApp) getApplication();
 		WebLinks webLinks = webApp.getDomainModel().getWebLinks();
@@ -19,7 +21,12 @@ public class HomePage extends BasePage {
 		WebLinksListView listView = new WebLinksListView("webLinks",
 				orderedWebLinks.getList());
 		add(listView);
-		add(new PagingNavigator("navigator", listView));
+		PagingNavigator pagingNavigator = new PagingNavigator("navigator",
+				listView);
+		if (listView.size() < NUMBER_OF_LINKS_ON_ONE_PAGE) {
+			pagingNavigator.setVisible(false);
+		}
+		add(pagingNavigator);
 	}
 
 	private class WebLinksListView extends PageableListView<WebLink> {
@@ -27,7 +34,7 @@ public class HomePage extends BasePage {
 		private static final long serialVersionUID = 1;
 
 		private WebLinksListView(String wicketId, List<WebLink> webLinks) {
-			super(wicketId, webLinks, 16);
+			super(wicketId, webLinks, NUMBER_OF_LINKS_ON_ONE_PAGE);
 		}
 
 		protected void populateItem(ListItem<WebLink> listItem) {
