@@ -1,4 +1,4 @@
-package org.ieducnews.view.generic;
+package org.ieducnews.view.component;
 
 import org.apache.wicket.markup.html.WebPage;
 import org.apache.wicket.markup.html.link.Link;
