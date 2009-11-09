@@ -35,15 +35,7 @@ public class MenuPanelTest {
 	@Before
 	public void beforeTest() {
 		tester = new WicketTester(webApp);
-		TestPanelSource testPanelSource = new TestPanelSource() {
-
-			private static final long serialVersionUID = 1;
-
-			public Panel getTestPanel(String panelId) {
-				return new MenuPanel(panelId);
-			}
-		};
-		tester.startPanel(testPanelSource);
+		tester.startPanel(new MenuPanelSource());
 	}
 
 	@Test
@@ -69,6 +61,16 @@ public class MenuPanelTest {
 	public void navigateToAbout() {
 		tester.clickLink("panel:about");
 		tester.assertRenderedPage(AboutPage.class);
+	}
+
+	private class MenuPanelSource implements TestPanelSource {
+
+		private static final long serialVersionUID = 1;
+
+		public Panel getTestPanel(String panelId) {
+			return new MenuPanel(panelId);
+		}
+
 	}
 
 }

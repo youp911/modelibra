@@ -1,16 +1,19 @@
 package org.ieducnews.view.concept.weblink;
 
+import java.net.URL;
+
 import org.apache.wicket.markup.html.form.Button;
 import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.markup.html.form.RequiredTextField;
 import org.apache.wicket.markup.html.panel.FeedbackPanel;
 import org.apache.wicket.model.CompoundPropertyModel;
-import org.apache.wicket.validation.validator.UrlValidator;
+import org.apache.wicket.util.convert.IConverter;
 import org.ieducnews.model.concept.weblink.WebLink;
 import org.ieducnews.model.concept.weblink.WebLinks;
 import org.ieducnews.view.BasePage;
 import org.ieducnews.view.HomePage;
 import org.ieducnews.view.WebApp;
+import org.ieducnews.view.type.UrlConverter;
 
 public class AddLinkPage extends BasePage {
 
@@ -21,16 +24,24 @@ public class AddLinkPage extends BasePage {
 
 		Form<WebLink> form = new Form<WebLink>("form",
 				new CompoundPropertyModel<WebLink>(webLink));
-		RequiredTextField<String> nameField = new RequiredTextField<String>(
-				"name");
-		form.add(nameField);
-		RequiredTextField<String> linkField = new RequiredTextField<String>(
-				"link");
-		linkField.add(new UrlValidator());
-		form.add(linkField);
+		form.add(new RequiredTextField<String>("name"));
+		form.add(new LinkField("link", URL.class));
 		form.add(new SaveButton("save", webApp, webLinks, webLink));
 		add(form);
 		add(new FeedbackPanel("feedback"));
+	}
+
+	private class LinkField extends RequiredTextField<URL> {
+
+		private static final long serialVersionUID = 1;
+
+		private LinkField(String wicketId, Class<URL> validationType) {
+			super(wicketId, validationType);
+		}
+
+		public IConverter getConverter(final Class<?> type) {
+			return new UrlConverter();
+		}
 	}
 
 	private class SaveButton extends Button {

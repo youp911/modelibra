@@ -1,15 +1,16 @@
 package org.ieducnews.model.concept.weblink;
 
 import java.io.Serializable;
+import java.net.URL;
 
 public class WebLink implements Serializable {
-	
+
 	private static final long serialVersionUID = 1;
 
 	private String name;
 
-	private String link;
-	
+	private URL link;
+
 	private String creationDate;
 
 	public void setName(String name) {
@@ -20,14 +21,14 @@ public class WebLink implements Serializable {
 		return name;
 	}
 
-	public void setLink(String link) {
+	public void setLink(URL link) {
 		this.link = link;
 	}
 
-	public String getLink() {
+	public URL getLink() {
 		return link;
 	}
-	
+
 	public void setCreationDate(String creationDate) {
 		this.creationDate = creationDate;
 	}
@@ -35,7 +36,7 @@ public class WebLink implements Serializable {
 	public String getCreationDate() {
 		return creationDate;
 	}
-	
+
 	public void output() {
 		System.out.println("name: " + getName());
 		System.out.println("link: " + getLink());

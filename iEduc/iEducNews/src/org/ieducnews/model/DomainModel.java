@@ -11,6 +11,10 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutput;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
+import java.net.MalformedURLException;
+import java.net.URL;
+
+import javax.mail.internet.AddressException;
 
 import org.ieducnews.model.concept.member.Member;
 import org.ieducnews.model.concept.member.Members;
@@ -44,39 +48,50 @@ public class DomainModel implements Serializable {
 	}
 
 	private void initWebLinks() {
-		WebLink webLink01 = new WebLink();
-		webLink01.setName("Hacker News");
-		webLink01.setLink("http://news.ycombinator.com/");
+		try {
+			WebLink webLink01 = new WebLink();
+			webLink01.setName("Hacker News");
+			webLink01.setLink(new URL("http://news.ycombinator.com/"));
 
-		WebLink webLink02 = new WebLink();
-		webLink02.setName("TechCrunch");
-		webLink02.setLink("http://www.techcrunch.com/");
+			WebLink webLink02 = new WebLink();
+			webLink02.setName("TechCrunch");
+			webLink02.setLink(new URL("http://www.techcrunch.com/"));
 
-		WebLink webLink03 = new WebLink();
-		webLink03.setName("Jane's E-Learning Pick");
-		webLink03.setLink("http://janeknight.typepad.com/");
+			WebLink webLink03 = new WebLink();
+			webLink03.setName("Jane's E-Learning Pick");
+			webLink03.setLink(new URL("http://janeknight.typepad.com/"));
 
-		WebLink webLink04 = new WebLink();
-		webLink04.setName("Web Standards Curriculum");
-		webLink04
-				.setLink("http://dev.opera.com/articles/view/1-introduction-to-the-web-standards-cur/");
+			WebLink webLink04 = new WebLink();
+			webLink04.setName("Web Standards Curriculum");
+			webLink04
+					.setLink(new URL(
+							"http://dev.opera.com/articles/view/1-introduction-to-the-web-standards-cur/"));
 
-		WebLink webLink05 = new WebLink();
-		webLink05.setName("Free Online Classes");
-		webLink05.setLink("http://www.guidetoonlineschools.com/online-classes");
+			WebLink webLink05 = new WebLink();
+			webLink05.setName("Free Online Classes");
+			webLink05.setLink(new URL(
+					"http://www.guidetoonlineschools.com/online-classes"));
 
-		webLinks.add(webLink01);
-		webLinks.add(webLink02);
-		webLinks.add(webLink03);
-		webLinks.add(webLink04);
-		webLinks.add(webLink05);
+			webLinks.add(webLink01);
+			webLinks.add(webLink02);
+			webLinks.add(webLink03);
+			webLinks.add(webLink04);
+			webLinks.add(webLink05);
+		} catch (MalformedURLException e) {
+			System.out.println("Not a valid URL: " + e);
+		}
 	}
 
 	private void initMembers() {
 		Member member01 = new Member();
 		member01.setLastName("Ridjanovic");
 		member01.setFirstName("Dzenan");
-		member01.setEmail(new Email("dzenanr@gmail.com"));
+		String member01Email = "dzenanr@gmail.com";
+		try {
+			member01.setEmail(new Email(member01Email));
+		} catch (AddressException e) {
+			System.out.println(member01Email + " is not a valid email.");
+		}
 		member01.setAccount("dzenanr");
 		member01.setPassword("dr");
 		member01.setRole("admin");
@@ -85,7 +100,12 @@ public class DomainModel implements Serializable {
 		Member member02 = new Member();
 		member02.setLastName("Daneault");
 		member02.setFirstName("Pascal");
-		member02.setEmail(new Email("pascal.daneault@gmail.com"));
+		String member02Email = "pascal.daneault@gmail.com";
+		try {
+			member02.setEmail(new Email(member02Email));
+		} catch (AddressException e) {
+			System.out.println(member02Email + " is not a valid email.");
+		}
 		member02.setAccount("pascald");
 		member02.setPassword("pd");
 		member02.setRole("admin");

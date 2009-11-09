@@ -1,5 +1,7 @@
 package org.ieducnews.model.concept.weblink;
 
+import java.net.URL;
+
 import org.ieducnews.model.DomainModel;
 import org.ieducnews.model.config.ModelProperties;
 import org.junit.AfterClass;
@@ -53,12 +55,14 @@ public class WebLinksTest {
 		WebLink calendar = new WebLink();
 		calendar.setName("Class Calendar");
 		calendar
-				.setLink("http://java.sun.com/javase/6/docs/api/java/util/Calendar.html");
+				.setLink(new URL(
+						"http://java.sun.com/javase/6/docs/api/java/util/Calendar.html"));
 
 		WebLink gregorianCalendar = new WebLink();
 		gregorianCalendar.setName("Class GregorianCalendar");
 		gregorianCalendar
-				.setLink("http://java.sun.com/javase/6/docs/api/java/util/GregorianCalendar.html");
+				.setLink(new URL(
+						"http://java.sun.com/javase/6/docs/api/java/util/GregorianCalendar.html"));
 
 		webLinks.add(calendar);
 		Assert.assertFalse(webLinks.remove(gregorianCalendar));
@@ -70,7 +74,8 @@ public class WebLinksTest {
 		WebLink gregorianCalendar = new WebLink();
 		gregorianCalendar.setName("Class GregorianCalendar");
 		gregorianCalendar
-				.setLink("http://java.sun.com/javase/6/docs/api/java/util/GregorianCalendar.html");
+				.setLink(new URL(
+						"http://java.sun.com/javase/6/docs/api/java/util/GregorianCalendar.html"));
 
 		webLinks.add(gregorianCalendar);
 		Assert.assertTrue(webLinks.remove(gregorianCalendar));

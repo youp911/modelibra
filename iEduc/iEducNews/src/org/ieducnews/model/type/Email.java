@@ -29,11 +29,12 @@ public class Email implements Serializable {
 	 * @throws email
 	 *             address exception if there is a problem
 	 */
-	public Email(String emailAddress) {
+	public Email(String emailAddress) throws AddressException {
 		if (validate(emailAddress)) {
 			this.emailAddress = emailAddress;
 		} else {
-			this.emailAddress = "not.valid@email.com";
+			throw new AddressException(emailAddress
+					+ " is not a valid email address.");
 		}
 	}
 
@@ -46,15 +47,13 @@ public class Email implements Serializable {
 	 * @param emailAddress
 	 *            email address
 	 * @return <code>true</code> if a valid email address
+	 * @throws email
+	 *             address exception if there is a problem
 	 */
-	private boolean validate(String emailAddress) {
+	private boolean validate(String emailAddress) throws AddressException {
 		boolean result = false;
 		if (emailAddress != null) {
-			try {
-				new InternetAddress(emailAddress);
-			} catch (AddressException e) {
-				System.out.println("not valid email: " + emailAddress);
-			}
+			new InternetAddress(emailAddress);
 			String[] atTokens = emailAddress.split("@");
 			if (atTokens.length == 2) {
 				String beforeAt = atTokens[0];
@@ -102,7 +101,14 @@ public class Email implements Serializable {
 			}
 		} else if (value instanceof String) {
 			String emailString = (String) value;
-			return equals(new Email(emailString));
+			try {
+				Email email = new Email(emailString);
+				return equals(email);
+			} catch (AddressException e) {
+				String msg = "Email.equals --email is not valid: "
+						+ emailString;
+				throw new RuntimeException(msg, e);
+			}
 		}
 		return false;
 	}
