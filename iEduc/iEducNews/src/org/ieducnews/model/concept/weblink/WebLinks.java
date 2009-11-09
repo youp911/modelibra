@@ -19,7 +19,7 @@ public class WebLinks implements Serializable {
 	public boolean remove(WebLink webLink) {
 		return webLinksList.remove(webLink);
 	}
-	
+
 	public boolean remove(String name) {
 		for (WebLink webLink : webLinksList) {
 			if (webLink.getName().equals(name)) {
@@ -61,7 +61,7 @@ public class WebLinks implements Serializable {
 	public WebLinks orderByName(boolean ascending) {
 		WebLinks orderedWebLinks = new WebLinks();
 		List<WebLink> list = getList();
-		Collections.sort(list, new NameComparator());
+		Collections.sort(list, NAME_COMPARATOR);
 		if (!ascending) {
 			Collections.reverse(list);
 		}
@@ -73,33 +73,42 @@ public class WebLinks implements Serializable {
 		return orderByName(true);
 	}
 
+	public WebLinks orderByCreationDate(boolean ascending) {
+		WebLinks orderedWebLinks = new WebLinks();
+		List<WebLink> list = getList();
+		Collections.sort(list, CREATION_DATE_COMPARATOR);
+		if (!ascending) {
+			Collections.reverse(list);
+		}
+		orderedWebLinks.setList(list);
+		return orderedWebLinks;
+	}
+
+	public WebLinks orderByCreationDate() {
+		return orderByName(true);
+	}
+
+	private static final Comparator<WebLink> NAME_COMPARATOR = new NameComparator();
+
+	private static final Comparator<WebLink> CREATION_DATE_COMPARATOR = new CreationDateComparator();
+
+	private static class NameComparator implements Comparator<WebLink> {
+		public int compare(WebLink webLink1, WebLink webLink2) {
+			return webLink1.getName().compareTo(webLink2.getName());
+		}
+	}
+
+	private static class CreationDateComparator implements Comparator<WebLink> {
+		public int compare(WebLink webLink1, WebLink webLink2) {
+			return webLink1.getCreationDate().compareTo(
+					webLink2.getCreationDate());
+		}
+	}
+
 	public void output(String title) {
 		System.out.println(title);
 		for (WebLink webLink : webLinksList) {
 			webLink.output();
-		}
-	}
-
-	private class NameComparator implements Comparator<WebLink> {
-		/**
-		 * Compares two web links by comparing the name properties.
-		 * 
-		 * @param webLink1
-		 *            web link 1
-		 * @param webLink2
-		 *            web link 2
-		 * @return 0 if values are equal, > 0 if the first value is greater than
-		 *         the second one, < 0 if the second value is greater than the
-		 *         first one
-		 */
-		public int compare(WebLink webLink1, WebLink webLink2) {
-			int result = 0;
-			String name1 = webLink1.getName();
-			String name2 = webLink2.getName();
-			if (name1 != null && name2 != null) {
-				result = name1.compareTo(name2);
-			}
-			return result;
 		}
 	}
 
