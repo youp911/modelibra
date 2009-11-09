@@ -9,6 +9,8 @@ public class WebLink implements Serializable {
 	private String name;
 
 	private String link;
+	
+	private String creationDate;
 
 	public void setName(String name) {
 		this.name = name;
@@ -26,9 +28,18 @@ public class WebLink implements Serializable {
 		return link;
 	}
 	
+	public void setCreationDate(String creationDate) {
+		this.creationDate = creationDate;
+	}
+
+	public String getCreationDate() {
+		return creationDate;
+	}
+	
 	public void output() {
 		System.out.println("name: " + getName());
 		System.out.println("link: " + getLink());
+		System.out.println("creation date: " + getCreationDate());
 	}
 
 }
