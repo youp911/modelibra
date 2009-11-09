@@ -9,7 +9,6 @@ import org.apache.wicket.util.tester.FormTester;
 import org.apache.wicket.util.tester.WicketTester;
 import org.ieducnews.model.DomainModel;
 import org.ieducnews.model.WebLinks;
-import org.ieducnews.model.WebLinksTest;
 import org.ieducnews.model.config.ModelProperties;
 import org.ieducnews.view.weblink.AddLinkPage;
 import org.junit.AfterClass;
@@ -25,11 +24,13 @@ public class AddLinkPageTest {
 	@BeforeClass
 	public static void beforeTests() {
 		ModelProperties modelProperties = new ModelProperties(
-				WebLinksTest.class);
+				AddLinkPageTest.class);
 		domainModel = new DomainModel(modelProperties);
 		domainModel = domainModel.load();
 
-		tester = new WicketTester(new WebApp());
+		WebApp webApp = new WebApp();
+		webApp.setDomainModel(domainModel);
+		tester = new WicketTester(webApp);
 		// tester.setupRequestAndResponse();
 		tester.startPage(AddLinkPage.class);
 	}
@@ -44,7 +45,7 @@ public class AddLinkPageTest {
 		tester.assertComponent("feedback", FeedbackPanel.class);
 		tester.assertComponent("footer", Panel.class);
 	}
-
+	
 	@Test
 	public void nameRequiredError() {
 		// given
