@@ -26,4 +26,13 @@ MembersTest
 WebLink
 	creationDate
 	output creationDate
-	
+	URL
+		update tests and init domain model
+		update home page: URL.toString
+
+AddLinkPage
+	LinkField
+		getConverter
+		
+UrlConverter
+EmailConverter

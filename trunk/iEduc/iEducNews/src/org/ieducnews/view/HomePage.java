@@ -39,9 +39,9 @@ public class HomePage extends BasePage {
 
 		protected void populateItem(ListItem<WebLink> listItem) {
 			WebLink webLink = listItem.getModelObject();
-			listItem.add(new ExternalLink("linkUrl", webLink.getLink(), webLink
-					.getName()));
-			listItem.add(new Label("linkLabel", webLink.getLink()));
+			listItem.add(new ExternalLink("linkUrl", webLink.getLink()
+					.toString(), webLink.getName()));
+			listItem.add(new Label("linkLabel", webLink.getLink().toString()));
 		}
 	}
 
