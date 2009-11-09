@@ -14,13 +14,15 @@ import org.junit.Test;
 
 public class HomePageTest {
 
+	private static DomainModel domainModel;
+
 	private static WicketTester tester;
 
 	@BeforeClass
 	public static void beforeTests() {
 		ModelProperties modelProperties = new ModelProperties(
 				AboutPageTest.class);
-		DomainModel domainModel = new DomainModel(modelProperties);
+		domainModel = new DomainModel(modelProperties);
 		domainModel = domainModel.load();
 
 		WebApp webApp = new WebApp();
@@ -37,7 +39,12 @@ public class HomePageTest {
 		tester.assertComponent("menu:submit", BookmarkablePageLink.class);
 		tester.assertComponent("menu:about", BookmarkablePageLink.class);
 		tester.assertComponent("webLinks", PageableListView.class);
-		tester.assertComponent("navigator", PagingNavigator.class);
+		if (domainModel.getWebLinks().size() <= HomePage.NUMBER_OF_LINKS_ON_ONE_PAGE) {
+			tester.assertInvisible("navigator");
+		} else {
+			tester.assertComponent("navigator", PagingNavigator.class);
+			tester.assertVisible("navigator");
+		}
 		tester.assertComponent("footer", Panel.class);
 		tester.assertComponent("footer:new", Link.class);
 		tester.assertComponent("footer:submit", BookmarkablePageLink.class);

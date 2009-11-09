@@ -23,7 +23,7 @@ public class HomePage extends BasePage {
 		add(listView);
 		PagingNavigator pagingNavigator = new PagingNavigator("navigator",
 				listView);
-		if (listView.size() < NUMBER_OF_LINKS_ON_ONE_PAGE) {
+		if (orderedWebLinks.size() <= NUMBER_OF_LINKS_ON_ONE_PAGE) {
 			pagingNavigator.setVisible(false);
 		}
 		add(pagingNavigator);
