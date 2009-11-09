@@ -35,15 +35,7 @@ public class FooterPanelTest {
 	@Before
 	public void beforeTest() {
 		tester = new WicketTester(webApp);
-		TestPanelSource testPanelSource = new TestPanelSource() {
-
-			private static final long serialVersionUID = 1;
-
-			public Panel getTestPanel(String panelId) {
-				return new FooterPanel(panelId);
-			}
-		};
-		tester.startPanel(testPanelSource);
+		tester.startPanel(new FooterPanelSource());
 	}
 
 	@Test
@@ -69,6 +61,16 @@ public class FooterPanelTest {
 	public void navigateToAbout() {
 		tester.clickLink("panel:about");
 		tester.assertRenderedPage(AboutPage.class);
+	}
+
+	private class FooterPanelSource implements TestPanelSource {
+
+		private static final long serialVersionUID = 1;
+
+		public Panel getTestPanel(String panelId) {
+			return new FooterPanel(panelId);
+		}
+
 	}
 
 }
