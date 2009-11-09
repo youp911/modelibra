@@ -11,5 +11,6 @@
 	<classpathentry kind="lib" path="WEB-INF/lib/slf4j-api-1.5.8.jar"/>
 	<classpathentry kind="lib" path="WEB-INF/lib/slf4j-log4j12-1.5.8.jar"/>
 	<classpathentry kind="lib" path="WEB-INF/lib/wicket-1.4.3.jar"/>
+	<classpathentry kind="lib" path="WEB-INF/lib/mail-1.4.2.jar"/>
 	<classpathentry kind="output" path="WEB-INF/classes"/>
 </classpath>

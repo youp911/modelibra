@@ -3,7 +3,6 @@ package org.ieducnews.model;
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
 import java.io.File;
-
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -13,7 +12,12 @@ import java.io.ObjectOutput;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
 
+import org.ieducnews.model.concept.member.Member;
+import org.ieducnews.model.concept.member.Members;
+import org.ieducnews.model.concept.weblink.WebLink;
+import org.ieducnews.model.concept.weblink.WebLinks;
 import org.ieducnews.model.config.ModelProperties;
+import org.ieducnews.model.type.Email;
 
 public class DomainModel implements Serializable {
 
@@ -22,6 +26,8 @@ public class DomainModel implements Serializable {
 	private File file;
 
 	private WebLinks webLinks = new WebLinks();
+
+	private Members members = new Members();
 
 	public DomainModel() {
 		ModelProperties modelProperties = new ModelProperties(
@@ -37,7 +43,7 @@ public class DomainModel implements Serializable {
 		file = new File(modelProperties.getFilePath());
 	}
 
-	private void init() {
+	private void initWebLinks() {
 		WebLink webLink01 = new WebLink();
 		webLink01.setName("Hacker News");
 		webLink01.setLink("http://news.ycombinator.com/");
@@ -66,21 +72,49 @@ public class DomainModel implements Serializable {
 		webLinks.add(webLink05);
 	}
 
+	private void initMembers() {
+		Member member01 = new Member();
+		member01.setLastName("Ridjanovic");
+		member01.setFirstName("Dzenan");
+		member01.setEmail(new Email("dzenanr@gmail.com"));
+		member01.setAccount("dzenanr");
+		member01.setPassword("dr");
+		member01.setRole("admin");
+		member01.setApproved(true);
+
+		Member member02 = new Member();
+		member02.setLastName("Daneault");
+		member02.setFirstName("Pascal");
+		member02.setEmail(new Email("pascal.daneault@gmail.com"));
+		member02.setAccount("pascald");
+		member02.setPassword("pd");
+		member02.setRole("admin");
+		member02.setApproved(true);
+
+		members.add(member01);
+		members.add(member02);
+	}
+
 	public WebLinks getWebLinks() {
 		return webLinks;
+	}
+
+	public Members getMembers() {
+		return members;
 	}
 
 	public DomainModel load() {
 		try {
 			if (!file.exists()) {
-				init();
+				initMembers();
+				initWebLinks();
 				save();
-			} 
+			}
 			BufferedInputStream buffer = new BufferedInputStream(
 					new FileInputStream(file));
 			ObjectInput i = new ObjectInputStream(buffer);
 			return (DomainModel) i.readObject();
-			
+
 		} catch (ClassNotFoundException e1) {
 			throw new RuntimeException(e1);
 		} catch (IOException e2) {
@@ -91,7 +125,7 @@ public class DomainModel implements Serializable {
 	public void save() {
 		try {
 			if (!file.exists()) {
-				
+
 				file.createNewFile();
 				System.out.println("Model file created: "
 						+ file.getAbsolutePath());

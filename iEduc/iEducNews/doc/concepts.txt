@@ -1,0 +1,14 @@
+iEducNews-09
+
+Member
+Email type
+Members
+DomainModel
+	initMembers
+		initWebLinks
+new package names
+	org.ieducnews.model.concept.weblink
+	org.ieducnews.model.concept.member
+	org.ieducnews.model.type
+MembersTest
+	

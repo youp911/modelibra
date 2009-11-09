@@ -1,5 +1,6 @@
-package org.ieducnews.model;
+package org.ieducnews.model.concept.weblink;
 
+import org.ieducnews.model.DomainModel;
 import org.ieducnews.model.config.ModelProperties;
 import org.junit.AfterClass;
 import org.junit.Assert;

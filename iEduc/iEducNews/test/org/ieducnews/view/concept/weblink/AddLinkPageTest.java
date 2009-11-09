@@ -1,4 +1,4 @@
-package org.ieducnews.view.weblink;
+package org.ieducnews.view.concept.weblink;
 
 import org.apache.wicket.markup.html.form.Button;
 import org.apache.wicket.markup.html.form.Form;
@@ -8,11 +8,11 @@ import org.apache.wicket.markup.html.panel.Panel;
 import org.apache.wicket.util.tester.FormTester;
 import org.apache.wicket.util.tester.WicketTester;
 import org.ieducnews.model.DomainModel;
-import org.ieducnews.model.WebLinks;
+import org.ieducnews.model.concept.weblink.WebLinks;
 import org.ieducnews.model.config.ModelProperties;
 import org.ieducnews.view.HomePage;
 import org.ieducnews.view.WebApp;
-import org.ieducnews.view.weblink.AddLinkPage;
+import org.ieducnews.view.concept.weblink.AddLinkPage;
 import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
@@ -41,6 +41,12 @@ public class AddLinkPageTest {
 	public void beforeTest() {
 		tester = new WicketTester(webApp);
 		tester.startPage(AddLinkPage.class);
+	}
+
+	@Test
+	public void renderAddLinkPage() {
+		tester.assertRenderedPage(AddLinkPage.class);
+		tester.assertNoErrorMessage();
 	}
 
 	@Test
