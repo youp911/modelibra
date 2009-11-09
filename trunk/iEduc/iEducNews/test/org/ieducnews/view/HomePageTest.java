@@ -8,7 +8,6 @@ import org.apache.wicket.markup.html.panel.Panel;
 import org.apache.wicket.util.tester.WicketTester;
 import org.ieducnews.model.DomainModel;
 import org.ieducnews.model.config.ModelProperties;
-import org.ieducnews.view.staticpages.AboutPage;
 import org.ieducnews.view.weblink.AddLinkPage;
 import org.junit.BeforeClass;
 import org.junit.Test;
