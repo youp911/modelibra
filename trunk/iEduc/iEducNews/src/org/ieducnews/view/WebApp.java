@@ -7,18 +7,19 @@ public class WebApp extends WebApplication {
 
 	private DomainModel domainModel;
 
-	@Override
-	protected void init() {
-		super.init();
-		domainModel = new DomainModel();
-		domainModel = domainModel.load();
-	}
-
 	public Class<HomePage> getHomePage() {
 		return HomePage.class;
 	}
 
+	public void setDomainModel(DomainModel domainModel) {
+		this.domainModel = domainModel;
+	}
+
 	public DomainModel getDomainModel() {
+		if (domainModel == null) {
+			domainModel = new DomainModel();
+			domainModel = domainModel.load();
+		}
 		return domainModel;
 	}
 
