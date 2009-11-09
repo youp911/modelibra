@@ -1,10 +1,13 @@
-package org.ieducnews.model.component;
+package org.ieducnews.model.util;
 
 import java.util.Comparator;
 
+/**
+ * from Effective Java by Josh Block
+ */
 public class GenericComparator {
 
-	public static <T> Comparator<T> createComparator(
+	public <T> Comparator<T> createComparator(
 			final Comparator<T>... comparators) {
 		return new Comparator<T>() {
 			public int compare(T t1, T t2) {

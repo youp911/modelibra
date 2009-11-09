@@ -6,7 +6,7 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
-import org.ieducnews.model.component.GenericComparator;
+import org.ieducnews.model.util.CompositeComparator;
 
 public class Members implements Serializable {
 
@@ -63,7 +63,7 @@ public class Members implements Serializable {
 	public Members orderByAccount(boolean ascending) {
 		Members orderedMembers = new Members();
 		List<Member> list = getList();
-		Collections.sort(list, ACCOUNT_COMPARATOR);
+		Collections.sort(list, new AccountComparator());
 		if (!ascending) {
 			Collections.reverse(list);
 		}
@@ -78,7 +78,9 @@ public class Members implements Serializable {
 	public Members orderByLastFirstName(boolean ascending) {
 		Members orderedMembers = new Members();
 		List<Member> list = getList();
-		Collections.sort(list, LAST_FIRST_NAME_COMPARATOR);
+		CompositeComparator compositeComparator = new CompositeComparator();
+		Collections.sort(list, compositeComparator.createComparator(
+				new LastNameComparator(), new FirstNameComparator()));
 		if (!ascending) {
 			Collections.reverse(list);
 		}
@@ -90,26 +92,19 @@ public class Members implements Serializable {
 		return orderByLastFirstName(true);
 	}
 
-	private static final Comparator<Member> ACCOUNT_COMPARATOR = new AccountComparator();
-
-	private static final Comparator<Member> LAST_NAME_COMPARATOR = new LastNameComparator();
-	private static final Comparator<Member> FIRST_NAME_COMPARATOR = new FirstNameComparator();
-	private static final Comparator<Member> LAST_FIRST_NAME_COMPARATOR = GenericComparator
-			.createComparator(LAST_NAME_COMPARATOR, FIRST_NAME_COMPARATOR);
-
-	private static class AccountComparator implements Comparator<Member> {
+	private class AccountComparator implements Comparator<Member> {
 		public int compare(Member member1, Member member2) {
 			return member1.getAccount().compareTo(member2.getAccount());
 		}
 	}
 
-	private static class LastNameComparator implements Comparator<Member> {
+	private class LastNameComparator implements Comparator<Member> {
 		public int compare(Member member1, Member member2) {
 			return member1.getLastName().compareTo(member2.getLastName());
 		}
 	}
 
-	private static class FirstNameComparator implements Comparator<Member> {
+	private class FirstNameComparator implements Comparator<Member> {
 		public int compare(Member member1, Member member2) {
 			return member1.getFirstName().compareTo(member2.getFirstName());
 		}
