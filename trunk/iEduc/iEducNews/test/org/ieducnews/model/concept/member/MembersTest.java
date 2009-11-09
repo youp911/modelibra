@@ -32,6 +32,20 @@ public class MembersTest {
 		orderedMembers.output("---Members ordered by account---");
 	}
 	
+	@Test
+	public void membersOrderedByLastFirstName() throws Exception {
+		Members members = domainModel.getMembers();
+		Members orderedMembers = members.orderByLastFirstName();
+
+		if (!members.isEmpty()) {
+			Assert.assertFalse(orderedMembers.isEmpty());
+		}
+		Assert.assertEquals(members.size(), orderedMembers.size());
+		Assert.assertNotSame(members, orderedMembers);
+
+		orderedMembers.output("---Members ordered by last then first name---");
+	}
+	
 	@AfterClass
 	public static void afterTests() {
 		domainModel.save();
