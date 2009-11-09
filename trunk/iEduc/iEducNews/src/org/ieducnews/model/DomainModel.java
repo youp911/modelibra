@@ -112,8 +112,23 @@ public class DomainModel implements Serializable {
 		member02.setRole(SecurityRole.ADMIN);
 		member02.setApproved(true);
 
+		Member member03 = new Member();
+		member03.setLastName("Ridjanovic");
+		member03.setFirstName("Amra");
+		String member03Email = "amrar@gmail.com";
+		try {
+			member03.setEmail(new Email(member03Email));
+		} catch (AddressException e) {
+			System.out.println(member03Email + " is not a valid email.");
+		}
+		member03.setAccount("amrar");
+		member03.setPassword("ar");
+		member03.setRole(SecurityRole.REGULAR);
+		member03.setApproved(true);
+
 		members.add(member01);
 		members.add(member02);
+		members.add(member03);
 	}
 
 	public WebLinks getWebLinks() {

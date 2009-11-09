@@ -36,6 +36,7 @@ WebLinks
 	comparator constants
 	
 GenericComparator
+CompositeComparator
 
 AddLinkPage
 	LinkField
