@@ -1,14 +1,29 @@
 iEducNews-09
 
 Member
-Email type
+	Email type
+		JavaMail jar
+		AddressException
+	Boolean
+	Integer
+	isApproved
+	
 Members
+
 DomainModel
 	initMembers
-		initWebLinks
+	initWebLinks
+	
 new package names
 	org.ieducnews.model.concept.weblink
 	org.ieducnews.model.concept.member
 	org.ieducnews.model.type
+	org.ieducnews.view.concept.weblink
+	corresponding packages in test
+	
 MembersTest
+	
+WebLink
+	creationDate
+	output creationDate
 	

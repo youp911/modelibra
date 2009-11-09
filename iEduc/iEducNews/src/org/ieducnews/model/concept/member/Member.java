@@ -88,6 +88,10 @@ public class Member implements Serializable {
 		return approved;
 	}
 
+	public boolean isApproved() {
+		return getApproved();
+	}
+
 	public void output() {
 		System.out.println("last name: " + getLastName());
 		System.out.println("first name: " + getFirstName());
