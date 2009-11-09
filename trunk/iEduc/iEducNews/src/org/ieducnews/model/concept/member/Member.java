@@ -8,6 +8,10 @@ public class Member implements Serializable {
 
 	private static final long serialVersionUID = 1;
 
+	public enum SecurityRole {
+		CASUAL, REGULAR, ADVANCED, MANAGER, ADMIN
+	}
+
 	private String lastName;
 
 	private String firstName;
@@ -20,7 +24,7 @@ public class Member implements Serializable {
 
 	private String password;
 
-	private String role = "regular";
+	private SecurityRole role = SecurityRole.CASUAL;
 
 	private Boolean approved = false;
 
@@ -72,11 +76,11 @@ public class Member implements Serializable {
 		return password;
 	}
 
-	public void setRole(String role) {
+	public void setRole(SecurityRole role) {
 		this.role = role;
 	}
 
-	public String getRole() {
+	public SecurityRole getRole() {
 		return role;
 	}
 
