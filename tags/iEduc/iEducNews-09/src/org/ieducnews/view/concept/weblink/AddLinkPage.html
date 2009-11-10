@@ -1,0 +1,19 @@
+<html>
+<body>
+
+<wicket:extend>
+	<div id="title">Submit a link</div>
+	<div id="main_text">
+		<form wicket:id="form">
+			<span>name</span><br/>
+			<input type="text" wicket:id="name" class="name_textfield"/><br/><br/>
+			<span>link</span><br/>
+			<input type="text" wicket:id="link" class="link_textfield"/><br/><br/>
+			<input type="submit" wicket:id="save" value="submit"/>
+		</form>
+		<div wicket:id="feedback" id="feedback"></div>
+	</div>
+</wicket:extend>
+
+</body>
+</html>
