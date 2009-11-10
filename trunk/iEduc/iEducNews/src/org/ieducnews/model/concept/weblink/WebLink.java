@@ -4,6 +4,8 @@ import java.io.Serializable;
 import java.net.URL;
 import java.util.Date;
 
+import org.ieducnews.model.type.EasyDate;
+
 public class WebLink implements Serializable {
 
 	private static final long serialVersionUID = 1;
@@ -42,6 +44,12 @@ public class WebLink implements Serializable {
 		System.out.println("name: " + getName());
 		System.out.println("link: " + getLink());
 		System.out.println("creation date: " + getCreationDate());
+	}
+
+	public void outputWithEasyDate() {
+		output();
+		System.out.println("creation easy date: "
+				+ new EasyDate(getCreationDate()));
 	}
 
 }

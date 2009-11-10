@@ -14,8 +14,17 @@ public class Members implements Serializable {
 
 	private List<Member> membersList = new ArrayList<Member>();
 
-	public void add(Member member) {
-		membersList.add(member);
+	public boolean add(Member member) {
+		if (member.getAccount() == null) {
+			return false;
+		} else {
+			Member retrievedMember = retrieveByAccount(member.getAccount());
+			if (retrievedMember != null) {
+				return false;
+			} else {
+				return membersList.add(member);
+			}
+		}
 	}
 
 	public boolean remove(Member member) {
@@ -60,6 +69,35 @@ public class Members implements Serializable {
 		membersList = list;
 	}
 
+	public Member retrieveByAccount(String account) {
+		for (Member member : membersList) {
+			if (member.getAccount().equals(account)) {
+				return member;
+			}
+		}
+		return null;
+	}
+
+	public Members selectByApproved(boolean approved) {
+		Members selectedMembers = new Members();
+		for (Member member : membersList) {
+			if (member.getApproved().equals(approved)) {
+				selectedMembers.add(member);
+			}
+		}
+		return selectedMembers;
+	}
+	
+	public Members selectByRole(Member.SecurityRole role) {
+		Members selectedMembers = new Members();
+		for (Member member : membersList) {
+			if (member.getRole().equals(role)) {
+				selectedMembers.add(member);
+			}
+		}
+		return selectedMembers;
+	}
+
 	public Members orderByAccount(boolean ascending) {
 		Members orderedMembers = new Members();
 		List<Member> list = getList();
@@ -88,6 +126,21 @@ public class Members implements Serializable {
 		return orderedMembers;
 	}
 
+	public Members orderByVote(boolean ascending) {
+		Members orderedMembers = new Members();
+		List<Member> list = getList();
+		Collections.sort(list, new VoteComparator());
+		if (!ascending) {
+			Collections.reverse(list);
+		}
+		orderedMembers.setList(list);
+		return orderedMembers;
+	}
+
+	public Members orderByVote() {
+		return orderByVote(true);
+	}
+
 	public Members orderByLastFirstName() {
 		return orderByLastFirstName(true);
 	}
@@ -107,6 +160,12 @@ public class Members implements Serializable {
 	private class FirstNameComparator implements Comparator<Member> {
 		public int compare(Member member1, Member member2) {
 			return member1.getFirstName().compareTo(member2.getFirstName());
+		}
+	}
+
+	private class VoteComparator implements Comparator<Member> {
+		public int compare(Member member1, Member member2) {
+			return member1.getVote().compareTo(member2.getVote());
 		}
 	}
 
