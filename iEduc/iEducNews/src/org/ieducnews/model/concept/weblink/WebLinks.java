@@ -4,7 +4,10 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.Date;
 import java.util.List;
+
+import org.ieducnews.model.type.EasyDate;
 
 public class WebLinks implements Serializable {
 
@@ -12,8 +15,17 @@ public class WebLinks implements Serializable {
 
 	private List<WebLink> webLinksList = new ArrayList<WebLink>();
 
-	public void add(WebLink webLink) {
-		webLinksList.add(webLink);
+	public boolean add(WebLink webLink) {
+		if (webLink.getName() == null) {
+			return false;
+		} else {
+			WebLink retrievedWebLink = retrieveByName(webLink.getName());
+			if (retrievedWebLink != null) {
+				return false;
+			} else {
+				return webLinksList.add(webLink);
+			}
+		}
 	}
 
 	public boolean remove(WebLink webLink) {
@@ -58,6 +70,66 @@ public class WebLinks implements Serializable {
 		webLinksList = list;
 	}
 
+	public WebLink retrieveByName(String name) {
+		for (WebLink webLink : webLinksList) {
+			if (webLink.getName().equals(name)) {
+				return webLink;
+			}
+		}
+		return null;
+	}
+
+	public WebLinks selectByDate(Date date) {
+		WebLinks selectedWebLinks = new WebLinks();
+		for (WebLink webLink : webLinksList) {
+			Date creationDate = webLink.getCreationDate();
+			EasyDate easyCreationDate = new EasyDate(creationDate);
+			if (easyCreationDate.equals(date)) {
+				selectedWebLinks.add(webLink);
+			}
+		}
+		return selectedWebLinks;
+	}
+
+	public WebLinks selectByYear(int year) {
+		WebLinks selectedWebLinks = new WebLinks();
+		for (WebLink webLink : webLinksList) {
+			Date creationDate = webLink.getCreationDate();
+			EasyDate easyCreationDate = new EasyDate(creationDate);
+			if (easyCreationDate.getYear() == year) {
+				selectedWebLinks.add(webLink);
+			}
+		}
+		return selectedWebLinks;
+	}
+
+	public WebLinks selectByMonth(int year, int month) {
+		WebLinks selectedWebLinks = new WebLinks();
+		for (WebLink webLink : webLinksList) {
+			Date creationDate = webLink.getCreationDate();
+			EasyDate easyCreationDate = new EasyDate(creationDate);
+			if (easyCreationDate.getYear() == year
+					&& easyCreationDate.getMonth() == month) {
+				selectedWebLinks.add(webLink);
+			}
+		}
+		return selectedWebLinks;
+	}
+
+	public WebLinks selectByYesterday(Date date) {
+		WebLinks selectedWebLinks = new WebLinks();
+		for (WebLink webLink : webLinksList) {
+			Date creationDate = webLink.getCreationDate();
+			EasyDate easyCreationDate = new EasyDate(creationDate);
+			EasyDate easyDate = new EasyDate(date);
+			Date yesterday = easyDate.getYesterday();
+			if (easyCreationDate.equals(yesterday)) {
+				selectedWebLinks.add(webLink);
+			}
+		}
+		return selectedWebLinks;
+	}
+
 	public WebLinks orderByName(boolean ascending) {
 		WebLinks orderedWebLinks = new WebLinks();
 		List<WebLink> list = getList();
@@ -85,7 +157,7 @@ public class WebLinks implements Serializable {
 	}
 
 	public WebLinks orderByCreationDate() {
-		return orderByName(true);
+		return orderByCreationDate(true);
 	}
 
 	private static final Comparator<WebLink> NAME_COMPARATOR = new NameComparator();
@@ -109,6 +181,13 @@ public class WebLinks implements Serializable {
 		System.out.println(title);
 		for (WebLink webLink : webLinksList) {
 			webLink.output();
+		}
+	}
+
+	public void outputWithEasyDate(String title) {
+		System.out.println(title);
+		for (WebLink webLink : webLinksList) {
+			webLink.outputWithEasyDate();
 		}
 	}
 
