@@ -129,7 +129,7 @@ public class Members implements Serializable {
 	public Members orderByVote(boolean ascending) {
 		Members orderedMembers = new Members();
 		List<Member> list = getList();
-		Collections.sort(list, new VoteComparator());
+		Collections.sort(list, new KarmaComparator());
 		if (!ascending) {
 			Collections.reverse(list);
 		}
@@ -163,9 +163,9 @@ public class Members implements Serializable {
 		}
 	}
 
-	private class VoteComparator implements Comparator<Member> {
+	private class KarmaComparator implements Comparator<Member> {
 		public int compare(Member member1, Member member2) {
-			return member1.getVote().compareTo(member2.getVote());
+			return member1.getKarma().compareTo(member2.getKarma());
 		}
 	}
 

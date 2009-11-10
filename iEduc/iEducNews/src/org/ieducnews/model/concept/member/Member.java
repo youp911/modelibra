@@ -18,7 +18,7 @@ public class Member implements Serializable {
 
 	private Email email;
 
-	private Integer vote = 0;
+	private Integer karma = 0;
 
 	private String account;
 
@@ -52,12 +52,12 @@ public class Member implements Serializable {
 		return email;
 	}
 
-	public void setVote(Integer vote) {
-		this.vote = vote;
+	public void setKarma(Integer karma) {
+		this.karma = karma;
 	}
 
-	public Integer getVote() {
-		return vote;
+	public Integer getKarma() {
+		return karma;
 	}
 
 	public void setAccount(String account) {
@@ -100,7 +100,7 @@ public class Member implements Serializable {
 		System.out.println("last name: " + getLastName());
 		System.out.println("first name: " + getFirstName());
 		System.out.println("email: " + getEmail());
-		System.out.println("vote: " + getVote());
+		System.out.println("vote: " + getKarma());
 		System.out.println("account" + getAccount());
 		System.out.println("password: " + getPassword());
 		System.out.println("role: " + getRole());
