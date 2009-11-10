@@ -1,0 +1,45 @@
+
+
+Formula: 
+
+(p - 1) / (t + 2)^1.5
+
+Description: 
+
+Votes divided by age factor
+
+p = votes (points) from users.
+t = time since submission in hours.
+
+p is subtracted by 1 to negate submitters vote.
+age factor is (time since submission in hours plus two) to the power of 1.5.
+
+No points "from users upvotting" (my bad) :P
+
+    * Weblink
+          o Name
+          o Link
+          o Date
+          o Points
+          o Score (Possiblilty if we don't want to calculate all the entries every time theres a request)
+    * Member
+          o LastName
+          o ...
+          o Karma (aka score but with the Hacker News Term)
+          
+Actually you need to calculate the score immediately in order not to
+loose the time delay. When I clck on the upper arrow on the web link
+it gets one point more but the score is recalculated based on the
+formula. If I click 3 days later the score will increase a bit, but if
+I click immediately after the web link is posted the score will be
+higher. Is this a correct reasoning?
+
+No. 
+Time delay is the difference in time between the request ti dislay sorted links/comments 
+and the submission time.
+
+Member one-to-many Comment (my comments)
+Member one-to-many WebLink (my submissions)
+WebLink one-to-many Comment (comments on the web link)
+Comment one-to-many Comment (comments on the comment)
+
