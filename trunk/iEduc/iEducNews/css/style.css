@@ -296,10 +296,6 @@ a:hover {
 
 /* CSS Classes */
 
-.link_spec {
-	font-size: 12px;
-}
-
 .active_link {
 	color: #ffb33b !important;
 	background-image: url(img/menu_active.png);
@@ -317,6 +313,7 @@ a:hover {
 }
 	
 .link {
+	font-size: 12px;
 	width: 900px;
 }
 
@@ -324,7 +321,7 @@ a:hover {
 	width: 600px;
 }
 
-.border_left{
+.border_left {
 	border-left-width: 1px;
 	border-left-style: solid;
 	border-left-color: #cccccc;

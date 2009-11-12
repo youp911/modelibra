@@ -13,7 +13,6 @@ import org.ieducnews.model.type.Email;
 import org.ieducnews.view.BasePage;
 import org.ieducnews.view.HomePage;
 import org.ieducnews.view.WebApp;
-import org.ieducnews.view.WebAppSession;
 import org.ieducnews.view.type.EmailConverter;
 
 public class MemberPage extends BasePage {
@@ -22,39 +21,14 @@ public class MemberPage extends BasePage {
 		Form<Member> form = new Form<Member>("form",
 				new CompoundPropertyModel<Member>(member));
 		form.add(new Label("account"));
-		TextField<String> passwordField = new PasswordTextField("password");
-		form.add(passwordField);
-		TextField<String> lastNameField = new TextField<String>("lastName");
-		form.add(lastNameField);
-		TextField<String> firstNameField = new TextField<String>("firstName");
-		form.add(firstNameField);
-		TextField<Email> emailField = new EmailField("email", Email.class);
-		form.add(emailField);
+		form.add(new PasswordTextField("password"));
+		form.add(new TextField<String>("lastName"));
+		form.add(new TextField<String>("firstName"));
+		form.add(new EmailField("email", Email.class));
 		form.add(new Label("karma"));
-		Button button = new UpdateButton("update", (WebApp) getApplication());
-		form.add(button);
+		form.add(new UpdateButton("update", (WebApp) getApplication()));
 		add(form);
 		add(new FeedbackPanel("feedback"));
-		if (!isOwningMemberOrAdmin(member)) {
-			passwordField.setVisible(false);
-			lastNameField.setVisible(false);
-			firstNameField.setVisible(false);
-			emailField.setVisible(false);
-			button.setVisible(false);
-		}
-	}
-
-	private boolean isOwningMemberOrAdmin(Member member) {
-		WebAppSession webAppSession = (WebAppSession) getSession();
-		if (webAppSession.isAuthenticated()) {
-			if (webAppSession.getMember().equals(member)) {
-				return true;
-			}
-			if (webAppSession.isAdmin()) {
-				return true;
-			}
-		}
-		return false;
 	}
 
 	private class EmailField extends TextField<Email> {
