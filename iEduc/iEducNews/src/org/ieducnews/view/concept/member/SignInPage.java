@@ -109,7 +109,7 @@ public class SignInPage extends BasePage {
 	    public final void onSubmit() {
 	      if (signUp(entryAccount, entryPassword)) {
 	        if (!continueToOriginalDestination()) {
-	          setResponsePage(EditMemberPage.class);
+	          setResponsePage(new MemberPage(WebAppSession.get().getMember()));
 	        }
 	      } else {
 	        error("This account name already exist. Please choose another one.");
@@ -134,6 +134,7 @@ public class SignInPage extends BasePage {
 	    		  member.setAccount(username);
 	    		  member.setPassword(password);
 	    		  member.setRole(SecurityRole.REGULAR);
+	    		  member.setKarma(1);
 	    		  member.setApproved(true);
 	    		  members.add(member);
 	    		  webApp.getDomainModel().save();
