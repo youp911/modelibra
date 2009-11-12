@@ -31,7 +31,8 @@ public class MemberPage extends BasePage {
 		TextField<Email> emailField = new EmailField("email", Email.class);
 		form.add(emailField);
 		form.add(new Label("karma"));
-		form.add(new UpdateButton("update", (WebApp) getApplication()));
+		Button button = new UpdateButton("update", (WebApp) getApplication());
+		form.add(button);
 		add(form);
 		add(new FeedbackPanel("feedback"));
 		if (!isOwningMemberOrAdmin(member)) {
@@ -39,6 +40,7 @@ public class MemberPage extends BasePage {
 			lastNameField.setVisible(false);
 			firstNameField.setVisible(false);
 			emailField.setVisible(false);
+			button.setVisible(false);
 		}
 	}
 
