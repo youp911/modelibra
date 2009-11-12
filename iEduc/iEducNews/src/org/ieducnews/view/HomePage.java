@@ -2,13 +2,18 @@ package org.ieducnews.view;
 
 import java.util.List;
 
+import org.apache.wicket.behavior.SimpleAttributeModifier;
 import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.link.ExternalLink;
+import org.apache.wicket.markup.html.link.Link;
 import org.apache.wicket.markup.html.list.ListItem;
 import org.apache.wicket.markup.html.list.PageableListView;
 import org.apache.wicket.markup.html.navigation.paging.PagingNavigator;
+import org.ieducnews.model.DomainModel;
 import org.ieducnews.model.concept.weblink.WebLink;
 import org.ieducnews.model.concept.weblink.WebLinks;
+import org.ieducnews.model.config.ModelProperties;
+import org.ieducnews.view.concept.weblink.AddLinkPageTest;
 
 public class HomePage extends BasePage {
 
@@ -42,7 +47,40 @@ public class HomePage extends BasePage {
 			listItem.add(new ExternalLink("linkUrl", webLink.getLink()
 					.toString(), webLink.getName()));
 			listItem.add(new Label("linkLabel", webLink.getLink().toString()));
+			listItem.add(new RemoveLink("removeLink", webLink));
 		}
+	}
+	
+	private class RemoveLink extends Link {
+		private static final long serialVersionUID = 1;
+		private WebLink webLink;
+		
+		private RemoveLink(String wicketId, WebLink webLink) {
+			super(wicketId);
+			this.webLink = webLink;
+			add(new SimpleAttributeModifier("onclick",
+					"return confirm('Are you sure you want to remove this link?');")
+			);
+		}
+
+		@Override
+		public void onClick() {
+			WebApp webApp = (WebApp) getApplication();
+			WebLinks webLinks = webApp.getDomainModel().getWebLinks();
+			if (webLinks.contains(webLink)) {
+				webLinks.remove(webLink);
+				webApp.getDomainModel().save();
+			}
+			setResponsePage(HomePage.class);
+		}
+		
+		@Override
+		public boolean isVisible() {
+			boolean result = false;
+				if (WebAppSession.get().isAuthenticated()) 
+					result = WebAppSession.get().isAdmin();
+			return result;
+		}	
 	}
 
 }

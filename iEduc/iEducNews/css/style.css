@@ -120,6 +120,16 @@ a:hover {
 	background-color: #fbfbfb;
 }
 
+#removeLink {
+	background-image: url(img/remove-icon.png);
+	clear: none;
+	float: right;
+	background-repeat: no-repeat;
+	background-position: center center;
+	height: 18px;
+	width: 15px;	
+}
+
 /* Main Text */
 
 #main_text {
