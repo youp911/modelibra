@@ -12,7 +12,7 @@ public class WebApp extends WebApplication {
 
 	public Class<HomePage> getHomePage() {
 		return HomePage.class;
-		
+
 	}
 
 	public void setDomainModel(DomainModel domainModel) {
@@ -26,10 +26,10 @@ public class WebApp extends WebApplication {
 		}
 		return domainModel;
 	}
-	
+
 	@Override
 	public Session newSession(Request request, Response response) {
-	return new WebAppSession(request);
+		return new WebAppSession(request);
 	}
 
 }

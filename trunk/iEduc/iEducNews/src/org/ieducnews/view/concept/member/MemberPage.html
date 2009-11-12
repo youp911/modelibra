@@ -2,52 +2,22 @@
 <body>
 
 <wicket:extend>
-	<div id="title">Member Information</div>
+	<div id="title">Member</div>
 	<div id="main_text">
 		<form wicket:id="form">
-			<table border="0" width="800">
-				<tr>
-					<td width="80">account :</td>
-					<td wicket:id="account"></td>
-				</tr>
-				<tr>
-					<td wicket:id="password_label"></td>
-					<td wicket:id="resetPassword"></td>
-				</tr>
-				<tr>
-					<td>karma :</td>
-					<td wicket:id="karma"></td>
-				</tr>
-				<tr>
-					<td wicket:id="lastName_label"></td>
-					<td><input type="text" wicket:id="lastName" /></td>
-				</tr>
-				<tr>
-					<td wicket:id="firstName_label"></td>
-					<td><input type="text" wicket:id="firstName" /></td>
-				</tr>
-				<tr>
-					<td wicket:id="email_label"></td>
-					<td><input type="text" wicket:id="email" size="50" /></td>
-				</tr>
-				<!--
-				<tr>
-					<td wicket:id="role_label"></td>
-					<td>
-						<select wicket:id="role">
-							<option value="CASUAL">CASUAL</option>
-							<option value="REGULAR">REGULAR</option>
-							<option value="ADVANCED">ADVANCED</option>
-							<option value="MANAGER">MANAGER</option>
-							<option value="ADMIN">ADMIN</option>
-						</select>
-					</td>
-				</tr>-->
-				<tr>
-					<td></td>
-					<td><input type="submit" wicket:id="update" value="update"/></td>
-				</tr>
-			</table>
+			<span>account: </span>
+			<span wicket:id="account"></span><br/><br/>
+			<span>password: </span><br/>
+			<input type="password" wicket:id="password"/><br/><br/>
+			<span>first name </span><br/>
+			<input type="text" wicket:id="firstName"/><br/><br/>
+			<span>last name </span><br/>
+			<input type="text" wicket:id="lastName"/><br/><br/>
+			<span>email </span><br/>
+			<input type="text" wicket:id="email"/><br/><br/>
+			<span>karma: </span>
+			<span wicket:id="karma"></span><br/><br/>
+			<input type="submit" wicket:id="update" value="update"/>
 		</form>
 		<div wicket:id="feedback" id="feedback"></div>
 	</div>

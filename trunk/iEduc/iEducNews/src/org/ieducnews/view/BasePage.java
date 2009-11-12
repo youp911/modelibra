@@ -9,8 +9,8 @@ public abstract class BasePage extends WebPage {
 
 	public BasePage() {
 		add(new MenuPanel("menu"));
-		add(new FooterPanel("footer"));
 		add(new MenuMemberPanel("member"));
+		add(new FooterPanel("footer"));
 	}
 
 }

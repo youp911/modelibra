@@ -1,28 +1,17 @@
 package org.ieducnews.view.concept.member;
 
-import java.util.List;
-
-import javax.mail.internet.AddressException;
-
 import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.form.Button;
-import org.apache.wicket.markup.html.form.CheckBox;
-import org.apache.wicket.markup.html.form.ChoiceRenderer;
-import org.apache.wicket.markup.html.form.DropDownChoice;
 import org.apache.wicket.markup.html.form.Form;
+import org.apache.wicket.markup.html.form.PasswordTextField;
+import org.apache.wicket.markup.html.form.RequiredTextField;
 import org.apache.wicket.markup.html.form.TextField;
-import org.apache.wicket.markup.html.link.Link;
 import org.apache.wicket.markup.html.panel.FeedbackPanel;
 import org.apache.wicket.model.CompoundPropertyModel;
-import org.apache.wicket.model.Model;
+import org.apache.wicket.util.convert.IConverter;
 import org.ieducnews.model.concept.member.Member;
-import org.ieducnews.model.concept.member.Members;
-import org.ieducnews.model.concept.member.Member.SecurityRole;
-import org.ieducnews.model.concept.weblink.WebLink;
-import org.ieducnews.model.concept.weblink.WebLinks;
 import org.ieducnews.model.type.Email;
 import org.ieducnews.view.BasePage;
-import org.ieducnews.view.HomePage;
 import org.ieducnews.view.WebApp;
 import org.ieducnews.view.WebAppSession;
 import org.ieducnews.view.type.EmailConverter;
@@ -30,83 +19,67 @@ import org.ieducnews.view.type.EmailConverter;
 public class MemberPage extends BasePage {
 
 	public MemberPage(final Member member) {
-		final WebApp webApp = (WebApp) getApplication();
-		WebAppSession webAppSession = (WebAppSession) getSession();
-		
 		Form<Member> form = new Form<Member>("form",
 				new CompoundPropertyModel<Member>(member));
-		
-		form.add(new Label("account",member.getAccount()));
-		form.add(new Label("karma",member.getKarma().toString()));
-		
-		Label password_label = new Label("password_label","password :");
-		Label retrivePassword = new Label("resetPassword","reset password");
-		//Link Reset Password
-		form.add(password_label);
-		form.add(retrivePassword);
-		
-		Label lastName_label = new Label("lastName_label","last name :");
-		final TextField<String> lastName = new TextField<String>("lastName", new Model(member.getLastName()));
-		form.add(lastName_label);
-		form.add(lastName);
-		
-		Label firstName_label = new Label("firstName_label","first name :");
-		final TextField<String> firstName = new TextField<String>("firstName", new Model(member.getFirstName()));
-		form.add(firstName_label);
-		form.add(firstName);
-		
-		Label email_label = new Label("email_label","email :");
-		final TextField<String> email = new TextField<String>("email", new Model(member.getEmail()));
-		form.add(email_label);
-		form.add(email);
-		
-		//Label role_label = new Label("role_label","security role :");
-		
-				
-		//form.add(role_label);
-		//form.add(role);
-		
-		Button update = new Button("update") {
-			@Override
-			public void onSubmit() {				
-				member.setLastName(lastName.getDefaultModelObjectAsString());
-				member.setFirstName(firstName.getDefaultModelObjectAsString());
-				try {
-					member.setEmail(new Email(email.getDefaultModelObjectAsString()));
-				} catch (AddressException e) {
-					error(email.getDefaultModelObjectAsString() + " is not a valid email.");
-				}
-				webApp.getDomainModel().save();
-			}
-		};
-		form.add(update);
-		
+		form.add(new Label("account"));
+		form.add(new PasswordTextField("password"));
+		form.add(new Label("karma"));
+		form.add(new TextField<String>("lastName"));
+		form.add(new TextField<String>("firstName"));
+		form.add(new EmailField("email", Email.class));
+		form.add(new UpdateButton("update", (WebApp) getApplication()));
 		add(form);
-		
-		if (!isOwningMemberOrAdmin(member)){
-			password_label.setVisible(false);
-			retrivePassword.setVisible(false);
-			lastName_label.setVisible(false);
-			lastName.setVisible(false);
-			firstName_label.setVisible(false);
-			firstName.setVisible(false);
-			email_label.setVisible(false);
-			email.setVisible(false);
-			update.setVisible(false);
-		}
-		
 		add(new FeedbackPanel("feedback"));
-	}
-	
-	private boolean isOwningMemberOrAdmin(Member member){
-		WebAppSession webAppSession = (WebAppSession) getSession();
-		boolean result = false;
-		
-		if (webAppSession.isAuthenticated()){
-			if (webAppSession.getMember().equals(member)) result=true;
-			if (webAppSession.isAdmin()) result=true;
+		if (!isOwningMemberOrAdmin(member)) {
+			/*
+			 * passwordField.setVisible(false); lastNameField.setVisible(false);
+			 * lastNameField.setVisible(false); firstName.setVisible(false);
+			 * emailField.setVisible(false); button.setVisible(false);
+			 */
 		}
-		return result;
-	} 
-	
+	}
+
+	private boolean isOwningMemberOrAdmin(Member member) {
+		WebAppSession webAppSession = (WebAppSession) getSession();
+		if (webAppSession.isAuthenticated()) {
+			if (webAppSession.getMember().equals(member)) {
+				return true;
+			}
+			if (webAppSession.isAdmin()) {
+				return true;
+			}
+		}
+		return false;
+	}
+
+	private class EmailField extends RequiredTextField<Email> {
+
+		private static final long serialVersionUID = 1;
+
+		private EmailField(String wicketId, Class<Email> validationType) {
+			super(wicketId, validationType);
+		}
+
+		public IConverter getConverter(final Class<?> type) {
+			return new EmailConverter();
+		}
+	}
+
+	private class UpdateButton extends Button {
+
+		private static final long serialVersionUID = 1;
+
+		private WebApp webApp;
+
+		private UpdateButton(String wicketId, WebApp webApp) {
+			super(wicketId);
+			this.webApp = webApp;
+		}
+
+		@Override
+		public void onSubmit() {
+			webApp.getDomainModel().save();
+		}
+	}
+
 }
