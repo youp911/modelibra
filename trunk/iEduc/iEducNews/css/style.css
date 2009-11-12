@@ -47,10 +47,25 @@ a:hover {
 	float: right;
 	padding-top: 5px;
 	padding-right: 10px;
+	color: #f2f4df;
+	font-size: 12px;
+	letter-spacing:1px;
+	
 }
 #menuMember a{
 	color: #f2f4df;
-	letter-spacing: 2px;
+	padding-left: 8px;
+}
+
+#menuMember a:hover{
+	color: #4ac4df;
+}
+
+#menuMember span{
+	border-right-width: 1px;
+	border-right-style: dotted;
+	border-right-color: #4ac4df;
+	padding-right: 8px;
 }
 
 
