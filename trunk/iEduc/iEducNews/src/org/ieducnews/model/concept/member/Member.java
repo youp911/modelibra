@@ -9,7 +9,7 @@ public class Member implements Serializable {
 	private static final long serialVersionUID = 1;
 
 	public enum SecurityRole {
-		CASUAL, REGULAR, ADVANCED, MANAGER, ADMIN
+		REGULAR, ADMIN
 	}
 
 	private String lastName;
@@ -24,7 +24,7 @@ public class Member implements Serializable {
 
 	private String password;
 
-	private SecurityRole role = SecurityRole.CASUAL;
+	private SecurityRole role = SecurityRole.REGULAR;
 
 	private Boolean approved = false;
 
