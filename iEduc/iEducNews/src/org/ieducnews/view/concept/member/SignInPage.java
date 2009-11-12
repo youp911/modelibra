@@ -20,6 +20,7 @@ public class SignInPage extends BasePage {
 
 	public SignInPage() {
 		add(new SignInForm("signInForm"));
+		add(new SignUpForm("signUpForm"));
 	    add(new FeedbackPanel("feedback"));
 	}
 	
@@ -49,6 +50,62 @@ public class SignInPage extends BasePage {
 	      if (signIn(entryAccount, entryPassword)) {
 	        if (!continueToOriginalDestination()) {
 	          setResponsePage(getApplication().getHomePage());
+	        }
+	      } else {
+	        error("Unknown username/ password");
+	      }
+	    }
+
+	    public void setPassword(String password) {
+	      this.entryPassword = password;
+	    }
+
+	    public void setAccount(String account) {
+	      this.entryAccount = account;
+	    }
+
+	    private boolean signIn(String username, String password) {
+	      if (username != null && password != null) {
+	    	  WebApp webApp = (WebApp) getApplication();
+	    	  Members members = webApp.getDomainModel().getMembers();
+	    	  Member member = members.retrieveByAccount(username);
+	        if (member != null) {
+	          if (member.getPassword().equals(password)) {
+	        	  WebAppSession.get().setMember(member);
+	            return true;
+	          }
+	        }
+	      }
+	      return false;
+	    }
+	  }
+	
+	private static class SignUpForm extends StatelessForm {
+
+	    private String entryPassword;
+
+	    private String entryAccount;
+
+	    public SignUpForm(final String id) {
+	      super(id);
+	      setModel(new CompoundPropertyModel(this));
+	      add(new TextField("account"));
+	      add(new PasswordTextField("password"));
+	    }
+
+	    public String getPassword() {
+	      return entryPassword;
+	    }
+
+	    public String getAccount() {
+	      return entryAccount;
+	    }
+
+	    @Override
+	    public final void onSubmit() {
+	      if (signIn(entryAccount, entryPassword)) {
+	        if (!continueToOriginalDestination()) {
+	          setResponsePage(EditMemberPage.class);
 	        }
 	      } else {
 	        error("Unknown username/ password");
