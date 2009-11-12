@@ -6,17 +6,36 @@
 	<div id="main_text">
 		<form wicket:id="form">
 			<table border="0">
-				<tr>
-					<td>account:</td>
+				<tr width:"100px">
+					<td>account :</td>
 					<td wicket:id="account"></td>
 				</tr>
 				<tr>
-					<td>karma:</td>
+					<td wicket:id="password_label"></td>
+					<td wicket:id="retrivePassword"></td>
+				</tr>
+				<tr>
+					<td>karma :</td>
 					<td wicket:id="karma"></td>
+				</tr>
+				<tr>
+					<td wicket:id="lastName_label"></td>
+					<td><input type="text" wicket:id="lastName" /></td>
+				</tr>
+				<tr>
+					<td wicket:id="firstName_label"></td>
+					<td><input type="text" wicket:id="firstName" /></td>
+				</tr>
+				<tr>
+					<td wicket:id="email_label"></td>
+					<td><input type="text" wicket:id="email" /></td>
+				</tr>
+				<tr>
+					<td><input type="submit" wicket:id="update" value="submit"/></td>
 				</tr>
 			</table>
 		</form>
-		<!--<div wicket:id="feedback" id="feedback"></div>-->
+		<div wicket:id="feedback" id="feedback"></div>
 	</div>
 </wicket:extend>
 
