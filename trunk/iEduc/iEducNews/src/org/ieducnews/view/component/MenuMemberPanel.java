@@ -12,6 +12,7 @@ import org.ieducnews.model.concept.weblink.WebLinks;
 import org.ieducnews.view.HomePage;
 import org.ieducnews.view.WebApp;
 import org.ieducnews.view.WebAppSession;
+import org.ieducnews.view.concept.member.MemberPage;
 
 public class MenuMemberPanel extends Panel {
 
@@ -42,7 +43,7 @@ public class MenuMemberPanel extends Panel {
 
 		@Override
 		public void onClick() {
-			//setResponsePage(MemberInfoPage.class);
+			setResponsePage(new MemberPage(WebAppSession.get().getMember()));
 		}
 		
 		@Override
