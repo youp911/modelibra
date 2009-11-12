@@ -1,6 +1,8 @@
 package org.ieducnews.view.concept.member;
 import java.net.URL;
 
+import javax.mail.internet.AddressException;
+
 import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.markup.html.form.PasswordTextField;
 import org.apache.wicket.markup.html.form.RequiredTextField;
@@ -10,8 +12,10 @@ import org.apache.wicket.markup.html.panel.FeedbackPanel;
 import org.apache.wicket.model.CompoundPropertyModel;
 import org.ieducnews.model.concept.member.Member;
 import org.ieducnews.model.concept.member.Members;
+import org.ieducnews.model.concept.member.Member.SecurityRole;
 import org.ieducnews.model.concept.weblink.WebLink;
 import org.ieducnews.model.concept.weblink.WebLinks;
+import org.ieducnews.model.type.Email;
 import org.ieducnews.view.BasePage;
 import org.ieducnews.view.WebApp;
 import org.ieducnews.view.WebAppSession;
@@ -33,7 +37,7 @@ public class SignInPage extends BasePage {
 	    public SignInForm(final String id) {
 	      super(id);
 	      setModel(new CompoundPropertyModel(this));
-	      add(new TextField("account"));
+	      add(new RequiredTextField("account"));
 	      add(new PasswordTextField("password"));
 	    }
 
@@ -89,7 +93,7 @@ public class SignInPage extends BasePage {
 	    public SignUpForm(final String id) {
 	      super(id);
 	      setModel(new CompoundPropertyModel(this));
-	      add(new TextField("account"));
+	      add(new RequiredTextField("account"));
 	      add(new PasswordTextField("password"));
 	    }
 
@@ -103,12 +107,12 @@ public class SignInPage extends BasePage {
 
 	    @Override
 	    public final void onSubmit() {
-	      if (signIn(entryAccount, entryPassword)) {
+	      if (signUp(entryAccount, entryPassword)) {
 	        if (!continueToOriginalDestination()) {
 	          setResponsePage(EditMemberPage.class);
 	        }
 	      } else {
-	        error("Unknown username/ password");
+	        error("This account name already exist. Please choose another one.");
 	      }
 	    }
 
@@ -120,17 +124,22 @@ public class SignInPage extends BasePage {
 	      this.entryAccount = account;
 	    }
 
-	    private boolean signIn(String username, String password) {
+	    private boolean signUp(String username, String password) {
 	      if (username != null && password != null) {
 	    	  WebApp webApp = (WebApp) getApplication();
 	    	  Members members = webApp.getDomainModel().getMembers();
-	    	  Member member = members.retrieveByAccount(username);
-	        if (member != null) {
-	          if (member.getPassword().equals(password)) {
-	        	  WebAppSession.get().setMember(member);
-	            return true;
-	          }
-	        }
+	    	  
+	    	  if (!members.contains(username)){
+	    		  Member member = new Member();
+	    		  member.setAccount(username);
+	    		  member.setPassword(password);
+	    		  member.setRole(SecurityRole.REGULAR);
+	    		  member.setApproved(true);
+	    		  members.add(member);
+	    		  webApp.getDomainModel().save();
+	    		  WebAppSession.get().setMember(member);
+	    		  return true;
+	    	  } 
 	      }
 	      return false;
 	    }
