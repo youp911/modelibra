@@ -69,7 +69,7 @@ public final class SignInPage extends BasePage {
 				WebApp webApp = (WebApp) getApplication();
 				Members members = webApp.getDomainModel().getMembers();
 				Member member = members.retrieveByAccount(username);
-				if (member != null) {
+				if (member != null && member.isApproved()) {
 					if (member.getPassword().equals(password)) {
 						WebAppSession.get().setMember(member);
 						return true;
