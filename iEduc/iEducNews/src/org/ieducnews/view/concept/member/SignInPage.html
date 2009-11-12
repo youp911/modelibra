@@ -4,14 +4,14 @@
 <wicket:extend>
 	<div id="title">Sign In</div>
 	<div id="main_text">
-		<form wicket:id="form">
-			<span>Account name</span><br/>
-			<input type="text" wicket:id="account" class="name_textfield"/><br/><br/>
-			<span>Password</span><br/>
-			<input type="text" wicket:id="password" class="name_textfield"/><br/><br/>
-			<input type="submit" wicket:id="save" value="submit"/>
-		</form>
-		<div wicket:id="feedback" id="feedback"></div>
+		<form wicket:id="signInForm">
+	    	<span>account mame</span><br/> 
+	    	<input type="text" wicket:id="account" /><br/><br/>
+	    	<span>password</span><br/>
+	    	<input type="password" wicket:id="password" /><br/><br/>
+	    	<input type="submit" value="sign in" />
+	  	</form>
+  		<div wicket:id="feedback" id="feedback"></div>
 	</div>
 </wicket:extend>
 

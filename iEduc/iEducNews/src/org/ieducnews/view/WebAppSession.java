@@ -23,7 +23,7 @@ public class WebAppSession extends WebSession {
 		return member;
 	}
 	
-	public synchronized void setUser(Member member) {
+	public synchronized void setMember(Member member) {
 		this.member = member;
 		dirty();
 	}
