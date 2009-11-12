@@ -123,8 +123,6 @@ public class DomainModel implements Serializable {
 		}
 		member03.setAccount("amrar");
 		member03.setPassword("ar");
-		member03.setRole(SecurityRole.REGULAR);
-		member03.setApproved(false);
 
 		members.add(member01);
 		members.add(member02);
