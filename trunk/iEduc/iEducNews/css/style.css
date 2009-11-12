@@ -42,6 +42,19 @@ a:hover {
 	padding-left: 4px;	
 }
 
+#menuMember {
+	clear: none;
+	float: right;
+	padding-top: 5px;
+	padding-right: 10px;
+}
+#menuMember a{
+	color: #f2f4df;
+	letter-spacing: 2px;
+}
+
+
+
 #content_top {
 	background-image: url(img/content_top.png);
 	background-repeat: no-repeat;
