@@ -64,11 +64,11 @@ public final class SignInPage extends BasePage {
 			}
 		}
 
-		private boolean signIn(String username, String password) {
-			if (username != null && password != null) {
+		private boolean signIn(String user, String password) {
+			if (user != null && password != null) {
 				WebApp webApp = (WebApp) getApplication();
 				Members members = webApp.getDomainModel().getMembers();
-				Member member = members.retrieveByAccount(username);
+				Member member = members.retrieveByAccount(user);
 				if (member != null && member.isApproved()) {
 					if (member.getPassword().equals(password)) {
 						WebAppSession.get().setMember(member);
@@ -100,13 +100,13 @@ public final class SignInPage extends BasePage {
 			}
 		}
 
-		private boolean signUp(String username, String password) {
-			if (username != null && password != null) {
+		private boolean signUp(String user, String password) {
+			if (user != null && password != null) {
 				WebApp webApp = (WebApp) getApplication();
 				Members members = webApp.getDomainModel().getMembers();
-				if (!members.contains(username)) {
+				if (!members.contains(user)) {
 					Member member = new Member();
-					member.setAccount(username);
+					member.setAccount(user);
 					member.setPassword(password);
 					member.setRole(SecurityRole.REGULAR);
 					member.setKarma(1);
