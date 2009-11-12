@@ -5,14 +5,14 @@
 	<div id="title">Member Information</div>
 	<div id="main_text">
 		<form wicket:id="form">
-			<table border="0">
-				<tr width:"100px">
-					<td>account :</td>
+			<table border="0" width="800">
+				<tr>
+					<td width="80">account :</td>
 					<td wicket:id="account"></td>
 				</tr>
 				<tr>
 					<td wicket:id="password_label"></td>
-					<td wicket:id="retrivePassword"></td>
+					<td wicket:id="resetPassword"></td>
 				</tr>
 				<tr>
 					<td>karma :</td>
@@ -28,10 +28,24 @@
 				</tr>
 				<tr>
 					<td wicket:id="email_label"></td>
-					<td><input type="text" wicket:id="email" /></td>
+					<td><input type="text" wicket:id="email" size="50" /></td>
 				</tr>
+				<!--
 				<tr>
-					<td><input type="submit" wicket:id="update" value="submit"/></td>
+					<td wicket:id="role_label"></td>
+					<td>
+						<select wicket:id="role">
+							<option value="CASUAL">CASUAL</option>
+							<option value="REGULAR">REGULAR</option>
+							<option value="ADVANCED">ADVANCED</option>
+							<option value="MANAGER">MANAGER</option>
+							<option value="ADMIN">ADMIN</option>
+						</select>
+					</td>
+				</tr>-->
+				<tr>
+					<td></td>
+					<td><input type="submit" wicket:id="update" value="update"/></td>
 				</tr>
 			</table>
 		</form>

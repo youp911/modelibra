@@ -6,6 +6,9 @@ import javax.mail.internet.AddressException;
 
 import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.form.Button;
+import org.apache.wicket.markup.html.form.CheckBox;
+import org.apache.wicket.markup.html.form.ChoiceRenderer;
+import org.apache.wicket.markup.html.form.DropDownChoice;
 import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.markup.html.form.TextField;
 import org.apache.wicket.markup.html.link.Link;
@@ -14,6 +17,7 @@ import org.apache.wicket.model.CompoundPropertyModel;
 import org.apache.wicket.model.Model;
 import org.ieducnews.model.concept.member.Member;
 import org.ieducnews.model.concept.member.Members;
+import org.ieducnews.model.concept.member.Member.SecurityRole;
 import org.ieducnews.model.concept.weblink.WebLink;
 import org.ieducnews.model.concept.weblink.WebLinks;
 import org.ieducnews.model.type.Email;
@@ -36,8 +40,8 @@ public class MemberPage extends BasePage {
 		form.add(new Label("karma",member.getKarma().toString()));
 		
 		Label password_label = new Label("password_label","password :");
-		Label retrivePassword = new Label("retrivePassword","retrive password");
-		//Link Retreive Password
+		Label retrivePassword = new Label("resetPassword","reset password");
+		//Link Reset Password
 		form.add(password_label);
 		form.add(retrivePassword);
 		
@@ -56,9 +60,13 @@ public class MemberPage extends BasePage {
 		form.add(email_label);
 		form.add(email);
 		
-		add(form);
+		//Label role_label = new Label("role_label","security role :");
 		
-		form.add(new Button("update") {
+				
+		//form.add(role_label);
+		//form.add(role);
+		
+		Button update = new Button("update") {
 			@Override
 			public void onSubmit() {				
 				member.setLastName(lastName.getDefaultModelObjectAsString());
@@ -69,9 +77,11 @@ public class MemberPage extends BasePage {
 					error(email.getDefaultModelObjectAsString() + " is not a valid email.");
 				}
 				webApp.getDomainModel().save();
-				
 			}
-		});	
+		};
+		form.add(update);
+		
+		add(form);
 		
 		if (!isOwningMemberOrAdmin(member)){
 			password_label.setVisible(false);
@@ -82,6 +92,7 @@ public class MemberPage extends BasePage {
 			firstName.setVisible(false);
 			email_label.setVisible(false);
 			email.setVisible(false);
+			update.setVisible(false);
 		}
 		
 		add(new FeedbackPanel("feedback"));
