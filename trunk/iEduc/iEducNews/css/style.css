@@ -101,6 +101,12 @@ a:hover {
 	background-color: white;
 }
 
+#divided_content {
+	clear: none;
+	float: left;
+	width: 450px;
+}
+
 /* List of links */
 
 #links_list {
@@ -137,6 +143,7 @@ a:hover {
 	padding-right: 15px;
 	margin: 20px;
 	color:#66563E;
+	clear: both;
 }
 
 #main_text input{
@@ -161,6 +168,8 @@ a:hover {
 	margin: 20px;
 	letter-spacing: 2px;
 }
+
+
 
 /* Menu */
 
@@ -309,4 +318,11 @@ a:hover {
 	
 .link_textfield {
 	width: 900px;
+}
+
+.border_left{
+	border-left-width: 1px;
+	border-left-style: solid;
+	border-left-color: #cccccc;
+	margin-left: 22px;	
 }
