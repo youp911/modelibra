@@ -1,5 +1,8 @@
 package org.ieducnews.view;
 
+import org.apache.wicket.Request;
+import org.apache.wicket.Response;
+import org.apache.wicket.Session;
 import org.apache.wicket.protocol.http.WebApplication;
 import org.ieducnews.model.DomainModel;
 
@@ -9,6 +12,7 @@ public class WebApp extends WebApplication {
 
 	public Class<HomePage> getHomePage() {
 		return HomePage.class;
+		
 	}
 
 	public void setDomainModel(DomainModel domainModel) {
@@ -21,6 +25,11 @@ public class WebApp extends WebApplication {
 			domainModel = domainModel.load();
 		}
 		return domainModel;
+	}
+	
+	@Override
+	public Session newSession(Request request, Response response) {
+	return new WebAppSession(request);
 	}
 
 }
