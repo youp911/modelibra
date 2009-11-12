@@ -261,6 +261,10 @@ a:hover {
 #feedback ul {
 	list-style-type: lower-roman;
 	font-weight: bold;
+	border-top-width: 1px;
+	border-top-style: solid;
+	border-top-color: #cccccc;
+	padding-top: 15px;
 }
 
 #feedback span {
