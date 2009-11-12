@@ -22,20 +22,23 @@ public class MemberPage extends BasePage {
 		Form<Member> form = new Form<Member>("form",
 				new CompoundPropertyModel<Member>(member));
 		form.add(new Label("account"));
-		form.add(new PasswordTextField("password"));
+		TextField<String> passwordField = new PasswordTextField("password");
+		form.add(passwordField);
+		TextField<String> lastNameField = new TextField<String>("lastName");
+		form.add(lastNameField);
+		TextField<String> firstNameField = new TextField<String>("firstName");
+		form.add(firstNameField);
+		TextField<Email> emailField = new EmailField("email", Email.class);
+		form.add(emailField);
 		form.add(new Label("karma"));
-		form.add(new TextField<String>("lastName"));
-		form.add(new TextField<String>("firstName"));
-		form.add(new EmailField("email", Email.class));
 		form.add(new UpdateButton("update", (WebApp) getApplication()));
 		add(form);
 		add(new FeedbackPanel("feedback"));
 		if (!isOwningMemberOrAdmin(member)) {
-			/*
-			 * passwordField.setVisible(false); lastNameField.setVisible(false);
-			 * lastNameField.setVisible(false); firstName.setVisible(false);
-			 * emailField.setVisible(false); button.setVisible(false);
-			 */
+			passwordField.setVisible(false);
+			lastNameField.setVisible(false);
+			firstNameField.setVisible(false);
+			emailField.setVisible(false);
 		}
 	}
 
