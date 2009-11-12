@@ -16,13 +16,13 @@ public class MenuMemberPanel extends Panel {
 	public MenuMemberPanel(String wicketId) {
 		super(wicketId);
 
-		SignInLink signInLink = new SignInLink("signin");
+		SignInLink signInLink = new SignInLink("signIn");
 		signInLink.setVisible(!WebAppSession.get().isAuthenticated());
 		add(signInLink);
 
 		add(new AccountLink("member"));
 
-		add(new SignOutLink("signout"));
+		add(new SignOutLink("signOut"));
 	}
 
 	private class AccountLink extends Link<WebPage> {

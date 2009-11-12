@@ -4,7 +4,6 @@ import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.form.Button;
 import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.markup.html.form.PasswordTextField;
-import org.apache.wicket.markup.html.form.RequiredTextField;
 import org.apache.wicket.markup.html.form.TextField;
 import org.apache.wicket.markup.html.panel.FeedbackPanel;
 import org.apache.wicket.model.CompoundPropertyModel;
@@ -12,6 +11,7 @@ import org.apache.wicket.util.convert.IConverter;
 import org.ieducnews.model.concept.member.Member;
 import org.ieducnews.model.type.Email;
 import org.ieducnews.view.BasePage;
+import org.ieducnews.view.HomePage;
 import org.ieducnews.view.WebApp;
 import org.ieducnews.view.WebAppSession;
 import org.ieducnews.view.type.EmailConverter;
@@ -52,7 +52,7 @@ public class MemberPage extends BasePage {
 		return false;
 	}
 
-	private class EmailField extends RequiredTextField<Email> {
+	private class EmailField extends TextField<Email> {
 
 		private static final long serialVersionUID = 1;
 
@@ -79,6 +79,7 @@ public class MemberPage extends BasePage {
 		@Override
 		public void onSubmit() {
 			webApp.getDomainModel().save();
+			setResponsePage(HomePage.class);
 		}
 	}
 

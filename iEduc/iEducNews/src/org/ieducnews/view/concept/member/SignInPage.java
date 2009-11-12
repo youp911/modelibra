@@ -12,52 +12,56 @@ import org.ieducnews.view.BasePage;
 import org.ieducnews.view.WebApp;
 import org.ieducnews.view.WebAppSession;
 
-public class SignInPage extends BasePage {
+public final class SignInPage extends BasePage {
 
 	public SignInPage() {
-		add(new SignInForm("signInForm"));
-		add(new SignUpForm("signUpForm"));
+		add(new SignInForm("signIn"));
+		add(new SignUpForm("signUp"));
 		add(new FeedbackPanel("feedback"));
 	}
 
-	private static class SignInForm extends StatelessForm {
+	private abstract class SignForm extends StatelessForm<SignForm> {
 
-		private String entryPassword;
+		private static final long serialVersionUID = 1;
 
-		private String entryAccount;
+		private String account;
 
-		public SignInForm(final String id) {
-			super(id);
-			setModel(new CompoundPropertyModel(this));
-			add(new RequiredTextField("account"));
+		private String password;
+
+		private SignForm(String wicketId) {
+			super(wicketId);
+			setModel(new CompoundPropertyModel<SignForm>(this));
+			add(new RequiredTextField<String>("account"));
 			add(new PasswordTextField("password"));
 		}
 
-		public String getPassword() {
-			return entryPassword;
+		String getAccount() {
+			return account;
 		}
 
-		public String getAccount() {
-			return entryAccount;
+		String getPassword() {
+			return password;
+		}
+
+	}
+
+	private final class SignInForm extends SignForm {
+
+		private static final long serialVersionUID = 1;
+
+		private SignInForm(String wicketId) {
+			super(wicketId);
 		}
 
 		@Override
-		public final void onSubmit() {
-			if (signIn(entryAccount, entryPassword)) {
+		public void onSubmit() {
+			if (signIn(getAccount(), getPassword())) {
 				if (!continueToOriginalDestination()) {
 					setResponsePage(getApplication().getHomePage());
 				}
 			} else {
 				error("Unknown username/password");
 			}
-		}
-
-		public void setPassword(String password) {
-			this.entryPassword = password;
-		}
-
-		public void setAccount(String account) {
-			this.entryAccount = account;
 		}
 
 		private boolean signIn(String username, String password) {
@@ -76,45 +80,24 @@ public class SignInPage extends BasePage {
 		}
 	}
 
-	private static class SignUpForm extends StatelessForm {
+	private final class SignUpForm extends SignForm {
 
-		private String entryPassword;
+		private static final long serialVersionUID = 1;
 
-		private String entryAccount;
-
-		public SignUpForm(final String id) {
+		private SignUpForm(String id) {
 			super(id);
-			setModel(new CompoundPropertyModel(this));
-			add(new RequiredTextField("account"));
-			add(new PasswordTextField("password"));
-		}
-
-		public String getPassword() {
-			return entryPassword;
-		}
-
-		public String getAccount() {
-			return entryAccount;
 		}
 
 		@Override
 		public final void onSubmit() {
-			if (signUp(entryAccount, entryPassword)) {
+			if (signUp(getAccount(), getPassword())) {
 				if (!continueToOriginalDestination()) {
 					setResponsePage(new MemberPage(WebAppSession.get()
 							.getMember()));
 				}
 			} else {
-				error("This account name already exist. Please choose another one.");
+				error("This account exists already. Please choose another name.");
 			}
-		}
-
-		public void setPassword(String password) {
-			this.entryPassword = password;
-		}
-
-		public void setAccount(String account) {
-			this.entryAccount = account;
 		}
 
 		private boolean signUp(String username, String password) {
