@@ -1,5 +1,7 @@
 package org.ieducnews.view.concept.member;
 
+import java.util.Locale;
+
 import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.form.Button;
 import org.apache.wicket.markup.html.form.Form;
@@ -28,6 +30,8 @@ public class MemberPageTest {
 	private static WicketTester tester;
 
 	private static Member member = new Member();
+	
+	
 
 	@BeforeClass
 	public static void beforeTests() {
@@ -108,13 +112,17 @@ public class MemberPageTest {
 		// given
 		FormTester formTester = tester.newFormTester("form");
 		formTester.setValue("email", "invalid email");
+		
+		// International error string
+		String error = "is not a valid Email.";
+		if (Locale.getDefault()==Locale.CANADA_FRENCH) error="n'est pas valide pour le type Email.";
 
 		// submit
 		formTester.submit();
 
 		// invalid email message is displayed
 		tester
-				.assertErrorMessages(new String[] { "'invalid email' is not a valid Email." });
+				.assertErrorMessages(new String[] { "'invalid email' " + error });
 	}
 
 	@AfterClass
