@@ -114,7 +114,7 @@ public class MemberPageTest {
 
 		// invalid email message is displayed
 		tester
-				.assertErrorMessages(new String[] { "'invalid email' n'est pas valide pour le type Email." });
+				.assertErrorMessages(new String[] { "'invalid email' is not a valid Email." });
 	}
 
 	@AfterClass
