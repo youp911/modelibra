@@ -18,6 +18,7 @@ import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
+import org.mortbay.util.Password;
 
 public class MemberPageTest{
 
@@ -47,7 +48,7 @@ public class MemberPageTest{
 	@Before
 	public void beforeTest() {
 		tester = new WicketTester(webApp);
-		tester.startPage(new MemberPage(null));
+		tester.startPage(new MemberPage(member));
 	}
 
 	@Test
@@ -76,7 +77,7 @@ public class MemberPageTest{
 	public void submitValidUpdate() {
 		// given
 		FormTester formTester = tester.newFormTester("form");
-		formTester.setValue("password", "testpassword_updated");
+		formTester.setValue("password", "password");
 		formTester.setValue("lastName", "lastName_updated");
 		formTester.setValue("firstName", "firstName_updated");
 		formTester.setValue("email", "email@email.com");
