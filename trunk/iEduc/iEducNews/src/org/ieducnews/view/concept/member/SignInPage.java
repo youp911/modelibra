@@ -9,13 +9,12 @@ import org.ieducnews.model.concept.member.Member;
 import org.ieducnews.model.concept.member.Members;
 import org.ieducnews.model.concept.member.Member.SecurityRole;
 import org.ieducnews.view.BasePage;
-import org.ieducnews.view.WebApp;
 
 public final class SignInPage extends BasePage {
 
 	public SignInPage() {
-		add(new SignInForm("signIn"));
-		add(new SignUpForm("signUp"));
+		add(new SignInForm());
+		add(new SignUpForm());
 		add(new FeedbackPanel("feedback"));
 	}
 
@@ -48,15 +47,15 @@ public final class SignInPage extends BasePage {
 
 		private static final long serialVersionUID = 1;
 
-		private SignInForm(String wicketId) {
-			super(wicketId);
+		private SignInForm() {
+			super("signIn");
 		}
 
 		@Override
 		public void onSubmit() {
 			if (signIn(getAccount(), getPassword())) {
 				if (!continueToOriginalDestination()) {
-					setResponsePage(getApplication().getHomePage());
+					setResponsePage(getWebApp().getHomePage());
 				}
 			} else {
 				error("Unknown username/password");
@@ -65,8 +64,7 @@ public final class SignInPage extends BasePage {
 
 		private boolean signIn(String user, String password) {
 			if (user != null && password != null) {
-				WebApp webApp = (WebApp) getApplication();
-				Members members = webApp.getDomainModel().getMembers();
+				Members members = getWebApp().getDomainModel().getMembers();
 				Member member = members.retrieveByAccount(user);
 				if (member != null && member.isApproved()) {
 					if (member.getPassword().equals(password)) {
@@ -83,8 +81,8 @@ public final class SignInPage extends BasePage {
 
 		private static final long serialVersionUID = 1;
 
-		private SignUpForm(String id) {
-			super(id);
+		private SignUpForm() {
+			super("signUp");
 		}
 
 		@Override
@@ -101,8 +99,7 @@ public final class SignInPage extends BasePage {
 
 		private boolean signUp(String user, String password) {
 			if (user != null && password != null) {
-				WebApp webApp = (WebApp) getApplication();
-				Members members = webApp.getDomainModel().getMembers();
+				Members members = getWebApp().getDomainModel().getMembers();
 				if (!members.contains(user)) {
 					Member member = new Member();
 					member.setAccount(user);
@@ -111,7 +108,7 @@ public final class SignInPage extends BasePage {
 					member.setKarma(1);
 					member.setApproved(true);
 					members.add(member);
-					webApp.getDomainModel().save();
+					getWebApp().getDomainModel().save();
 					getWebAppSession().setMember(member);
 					return true;
 				}
