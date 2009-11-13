@@ -12,21 +12,17 @@ import org.ieducnews.model.concept.weblink.WebLink;
 import org.ieducnews.model.concept.weblink.WebLinks;
 import org.ieducnews.view.BasePage;
 import org.ieducnews.view.HomePage;
-import org.ieducnews.view.WebApp;
 import org.ieducnews.view.type.UrlConverter;
 
 public class AddLinkPage extends BasePage {
 
 	public AddLinkPage() {
-		WebApp webApp = (WebApp) getApplication();
-		WebLinks webLinks = webApp.getDomainModel().getWebLinks();
 		WebLink webLink = new WebLink();
-
 		Form<WebLink> form = new Form<WebLink>("form",
 				new CompoundPropertyModel<WebLink>(webLink));
 		form.add(new RequiredTextField<String>("name"));
-		form.add(new LinkField("link", URL.class));
-		form.add(new SaveButton("save", webApp, webLinks, webLink));
+		form.add(new LinkField());
+		form.add(new SaveButton(webLink));
 		add(form);
 		add(new FeedbackPanel("feedback"));
 	}
@@ -35,8 +31,8 @@ public class AddLinkPage extends BasePage {
 
 		private static final long serialVersionUID = 1;
 
-		private LinkField(String wicketId, Class<URL> validationType) {
-			super(wicketId, validationType);
+		private LinkField() {
+			super("link", URL.class);
 		}
 
 		public IConverter getConverter(final Class<?> type) {
@@ -48,27 +44,21 @@ public class AddLinkPage extends BasePage {
 
 		private static final long serialVersionUID = 1;
 
-		private WebApp webApp;
-
-		private WebLinks webLinks;
-
 		private WebLink webLink;
 
-		private SaveButton(String wicketId, WebApp webApp, WebLinks webLinks,
-				WebLink webLink) {
-			super(wicketId);
-			this.webApp = webApp;
-			this.webLinks = webLinks;
+		private SaveButton(WebLink webLink) {
+			super("save");
 			this.webLink = webLink;
 		}
 
 		@Override
 		public void onSubmit() {
+			WebLinks webLinks = getWebApp().getDomainModel().getWebLinks();
 			if (webLinks.contains(webLink.getName())) {
 				error("this name exists already.");
 			} else {
 				webLinks.add(webLink);
-				webApp.getDomainModel().save();
+				getWebApp().getDomainModel().save();
 				setResponsePage(new HomePage());
 			}
 		}

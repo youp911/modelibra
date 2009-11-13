@@ -43,7 +43,7 @@ public class HomePage extends BasePage {
 			listItem.add(new ExternalLink("linkUrl", webLink.getLink()
 					.toString(), webLink.getName()));
 			listItem.add(new Label("linkLabel", webLink.getLink().toString()));
-			listItem.add(new RemoveLink("removeLink", webLink));
+			listItem.add(new RemoveLink(webLink));
 		}
 	}
 
@@ -53,8 +53,8 @@ public class HomePage extends BasePage {
 
 		private WebLink webLink;
 
-		private RemoveLink(String wicketId, WebLink webLink) {
-			super(wicketId);
+		private RemoveLink(WebLink webLink) {
+			super("removeLink");
 			this.webLink = webLink;
 			add(new SimpleAttributeModifier("onclick",
 					"return confirm('Are you sure you want to remove this link?');"));
@@ -62,11 +62,10 @@ public class HomePage extends BasePage {
 
 		@Override
 		public void onClick() {
-			WebApp webApp = (WebApp) getApplication();
-			WebLinks webLinks = webApp.getDomainModel().getWebLinks();
+			WebLinks webLinks = getWebApp().getDomainModel().getWebLinks();
 			if (webLinks.contains(webLink)) {
 				webLinks.remove(webLink);
-				webApp.getDomainModel().save();
+				getWebApp().getDomainModel().save();
 			}
 			setResponsePage(HomePage.class);
 		}

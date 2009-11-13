@@ -12,7 +12,6 @@ import org.ieducnews.model.concept.member.Member;
 import org.ieducnews.model.type.Email;
 import org.ieducnews.view.BasePage;
 import org.ieducnews.view.HomePage;
-import org.ieducnews.view.WebApp;
 import org.ieducnews.view.type.EmailConverter;
 
 public class MemberPage extends BasePage {
@@ -24,9 +23,9 @@ public class MemberPage extends BasePage {
 		form.add(new PasswordTextField("password"));
 		form.add(new TextField<String>("lastName"));
 		form.add(new TextField<String>("firstName"));
-		form.add(new EmailField("email", Email.class));
+		form.add(new EmailField());
 		form.add(new Label("karma"));
-		form.add(new UpdateButton("update", (WebApp) getApplication()));
+		form.add(new UpdateButton());
 		add(form);
 		add(new FeedbackPanel("feedback"));
 	}
@@ -35,8 +34,8 @@ public class MemberPage extends BasePage {
 
 		private static final long serialVersionUID = 1;
 
-		private EmailField(String wicketId, Class<Email> validationType) {
-			super(wicketId, validationType);
+		private EmailField() {
+			super("email", Email.class);
 		}
 
 		public IConverter getConverter(final Class<?> type) {
@@ -48,16 +47,13 @@ public class MemberPage extends BasePage {
 
 		private static final long serialVersionUID = 1;
 
-		private WebApp webApp;
-
-		private UpdateButton(String wicketId, WebApp webApp) {
-			super(wicketId);
-			this.webApp = webApp;
+		private UpdateButton() {
+			super("update");
 		}
 
 		@Override
 		public void onSubmit() {
-			webApp.getDomainModel().save();
+			getWebApp().getDomainModel().save();
 			setResponsePage(HomePage.class);
 		}
 	}
