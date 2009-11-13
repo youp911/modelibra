@@ -1,8 +1,5 @@
 package org.ieducnews.view.concept.member;
 
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
-
 import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.form.Button;
 import org.apache.wicket.markup.html.form.Form;
@@ -16,14 +13,11 @@ import org.ieducnews.model.DomainModel;
 import org.ieducnews.model.concept.member.Member;
 import org.ieducnews.model.concept.member.Members;
 import org.ieducnews.model.config.ModelProperties;
-import org.ieducnews.model.type.Email;
 import org.ieducnews.view.WebApp;
-import org.ieducnews.view.type.EmailConverter;
 import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
-import org.mortbay.util.Password;
 
 public class MemberPageTest{
 
