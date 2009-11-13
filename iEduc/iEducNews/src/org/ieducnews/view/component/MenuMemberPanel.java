@@ -19,9 +19,7 @@ public class MenuMemberPanel extends Panel {
 		SignInLink signInLink = new SignInLink("signIn");
 		signInLink.setVisible(!WebAppSession.get().isAuthenticated());
 		add(signInLink);
-
 		add(new AccountLink("member"));
-
 		add(new SignOutLink("signOut"));
 	}
 
@@ -31,9 +29,10 @@ public class MenuMemberPanel extends Panel {
 
 		private AccountLink(String wicketId) {
 			super(wicketId);
-			String accountName = null;
-			if (WebAppSession.get().isAuthenticated())
+			String accountName = "";
+			if (WebAppSession.get().isAuthenticated()) {
 				accountName = WebAppSession.get().getMember().getAccount();
+			}
 			add(new Label("account", accountName));
 		}
 
@@ -44,10 +43,10 @@ public class MenuMemberPanel extends Panel {
 
 		@Override
 		public boolean isVisible() {
-			Boolean result = false;
-			if (WebAppSession.get().getMember() != null)
-				result = true;
-			return result;
+			if (WebAppSession.get().isAuthenticated()) {
+				return true;
+			}
+			return false;
 		}
 	}
 
@@ -67,7 +66,7 @@ public class MenuMemberPanel extends Panel {
 
 		@Override
 		public boolean isVisible() {
-			if (WebAppSession.get().getMember() != null) {
+			if (WebAppSession.get().isAuthenticated()) {
 				return true;
 			}
 			return false;

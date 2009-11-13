@@ -34,7 +34,7 @@ public class WebAppSession extends WebSession {
 	}
 
 	public boolean isAdmin() {
-		return (member.getRole() == SecurityRole.ADMIN);
+		return (member.getRole().equals(SecurityRole.ADMIN));
 	}
 
 }
