@@ -19,31 +19,33 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-public class MemberPageTest{
+public class MemberPageTest {
 
 	private static DomainModel domainModel;
 
 	private static WebApp webApp;
 
 	private static WicketTester tester;
-	
+
 	private static Member member = new Member();
-	
+
 	@BeforeClass
 	public static void beforeTests() {
-		ModelProperties modelProperties = new ModelProperties(MemberPageTest.class);
+		ModelProperties modelProperties = new ModelProperties(
+				MemberPageTest.class);
 		domainModel = new DomainModel(modelProperties);
 		domainModel = domainModel.load();
 
 		webApp = new WebApp();
 		webApp.setDomainModel(domainModel);
-		
+
 		member.setAccount("testaccount");
 		member.setPassword("testpassword");
 		member.setKarma(1);
 		member.setApproved(true);
-		
+
 	}
+
 	@Before
 	public void beforeTest() {
 		tester = new WicketTester(webApp);
@@ -70,7 +72,7 @@ public class MemberPageTest{
 		tester.assertComponent("feedback", FeedbackPanel.class);
 		tester.assertComponent("footer", Panel.class);
 	}
-	
+
 	@Test
 	public void submitValidUpdate() {
 		// given
@@ -87,33 +89,34 @@ public class MemberPageTest{
 		tester.assertNoErrorMessage();
 		tester.assertNoInfoMessage();
 	}
-	
+
 	@Test
 	public void passwordRequiredError() {
 		// given
 		FormTester formTester = tester.newFormTester("form");
 		formTester.setValue("password", null);
-		
+
 		// submit
 		formTester.submit();
 
 		// required password message is displayed
 		tester.assertErrorMessages(new String[] { "password is required." });
 	}
-	
+
 	@Test
 	public void invalidEmailError() {
 		// given
 		FormTester formTester = tester.newFormTester("form");
 		formTester.setValue("email", "invalid email");
-		
+
 		// submit
 		formTester.submit();
 
 		// invalid email message is displayed
-		tester.assertErrorMessages(new String[] { "'invalid email' n'est pas valide pour le type Email." });
+		tester
+				.assertErrorMessages(new String[] { "'invalid email' n'est pas valide pour le type Email." });
 	}
-	
+
 	@AfterClass
 	public static void afterTests() {
 		Members members = domainModel.getMembers();
