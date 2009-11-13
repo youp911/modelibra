@@ -1,5 +1,8 @@
 package org.ieducnews.view.concept.member;
 
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
+
 import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.form.Button;
 import org.apache.wicket.markup.html.form.Form;
@@ -13,7 +16,9 @@ import org.ieducnews.model.DomainModel;
 import org.ieducnews.model.concept.member.Member;
 import org.ieducnews.model.concept.member.Members;
 import org.ieducnews.model.config.ModelProperties;
+import org.ieducnews.model.type.Email;
 import org.ieducnews.view.WebApp;
+import org.ieducnews.view.type.EmailConverter;
 import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
@@ -72,7 +77,6 @@ public class MemberPageTest{
 		tester.assertComponent("footer", Panel.class);
 	}
 	
-	
 	@Test
 	public void submitValidUpdate() {
 		// given
@@ -88,6 +92,32 @@ public class MemberPageTest{
 		// no messages
 		tester.assertNoErrorMessage();
 		tester.assertNoInfoMessage();
+	}
+	
+	@Test
+	public void passwordRequiredError() {
+		// given
+		FormTester formTester = tester.newFormTester("form");
+		formTester.setValue("password", null);
+		
+		// submit
+		formTester.submit();
+
+		// required password message is displayed
+		tester.assertErrorMessages(new String[] { "password is required." });
+	}
+	
+	@Test
+	public void invalidEmailError() {
+		// given
+		FormTester formTester = tester.newFormTester("form");
+		formTester.setValue("email", "invalid email");
+		
+		// submit
+		formTester.submit();
+
+		// invalid email message is displayed
+		tester.assertErrorMessages(new String[] { "'invalid email' n'est pas valide pour le type Email." });
 	}
 	
 	@AfterClass
