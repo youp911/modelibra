@@ -12,7 +12,6 @@ import org.ieducnews.model.concept.weblink.WebLinks;
 import org.ieducnews.model.config.ModelProperties;
 import org.ieducnews.view.HomePage;
 import org.ieducnews.view.WebApp;
-import org.ieducnews.view.concept.weblink.AddLinkPage;
 import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
