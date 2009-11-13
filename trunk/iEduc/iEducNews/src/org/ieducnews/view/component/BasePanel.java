@@ -7,10 +7,10 @@ public abstract class BasePanel extends Panel {
 
 	private static final long serialVersionUID = 1;
 
-	public BasePanel(String id) {
-		super(id);
+	public BasePanel(String wicketId) {
+		super(wicketId);
 	}
-	
+
 	public WebAppSession getWebAppSession() {
 		return (WebAppSession) getSession();
 	}

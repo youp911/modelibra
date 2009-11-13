@@ -10,8 +10,8 @@ public class FooterPanel extends Panel {
 
 	private static final long serialVersionUID = 1;
 
-	public FooterPanel(String id) {
-		super(id);
+	public FooterPanel(String wicketId) {
+		super(wicketId);
 		add(new HomeLink("new"));
 		add(new BookmarkablePageLink<WebPage>("about", AboutPage.class));
 		add(new BookmarkablePageLink<WebPage>("submit", AddLinkPage.class));
