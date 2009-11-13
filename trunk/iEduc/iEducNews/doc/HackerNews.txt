@@ -43,3 +43,30 @@ Member one-to-many WebLink (my submissions)
 WebLink one-to-many Comment (comments on the web link)
 Comment one-to-many Comment (comments on the comment)
 
+Member properties from HN:
+
+    * Saved: Number of stories (weblinks) that you have upvoted
+      onClick transfert to a page that display thoses story
+    * showdead: show unpublished stories and comments
+    * Noprocrast: If you turn it on by setting it to "yes," you'll only be allowed to visit the site for maxvisit minutes at a time, with gaps of minaway minutes in between. The defaults are 20 and 180, which would let you view the site for 20 minutes at a time, and then not allow you back in for 3 hours. You can override noprocrast if you want, in which case your visit clock starts over at zero.
+    * delay: (in minutes) between when you create a comment and when it's visible to others.
+
+showdead: show unpublished stories and comments
+
+Does that mean that comments may be disapproved?
+I suppose that a moderator (there are 30 mods at HN) can unpublish a comment.
+
+delay: (in minutes) between when you create a comment and when it's visible to others.
+
+Do you understand the rationale?
+Yes, its a counter to flame wars. Many sites have a delay to comment reply, because sometimes a series of reply ressemble more of a chat screen than a comment screen :D
+As to why they let the user set this.. this is a mystery. 
+
+StatelessForm
+
+From the Wicket In Actions book
+
+"It’s possible (although probablyrare) for a user to go to the login screen, decide to do something else for an hour,
+then try to log in using that page of the now-expired session, and be confronted with a
+session-expired message. "
+
