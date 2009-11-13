@@ -3,29 +3,32 @@
 
 <wicket:extend>
 	<div id="divided_content">
-		<div id="title">Sign in</div>
+		<div class="section_title">Sign in</div>
 		<div id="main_text">
-			<form id="large_form" wicket:id="signIn">
-		    	<span>account</span><br/> 
-		    	<input type="text" id="big_input" wicket:id="account"/><br/><br/>
-		    	<span>password</span><br/>
-		    	<input type="password" id="big_input" wicket:id="password"/><br/><br/>
-		    	<input type="submit" value="sign in" id="big_input"/>
-		  	</form>
+			<div id="large_form">
+				<form wicket:id="signIn">
+			    	<span>account</span><br/> 
+			    	<input type="text" class="inputNormal" wicket:id="account"/><br/> 
+			    	<span>password</span><br/>
+			    	<input type="password" class="inputNormal" wicket:id="password"/><br/>
+			    	<input type="submit" value="sign in"/>
+			  	</form>
+			  </div>
 		</div>
 	</div>
 	
-	<div id="divided_content" class="border_left">
-		<div id="title">Create account</div>
+	<div id="divided_content" class="div_border_left">
+		<div class="section_title">Create account</div>
 		<div id="main_text">
-			<form id="large_form" wicket:id="signUp">
-		    	<span>account</span><br/> 
-		    	<input type="text" id="big_input" wicket:id="account"/><br/><br/>
-		    	<span>password</span><br/>
-		    	<input type="password" id="big_input" wicket:id="password"/><br/><br/>
-		    	<input type="submit" value="create" id="big_input"/>
-		  	</form>
-		  	
+			<div id="large_form">
+				<form id="large_form" wicket:id="signUp">
+			    	<span>account</span><br/> 
+			    	<input type="text" class="inputNormal" wicket:id="account"/><br/>
+			    	<span>password</span><br/>
+			    	<input type="password" class="inputNormal" wicket:id="password"/><br/>
+			    	<input type="submit" value="create"/>
+			  	</form>
+		  	</div>
 		</div>
 	</div>
 

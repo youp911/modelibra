@@ -2,15 +2,17 @@
 <body>
 
 <wicket:extend>
-	<div id="title">Submit a link</div>
+	<div class="section_title">Submit a link</div>
 	<div id="main_text">
-		<form wicket:id="form">
-			<span>name</span><br/>
-			<input type="text" id="big_input" class="long_name" wicket:id="name"/><br/><br/>
-			<span>link</span><br/>
-			<input type="text" id="big_input" class="link" wicket:id="link"/><br/><br/>
-			<input type="submit" value="submit" id="big_input" wicket:id="save"/>
-		</form>
+		<div id="large_form">
+			<form wicket:id="form">
+				<span>name</span><br/>
+				<input type="text" class="inputName" wicket:id="name"/><br/>
+				<span>link</span><br/>
+				<input type="text" class="inputURL" wicket:id="link"/><br/>
+				<input type="submit" value="submit" wicket:id="save"/>
+			</form>
+		</div>
 		<div wicket:id="feedback" id="feedback"></div>
 	</div>
 </wicket:extend>

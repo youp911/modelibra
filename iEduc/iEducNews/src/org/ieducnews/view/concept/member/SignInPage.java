@@ -14,7 +14,7 @@ import org.ieducnews.view.WebAppSession;
 
 public final class SignInPage extends BasePage {
 
-	public SignInPage() {
+	public SignInPage () {
 		add(new SignInForm("signIn"));
 		add(new SignUpForm("signUp"));
 		add(new FeedbackPanel("feedback"));
