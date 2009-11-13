@@ -17,8 +17,7 @@ public class HomePage extends BasePage {
 	public static final int NUMBER_OF_LINKS_ON_ONE_PAGE = 16;
 
 	public HomePage() {
-		WebApp webApp = (WebApp) getApplication();
-		WebLinks webLinks = webApp.getDomainModel().getWebLinks();
+		WebLinks webLinks = getWebApp().getDomainModel().getWebLinks();
 		WebLinks orderedWebLinks = webLinks.orderByName();
 		WebLinksListView listView = new WebLinksListView("webLinks",
 				orderedWebLinks.getList());
@@ -74,8 +73,8 @@ public class HomePage extends BasePage {
 
 		@Override
 		public boolean isVisible() {
-			if (WebAppSession.get().isAuthenticated()) {
-				return WebAppSession.get().isAdmin();
+			if (getWebAppSession().isAuthenticated()) {
+				return getWebAppSession().isAdmin();
 			}
 			return false;
 		}
