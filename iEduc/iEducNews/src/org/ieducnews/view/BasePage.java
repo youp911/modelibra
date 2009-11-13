@@ -13,4 +13,12 @@ public abstract class BasePage extends WebPage {
 		add(new FooterPanel("footer"));
 	}
 
+	public WebApp getWebApp() {
+		return (WebApp) getApplication();
+	}
+
+	public WebAppSession getWebAppSession() {
+		return (WebAppSession) getSession();
+	}
+
 }

@@ -1,7 +1,6 @@
 package org.ieducnews.view;
 
 import org.apache.wicket.Request;
-import org.apache.wicket.Session;
 import org.apache.wicket.protocol.http.WebSession;
 import org.ieducnews.model.concept.member.Member;
 import org.ieducnews.model.concept.member.Member.SecurityRole;
@@ -12,21 +11,17 @@ public class WebAppSession extends WebSession {
 
 	private Member member;
 
-	public static WebAppSession get() {
-		return (WebAppSession) Session.get();
-	}
-
 	public WebAppSession(Request request) {
 		super(request);
 	}
 
-	public synchronized Member getMember() {
+	public Member getMember() {
 		return member;
 	}
 
-	public synchronized void setMember(Member member) {
-		this.member = member;
+	public void setMember(Member member) {
 		dirty();
+		this.member = member;
 	}
 
 	public boolean isAuthenticated() {

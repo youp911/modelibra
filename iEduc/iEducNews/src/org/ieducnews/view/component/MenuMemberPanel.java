@@ -3,13 +3,12 @@ package org.ieducnews.view.component;
 import org.apache.wicket.markup.html.WebPage;
 import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.link.Link;
-import org.apache.wicket.markup.html.panel.Panel;
 import org.ieducnews.model.concept.weblink.WebLink;
 import org.ieducnews.view.HomePage;
 import org.ieducnews.view.WebAppSession;
 import org.ieducnews.view.concept.member.MemberPage;
 
-public class MenuMemberPanel extends Panel {
+public class MenuMemberPanel extends BasePanel {
 
 	private static final long serialVersionUID = 1;
 
@@ -17,7 +16,7 @@ public class MenuMemberPanel extends Panel {
 		super(wicketId);
 
 		SignInLink signInLink = new SignInLink("signIn");
-		signInLink.setVisible(!WebAppSession.get().isAuthenticated());
+		signInLink.setVisible(!getWebAppSession().isAuthenticated());
 		add(signInLink);
 		add(new AccountLink("member"));
 		add(new SignOutLink("signOut"));
@@ -30,20 +29,20 @@ public class MenuMemberPanel extends Panel {
 		private AccountLink(String wicketId) {
 			super(wicketId);
 			String accountName = "";
-			if (WebAppSession.get().isAuthenticated()) {
-				accountName = WebAppSession.get().getMember().getAccount();
+			if (getWebAppSession().isAuthenticated()) {
+				accountName = getWebAppSession().getMember().getAccount();
 			}
 			add(new Label("account", accountName));
 		}
 
 		@Override
 		public void onClick() {
-			setResponsePage(new MemberPage(WebAppSession.get().getMember()));
+			setResponsePage(new MemberPage(getWebAppSession().getMember()));
 		}
 
 		@Override
 		public boolean isVisible() {
-			if (WebAppSession.get().isAuthenticated()) {
+			if (getWebAppSession().isAuthenticated()) {
 				return true;
 			}
 			return false;
@@ -66,7 +65,7 @@ public class MenuMemberPanel extends Panel {
 
 		@Override
 		public boolean isVisible() {
-			if (WebAppSession.get().isAuthenticated()) {
+			if (getWebAppSession().isAuthenticated()) {
 				return true;
 			}
 			return false;

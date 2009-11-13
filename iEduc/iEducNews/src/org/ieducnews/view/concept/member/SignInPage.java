@@ -10,11 +10,10 @@ import org.ieducnews.model.concept.member.Members;
 import org.ieducnews.model.concept.member.Member.SecurityRole;
 import org.ieducnews.view.BasePage;
 import org.ieducnews.view.WebApp;
-import org.ieducnews.view.WebAppSession;
 
 public final class SignInPage extends BasePage {
 
-	public SignInPage () {
+	public SignInPage() {
 		add(new SignInForm("signIn"));
 		add(new SignUpForm("signUp"));
 		add(new FeedbackPanel("feedback"));
@@ -71,7 +70,7 @@ public final class SignInPage extends BasePage {
 				Member member = members.retrieveByAccount(user);
 				if (member != null && member.isApproved()) {
 					if (member.getPassword().equals(password)) {
-						WebAppSession.get().setMember(member);
+						getWebAppSession().setMember(member);
 						return true;
 					}
 				}
@@ -92,7 +91,7 @@ public final class SignInPage extends BasePage {
 		public final void onSubmit() {
 			if (signUp(getAccount(), getPassword())) {
 				if (!continueToOriginalDestination()) {
-					setResponsePage(new MemberPage(WebAppSession.get()
+					setResponsePage(new MemberPage(getWebAppSession()
 							.getMember()));
 				}
 			} else {
@@ -113,7 +112,7 @@ public final class SignInPage extends BasePage {
 					member.setApproved(true);
 					members.add(member);
 					webApp.getDomainModel().save();
-					WebAppSession.get().setMember(member);
+					getWebAppSession().setMember(member);
 					return true;
 				}
 			}
