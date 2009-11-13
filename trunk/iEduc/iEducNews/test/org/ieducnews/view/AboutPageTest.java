@@ -24,7 +24,7 @@ public class AboutPageTest {
 		tester = new WicketTester(webApp);
 		tester.startPage(AboutPage.class);
 	}
-	
+
 	@Test
 	public void renderAboutPage() {
 		tester.assertRenderedPage(AboutPage.class);
