@@ -10,8 +10,8 @@ public class MenuPanel extends Panel {
 
 	private static final long serialVersionUID = 1;
 
-	public MenuPanel(String id) {
-		super(id);
+	public MenuPanel(String wicketId) {
+		super(wicketId);
 		add(new HomeLink("new"));
 		add(new BookmarkablePageLink<WebPage>("submit", AddLinkPage.class));
 		add(new BookmarkablePageLink<WebPage>("about", AboutPage.class));
