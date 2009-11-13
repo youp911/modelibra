@@ -1,6 +1,5 @@
 package org.ieducnews.view.concept.member;
 
-import org.apache.wicket.markup.html.form.Button;
 import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.markup.html.form.PasswordTextField;
 import org.apache.wicket.markup.html.form.RequiredTextField;
@@ -10,11 +9,9 @@ import org.apache.wicket.util.tester.FormTester;
 import org.apache.wicket.util.tester.WicketTester;
 import org.ieducnews.model.DomainModel;
 import org.ieducnews.model.concept.member.Members;
-import org.ieducnews.model.concept.weblink.WebLinks;
 import org.ieducnews.model.config.ModelProperties;
 import org.ieducnews.view.HomePage;
 import org.ieducnews.view.WebApp;
-import org.ieducnews.view.concept.weblink.AddLinkPage;
 import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
@@ -30,7 +27,8 @@ public class SignInPageTest {
 
 	@BeforeClass
 	public static void beforeTests() {
-		ModelProperties modelProperties = new ModelProperties(SignInPageTest.class);
+		ModelProperties modelProperties = new ModelProperties(
+				SignInPageTest.class);
 		domainModel = new DomainModel(modelProperties);
 		domainModel = domainModel.load();
 
@@ -62,7 +60,7 @@ public class SignInPageTest {
 		tester.assertComponent("feedback", FeedbackPanel.class);
 		tester.assertComponent("footer", Panel.class);
 	}
-	
+
 	@Test
 	public void submitValidSignUp() {
 		// given
@@ -80,7 +78,7 @@ public class SignInPageTest {
 		// redirection
 		tester.assertRenderedPage(MemberPage.class);
 	}
-	
+
 	@Test
 	public void existingAccountError() {
 		// given
@@ -92,9 +90,10 @@ public class SignInPageTest {
 		formTester.submit();
 
 		// existing account message is displayed
-		tester.assertErrorMessages(new String[] { "This account exists already. Please choose another name." });
+		tester
+				.assertErrorMessages(new String[] { "This account exists already. Please choose another name." });
 	}
-	
+
 	@Test
 	public void signUpAccountRequiredError() {
 		// given
@@ -107,7 +106,7 @@ public class SignInPageTest {
 		// required account message is displayed
 		tester.assertErrorMessages(new String[] { "account is required." });
 	}
-	
+
 	@Test
 	public void signUpPasswordRequiredError() {
 		// given
@@ -133,7 +132,7 @@ public class SignInPageTest {
 		// required account message is displayed
 		tester.assertErrorMessages(new String[] { "account is required." });
 	}
-	
+
 	@Test
 	public void signInPasswordRequiredError() {
 		// given
@@ -146,7 +145,7 @@ public class SignInPageTest {
 		// required password message is displayed
 		tester.assertErrorMessages(new String[] { "password is required." });
 	}
-	
+
 	@Test
 	public void unknownUsernameError() {
 		// given
@@ -158,9 +157,10 @@ public class SignInPageTest {
 		formTester.submit();
 
 		// required password message is displayed
-		tester.assertErrorMessages(new String[] { "Unknown username/password" });
+		tester
+				.assertErrorMessages(new String[] { "Unknown username/password" });
 	}
-	
+
 	@Test
 	public void unknownPasswordError() {
 		// given
@@ -172,9 +172,10 @@ public class SignInPageTest {
 		formTester.submit();
 
 		// required password message is displayed
-		tester.assertErrorMessages(new String[] { "Unknown username/password" });
+		tester
+				.assertErrorMessages(new String[] { "Unknown username/password" });
 	}
-	
+
 	@Test
 	public void submitValidSignIn() {
 		// given
