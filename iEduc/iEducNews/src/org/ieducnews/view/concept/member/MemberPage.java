@@ -20,7 +20,7 @@ public class MemberPage extends BasePage {
 		Form<Member> form = new Form<Member>("form",
 				new CompoundPropertyModel<Member>(member));
 		form.add(new Label("account"));
-		form.add(new PasswordTextField("password"));
+		form.add(new PasswordTextField("password").setResetPassword(false));
 		form.add(new TextField<String>("lastName"));
 		form.add(new TextField<String>("firstName"));
 		form.add(new EmailField());
