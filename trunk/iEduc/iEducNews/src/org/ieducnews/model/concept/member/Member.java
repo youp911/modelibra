@@ -100,7 +100,7 @@ public class Member implements Serializable {
 		System.out.println("last name: " + getLastName());
 		System.out.println("first name: " + getFirstName());
 		System.out.println("email: " + getEmail());
-		System.out.println("vote: " + getKarma());
+		System.out.println("karma: " + getKarma());
 		System.out.println("account" + getAccount());
 		System.out.println("password: " + getPassword());
 		System.out.println("role: " + getRole());

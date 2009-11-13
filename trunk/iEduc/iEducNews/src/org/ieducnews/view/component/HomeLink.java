@@ -14,7 +14,7 @@ public class HomeLink extends Link<WebPage> {
 
 	@Override
 	public void onClick() {
-		setResponsePage(new HomePage());
+		setResponsePage(HomePage.class);
 	}
 
 }

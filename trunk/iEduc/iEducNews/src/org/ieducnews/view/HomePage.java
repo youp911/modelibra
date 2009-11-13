@@ -74,10 +74,10 @@ public class HomePage extends BasePage {
 
 		@Override
 		public boolean isVisible() {
-			boolean result = false;
-			if (WebAppSession.get().isAuthenticated())
-				result = WebAppSession.get().isAdmin();
-			return result;
+			if (WebAppSession.get().isAuthenticated()) {
+				return WebAppSession.get().isAdmin();
+			}
+			return false;
 		}
 	}
 

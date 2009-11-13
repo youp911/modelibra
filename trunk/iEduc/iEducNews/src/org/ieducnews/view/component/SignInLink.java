@@ -14,7 +14,7 @@ public class SignInLink extends Link<WebPage> {
 
 	@Override
 	public void onClick() {
-		setResponsePage(new SignInPage());
+		setResponsePage(SignInPage.class);
 	}
 
 }
