@@ -483,6 +483,7 @@ public class BoxModel extends ElementModel {
 			// must be before the setColor
 			this.setExtension(box.isExtension());
 			this.setExtensionName(box.getExtensionName());
+			
 			this.setAbstractDef(box.isAbstractDef());
 			this.setEntry(box.isEntry());
 			this.setRectangle(box.getRectangle());
@@ -493,6 +494,7 @@ public class BoxModel extends ElementModel {
 			this.setName(box.getName());
 			this.setNameInPlural(box.getNameInPlural());
 			this.setAlias(box.getAlias());
+			
 			this.setColor(box.getColor());
 		}
 	}
