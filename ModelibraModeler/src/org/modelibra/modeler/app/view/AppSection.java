@@ -595,14 +595,14 @@ public class AppSection extends JPanel implements ActionListener, Observer,
 					diagramModel.setPersistence((String) aValue);
 					Manager.getSingleton().commit(); // Transaction
 					// ------------------------------
-				} else if (c == 6) {
+				} else if (c == 7) {
 					Manager.getSingleton().startTransaction(
 							"set diagram oid created"); // Transaction
 					diagramModel.setOidCreated(((Boolean) aValue)
 							.booleanValue());
 					Manager.getSingleton().commit(); // Transaction
 					// ------------------------------
-				} else if (c == 7) {
+				} else if (c == 8) {
 					Manager.getSingleton().startTransaction(
 							"set diagram dir name displayed"); // Transaction
 					diagramModel.setDirNameDisplayed(((Boolean) aValue)
