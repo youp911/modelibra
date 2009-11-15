@@ -16,6 +16,7 @@ import java.net.URL;
 
 import javax.mail.internet.AddressException;
 
+import org.ieducnews.model.concept.contribution.Comments;
 import org.ieducnews.model.concept.contribution.Submissions;
 import org.ieducnews.model.concept.contribution.WebLink;
 import org.ieducnews.model.concept.member.Member;
@@ -30,9 +31,11 @@ public class DomainModel implements Serializable {
 
 	private File file;
 
+	private Members members = new Members();
+
 	private Submissions submissions = new Submissions();
 
-	private Members members = new Members();
+	private Comments comments = new Comments();
 
 	public DomainModel() {
 		ModelProperties modelProperties = new ModelProperties(
@@ -128,13 +131,17 @@ public class DomainModel implements Serializable {
 		members.add(member02);
 		members.add(member03);
 	}
+	
+	public Members getMembers() {
+		return members;
+	}
 
 	public Submissions getSubmissions() {
 		return submissions;
 	}
 
-	public Members getMembers() {
-		return members;
+	public Comments getComments() {
+		return comments;
 	}
 
 	public DomainModel load() {
