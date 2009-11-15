@@ -1,42 +1,9 @@
-iEducNews-10
+iEducNews-11
 
-Session
-    WebAppSession Class
-        Member (get, set, isAuthenticated, isAdmin)
-    WebApp
-        Override newSession
-      
-SignInPage
-    SignInForm
-        PasswordTextField
-    SignUpForm
+Member
 
-EditMemberPage
-    PasswordTextField
-        setResetPassword
+approved is by default true
 
-SignInLink
+Contribution abstract class
 
-MenuMemberPanel
-    SignInLink
-        setVisible
-    SignOutLink
-        invalidate session
-    AccountLink
-        Account name label
-    add panel to basepage
-    add an id="menuMember" to css
-
-Remove a link in HomePage
-    add a link to the listitem
-    RemoveLink
-        SimpleAttributeModifier (dialogbox)
-    CSS adminList
-        
-Security roles
-    Regular member and administrator options
-
-SignInPageTest
-
-MemberPageTest
-	
+WebLink extends Contribution

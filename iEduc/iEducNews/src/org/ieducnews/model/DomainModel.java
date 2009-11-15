@@ -16,11 +16,11 @@ import java.net.URL;
 
 import javax.mail.internet.AddressException;
 
+import org.ieducnews.model.concept.contribution.Submissions;
+import org.ieducnews.model.concept.contribution.WebLink;
 import org.ieducnews.model.concept.member.Member;
 import org.ieducnews.model.concept.member.Members;
 import org.ieducnews.model.concept.member.Member.SecurityRole;
-import org.ieducnews.model.concept.weblink.WebLink;
-import org.ieducnews.model.concept.weblink.WebLinks;
 import org.ieducnews.model.config.ModelProperties;
 import org.ieducnews.model.type.Email;
 
@@ -30,7 +30,7 @@ public class DomainModel implements Serializable {
 
 	private File file;
 
-	private WebLinks webLinks = new WebLinks();
+	private Submissions submissions = new Submissions();
 
 	private Members members = new Members();
 
@@ -73,11 +73,11 @@ public class DomainModel implements Serializable {
 			webLink05.setLink(new URL(
 					"http://www.guidetoonlineschools.com/online-classes"));
 
-			webLinks.add(webLink01);
-			webLinks.add(webLink02);
-			webLinks.add(webLink03);
-			webLinks.add(webLink04);
-			webLinks.add(webLink05);
+			submissions.add(webLink01);
+			submissions.add(webLink02);
+			submissions.add(webLink03);
+			submissions.add(webLink04);
+			submissions.add(webLink05);
 		} catch (MalformedURLException e) {
 			System.out.println("Not a valid URL: " + e);
 		}
@@ -129,8 +129,8 @@ public class DomainModel implements Serializable {
 		members.add(member03);
 	}
 
-	public WebLinks getWebLinks() {
-		return webLinks;
+	public Submissions getSubmissions() {
+		return submissions;
 	}
 
 	public Members getMembers() {

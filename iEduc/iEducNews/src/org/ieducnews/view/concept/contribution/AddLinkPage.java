@@ -1,4 +1,4 @@
-package org.ieducnews.view.concept.weblink;
+package org.ieducnews.view.concept.contribution;
 
 import java.net.URL;
 
@@ -8,8 +8,8 @@ import org.apache.wicket.markup.html.form.RequiredTextField;
 import org.apache.wicket.markup.html.panel.FeedbackPanel;
 import org.apache.wicket.model.CompoundPropertyModel;
 import org.apache.wicket.util.convert.IConverter;
-import org.ieducnews.model.concept.weblink.WebLink;
-import org.ieducnews.model.concept.weblink.WebLinks;
+import org.ieducnews.model.concept.contribution.Submissions;
+import org.ieducnews.model.concept.contribution.WebLink;
 import org.ieducnews.view.BasePage;
 import org.ieducnews.view.HomePage;
 import org.ieducnews.view.type.UrlConverter;
@@ -53,11 +53,12 @@ public class AddLinkPage extends BasePage {
 
 		@Override
 		public void onSubmit() {
-			WebLinks webLinks = getWebApp().getDomainModel().getWebLinks();
-			if (webLinks.contains(webLink.getName())) {
+			Submissions submissions = getWebApp().getDomainModel()
+					.getSubmissions();
+			if (submissions.contains(webLink.getName())) {
 				error("this name exists already.");
 			} else {
-				webLinks.add(webLink);
+				submissions.add(webLink);
 				getWebApp().getDomainModel().save();
 				setResponsePage(new HomePage());
 			}
