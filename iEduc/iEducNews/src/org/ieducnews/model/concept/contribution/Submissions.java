@@ -17,7 +17,7 @@ public class Submissions implements Serializable {
 
 	public boolean add(Submission submission) {
 		if (submission instanceof WebLink) {
-			submission.setSpecialization(Submission.Specialization.WEBLINK);
+			submission.setSubtype(Submission.Subtype.WEBLINK);
 			if (submission.getName() == null) {
 				return false;
 			} else {
@@ -28,7 +28,7 @@ public class Submissions implements Serializable {
 				}
 			}
 		} else {
-			submission.setSpecialization(Submission.Specialization.QUESTION);
+			submission.setSubtype(Submission.Subtype.QUESTION);
 		}
 		return submissionsList.add(submission);
 	}
