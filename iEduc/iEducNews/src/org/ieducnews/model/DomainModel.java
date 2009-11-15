@@ -17,6 +17,8 @@ import java.net.URL;
 import javax.mail.internet.AddressException;
 
 import org.ieducnews.model.concept.contribution.Comments;
+import org.ieducnews.model.concept.contribution.Question;
+import org.ieducnews.model.concept.contribution.Submission;
 import org.ieducnews.model.concept.contribution.Submissions;
 import org.ieducnews.model.concept.contribution.WebLink;
 import org.ieducnews.model.concept.member.Member;
@@ -49,41 +51,6 @@ public class DomainModel implements Serializable {
 
 	private void createFile(ModelProperties modelProperties) {
 		file = new File(modelProperties.getFilePath());
-	}
-
-	private void initWebLinks() {
-		try {
-			WebLink webLink01 = new WebLink();
-			webLink01.setName("Hacker News");
-			webLink01.setLink(new URL("http://news.ycombinator.com/"));
-
-			WebLink webLink02 = new WebLink();
-			webLink02.setName("TechCrunch");
-			webLink02.setLink(new URL("http://www.techcrunch.com/"));
-
-			WebLink webLink03 = new WebLink();
-			webLink03.setName("Jane's E-Learning Pick");
-			webLink03.setLink(new URL("http://janeknight.typepad.com/"));
-
-			WebLink webLink04 = new WebLink();
-			webLink04.setName("Web Standards Curriculum");
-			webLink04
-					.setLink(new URL(
-							"http://dev.opera.com/articles/view/1-introduction-to-the-web-standards-cur/"));
-
-			WebLink webLink05 = new WebLink();
-			webLink05.setName("Free Online Classes");
-			webLink05.setLink(new URL(
-					"http://www.guidetoonlineschools.com/online-classes"));
-
-			submissions.add(webLink01);
-			submissions.add(webLink02);
-			submissions.add(webLink03);
-			submissions.add(webLink04);
-			submissions.add(webLink05);
-		} catch (MalformedURLException e) {
-			System.out.println("Not a valid URL: " + e);
-		}
 	}
 
 	private void initMembers() {
@@ -131,7 +98,63 @@ public class DomainModel implements Serializable {
 		members.add(member02);
 		members.add(member03);
 	}
-	
+
+	private void initSubmissions() {
+		try {
+			Member dzenanr = getMembers().retrieveByAccount("dzenanr");
+			Member pascald = getMembers().retrieveByAccount("pascald");
+
+			WebLink webLink01 = new WebLink();
+			webLink01.setName("Hacker News");
+			webLink01.setLink(new URL("http://news.ycombinator.com/"));
+			webLink01.setMember(dzenanr);
+			dzenanr.getSubmissions().add(webLink01);
+
+			WebLink webLink02 = new WebLink();
+			webLink02.setName("TechCrunch");
+			webLink02.setLink(new URL("http://www.techcrunch.com/"));
+			webLink02.setMember(dzenanr);
+			dzenanr.getSubmissions().add(webLink02);
+
+			WebLink webLink03 = new WebLink();
+			webLink03.setName("Jane's E-Learning Pick");
+			webLink03.setLink(new URL("http://janeknight.typepad.com/"));
+			webLink03.setMember(pascald);
+			pascald.getSubmissions().add(webLink03);
+
+			WebLink webLink04 = new WebLink();
+			webLink04.setName("Web Standards Curriculum");
+			webLink04
+					.setLink(new URL(
+							"http://dev.opera.com/articles/view/1-introduction-to-the-web-standards-cur/"));
+			webLink04.setMember(dzenanr);
+			dzenanr.getSubmissions().add(webLink04);
+
+			WebLink webLink05 = new WebLink();
+			webLink05.setName("Free Online Classes");
+			webLink05.setLink(new URL(
+					"http://www.guidetoonlineschools.com/online-classes"));
+			webLink05.setMember(pascald);
+			pascald.getSubmissions().add(webLink05);
+
+			Question question01 = new Question();
+			question01.setText("Hacker News");
+			question01.setSubtype(Submission.Subtype.QUESTION);
+			question01.setMember(dzenanr);
+			dzenanr.getSubmissions().add(question01);
+
+			submissions.add(webLink01);
+			submissions.add(webLink02);
+			submissions.add(webLink03);
+			submissions.add(webLink04);
+			submissions.add(webLink05);
+
+			submissions.add(question01);
+		} catch (MalformedURLException e) {
+			System.out.println("Not a valid URL: " + e);
+		}
+	}
+
 	public Members getMembers() {
 		return members;
 	}
@@ -148,7 +171,7 @@ public class DomainModel implements Serializable {
 		try {
 			if (!file.exists()) {
 				initMembers();
-				initWebLinks();
+				initSubmissions();
 				save();
 			}
 			BufferedInputStream buffer = new BufferedInputStream(
@@ -166,7 +189,6 @@ public class DomainModel implements Serializable {
 	public void save() {
 		try {
 			if (!file.exists()) {
-
 				file.createNewFile();
 				System.out.println("Model file created: "
 						+ file.getAbsolutePath());

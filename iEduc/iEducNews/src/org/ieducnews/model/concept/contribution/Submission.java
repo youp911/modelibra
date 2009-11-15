@@ -8,7 +8,7 @@ public class Submission extends Contribution {
 
 	private String name;
 
-	private Subtype subtype;
+	private Subtype subtype = Subtype.WEBLINK;
 
 	private Member member;
 
