@@ -4,6 +4,9 @@ import java.net.URL;
 import java.util.Date;
 
 import org.ieducnews.model.DomainModel;
+import org.ieducnews.model.concept.contribution.Submission;
+import org.ieducnews.model.concept.contribution.Submissions;
+import org.ieducnews.model.concept.contribution.WebLink;
 import org.ieducnews.model.config.ModelProperties;
 import org.ieducnews.model.type.EasyDate;
 import org.junit.AfterClass;
@@ -25,8 +28,8 @@ public class WebLinksTest {
 
 	@Test
 	public void orderWebLinksByName() throws Exception {
-		WebLinks webLinks = domainModel.getWebLinks();
-		WebLinks orderedWebLinks = webLinks.orderByName();
+		Submissions webLinks = domainModel.getSubmissions();
+		Submissions orderedWebLinks = webLinks.orderByName();
 
 		if (!webLinks.isEmpty()) {
 			Assert.assertFalse(orderedWebLinks.isEmpty());
@@ -39,8 +42,8 @@ public class WebLinksTest {
 
 	@Test
 	public void orderWebLinksByDescendingName() throws Exception {
-		WebLinks webLinks = domainModel.getWebLinks();
-		WebLinks orderedWebLinks = webLinks.orderByName(false);
+		Submissions webLinks = domainModel.getSubmissions();
+		Submissions orderedWebLinks = webLinks.orderByName(false);
 
 		if (!webLinks.isEmpty()) {
 			Assert.assertFalse(orderedWebLinks.isEmpty());
@@ -53,8 +56,8 @@ public class WebLinksTest {
 
 	@Test
 	public void orderWebLinksByCreationDate() throws Exception {
-		WebLinks webLinks = domainModel.getWebLinks();
-		WebLinks orderedWebLinks = webLinks.orderByCreationDate();
+		Submissions webLinks = domainModel.getSubmissions();
+		Submissions orderedWebLinks = webLinks.orderByCreationDate();
 
 		if (!webLinks.isEmpty()) {
 			Assert.assertFalse(orderedWebLinks.isEmpty());
@@ -67,9 +70,9 @@ public class WebLinksTest {
 
 	@Test
 	public void retrieveWebLinkByName() throws Exception {
-		WebLinks webLinks = domainModel.getWebLinks();
+		Submissions webLinks = domainModel.getSubmissions();
 		String expectedName = "Hacker News";
-		WebLink webLink = webLinks.retrieveByName(expectedName);
+		Submission webLink = webLinks.retrieveByName(expectedName);
 		if (webLink != null) {
 			Assert.assertEquals(expectedName, webLink.getName());
 		}
@@ -77,18 +80,18 @@ public class WebLinksTest {
 
 	@Test
 	public void webLinkNotRetrievedByName() throws Exception {
-		WebLinks webLinks = domainModel.getWebLinks();
+		Submissions webLinks = domainModel.getSubmissions();
 		String expectedName = "Educ News";
 		boolean containCheck = webLinks.contains(expectedName);
 		if (!containCheck) {
-			WebLink webLink = webLinks.retrieveByName(expectedName);
+			Submission webLink = webLinks.retrieveByName(expectedName);
 			Assert.assertNull(webLink);
 		}
 	}
 
 	@Test
 	public void validateWebLinkForNullName() throws Exception {
-		WebLinks webLinks = domainModel.getWebLinks();
+		Submissions webLinks = domainModel.getSubmissions();
 		WebLink webLink = new WebLink();
 		Assert.assertFalse(webLinks.add(webLink));
 		Assert.assertFalse(webLinks.contains(webLink));
@@ -96,9 +99,9 @@ public class WebLinksTest {
 
 	@Test
 	public void validateWebLinkForUniqueName() throws Exception {
-		WebLinks webLinks = domainModel.getWebLinks();
+		Submissions webLinks = domainModel.getSubmissions();
 		String expectedName = "Hacker News";
-		WebLink webLink = webLinks.retrieveByName(expectedName);
+		Submission webLink = webLinks.retrieveByName(expectedName);
 		if (webLink != null) {
 			WebLink anotherLink = new WebLink();
 			anotherLink.setName("Hacker News");
@@ -109,9 +112,9 @@ public class WebLinksTest {
 
 	@Test
 	public void selectWebLinksCreatedToday() throws Exception {
-		WebLinks webLinks = domainModel.getWebLinks();
+		Submissions webLinks = domainModel.getSubmissions();
 		Date selectionDate = new Date();
-		WebLinks selectedWebLinks = webLinks.selectByDate(selectionDate);
+		Submissions selectedWebLinks = webLinks.selectByDate(selectionDate);
 
 		System.out.println("selection date: " + selectionDate);
 		EasyDate selectionEasyDate = new EasyDate(selectionDate);
@@ -121,7 +124,7 @@ public class WebLinksTest {
 
 	@Test
 	public void webLinkNotRemoved() throws Exception {
-		WebLinks webLinks = domainModel.getWebLinks();
+		Submissions webLinks = domainModel.getSubmissions();
 		WebLink calendar = new WebLink();
 		calendar.setName("Class Calendar");
 		calendar
@@ -140,7 +143,7 @@ public class WebLinksTest {
 
 	@Test
 	public void removeWebLink() throws Exception {
-		WebLinks webLinks = domainModel.getWebLinks();
+		Submissions webLinks = domainModel.getSubmissions();
 		WebLink gregorianCalendar = new WebLink();
 		gregorianCalendar.setName("Class GregorianCalendar");
 		gregorianCalendar

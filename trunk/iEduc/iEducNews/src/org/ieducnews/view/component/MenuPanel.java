@@ -4,7 +4,7 @@ import org.apache.wicket.markup.html.WebPage;
 import org.apache.wicket.markup.html.link.BookmarkablePageLink;
 import org.apache.wicket.markup.html.panel.Panel;
 import org.ieducnews.view.AboutPage;
-import org.ieducnews.view.concept.weblink.AddLinkPage;
+import org.ieducnews.view.concept.contribution.AddLinkPage;
 
 public class MenuPanel extends Panel {
 

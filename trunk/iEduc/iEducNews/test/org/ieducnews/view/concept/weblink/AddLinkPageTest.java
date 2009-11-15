@@ -8,10 +8,11 @@ import org.apache.wicket.markup.html.panel.Panel;
 import org.apache.wicket.util.tester.FormTester;
 import org.apache.wicket.util.tester.WicketTester;
 import org.ieducnews.model.DomainModel;
-import org.ieducnews.model.concept.weblink.WebLinks;
+import org.ieducnews.model.concept.contribution.Submissions;
 import org.ieducnews.model.config.ModelProperties;
 import org.ieducnews.view.HomePage;
 import org.ieducnews.view.WebApp;
+import org.ieducnews.view.concept.contribution.AddLinkPage;
 import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
@@ -123,7 +124,7 @@ public class AddLinkPageTest {
 
 	@AfterClass
 	public static void afterTests() {
-		WebLinks webLinks = domainModel.getWebLinks();
+		Submissions webLinks = domainModel.getSubmissions();
 		if (webLinks.contains("Test Name")) {
 			webLinks.remove("Test Name");
 			domainModel.save();

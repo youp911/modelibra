@@ -32,8 +32,8 @@ public class HomePageTest {
 	@Test
 	public void containComponents() {
 		tester.assertComponent("menu", Panel.class);
-		tester.assertComponent("webLinks", PageableListView.class);
-		if (domainModel.getWebLinks().size() <= HomePage.NUMBER_OF_LINKS_ON_ONE_PAGE) {
+		tester.assertComponent("submissions", PageableListView.class);
+		if (domainModel.getSubmissions().size() <= HomePage.NUMBER_OF_SUBMISSIONS_ON_ONE_PAGE) {
 			tester.assertInvisible("navigator");
 		} else {
 			tester.assertComponent("navigator", PagingNavigator.class);

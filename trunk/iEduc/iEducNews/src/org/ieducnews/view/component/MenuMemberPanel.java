@@ -3,7 +3,7 @@ package org.ieducnews.view.component;
 import org.apache.wicket.markup.html.WebPage;
 import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.link.Link;
-import org.ieducnews.model.concept.weblink.WebLink;
+import org.ieducnews.model.concept.contribution.WebLink;
 import org.ieducnews.view.HomePage;
 import org.ieducnews.view.WebAppSession;
 import org.ieducnews.view.concept.member.MemberPage;

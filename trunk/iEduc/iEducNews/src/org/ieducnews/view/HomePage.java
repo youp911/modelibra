@@ -9,62 +9,69 @@ import org.apache.wicket.markup.html.link.Link;
 import org.apache.wicket.markup.html.list.ListItem;
 import org.apache.wicket.markup.html.list.PageableListView;
 import org.apache.wicket.markup.html.navigation.paging.PagingNavigator;
-import org.ieducnews.model.concept.weblink.WebLink;
-import org.ieducnews.model.concept.weblink.WebLinks;
+import org.ieducnews.model.concept.contribution.Submission;
+import org.ieducnews.model.concept.contribution.Submissions;
+import org.ieducnews.model.concept.contribution.WebLink;
 
 public class HomePage extends BasePage {
 
-	public static final int NUMBER_OF_LINKS_ON_ONE_PAGE = 16;
+	public static final int NUMBER_OF_SUBMISSIONS_ON_ONE_PAGE = 16;
 
 	public HomePage() {
-		WebLinks webLinks = getWebApp().getDomainModel().getWebLinks();
-		WebLinks orderedWebLinks = webLinks.orderByName();
-		WebLinksListView listView = new WebLinksListView("webLinks",
-				orderedWebLinks.getList());
+		Submissions submissions = getWebApp().getDomainModel().getSubmissions();
+		Submissions orderedSubmissions = submissions.orderByName();
+		SubmissionsListView listView = new SubmissionsListView("submissions",
+				orderedSubmissions.getList());
 		add(listView);
 		PagingNavigator pagingNavigator = new PagingNavigator("navigator",
 				listView);
-		if (orderedWebLinks.size() <= NUMBER_OF_LINKS_ON_ONE_PAGE) {
+		if (orderedSubmissions.size() <= NUMBER_OF_SUBMISSIONS_ON_ONE_PAGE) {
 			pagingNavigator.setVisible(false);
 		}
 		add(pagingNavigator);
 	}
 
-	private class WebLinksListView extends PageableListView<WebLink> {
+	private class SubmissionsListView extends PageableListView<Submission> {
 
 		private static final long serialVersionUID = 1;
 
-		private WebLinksListView(String wicketId, List<WebLink> webLinks) {
-			super(wicketId, webLinks, NUMBER_OF_LINKS_ON_ONE_PAGE);
+		private SubmissionsListView(String wicketId,
+				List<Submission> submissions) {
+			super(wicketId, submissions, NUMBER_OF_SUBMISSIONS_ON_ONE_PAGE);
 		}
 
-		protected void populateItem(ListItem<WebLink> listItem) {
-			WebLink webLink = listItem.getModelObject();
-			listItem.add(new ExternalLink("linkUrl", webLink.getLink()
-					.toString(), webLink.getName()));
-			listItem.add(new Label("linkLabel", webLink.getLink().toString()));
-			listItem.add(new RemoveLink(webLink));
+		protected void populateItem(ListItem<Submission> listItem) {
+			Submission submission = listItem.getModelObject();
+			if (submission.isWebLink()) {
+				WebLink webLink = (WebLink) submission;
+				listItem.add(new ExternalLink("linkUrl", webLink.getLink()
+						.toString(), submission.getName()));
+				listItem.add(new Label("linkLabel", webLink.getLink()
+						.toString()));
+				listItem.add(new RemoveSubmission(submission));
+			}
 		}
 	}
 
-	private class RemoveLink extends Link<WebLink> {
+	private class RemoveSubmission extends Link<Submission> {
 
 		private static final long serialVersionUID = 1;
 
-		private WebLink webLink;
+		private Submission submission;
 
-		private RemoveLink(WebLink webLink) {
-			super("removeLink");
-			this.webLink = webLink;
+		private RemoveSubmission(Submission submission) {
+			super("removeSubmission");
+			this.submission = submission;
 			add(new SimpleAttributeModifier("onclick",
-					"return confirm('Are you sure you want to remove this link?');"));
+					"return confirm('Are you sure you want to remove this submission?');"));
 		}
 
 		@Override
 		public void onClick() {
-			WebLinks webLinks = getWebApp().getDomainModel().getWebLinks();
-			if (webLinks.contains(webLink)) {
-				webLinks.remove(webLink);
+			Submissions submissions = getWebApp().getDomainModel()
+					.getSubmissions();
+			if (submissions.contains(submission)) {
+				submissions.remove(submission);
 				getWebApp().getDomainModel().save();
 			}
 			setResponsePage(HomePage.class);

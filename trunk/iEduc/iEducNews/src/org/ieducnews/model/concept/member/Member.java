@@ -26,7 +26,7 @@ public class Member implements Serializable {
 
 	private SecurityRole role = SecurityRole.REGULAR;
 
-	private Boolean approved = false;
+	private Boolean approved = true;
 
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
