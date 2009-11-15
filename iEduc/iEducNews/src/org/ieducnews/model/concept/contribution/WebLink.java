@@ -2,7 +2,6 @@ package org.ieducnews.model.concept.contribution;
 
 import java.net.URL;
 
-
 public class WebLink extends Submission {
 
 	private static final long serialVersionUID = 1;
@@ -19,7 +18,6 @@ public class WebLink extends Submission {
 
 	public void output() {
 		super.output();
-		System.out.println("name: " + getName());
 		System.out.println("link: " + getLink());
 	}
 

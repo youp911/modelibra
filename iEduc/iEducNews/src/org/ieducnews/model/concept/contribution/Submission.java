@@ -37,6 +37,7 @@ public class Submission extends Contribution {
 
 	public void output() {
 		super.output();
+		System.out.println("name: " + getName());
 		System.out.println("specialization: " + getSpecialization());
 	}
 
