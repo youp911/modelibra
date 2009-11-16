@@ -17,6 +17,16 @@ public class Vote implements Serializable {
 
 	private Comment comment;
 
+	public Vote(Member member, Submission submission) {
+		this.member = member;
+		this.submission = submission;
+	}
+
+	public Vote(Member member, Comment comment) {
+		this.member = member;
+		this.comment = comment;
+	}
+
 	public void setUp(Boolean up) {
 		this.up = up;
 	}

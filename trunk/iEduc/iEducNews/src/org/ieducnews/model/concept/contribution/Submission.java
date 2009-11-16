@@ -18,6 +18,10 @@ public class Submission extends Contribution {
 		WEBLINK, QUESTION
 	}
 
+	public Submission(Member member) {
+		this.member = member;
+	}
+
 	public void setName(String name) {
 		this.name = name;
 	}
@@ -48,14 +52,10 @@ public class Submission extends Contribution {
 		return false;
 	}
 
-	public void setMember(Member member) {
-		this.member = member;
-	}
-
 	public Member getMember() {
 		return member;
 	}
-	
+
 	public Comments getComments() {
 		return comments;
 	}
@@ -65,9 +65,8 @@ public class Submission extends Contribution {
 		System.out.println("name: " + getName());
 		System.out.println("subtype: " + getSubtype());
 
-		Member member = getMember();
 		System.out.println("member account: " + getMember().getAccount());
-		
+
 		getComments().output("Comments");
 	}
 

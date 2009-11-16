@@ -17,7 +17,7 @@ import org.ieducnews.view.type.UrlConverter;
 public class AddSubmissionPage extends BasePage {
 
 	public AddSubmissionPage() {
-		WebLink webLink = new WebLink();
+		WebLink webLink = new WebLink(getMember());
 		Form<WebLink> form = new Form<WebLink>("form",
 				new CompoundPropertyModel<WebLink>(webLink));
 		form.add(new RequiredTextField<String>("name"));

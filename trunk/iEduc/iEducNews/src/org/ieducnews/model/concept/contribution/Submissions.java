@@ -25,9 +25,6 @@ public class Submissions implements Serializable {
 				return false;
 			}
 		}
-		if (submission.getMember() == null) {
-			return false;
-		}
 		if (submission.isWebLink()) {
 			WebLink webLink = (WebLink) submission;
 			if (webLink.getLink() == null) {
