@@ -2,13 +2,16 @@ package org.ieducnews.model.concept.contribution;
 
 import java.net.URL;
 
+import org.ieducnews.model.concept.member.Member;
+
 public class WebLink extends Submission {
 
 	private static final long serialVersionUID = 1;
 
 	private URL link;
-	
-	public WebLink() {
+
+	public WebLink(Member member) {
+		super(member);
 		setSubtype(Submission.Subtype.WEBLINK);
 	}
 

@@ -92,45 +92,39 @@ public class DomainModel implements Serializable {
 			Member dzenanr = getMembers().retrieveByAccount("dzenanr");
 			Member pascald = getMembers().retrieveByAccount("pascald");
 
-			WebLink webLink01 = new WebLink();
+			WebLink webLink01 = new WebLink(dzenanr);
 			webLink01.setName("Hacker News");
 			webLink01.setLink(new URL("http://news.ycombinator.com/"));
-			webLink01.setMember(dzenanr);
 			dzenanr.getSubmissions().add(webLink01);
 
-			WebLink webLink02 = new WebLink();
+			WebLink webLink02 = new WebLink(dzenanr);
 			webLink02.setName("TechCrunch");
 			webLink02.setLink(new URL("http://www.techcrunch.com/"));
-			webLink02.setMember(dzenanr);
 			dzenanr.getSubmissions().add(webLink02);
 
-			WebLink webLink03 = new WebLink();
+			WebLink webLink03 = new WebLink(pascald);
 			webLink03.setName("Jane's E-Learning Pick");
 			webLink03.setLink(new URL("http://janeknight.typepad.com/"));
-			webLink03.setMember(pascald);
 			pascald.getSubmissions().add(webLink03);
 
-			WebLink webLink04 = new WebLink();
+			WebLink webLink04 = new WebLink(dzenanr);
 			webLink04.setName("Web Standards Curriculum");
 			webLink04
 					.setLink(new URL(
 							"http://dev.opera.com/articles/view/1-introduction-to-the-web-standards-cur/"));
-			webLink04.setMember(dzenanr);
 			dzenanr.getSubmissions().add(webLink04);
 
-			WebLink webLink05 = new WebLink();
+			WebLink webLink05 = new WebLink(pascald);
 			webLink05.setName("Free Online Classes");
 			webLink05.setLink(new URL(
 					"http://www.guidetoonlineschools.com/online-classes"));
-			webLink05.setMember(pascald);
 			pascald.getSubmissions().add(webLink05);
 
-			Question question01 = new Question();
+			Question question01 = new Question(dzenanr);
 			question01
 					.setName("Rules for understanding the ranking of Hacker News");
 			question01
 					.setText("Why the ranking is not explained in Guidelines?");
-			question01.setMember(dzenanr);
 			dzenanr.getSubmissions().add(question01);
 
 			submissions.add(webLink01);

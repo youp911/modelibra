@@ -1,6 +1,7 @@
 package org.ieducnews.view;
 
 import org.apache.wicket.markup.html.WebPage;
+import org.ieducnews.model.concept.member.Member;
 import org.ieducnews.view.component.FooterPanel;
 import org.ieducnews.view.component.MenuMemberPanel;
 import org.ieducnews.view.component.MenuPanel;
@@ -19,6 +20,10 @@ public abstract class BasePage extends WebPage {
 
 	public WebAppSession getWebAppSession() {
 		return (WebAppSession) getSession();
+	}
+
+	public Member getMember() {
+		return getWebAppSession().getMember();
 	}
 
 }

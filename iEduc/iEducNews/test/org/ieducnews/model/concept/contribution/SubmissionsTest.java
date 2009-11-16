@@ -92,11 +92,10 @@ public class SubmissionsTest {
 	@Test
 	public void validateSubmissionNullName() throws Exception {
 		Submissions submissions = domainModel.getSubmissions();
-		Submission submission = new WebLink();
 		Members members = domainModel.getMembers();
 		Member member = members.retrieveByAccount("dzenanr");
 		if (member != null) {
-			submission.setMember(member);
+			Submission submission = new WebLink(member);
 			Assert.assertFalse(submissions.add(submission));
 			Assert.assertFalse(submissions.contains(submission));
 		}
@@ -108,12 +107,11 @@ public class SubmissionsTest {
 		String expectedName = "Hacker News";
 		Submission submission = submissions.retrieveByName(expectedName);
 		if (submission != null && submission.isWebLink()) {
-			Submission anotherLink = new WebLink();
-			anotherLink.setName("Hacker News");
 			Members members = domainModel.getMembers();
 			Member member = members.retrieveByAccount("dzenanr");
 			if (member != null) {
-				anotherLink.setMember(member);
+				Submission anotherLink = new WebLink(member);
+				anotherLink.setName("Hacker News");
 				Assert.assertFalse(submissions.add(anotherLink));
 				Assert.assertFalse(submissions.contains(anotherLink));
 			}
@@ -139,39 +137,27 @@ public class SubmissionsTest {
 		Members members = domainModel.getMembers();
 		Member member = members.retrieveByAccount("dzenanr");
 		if (member != null) {
-			WebLink calendarLink = new WebLink();
-			calendarLink.setMember(member);
+			WebLink calendarLink = new WebLink(member);
 			calendarLink.setName("Class Calendar");
 			calendarLink
 					.setLink(new URL(
 							"http://java.sun.com/javase/6/docs/api/java/util/Calendar.html"));
-
-			WebLink gregorianCalendar = new WebLink();
-			gregorianCalendar.setMember(member);
-			gregorianCalendar.setName("Class GregorianCalendar");
-			gregorianCalendar
-					.setLink(new URL(
-							"http://java.sun.com/javase/6/docs/api/java/util/GregorianCalendar.html"));
-
-			submissions.add(calendarLink);
-			Assert.assertFalse(submissions.remove(gregorianCalendar));
+			Assert.assertFalse(submissions.remove(calendarLink));
 		}
 	}
 
 	@Test
 	public void removeSubmission() throws Exception {
 		Submissions submissions = domainModel.getSubmissions();
-		WebLink gregorianCalendarLink = new WebLink();
 		Members members = domainModel.getMembers();
 		Member member = members.retrieveByAccount("dzenanr");
 		if (member != null) {
-			gregorianCalendarLink.setMember(member);
+			WebLink gregorianCalendarLink = new WebLink(member);
 			gregorianCalendarLink.setName("Class GregorianCalendar");
 			gregorianCalendarLink
 					.setLink(new URL(
 							"http://java.sun.com/javase/6/docs/api/java/util/GregorianCalendar.html"));
-
-			submissions.add(gregorianCalendarLink);
+			Assert.assertTrue(submissions.add(gregorianCalendarLink));
 			Assert.assertTrue(submissions.remove(gregorianCalendarLink));
 		}
 	}
