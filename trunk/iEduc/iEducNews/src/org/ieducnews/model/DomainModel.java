@@ -95,45 +95,49 @@ public class DomainModel implements Serializable {
 			WebLink webLink01 = new WebLink(dzenanr);
 			webLink01.setName("Hacker News");
 			webLink01.setLink(new URL("http://news.ycombinator.com/"));
-			dzenanr.getSubmissions().add(webLink01);
+			if (submissions.add(webLink01)) {
+				dzenanr.getSubmissions().add(webLink01);
+			}
 
 			WebLink webLink02 = new WebLink(dzenanr);
 			webLink02.setName("TechCrunch");
 			webLink02.setLink(new URL("http://www.techcrunch.com/"));
-			dzenanr.getSubmissions().add(webLink02);
+			if (submissions.add(webLink02)) {
+				dzenanr.getSubmissions().add(webLink02);
+			}
 
 			WebLink webLink03 = new WebLink(pascald);
 			webLink03.setName("Jane's E-Learning Pick");
 			webLink03.setLink(new URL("http://janeknight.typepad.com/"));
-			pascald.getSubmissions().add(webLink03);
+			if (submissions.add(webLink03)) {
+				pascald.getSubmissions().add(webLink03);
+			}
 
 			WebLink webLink04 = new WebLink(dzenanr);
 			webLink04.setName("Web Standards Curriculum");
 			webLink04
 					.setLink(new URL(
 							"http://dev.opera.com/articles/view/1-introduction-to-the-web-standards-cur/"));
-			dzenanr.getSubmissions().add(webLink04);
+			if (submissions.add(webLink04)) {
+				dzenanr.getSubmissions().add(webLink04);
+			}
 
 			WebLink webLink05 = new WebLink(pascald);
 			webLink05.setName("Free Online Classes");
 			webLink05.setLink(new URL(
 					"http://www.guidetoonlineschools.com/online-classes"));
-			pascald.getSubmissions().add(webLink05);
+			if (submissions.add(webLink05)) {
+				pascald.getSubmissions().add(webLink05);
+			}
 
 			Question question01 = new Question(dzenanr);
 			question01
 					.setName("Rules for understanding the ranking of Hacker News");
 			question01
 					.setText("Why the ranking is not explained in Guidelines?");
-			dzenanr.getSubmissions().add(question01);
-
-			submissions.add(webLink01);
-			submissions.add(webLink02);
-			submissions.add(webLink03);
-			submissions.add(webLink04);
-			submissions.add(webLink05);
-
-			submissions.add(question01);
+			if (submissions.add(question01)) {
+				dzenanr.getSubmissions().add(question01);
+			}
 		} catch (MalformedURLException e) {
 			System.out.println("Not a valid URL: " + e);
 		}
