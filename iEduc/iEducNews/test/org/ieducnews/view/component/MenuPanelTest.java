@@ -41,7 +41,7 @@ public class MenuPanelTest {
 	@Test
 	public void containComponents() {
 		tester.assertComponent("panel:new", Link.class);
-		tester.assertComponent("panel:submit", BookmarkablePageLink.class);
+		tester.assertComponent("panel:submit", SubmissionLink.class);
 		tester.assertComponent("panel:about", BookmarkablePageLink.class);
 	}
 
