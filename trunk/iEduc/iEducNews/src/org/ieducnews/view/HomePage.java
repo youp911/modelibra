@@ -12,6 +12,7 @@ import org.apache.wicket.markup.html.navigation.paging.PagingNavigator;
 import org.ieducnews.model.concept.contribution.Submission;
 import org.ieducnews.model.concept.contribution.Submissions;
 import org.ieducnews.model.concept.contribution.WebLink;
+import org.ieducnews.model.concept.member.Member;
 
 public class HomePage extends BasePage {
 
@@ -86,7 +87,9 @@ public class HomePage extends BasePage {
 			Submissions submissions = getWebApp().getDomainModel()
 					.getSubmissions();
 			if (submissions.remove(submission)) {
+				Member member = getMember();
 				submission.getMember().getSubmissions().remove(submission);
+				member.decrementKarma();
 				getWebApp().getDomainModel().save();
 			}
 			setResponsePage(HomePage.class);

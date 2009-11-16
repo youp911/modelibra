@@ -90,7 +90,7 @@ public class SubmissionsTest {
 	}
 
 	@Test
-	public void validateSubmissionNullName() throws Exception {
+	public void validateSubmissionForNullName() throws Exception {
 		Submissions submissions = domainModel.getSubmissions();
 		Members members = domainModel.getMembers();
 		Member member = members.retrieveByAccount("dzenanr");
@@ -143,6 +143,7 @@ public class SubmissionsTest {
 					.setLink(new URL(
 							"http://java.sun.com/javase/6/docs/api/java/util/Calendar.html"));
 			Assert.assertFalse(submissions.remove(calendarLink));
+			Assert.assertFalse(member.getSubmissions().remove(calendarLink));
 		}
 	}
 
@@ -158,7 +159,13 @@ public class SubmissionsTest {
 					.setLink(new URL(
 							"http://java.sun.com/javase/6/docs/api/java/util/GregorianCalendar.html"));
 			Assert.assertTrue(submissions.add(gregorianCalendarLink));
+			gregorianCalendarLink.incrementPoints();
+			Assert.assertTrue(member.getSubmissions().add(gregorianCalendarLink));
+			member.incrementKarma();
 			Assert.assertTrue(submissions.remove(gregorianCalendarLink));
+			gregorianCalendarLink.decrementPoints();
+			Assert.assertTrue(member.getSubmissions().remove(gregorianCalendarLink));
+			member.decrementKarma();
 		}
 	}
 
