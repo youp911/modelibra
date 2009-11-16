@@ -65,7 +65,8 @@ public class Submission extends Contribution {
 		System.out.println("name: " + getName());
 		System.out.println("subtype: " + getSubtype());
 
-		getMember().output();
+		Member member = getMember();
+		System.out.println("member account: " + getMember().getAccount());
 		
 		getComments().output("Comments");
 	}

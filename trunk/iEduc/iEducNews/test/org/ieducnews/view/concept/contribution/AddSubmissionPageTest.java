@@ -1,4 +1,4 @@
-package org.ieducnews.view.concept.weblink;
+package org.ieducnews.view.concept.contribution;
 
 import org.apache.wicket.markup.html.form.Button;
 import org.apache.wicket.markup.html.form.Form;
@@ -12,13 +12,13 @@ import org.ieducnews.model.concept.contribution.Submissions;
 import org.ieducnews.model.config.ModelProperties;
 import org.ieducnews.view.HomePage;
 import org.ieducnews.view.WebApp;
-import org.ieducnews.view.concept.contribution.AddLinkPage;
+import org.ieducnews.view.concept.contribution.AddSubmissionPage;
 import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-public class AddLinkPageTest {
+public class AddSubmissionPageTest {
 
 	private static DomainModel domainModel;
 
@@ -29,7 +29,7 @@ public class AddLinkPageTest {
 	@BeforeClass
 	public static void beforeTests() {
 		ModelProperties modelProperties = new ModelProperties(
-				AddLinkPageTest.class);
+				AddSubmissionPageTest.class);
 		domainModel = new DomainModel(modelProperties);
 		domainModel = domainModel.load();
 
@@ -40,12 +40,12 @@ public class AddLinkPageTest {
 	@Before
 	public void beforeTest() {
 		tester = new WicketTester(webApp);
-		tester.startPage(AddLinkPage.class);
+		tester.startPage(AddSubmissionPage.class);
 	}
 
 	@Test
 	public void renderAddLinkPage() {
-		tester.assertRenderedPage(AddLinkPage.class);
+		tester.assertRenderedPage(AddSubmissionPage.class);
 		tester.assertNoErrorMessage();
 	}
 

@@ -7,6 +7,10 @@ public class WebLink extends Submission {
 	private static final long serialVersionUID = 1;
 
 	private URL link;
+	
+	public WebLink() {
+		setSubtype(Submission.Subtype.WEBLINK);
+	}
 
 	public void setLink(URL link) {
 		this.link = link;

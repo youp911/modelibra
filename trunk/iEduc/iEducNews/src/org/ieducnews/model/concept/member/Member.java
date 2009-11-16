@@ -12,11 +12,11 @@ public class Member implements Serializable {
 
 	private static final long serialVersionUID = 1;
 
-	private Date creationDate = new Date();
-
 	private String account;
 
 	private String password;
+
+	private Date creationDate = new Date();
 
 	private Boolean approved = true;
 
@@ -52,14 +52,6 @@ public class Member implements Serializable {
 		REGULAR, ADMIN
 	}
 
-	public void setCreationDate(Date creationDate) {
-		this.creationDate = creationDate;
-	}
-
-	public Date getCreationDate() {
-		return creationDate;
-	}
-
 	public void setAccount(String account) {
 		this.account = account;
 	}
@@ -74,6 +66,14 @@ public class Member implements Serializable {
 
 	public String getPassword() {
 		return password;
+	}
+
+	public void setCreationDate(Date creationDate) {
+		this.creationDate = creationDate;
+	}
+
+	public Date getCreationDate() {
+		return creationDate;
 	}
 
 	public void setApproved(Boolean approved) {
@@ -198,7 +198,7 @@ public class Member implements Serializable {
 
 	public void output() {
 		System.out.println("creation date: " + getCreationDate());
-		System.out.println("account" + getAccount());
+		System.out.println("account: " + getAccount());
 		System.out.println("password: " + getPassword());
 		System.out.println("approved: " + getApproved());
 		System.out.println("last name: " + getLastName());

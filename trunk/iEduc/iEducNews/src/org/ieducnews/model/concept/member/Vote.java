@@ -11,8 +11,10 @@ public class Vote implements Serializable {
 
 	private Boolean up;
 
+	private Member member;
+
 	private Submission submission;
-	
+
 	private Comment comment;
 
 	public void setUp(Boolean up) {
@@ -25,6 +27,14 @@ public class Vote implements Serializable {
 
 	public boolean isUp() {
 		return getUp();
+	}
+
+	public void setMember(Member member) {
+		this.member = member;
+	}
+
+	public Member getMember() {
+		return member;
 	}
 
 	public void setSubmission(Submission submission) {
@@ -45,11 +55,11 @@ public class Vote implements Serializable {
 
 	public void output() {
 		System.out.println("text: " + getUp());
-		
+
 		if (getComment() == null) {
-			getSubmission().output();
+			System.out.println("submission name: " + getSubmission().getName());
 		} else {
-			getComment().output();
+			System.out.println("comment text: " + getComment().getText());
 		}
 	}
 

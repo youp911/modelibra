@@ -21,10 +21,9 @@ public class Members implements Serializable {
 			Member retrievedMember = retrieveByAccount(member.getAccount());
 			if (retrievedMember != null) {
 				return false;
-			} else {
-				return membersList.add(member);
 			}
 		}
+		return membersList.add(member);
 	}
 
 	public boolean remove(Member member) {
@@ -87,7 +86,7 @@ public class Members implements Serializable {
 		}
 		return selectedMembers;
 	}
-	
+
 	public Members selectByRole(Member.SecurityRole role) {
 		Members selectedMembers = new Members();
 		for (Member member : membersList) {

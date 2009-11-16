@@ -14,9 +14,9 @@ import org.ieducnews.view.BasePage;
 import org.ieducnews.view.HomePage;
 import org.ieducnews.view.type.UrlConverter;
 
-public class AddLinkPage extends BasePage {
+public class AddSubmissionPage extends BasePage {
 
-	public AddLinkPage() {
+	public AddSubmissionPage() {
 		WebLink webLink = new WebLink();
 		Form<WebLink> form = new Form<WebLink>("form",
 				new CompoundPropertyModel<WebLink>(webLink));

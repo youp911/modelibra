@@ -18,7 +18,6 @@ import javax.mail.internet.AddressException;
 
 import org.ieducnews.model.concept.contribution.Comments;
 import org.ieducnews.model.concept.contribution.Question;
-import org.ieducnews.model.concept.contribution.Submission;
 import org.ieducnews.model.concept.contribution.Submissions;
 import org.ieducnews.model.concept.contribution.WebLink;
 import org.ieducnews.model.concept.member.Member;
@@ -54,49 +53,38 @@ public class DomainModel implements Serializable {
 	}
 
 	private void initMembers() {
-		Member member01 = new Member();
-		member01.setLastName("Ridjanovic");
-		member01.setFirstName("Dzenan");
-		String member01Email = "dzenanr@gmail.com";
 		try {
-			member01.setEmail(new Email(member01Email));
-		} catch (AddressException e) {
-			System.out.println(member01Email + " is not a valid email.");
-		}
-		member01.setAccount("dzenanr");
-		member01.setPassword("dr");
-		member01.setRole(SecurityRole.ADMIN);
-		member01.setApproved(true);
+			Member member01 = new Member();
+			member01.setLastName("Ridjanovic");
+			member01.setFirstName("Dzenan");
+			member01.setEmail(new Email("dzenanr@gmail.com"));
+			member01.setAccount("dzenanr");
+			member01.setPassword("dr");
+			member01.setRole(SecurityRole.ADMIN);
+			member01.setApproved(true);
 
-		Member member02 = new Member();
-		member02.setLastName("Daneault");
-		member02.setFirstName("Pascal");
-		String member02Email = "pascal.daneault@gmail.com";
-		try {
-			member02.setEmail(new Email(member02Email));
-		} catch (AddressException e) {
-			System.out.println(member02Email + " is not a valid email.");
-		}
-		member02.setAccount("pascald");
-		member02.setPassword("pd");
-		member02.setRole(SecurityRole.ADMIN);
-		member02.setApproved(true);
+			Member member02 = new Member();
+			member02.setLastName("Daneault");
+			member02.setFirstName("Pascal");
+			member02.setEmail(new Email("pascal.daneault@gmail.com"));
+			member02.setAccount("pascald");
+			member02.setPassword("pd");
+			member02.setRole(SecurityRole.ADMIN);
+			member02.setApproved(true);
 
-		Member member03 = new Member();
-		member03.setLastName("Ridjanovic");
-		member03.setFirstName("Amra");
-		String member03Email = "amrar@gmail.com";
-		try {
-			member03.setEmail(new Email(member03Email));
-		} catch (AddressException e) {
-			System.out.println(member03Email + " is not a valid email.");
-		}
-		member03.setAccount("amrar");
-		member03.setPassword("ar");
+			Member member03 = new Member();
+			member03.setLastName("Ridjanovic");
+			member03.setFirstName("Amra");
+			member03.setEmail(new Email("amrar@gmail.com"));
+			member03.setAccount("amrar");
+			member03.setPassword("ar");
 
-		members.add(member01);
-		members.add(member02);
-		members.add(member03);
+			members.add(member01);
+			members.add(member02);
+			members.add(member03);
+		} catch (AddressException e) {
+			System.out.println("Not a valid email: " + e);
+		}
 	}
 
 	private void initSubmissions() {
@@ -138,8 +126,10 @@ public class DomainModel implements Serializable {
 			pascald.getSubmissions().add(webLink05);
 
 			Question question01 = new Question();
-			question01.setText("Hacker News");
-			question01.setSubtype(Submission.Subtype.QUESTION);
+			question01
+					.setName("Rules for understanding the ranking of Hacker News");
+			question01
+					.setText("Why the ranking is not explained in Guidelines?");
 			question01.setMember(dzenanr);
 			dzenanr.getSubmissions().add(question01);
 

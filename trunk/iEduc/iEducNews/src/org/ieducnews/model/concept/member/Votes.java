@@ -11,6 +11,12 @@ public class Votes implements Serializable {
 	private List<Vote> votesList = new ArrayList<Vote>();
 
 	public boolean add(Vote vote) {
+		if (vote.getMember() == null) {
+			return false;
+		}
+		if (vote.getSubmission() == null && vote.getComment() == null) {
+			return false;
+		}
 		return votesList.add(vote);
 	}
 
