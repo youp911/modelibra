@@ -16,6 +16,12 @@ public class Comments implements Serializable {
 	private List<Comment> commentsList = new ArrayList<Comment>();
 
 	public boolean add(Comment comment) {
+		if (comment.getMember() == null) {
+			return false;
+		}
+		if (comment.getRepliedToSubmission() == null) {
+			return false;
+		}
 		return commentsList.add(comment);
 	}
 

@@ -10,7 +10,7 @@ import org.ieducnews.model.config.ModelProperties;
 import org.ieducnews.view.AboutPage;
 import org.ieducnews.view.HomePage;
 import org.ieducnews.view.WebApp;
-import org.ieducnews.view.concept.contribution.AddLinkPage;
+import org.ieducnews.view.concept.contribution.AddSubmissionPage;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -54,7 +54,7 @@ public class FooterPanelTest {
 	@Test
 	public void navigateToSubmitLink() {
 		tester.clickLink("panel:submit");
-		tester.assertRenderedPage(AddLinkPage.class);
+		tester.assertRenderedPage(AddSubmissionPage.class);
 	}
 
 	@Test

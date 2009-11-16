@@ -56,10 +56,10 @@ public class Comment extends Contribution {
 		super.output();
 		System.out.println("text: " + getText());
 		
-		getMember().output();
-		getRepliedToSubmission().output();
+		System.out.println("member account: " + getMember().getAccount());
+		System.out.println("replied submission name: " + getRepliedToSubmission().getName());
 		if (getRepliedToComment() != null) {
-			getRepliedToComment().output();
+			System.out.println("replied comment text: " + getRepliedToComment().getText());
 		}
 		
 		getReplies().output("Comment Replies");

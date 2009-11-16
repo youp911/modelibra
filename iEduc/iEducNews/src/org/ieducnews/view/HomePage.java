@@ -42,14 +42,29 @@ public class HomePage extends BasePage {
 
 		protected void populateItem(ListItem<Submission> listItem) {
 			Submission submission = listItem.getModelObject();
+			ExternalLink externalLink = new ExternalLink("linkUrl",
+					"http://ycombinator.com/newsguidelines.");
+			Label linkLabel = new Label("linkLabel");
+			Label nameLabel = new Label("nameLabel");
 			if (submission.isWebLink()) {
 				WebLink webLink = (WebLink) submission;
-				listItem.add(new ExternalLink("linkUrl", webLink.getLink()
-						.toString(), submission.getName()));
-				listItem.add(new Label("linkLabel", webLink.getLink()
-						.toString()));
-				listItem.add(new RemoveSubmission(submission));
+				externalLink = new ExternalLink("linkUrl", webLink.getLink()
+						.toString(), submission.getName());
+				linkLabel = new Label("linkLabel", webLink.getLink().toString());
+				nameLabel.setVisible(false);
+			} else if (submission.isQuestion()) {
+				nameLabel = new Label("nameLabel", submission.getName());
+				externalLink.setVisible(false);
+				linkLabel.setVisible(false);
+			} else {
+				externalLink.setVisible(false);
+				linkLabel.setVisible(false);
+				nameLabel.setVisible(false);
 			}
+			listItem.add(externalLink);
+			listItem.add(linkLabel);
+			listItem.add(nameLabel);
+			listItem.add(new RemoveSubmission(submission));
 		}
 	}
 

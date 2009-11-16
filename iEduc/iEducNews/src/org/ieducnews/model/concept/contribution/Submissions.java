@@ -16,19 +16,28 @@ public class Submissions implements Serializable {
 	private List<Submission> submissionsList = new ArrayList<Submission>();
 
 	public boolean add(Submission submission) {
-		if (submission instanceof WebLink) {
-			submission.setSubtype(Submission.Subtype.WEBLINK);
-			if (submission.getName() == null) {
-				return false;
-			} else {
-				Submission retrievedSubmission = retrieveByName(submission
-						.getName());
-				if (retrievedSubmission != null) {
-					return false;
-				}
-			}
+		if (submission.getName() == null) {
+			return false;
 		} else {
-			submission.setSubtype(Submission.Subtype.QUESTION);
+			Submission retrievedSubmission = retrieveByName(submission
+					.getName());
+			if (retrievedSubmission != null) {
+				return false;
+			}
+		}
+		if (submission.getMember() == null) {
+			return false;
+		}
+		if (submission.isWebLink()) {
+			WebLink webLink = (WebLink) submission;
+			if (webLink.getLink() == null) {
+				return false;
+			}
+		} else if (submission.isQuestion()) {
+			Question question = (Question) submission;
+			if (question.getText() == null) {
+				return false;
+			}
 		}
 		return submissionsList.add(submission);
 	}
@@ -136,14 +145,14 @@ public class Submissions implements Serializable {
 	}
 
 	public Submissions orderByName(boolean ascending) {
-		Submissions orderedWebLinks = new Submissions();
+		Submissions orderedSubmissions = new Submissions();
 		List<Submission> list = getList();
 		Collections.sort(list, NAME_COMPARATOR);
 		if (!ascending) {
 			Collections.reverse(list);
 		}
-		orderedWebLinks.setList(list);
-		return orderedWebLinks;
+		orderedSubmissions.setList(list);
+		return orderedSubmissions;
 	}
 
 	public Submissions orderByName() {
