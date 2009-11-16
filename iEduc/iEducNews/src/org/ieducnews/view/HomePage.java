@@ -85,8 +85,8 @@ public class HomePage extends BasePage {
 		public void onClick() {
 			Submissions submissions = getWebApp().getDomainModel()
 					.getSubmissions();
-			if (submissions.contains(submission)) {
-				submissions.remove(submission);
+			if (submissions.remove(submission)) {
+				submission.getMember().getSubmissions().remove(submission);
 				getWebApp().getDomainModel().save();
 			}
 			setResponsePage(HomePage.class);
