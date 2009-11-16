@@ -17,12 +17,21 @@ public class Comment extends Contribution {
 	private Comments replies = new Comments();
 
 	public Comment(Member member, Submission repliedToSubmission) {
+		if (member == null || repliedToSubmission == null) {
+			throw new RuntimeException(
+					"A comment must have a member and a submission to reply to.");
+		}
 		this.member = member;
 		this.repliedToSubmission = repliedToSubmission;
 	}
-	
-	public Comment(Member member, Submission repliedToSubmission, Comment repliedToComment) {
+
+	public Comment(Member member, Submission repliedToSubmission,
+			Comment repliedToComment) {
 		this(member, repliedToSubmission);
+		if (repliedToComment == null) {
+			throw new RuntimeException(
+					"A comment must have a comment to reply to.");
+		}
 		this.repliedToComment = repliedToComment;
 	}
 

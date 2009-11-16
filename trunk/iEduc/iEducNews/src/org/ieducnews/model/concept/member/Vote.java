@@ -18,11 +18,19 @@ public class Vote implements Serializable {
 	private Comment comment;
 
 	public Vote(Member member, Submission submission) {
+		if (member == null || submission == null) {
+			throw new RuntimeException(
+					"A vote must have a member and a submission.");
+		}
 		this.member = member;
 		this.submission = submission;
 	}
 
 	public Vote(Member member, Comment comment) {
+		if (member == null || comment == null) {
+			throw new RuntimeException(
+					"A vote must have a member and a comment.");
+		}
 		this.member = member;
 		this.comment = comment;
 	}

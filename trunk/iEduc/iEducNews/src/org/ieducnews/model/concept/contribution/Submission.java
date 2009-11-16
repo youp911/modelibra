@@ -19,6 +19,9 @@ public class Submission extends Contribution {
 	}
 
 	public Submission(Member member) {
+		if (member == null) {
+			throw new RuntimeException("A submission must have a member.");
+		}
 		this.member = member;
 	}
 
