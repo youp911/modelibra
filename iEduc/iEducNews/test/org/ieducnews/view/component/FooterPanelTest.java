@@ -41,7 +41,7 @@ public class FooterPanelTest {
 	@Test
 	public void containComponents() {
 		tester.assertComponent("panel:new", Link.class);
-		tester.assertComponent("panel:submit", BookmarkablePageLink.class);
+		tester.assertComponent("panel:submit", Link.class);
 		tester.assertComponent("panel:about", BookmarkablePageLink.class);
 	}
 

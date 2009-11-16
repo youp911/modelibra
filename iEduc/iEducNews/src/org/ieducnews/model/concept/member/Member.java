@@ -115,6 +115,14 @@ public class Member implements Serializable {
 	public void setKarma(Integer karma) {
 		this.karma = karma;
 	}
+	
+	public void incrementKarma() {
+		karma++;
+	}
+	
+	public void decrementKarma() {
+		karma--;
+	}
 
 	public Integer getKarma() {
 		return karma;

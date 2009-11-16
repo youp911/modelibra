@@ -16,12 +16,15 @@ import java.net.URL;
 
 import javax.mail.internet.AddressException;
 
+import org.ieducnews.model.concept.contribution.Comment;
 import org.ieducnews.model.concept.contribution.Comments;
 import org.ieducnews.model.concept.contribution.Question;
+import org.ieducnews.model.concept.contribution.Submission;
 import org.ieducnews.model.concept.contribution.Submissions;
 import org.ieducnews.model.concept.contribution.WebLink;
 import org.ieducnews.model.concept.member.Member;
 import org.ieducnews.model.concept.member.Members;
+import org.ieducnews.model.concept.member.Vote;
 import org.ieducnews.model.concept.member.Member.SecurityRole;
 import org.ieducnews.model.config.ModelProperties;
 import org.ieducnews.model.type.Email;
@@ -92,54 +95,105 @@ public class DomainModel implements Serializable {
 			Member dzenanr = getMembers().retrieveByAccount("dzenanr");
 			Member pascald = getMembers().retrieveByAccount("pascald");
 
-			WebLink webLink01 = new WebLink(dzenanr);
-			webLink01.setName("Hacker News");
-			webLink01.setLink(new URL("http://news.ycombinator.com/"));
-			if (submissions.add(webLink01)) {
-				dzenanr.getSubmissions().add(webLink01);
-			}
+			if (dzenanr != null && pascald != null) {
+				WebLink webLink01 = new WebLink(dzenanr);
+				webLink01.setName("Hacker News");
+				webLink01.setLink(new URL("http://news.ycombinator.com/"));
+				if (submissions.add(webLink01)) {
+					dzenanr.getSubmissions().add(webLink01);
+					webLink01.incrementPoints();
+					dzenanr.incrementKarma();
+				}
 
-			WebLink webLink02 = new WebLink(dzenanr);
-			webLink02.setName("TechCrunch");
-			webLink02.setLink(new URL("http://www.techcrunch.com/"));
-			if (submissions.add(webLink02)) {
-				dzenanr.getSubmissions().add(webLink02);
-			}
+				WebLink webLink02 = new WebLink(dzenanr);
+				webLink02.setName("TechCrunch");
+				webLink02.setLink(new URL("http://www.techcrunch.com/"));
+				if (submissions.add(webLink02)) {
+					dzenanr.getSubmissions().add(webLink02);
+					webLink02.incrementPoints();
+					dzenanr.incrementKarma();
+				}
 
-			WebLink webLink03 = new WebLink(pascald);
-			webLink03.setName("Jane's E-Learning Pick");
-			webLink03.setLink(new URL("http://janeknight.typepad.com/"));
-			if (submissions.add(webLink03)) {
-				pascald.getSubmissions().add(webLink03);
-			}
+				WebLink webLink03 = new WebLink(pascald);
+				webLink03.setName("Jane's E-Learning Pick");
+				webLink03.setLink(new URL("http://janeknight.typepad.com/"));
+				if (submissions.add(webLink03)) {
+					pascald.getSubmissions().add(webLink03);
+					webLink03.incrementPoints();
+					pascald.incrementKarma();
+				}
 
-			WebLink webLink04 = new WebLink(dzenanr);
-			webLink04.setName("Web Standards Curriculum");
-			webLink04
-					.setLink(new URL(
-							"http://dev.opera.com/articles/view/1-introduction-to-the-web-standards-cur/"));
-			if (submissions.add(webLink04)) {
-				dzenanr.getSubmissions().add(webLink04);
-			}
+				WebLink webLink04 = new WebLink(dzenanr);
+				webLink04.setName("Web Standards Curriculum");
+				webLink04
+						.setLink(new URL(
+								"http://dev.opera.com/articles/view/1-introduction-to-the-web-standards-cur/"));
+				if (submissions.add(webLink04)) {
+					dzenanr.getSubmissions().add(webLink04);
+					webLink04.incrementPoints();
+					dzenanr.incrementKarma();
+				}
 
-			WebLink webLink05 = new WebLink(pascald);
-			webLink05.setName("Free Online Classes");
-			webLink05.setLink(new URL(
-					"http://www.guidetoonlineschools.com/online-classes"));
-			if (submissions.add(webLink05)) {
-				pascald.getSubmissions().add(webLink05);
-			}
+				WebLink webLink05 = new WebLink(pascald);
+				webLink05.setName("Free Online Classes");
+				webLink05.setLink(new URL(
+						"http://www.guidetoonlineschools.com/online-classes"));
+				if (submissions.add(webLink05)) {
+					pascald.getSubmissions().add(webLink05);
+					webLink05.incrementPoints();
+					pascald.incrementKarma();
+				}
 
-			Question question01 = new Question(dzenanr);
-			question01
-					.setName("Rules for understanding the ranking of Hacker News");
-			question01
-					.setText("Why the ranking is not explained in Guidelines?");
-			if (submissions.add(question01)) {
-				dzenanr.getSubmissions().add(question01);
+				Question question01 = new Question(dzenanr);
+				question01
+						.setName("Rules for understanding the ranking of Hacker News");
+				question01
+						.setText("Why the ranking is not explained in Guidelines?");
+				if (submissions.add(question01)) {
+					dzenanr.getSubmissions().add(question01);
+					question01.incrementPoints();
+					dzenanr.incrementKarma();
+				}
 			}
 		} catch (MalformedURLException e) {
 			System.out.println("Not a valid URL: " + e);
+		}
+	}
+
+	private void initComments() {
+		Member dzenanr = getMembers().retrieveByAccount("dzenanr");
+		Member pascald = getMembers().retrieveByAccount("pascald");
+		Submission janePick = getSubmissions().retrieveByName(
+				"Jane's E-Learning Pick");
+		if (dzenanr != null && pascald != null && janePick != null) {
+			Comment comment01 = new Comment(dzenanr, janePick);
+			comment01.setText("Is there only one pick per day?");
+			if (comments.add(comment01)) {
+				dzenanr.getComments().add(comment01);
+				janePick.getComments().add(comment01);
+				comment01.incrementPoints();
+			}
+
+			Comment comment02 = new Comment(pascald, janePick, comment01);
+			comment02.setText("It may be more than one.");
+			if (comments.add(comment02)) {
+				pascald.getComments().add(comment02);
+				janePick.getComments().add(comment02);
+				comment01.getReplies().add(comment02);
+				comment02.incrementPoints();
+			}
+		}
+	}
+
+	private void initVotes() {
+		Member dzenanr = getMembers().retrieveByAccount("dzenanr");
+		Submission janePick = getSubmissions().retrieveByName(
+				"Jane's E-Learning Pick");
+		if (dzenanr != null && janePick != null) {
+			Vote vote01 = new Vote(dzenanr, janePick);
+			if (dzenanr.getVotes().add(vote01)) {
+				janePick.incrementPoints();
+			}
 		}
 	}
 
@@ -160,6 +214,8 @@ public class DomainModel implements Serializable {
 			if (!file.exists()) {
 				initMembers();
 				initSubmissions();
+				initComments();
+				initVotes();
 				save();
 			}
 			BufferedInputStream buffer = new BufferedInputStream(

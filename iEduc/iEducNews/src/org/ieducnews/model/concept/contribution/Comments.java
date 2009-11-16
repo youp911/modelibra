@@ -16,10 +16,7 @@ public class Comments implements Serializable {
 	private List<Comment> commentsList = new ArrayList<Comment>();
 
 	public boolean add(Comment comment) {
-		if (comment.getMember() == null) {
-			return false;
-		}
-		if (comment.getRepliedToSubmission() == null) {
+		if (comment.getText() == null) {
 			return false;
 		}
 		return commentsList.add(comment);
@@ -47,6 +44,15 @@ public class Comments implements Serializable {
 
 	private void setList(List<Comment> list) {
 		commentsList = list;
+	}
+	
+	public Comment retrieveByKeyword(String keyword) {
+		for (Comment comment : commentsList) {
+			if (comment.getText().contains(keyword)) {
+				return comment;
+			}
+		}
+		return null;
 	}
 
 	public Comments selectByDate(Date date) {

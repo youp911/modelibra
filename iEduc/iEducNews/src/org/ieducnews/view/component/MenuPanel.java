@@ -2,18 +2,23 @@ package org.ieducnews.view.component;
 
 import org.apache.wicket.markup.html.WebPage;
 import org.apache.wicket.markup.html.link.BookmarkablePageLink;
-import org.apache.wicket.markup.html.panel.Panel;
+import org.apache.wicket.markup.html.link.Link;
 import org.ieducnews.view.AboutPage;
-import org.ieducnews.view.concept.contribution.AddSubmissionPage;
+import org.ieducnews.view.WebAppSession;
 
-public class MenuPanel extends Panel {
+public class MenuPanel extends BasePanel {
 
 	private static final long serialVersionUID = 1;
 
 	public MenuPanel(String wicketId) {
 		super(wicketId);
 		add(new HomeLink("new"));
-		add(new BookmarkablePageLink<WebPage>("submit", AddSubmissionPage.class));
+		Link<WebPage> submissionLink = new SubmissionLink("submit");
+		add(submissionLink);
+		WebAppSession session = getWebAppSession();
+		if (!session.isAuthenticated()) {
+			submissionLink.setVisible(false);
+		}
 		add(new BookmarkablePageLink<WebPage>("about", AboutPage.class));
 	}
 

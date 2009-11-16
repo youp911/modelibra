@@ -39,6 +39,14 @@ public abstract class Contribution implements Serializable {
 		this.points = points;
 	}
 
+	public void incrementPoints() {
+		points++;
+	}
+
+	public void decrementPoints() {
+		points--;
+	}
+
 	public Integer getPoints() {
 		return points;
 	}
