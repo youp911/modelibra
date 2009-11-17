@@ -139,7 +139,8 @@ public class EntityAttributesPanel extends ModelibraPanel implements Observer {
 			List<NeighborConfig> neighborConfigList) {
 		List<NeighborConfig> parentNeighborConfigList = getParentNeighborConfigList(neighborConfigList);
 		if (parentNeighborConfigList.size() > 0) {
-			add(new EntityAbsorbedParentsPanel(entity, parentNeighborConfigList));
+			add(new EntityAbsorbedParentsPanel(contentFrame, entity,
+					parentNeighborConfigList));
 		}
 	}
 

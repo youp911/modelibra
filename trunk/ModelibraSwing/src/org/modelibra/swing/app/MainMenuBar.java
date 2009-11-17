@@ -16,7 +16,6 @@ import javax.swing.KeyStroke;
 import org.modelibra.IDomain;
 import org.modelibra.ModelSession;
 import org.modelibra.action.IHistoryObserver;
-import org.modelibra.config.Config;
 import org.modelibra.swing.domain.model.ModelEntryConceptsTableFrame;
 import org.modelibra.swing.widget.ModelibraPanel;
 import org.modelibra.util.NatLang;
@@ -76,7 +75,8 @@ public class MainMenuBar extends JMenuBar implements IHistoryObserver {
 			public void actionPerformed(ActionEvent e) {
 				App app = mainFrame.getApp();
 				IDomain domain = app.getDomain();
-				Config config = app.getDomain().getDomainConfig().getConfig();
+				// Config config =
+				// app.getDomain().getDomainConfig().getConfig();
 				ModelEntryConceptsTableFrame modelEntryConceptsDisplayTableFrame = new ModelEntryConceptsTableFrame(
 						app, domain.getDomainConfig().getModelConfigList());
 				displayDownRight(mainFrame, modelEntryConceptsDisplayTableFrame);
