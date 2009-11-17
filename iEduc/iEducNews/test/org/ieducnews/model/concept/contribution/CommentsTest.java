@@ -37,6 +37,42 @@ public class CommentsTest {
 
 		orderedComments.output("---Comments ordered by creation date---");
 	}
+	
+	@Test
+	public void addValidComment() throws Exception {
+		Comments comments = domainModel.getComments();
+		Members members = domainModel.getMembers();
+		Member member = members.retrieveByAccount("dzenanr");
+		Submissions submissions = domainModel.getSubmissions();
+		String expectedName = "Hacker News";
+		Submission submission = submissions.retrieveByName(expectedName);
+		if (member != null && submission != null) {
+			Comment comment = new Comment(member, submission);
+			comment.setText("Comment text test");
+			Assert.assertTrue(comments.add(comment));
+			Assert.assertTrue(comments.contains(comment));
+		}
+	}
+	
+	@Test
+	public void addValidReplyComment() throws Exception {
+		Comments comments = domainModel.getComments();
+		Members members = domainModel.getMembers();
+		Member member = members.retrieveByAccount("dzenanr");
+		Submissions submissions = domainModel.getSubmissions();
+		String expectedName = "Hacker News";
+		Submission submission = submissions.retrieveByName(expectedName);
+		if (member != null && submission != null) {
+			Comment comment = new Comment(member, submission);
+			comment.setText("Comment text test");
+			Assert.assertTrue(comments.add(comment));
+			Assert.assertTrue(comments.contains(comment));
+			Comment replyComment = new Comment(member, submission, comment);
+			replyComment.setText("Reply Comment text test");
+			Assert.assertTrue(comments.add(replyComment));
+			Assert.assertTrue(comments.contains(replyComment));
+		}
+	}
 
 	@Test
 	public void validateCommentForNullText() throws Exception {
