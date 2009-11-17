@@ -34,6 +34,7 @@ public class SignInPageTest {
 
 		webApp = new WebApp();
 		webApp.setDomainModel(domainModel);
+
 	}
 
 	@Before
