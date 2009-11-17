@@ -12,9 +12,10 @@ import org.ieducnews.model.concept.contribution.Submissions;
 import org.ieducnews.model.concept.contribution.WebLink;
 import org.ieducnews.view.BasePage;
 import org.ieducnews.view.HomePage;
+import org.ieducnews.view.component.SecuredWebPage;
 import org.ieducnews.view.type.UrlConverter;
 
-public class AddSubmissionPage extends BasePage {
+public class AddSubmissionPage extends SecuredWebPage {
 
 	public AddSubmissionPage() {
 		WebLink webLink = new WebLink(getMember());
