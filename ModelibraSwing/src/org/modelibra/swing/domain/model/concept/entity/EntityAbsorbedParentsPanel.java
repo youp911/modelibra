@@ -8,13 +8,17 @@ import org.modelibra.IEntity;
 import org.modelibra.config.ConceptConfig;
 import org.modelibra.config.NeighborConfig;
 import org.modelibra.config.PropertyConfig;
+import org.modelibra.swing.widget.ModelibraFrame;
 import org.modelibra.swing.widget.ModelibraPanel;
 
 @SuppressWarnings("serial")
 public class EntityAbsorbedParentsPanel extends ModelibraPanel {
 
-	public EntityAbsorbedParentsPanel(IEntity<?> entity,
-			List<NeighborConfig> neighborConfigList) {
+	private ModelibraFrame contentFrame;
+
+	public EntityAbsorbedParentsPanel(ModelibraFrame contentFrame,
+			IEntity<?> entity, List<NeighborConfig> neighborConfigList) {
+		this.contentFrame = contentFrame;
 		setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 		addAbsorbedParents(entity, neighborConfigList);
 	}
@@ -31,7 +35,7 @@ public class EntityAbsorbedParentsPanel extends ModelibraPanel {
 					List<PropertyConfig> essentialPropertyConfigList = parentConceptConfig
 							.getPropertiesConfig()
 							.getEssentialPropertyConfigList();
-					add(new EntityPropertiesPanel(null, true, false, null,
+					add(new EntityPropertiesPanel(contentFrame, true, false, null,
 							parentEntity, essentialPropertyConfigList));
 				}
 			}

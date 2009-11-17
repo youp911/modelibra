@@ -12,7 +12,6 @@ import javax.swing.JScrollPane;
 
 import org.modelibra.IDomainModel;
 import org.modelibra.IEntities;
-import org.modelibra.ModelSession;
 import org.modelibra.config.ConceptConfig;
 import org.modelibra.config.ModelConfig;
 import org.modelibra.swing.domain.model.concept.entity.EntityTableFrame;
@@ -23,11 +22,11 @@ import org.modelibra.util.NatLang;
 @SuppressWarnings("serial")
 public class ConceptTablePanel extends ModelibraPanel {
 
-	public ConceptTablePanel(final ModelibraFrame contextFrame,
+	public ConceptTablePanel(final ModelibraFrame contentFrame,
 			List<ConceptConfig> conceptConfigList) {
-		final NatLang natLang = contextFrame.getApp().getNatLang();
-		final ModelSession modelSession = contextFrame.getApp()
-				.getModelSession();
+		final NatLang natLang = contentFrame.getApp().getNatLang();
+		// final ModelSession modelSession = contextFrame.getApp()
+		// .getModelSession();
 		ConceptTableModel entryConceptTableModel = new ConceptTableModel(
 				conceptConfigList) {
 			protected String getText(String key) {
@@ -55,19 +54,19 @@ public class ConceptTablePanel extends ModelibraPanel {
 					if (currentConceptConfig.isDisplay()) {
 						ModelConfig modelConfig = currentConceptConfig
 								.getModelConfig();
-						IDomainModel model = contextFrame.getApp()
+						IDomainModel model = contentFrame.getApp()
 								.getDomainModel(modelConfig.getCode());
 						IEntities<?> entities = model
 								.getEntry(currentConceptConfig.getCode());
 
 						ModelibraFrame entityTableFrame = new EntityTableFrame(
-								contextFrame.getApp(), true, true, entities,
+								contentFrame.getApp(), true, true, entities,
 								currentConceptConfig.getPropertiesConfig()
 										.getEssentialPropertyConfigList(),
 								currentConceptConfig.getNeighborsConfig()
 										.getList());
-						contextFrame.displayDownRight(entityTableFrame);
-						contextFrame.addChildFrame(entityTableFrame);
+						contentFrame.displayDownRight(entityTableFrame);
+						contentFrame.addChildFrame(entityTableFrame);
 					}
 				}
 			}
@@ -84,19 +83,19 @@ public class ConceptTablePanel extends ModelibraPanel {
 						ModelConfig modelConfig = currentConceptConfig
 								.getModelConfig();
 
-						IDomainModel model = contextFrame.getApp()
+						IDomainModel model = contentFrame.getApp()
 								.getDomainModel(modelConfig.getCode());
 						IEntities<?> entities = model
 								.getEntry(currentConceptConfig.getCode());
 
 						ModelibraFrame entityTableFrame = new EntityTableFrame(
-								contextFrame.getApp(), true, false, entities,
+								contentFrame.getApp(), true, false, entities,
 								currentConceptConfig.getPropertiesConfig()
 										.getEssentialPropertyConfigList(),
 								currentConceptConfig.getNeighborsConfig()
 										.getList());
-						contextFrame.displayDownRight(entityTableFrame);
-						contextFrame.addChildFrame(entityTableFrame);
+						contentFrame.displayDownRight(entityTableFrame);
+						contentFrame.addChildFrame(entityTableFrame);
 					}
 				}
 			}

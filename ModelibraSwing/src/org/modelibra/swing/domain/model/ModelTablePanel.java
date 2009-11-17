@@ -16,12 +16,12 @@ public class ModelTablePanel extends ModelibraPanel {
 
 	private ModelTable modelTable;
 
-	public ModelTablePanel(final ModelibraFrame contextFrame,
+	public ModelTablePanel(final ModelibraFrame contentFrame,
 			List<ModelConfig> modelConfigList) {
 		ModelTableModel modelDisplayTableModel = new ModelTableModel(
 				modelConfigList) {
 			protected String getText(String key) {
-				return contextFrame.getApp().getNatLang().getText(key);
+				return contentFrame.getApp().getNatLang().getText(key);
 			}
 		};
 		modelTable = new ModelTable(modelDisplayTableModel);
