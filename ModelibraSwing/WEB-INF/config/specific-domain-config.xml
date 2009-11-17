@@ -210,6 +210,24 @@
 								
 								<essential>true</essential>
 							</property>
+							
+							<property oid="1236178928892">
+								<code>writerLastName</code>
+								<derived>true</derived>
+								<propertyClass>java.lang.String</propertyClass>
+								
+								<essential>true</essential>
+
+							</property>
+							
+							<property oid="1236178928894">
+								<code>writerFirstName</code>
+								<derived>true</derived>
+								<propertyClass>java.lang.String</propertyClass>
+								
+								<essential>true</essential>
+
+							</property>
 					
 						</properties>
 						

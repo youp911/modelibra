@@ -27,6 +27,7 @@ public class EntityPropertyWidgetPanel extends ModelibraPanel {
 		this.contentFrame = contentFrame;
 		this.propertyConfig = propertyConfig;
 		setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
+		
 		addPropertyLabels(propertyConfig);
 		addPropertyWidget(displayOnly, add, entities, entity, propertyConfig);
 	}
