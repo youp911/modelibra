@@ -1,12 +1,17 @@
 package org.modelibra.swing.app;
 
+import java.awt.Dimension;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
 import org.modelibra.swing.widget.ModelibraFrame;
 
 @SuppressWarnings("serial")
-public class MainFrame extends ModelibraFrame implements IConstants {
+public class MainFrame extends ModelibraFrame {
+
+	public static final int WIDTH = 240;
+	public static final int HEIGHT = 80;
+	public static final Dimension FRAME_SIZE = new Dimension(WIDTH, HEIGHT);
 
 	private MainMenuBar mainMenuBar;
 
@@ -22,9 +27,10 @@ public class MainFrame extends ModelibraFrame implements IConstants {
 		mainMenuBar = new MainMenuBar(this);
 		setJMenuBar(mainMenuBar);
 
-		pack();
+		setSize(FRAME_SIZE);
+		// pack();
 	}
-	
+
 	public MainMenuBar getMainMenuBar() {
 		return mainMenuBar;
 	}

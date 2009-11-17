@@ -48,17 +48,6 @@ public class Library extends GenLibrary {
 	/* ============================= */
 	/* ======= SPECIFIC CODE ======= */
 	/* ============================= */
-	
-	private ModelSession session;
-
-	public ModelSession getSession() {
-		if (session != null) {
-			return session;
-		} else {
-			session = super.getNewSession();
-			return session;
-		}
-	}
 
 	public Categories getReflexiveCategories(Categories categories) {
 		Categories reflexiveCategories = categories;
