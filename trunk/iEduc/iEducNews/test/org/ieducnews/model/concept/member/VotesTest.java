@@ -120,6 +120,7 @@ public class VotesTest {
 			Vote vote1 = new Vote(member, submission);
 			Assert.assertTrue(member.getVotes().add(vote1));
 			int submissionPreviousPointsForVote1 = submission.getPoints();
+			System.out.println("Initial Submission points: " + submissionPreviousPointsForVote1);
 			submission.incrementPoints();
 			Assert
 					.assertTrue(submission.getPoints() == submissionPreviousPointsForVote1 + 1);
@@ -129,9 +130,13 @@ public class VotesTest {
 			vote2.setUp(false);
 			Assert.assertTrue(member.getVotes().add(vote2));
 			int submissionPreviousPointsForVote2 = submission.getPoints();
+			System.out.println("After Upvote Submission points: " + submissionPreviousPointsForVote2);
+			System.out.println("After Downvote Submission points: " + (submissionPreviousPointsForVote2 -1));
 			submission.decrementPoints();
+			
 			Assert
 					.assertTrue(submission.getPoints() == submissionPreviousPointsForVote2 - 1);
+			
 		}
 	}
 
