@@ -97,7 +97,7 @@ public class VotesTest {
 	}
 	
 	@Test
-	public void memberAddVote() throws Exception {
+	public void memberAddVoteSubmission() throws Exception {
 		Members members = domainModel.getMembers();
 		Member member = members.retrieveByAccount("pascald");
 		Submissions submissions = domainModel.getSubmissions();
@@ -108,6 +108,30 @@ public class VotesTest {
 			submission.incrementPoints();
 			Assert
 					.assertTrue(member.getVotes().contains(vote));
+		}
+	}
+	
+	@Test
+	public void memberUpAndDownvoteSubmission() throws Exception {
+		Members members = domainModel.getMembers();
+		Member member = members.retrieveByAccount("pascald");
+		Submissions submissions = domainModel.getSubmissions();
+		Submission submission = submissions.retrieveByName("Hacker News");
+		if (member != null && submission != null) {
+			Vote vote = new Vote(member, submission);
+			Assert.assertTrue(member.getVotes().add(vote));
+			int submissionPreviousPoints = submission.getPoints();
+			submission.incrementPoints();
+			Assert
+					.assertTrue(submission.getPoints() == submissionPreviousPoints + 1);
+			Assert
+			.assertTrue(member.getVotes().contains(vote));
+			submission.decrementPoints();
+			Assert.assertTrue(member.getVotes().remove(vote));
+			Assert
+			.assertTrue(submission.getPoints() == submissionPreviousPoints - 1);
+			Assert
+			.assertFalse(member.getVotes().contains(vote));
 		}
 	}
 
