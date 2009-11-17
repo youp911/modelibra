@@ -5,8 +5,8 @@ import java.util.PropertyResourceBundle;
 
 public class TextRes extends PropertyResourceBundle {
 
-	TextRes() throws IOException {
-		super(TextRes.class.getResourceAsStream("TextRes.properties"));
+	public TextRes(String resource) throws IOException {
+		super(TextRes.class.getResourceAsStream(resource));
 	}
 
 }
