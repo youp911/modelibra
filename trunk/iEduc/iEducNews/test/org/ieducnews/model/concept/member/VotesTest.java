@@ -39,6 +39,42 @@ public class VotesTest {
 					.assertTrue(submission.getPoints() == submissionPreviousPoints + 1);
 		}
 	}
+	
+	@Test
+	public void memberDownvotesSubmission() throws Exception {
+		Members members = domainModel.getMembers();
+		Member member = members.retrieveByAccount("pascald");
+		Submissions submissions = domainModel.getSubmissions();
+		Submission submission = submissions.retrieveByName("Hacker News");
+		if (member != null && submission != null) {
+			Vote vote = new Vote(member, submission);
+			vote.setUp(false);
+			Assert.assertTrue(member.getVotes().add(vote));
+			int submissionPreviousPoints = submission.getPoints();
+			submission.decrementPoints();
+			Assert
+					.assertTrue(submission.getPoints() == submissionPreviousPoints - 1);
+		}
+	}
+	
+	@Test
+	public void memberUpvotesComment() throws Exception {
+		Members members = domainModel.getMembers();
+		Member member = members.retrieveByAccount("pascald");
+		Submissions submissions = domainModel.getSubmissions();
+		Submission submission = submissions
+				.retrieveByName("Jane's E-Learning Pick");
+		Comments comments = submission.getComments();
+		Comment comment = comments.retrieveByKeyword("pick");
+		if (member != null && submission != null && comment != null) {
+			Vote vote = new Vote(member, comment);
+			Assert.assertTrue(member.getVotes().add(vote));
+			int submissionPreviousPoints = submission.getPoints();
+			submission.incrementPoints();
+			Assert
+					.assertTrue(submission.getPoints() == submissionPreviousPoints + 1);
+		}
+	}
 
 	@Test
 	public void memberDownvotesComment() throws Exception {
@@ -57,6 +93,21 @@ public class VotesTest {
 			submission.decrementPoints();
 			Assert
 					.assertTrue(submission.getPoints() == submissionPreviousPoints - 1);
+		}
+	}
+	
+	@Test
+	public void memberAddVote() throws Exception {
+		Members members = domainModel.getMembers();
+		Member member = members.retrieveByAccount("pascald");
+		Submissions submissions = domainModel.getSubmissions();
+		Submission submission = submissions.retrieveByName("Hacker News");
+		if (member != null && submission != null) {
+			Vote vote = new Vote(member, submission);
+			Assert.assertTrue(member.getVotes().add(vote));
+			submission.incrementPoints();
+			Assert
+					.assertTrue(member.getVotes().contains(vote));
 		}
 	}
 
