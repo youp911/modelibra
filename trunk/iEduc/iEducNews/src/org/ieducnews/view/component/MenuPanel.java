@@ -15,10 +15,6 @@ public class MenuPanel extends BasePanel {
 		add(new HomeLink("new"));
 		Link<WebPage> submissionLink = new SubmissionLink("submit");
 		add(submissionLink);
-		/*WebAppSession session = getWebAppSession();
-		if (!session.isAuthenticated()) {
-			submissionLink.setVisible(false);
-		}*/
 		add(new BookmarkablePageLink<WebPage>("about", AboutPage.class));
 	}
 

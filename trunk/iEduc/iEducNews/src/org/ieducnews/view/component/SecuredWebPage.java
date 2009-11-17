@@ -11,7 +11,6 @@ public class SecuredWebPage extends BasePage{
 	}
 	
 	protected void verifyAccess() {
-		// Redirect to Login page on invalid access.
 		if (!getWebAppSession().isAuthenticated()) {
 			throw new RestartResponseAtInterceptPageException(SignInPage.class);
 		}
