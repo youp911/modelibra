@@ -1,12 +1,11 @@
 package education.swing.app.i18n;
 
 import java.io.IOException;
-import java.util.PropertyResourceBundle;
 
-public class TextRes_fr extends PropertyResourceBundle {
+public class TextRes_fr extends org.modelibra.swing.app.i18n.TextRes_fr {
 
 	TextRes_fr() throws IOException {
-		super(TextRes_fr.class.getResourceAsStream("TextRes_fr.properties"));
+		super("TextRes_fr.properties");
 	}
 
 }
