@@ -13,10 +13,12 @@ public class App implements IConstants {
 
 	private NatLang natLang;
 
+	private MainFrame mainFrame;
+
 	public App(IDomain domain, NatLang natLang) {
 		this.domain = domain;
 		this.natLang = natLang;
-		MainFrame mainFrame = new MainFrame(this);
+		mainFrame = new MainFrame(this);
 		mainFrame.setLocation(MAIN_FRAME_X, MAIN_FRAME_Y);
 		mainFrame.setVisible(true);
 	}
@@ -34,6 +36,7 @@ public class App implements IConstants {
 
 	public void setModelSession(ModelSession modelSession) {
 		this.modelSession = modelSession;
+		mainFrame.getMainMenuBar().setSession(modelSession);
 	}
 
 	public ModelSession getModelSession() {
