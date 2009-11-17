@@ -15,7 +15,6 @@ public class Votes implements Serializable {
 	}
 
 	public boolean remove(Vote vote) {
-		vote.getSubmission().decrementPoints();
 		return votesList.remove(vote);
 	}
 
