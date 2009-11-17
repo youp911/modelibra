@@ -1,4 +1,4 @@
-package education.swing.app.config;
+package org.modelibra.swing.app.i18n;
 
 import java.io.IOException;
 import java.util.PropertyResourceBundle;
