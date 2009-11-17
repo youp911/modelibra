@@ -51,4 +51,14 @@
     <maxNumberOfBooks>1</maxNumberOfBooks>
     <returnDate>2009-03-04</returnDate>
   </member>
+  <member oid="1258490227354">
+    <code>ar</code>
+    <password></password>
+    <firstName>Amra</firstName>
+    <lastName>Curovac</lastName>
+    <email>modelibra.swing@email.org</email>
+    <onTime>true</onTime>
+    <maxNumberOfBooks>2</maxNumberOfBooks>
+    <returnDate>2009-11-17</returnDate>
+  </member>
 </members>

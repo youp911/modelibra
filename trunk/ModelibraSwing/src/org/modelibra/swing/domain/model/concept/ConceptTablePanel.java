@@ -12,6 +12,7 @@ import javax.swing.JScrollPane;
 
 import org.modelibra.IDomainModel;
 import org.modelibra.IEntities;
+import org.modelibra.ModelSession;
 import org.modelibra.config.ConceptConfig;
 import org.modelibra.config.ModelConfig;
 import org.modelibra.swing.domain.model.concept.entity.EntityTableFrame;
@@ -25,8 +26,6 @@ public class ConceptTablePanel extends ModelibraPanel {
 	public ConceptTablePanel(final ModelibraFrame contentFrame,
 			List<ConceptConfig> conceptConfigList) {
 		final NatLang natLang = contentFrame.getApp().getNatLang();
-		// final ModelSession modelSession = contextFrame.getApp()
-		// .getModelSession();
 		ConceptTableModel entryConceptTableModel = new ConceptTableModel(
 				conceptConfigList) {
 			protected String getText(String key) {
@@ -85,6 +84,8 @@ public class ConceptTablePanel extends ModelibraPanel {
 
 						IDomainModel model = contentFrame.getApp()
 								.getDomainModel(modelConfig.getCode());
+						ModelSession modelSession = model.getNewSession();
+						contentFrame.getApp().setModelSession(modelSession);
 						IEntities<?> entities = model
 								.getEntry(currentConceptConfig.getCode());
 

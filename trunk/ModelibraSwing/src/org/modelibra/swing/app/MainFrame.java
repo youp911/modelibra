@@ -24,6 +24,10 @@ public class MainFrame extends ModelibraFrame implements IConstants {
 
 		pack();
 	}
+	
+	public MainMenuBar getMainMenuBar() {
+		return mainMenuBar;
+	}
 
 	public void exit() {
 		dispose();
