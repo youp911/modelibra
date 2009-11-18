@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<project name="ModelibraWicketProject" default="copy-css-dir">	
+<project name="ModelibraSwingWicketProject" default="copy-css-dir">	
 	
 	<property name="from-css-dir" value="../ModelibraWicketCss/css"/>
 	<property name="to-css-dir" value="css"/>
