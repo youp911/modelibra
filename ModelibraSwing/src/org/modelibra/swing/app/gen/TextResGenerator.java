@@ -66,6 +66,16 @@ public class TextResGenerator extends Generator {
 		createSwingAppI18nDirectories();
 	}
 
+	/**
+	 * Constructs TextRes generator.
+	 * 
+	 * @param domainConfig
+	 *            domain configuration
+	 * @param sourceDirectoryPath
+	 *            source directory path
+	 * @param minCodeGen
+	 *            <code>true</code> if it is a minCodeGen
+	 */
 	public TextResGenerator(DomainConfig domainConfig,
 			String sourceDirectoryPath, boolean minCodeGen) {
 		super();

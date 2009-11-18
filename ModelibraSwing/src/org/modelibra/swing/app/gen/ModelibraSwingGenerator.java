@@ -49,6 +49,16 @@ public class ModelibraSwingGenerator extends Generator {
 				sourceDirectoryPath);
 	}
 
+	/**
+	 * Constructs the generator.
+	 * 
+	 * @param domainConfig
+	 *            domain configuration
+	 * @param sourceDirectoryPath
+	 *            source directory path
+	 * @param minCodeGen
+	 *            <code>true</code> if it is a minCodeGen
+	 */
 	public ModelibraSwingGenerator(DomainConfig domainConfig,
 			String sourceDirectoryPath, boolean minCodeGen) {
 		this.sourceDirectoryPath = sourceDirectoryPath;
