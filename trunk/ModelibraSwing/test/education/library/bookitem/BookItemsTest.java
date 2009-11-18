@@ -15,19 +15,11 @@
  */
 package education.library.bookitem;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertNotSame;
-import static org.junit.Assert.assertNull;
-import static org.junit.Assert.assertTrue;
-
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
-import org.modelibra.type.EasyDate;
 
 import education.EducationTest;
 
@@ -43,9 +35,11 @@ public class BookItemsTest {
 
 	@BeforeClass
 	public static void beforeTests() throws Exception {
-		// If the concept is not an entry into the model, first find a collection of entities.
+		// If the concept is not an entry into the model, first find a
+		// collection of entities.
 		// For an entry point the following code is correct.
-		// bookItems = EducationTest.getSingleton().getEducation().getLibrary().getBookItems();
+		// bookItems =
+		// EducationTest.getSingleton().getEducation().getLibrary().getBookItems();
 	}
 
 	@Before
@@ -64,7 +58,7 @@ public class BookItemsTest {
 			bookItems.remove(bookItem);
 		}
 	}
-	
+
 	@AfterClass
 	public static void afterTests() throws Exception {
 		EducationTest.getSingleton().close();
