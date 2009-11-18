@@ -51,6 +51,8 @@ public class DomainWicketGenerator extends Generator {
 
 	private String webDirectoryPath;
 
+	private boolean minCodeGen = false;
+
 	/**
 	 * Constructs domain Wicket generator.
 	 * 
@@ -62,11 +64,12 @@ public class DomainWicketGenerator extends Generator {
 	 *            source directory path
 	 */
 	public DomainWicketGenerator(DomainConfig domainConfig, String authors,
-			String sourceDirectoryPath) {
+			String sourceDirectoryPath, boolean minCodeGen) {
 		super();
 		this.domainConfig = domainConfig;
 		this.authors = authors;
 		this.sourceDirectoryPath = sourceDirectoryPath;
+		this.minCodeGen = minCodeGen;
 		if (domainConfig == null) {
 			String msg = "DomainWicketGenerator.constructor -- domain configuration is null.";
 			throw new ConfigRuntimeException(msg);
@@ -75,7 +78,9 @@ public class DomainWicketGenerator extends Generator {
 		webDirectoryPath = domainConfig.getConfig().getWebInfDirectoryPath();
 
 		createDomainWicketAppDirectories();
-		createDomainWicketModelConceptDirectories();
+		if (!minCodeGen) {
+			createDomainWicketModelConceptDirectories();
+		}
 	}
 
 	/***************************************************************************
@@ -168,9 +173,12 @@ public class DomainWicketGenerator extends Generator {
 		generateDomainAppProperties();
 		generateStart();
 		generateDomainApp();
-		for (ModelConfig modelConfig : domainConfig.getModelsConfig()) {
-			for (ConceptConfig conceptConfig : modelConfig.getConceptsConfig()) {
-				generateDomainModelConcept(conceptConfig);
+		if (!minCodeGen) {
+			for (ModelConfig modelConfig : domainConfig.getModelsConfig()) {
+				for (ConceptConfig conceptConfig : modelConfig
+						.getConceptsConfig()) {
+					generateDomainModelConcept(conceptConfig);
+				}
 			}
 		}
 	}

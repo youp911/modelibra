@@ -48,7 +48,16 @@ public class ModelibraWicketGenerator extends Generator {
 		this.sourceDirectoryPath = sourceDirectoryPath;
 
 		domainWicketGenerator = new DomainWicketGenerator(domainConfig,
-				authors, sourceDirectoryPath);
+				authors, sourceDirectoryPath, false);
+	}
+
+	public ModelibraWicketGenerator(DomainConfig domainConfig, String authors,
+			String sourceDirectoryPath, boolean minCodeGen) {
+		this.authors = authors;
+		this.sourceDirectoryPath = sourceDirectoryPath;
+
+		domainWicketGenerator = new DomainWicketGenerator(domainConfig,
+				authors, sourceDirectoryPath, minCodeGen);
 	}
 
 	/**
