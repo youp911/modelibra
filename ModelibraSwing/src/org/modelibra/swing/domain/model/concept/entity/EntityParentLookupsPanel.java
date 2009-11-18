@@ -16,7 +16,6 @@ import org.modelibra.config.NeighborConfig;
 import org.modelibra.swing.domain.model.concept.entity.neighbor.EntityParentLookupPanel;
 import org.modelibra.swing.widget.ModelibraFrame;
 import org.modelibra.swing.widget.ModelibraPanel;
-import org.modelibra.util.NatLang;
 
 @SuppressWarnings("serial")
 public class EntityParentLookupsPanel extends ModelibraPanel implements
@@ -74,8 +73,7 @@ public class EntityParentLookupsPanel extends ModelibraPanel implements
 										.getParentNeighborName().equals(
 												neighborConfig.getCode())) {
 									removeAll();
-									addParentLookups(add,
-											entities, entity,
+									addParentLookups(add, entities, entity,
 											parentNeighborConfigList);
 									validate();
 								}

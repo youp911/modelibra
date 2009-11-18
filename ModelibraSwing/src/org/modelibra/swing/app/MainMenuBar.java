@@ -37,8 +37,6 @@ public class MainMenuBar extends JMenuBar implements IHistoryObserver {
 
 	private MainFrame mainFrame;
 
-	private ModelSession session;
-
 	public MainMenuBar(final MainFrame mainFrame) {
 		this.mainFrame = mainFrame;
 		NatLang natLang = mainFrame.getApp().getNatLang();
@@ -169,7 +167,6 @@ public class MainMenuBar extends JMenuBar implements IHistoryObserver {
 	}
 
 	public void setSession(ModelSession session) {
-		this.session = session;
 		if (session != null) {
 			session.getHistory().addHistoryObserver(this);
 		}
