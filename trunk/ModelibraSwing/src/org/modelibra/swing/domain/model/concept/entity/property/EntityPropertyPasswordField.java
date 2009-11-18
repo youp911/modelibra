@@ -33,7 +33,8 @@ public abstract class EntityPropertyPasswordField extends JPasswordField {
 		if (propertyBridge.getPropertyConfig().isUpdate()) {
 			addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent ae) {
-					String propertyValueString = toString();
+					char[] pw = getPassword();
+					String propertyValueString = String.valueOf(pw);
 					propertyBridge.setProperty(propertyValueString);
 					if (propertyBridge.isSetProperty()) {
 						if (add) {
