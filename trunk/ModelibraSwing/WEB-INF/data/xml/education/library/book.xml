@@ -2,8 +2,7 @@
 
 <books>
   <book oid="1236181029086">
-    <categoryOid>1236181376748</categoryOid>
-    <isbn>1234-5678</isbn>
+    <isbn>1234-56785</isbn>
     <name>Modelibra</name>
     <edition>Creative Commons</edition>
     <year>2009</year>
@@ -19,8 +18,10 @@
       <bookItem oid="1236187186108">
         <memberOid>1236180482966</memberOid>
         <number>1</number>
+        <note>This book item is signed by the author.</note>
       </bookItem>
       <bookItem oid="1236187218974">
+        <memberOid>1236180862782</memberOid>
         <number>2</number>
       </bookItem>
     </bookItems>

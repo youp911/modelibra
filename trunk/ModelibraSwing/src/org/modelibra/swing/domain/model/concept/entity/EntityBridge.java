@@ -38,52 +38,54 @@ public class EntityBridge {
 		ModelMeta modelMeta = new ModelMeta(entities.getModel());
 		IEntity<?> newEntity = modelMeta.createEntity(entities);
 		for (PropertyConfig propertyConfig : propertyConfigList) {
-			String defaultString = propertyConfig.getDefaultValue();
-			if (defaultString != null) {
-				PropertyBridge propertyBridge = new PropertyBridge(newEntity,
-						propertyConfig);
-				propertyBridge.setProperty(defaultString);
-			} else if (!propertyConfig.isRequired()) {
-				newEntity.setProperty(propertyConfig.getCode(), null);
-			} else if (propertyConfig.getPropertyClass().equals(
-					PropertyClass.getString())) {
-				if (propertyConfig.isValidateClassType()) {
-					if (propertyConfig.getValidationType().equals(
-							PropertyClass.getUrl())) {
-						newEntity.setProperty(propertyConfig.getCode(),
-								DEFAULT_URL);
-					} else if (propertyConfig.getValidationType().equals(
-							PropertyClass.getEmail())) {
-						newEntity.setProperty(propertyConfig.getCode(),
-								DEFAULT_EMAIL);
+			if (!propertyConfig.isDerived()) {
+				String defaultString = propertyConfig.getDefaultValue();
+				if (defaultString != null) {
+					PropertyBridge propertyBridge = new PropertyBridge(newEntity,
+							propertyConfig);
+					propertyBridge.setProperty(defaultString);
+				} else if (!propertyConfig.isRequired()) {
+					newEntity.setProperty(propertyConfig.getCode(), null);
+				} else if (propertyConfig.getPropertyClass().equals(
+						PropertyClass.getString())) {
+					if (propertyConfig.isValidateClassType()) {
+						if (propertyConfig.getValidationType().equals(
+								PropertyClass.getUrl())) {
+							newEntity.setProperty(propertyConfig.getCode(),
+									DEFAULT_URL);
+						} else if (propertyConfig.getValidationType().equals(
+								PropertyClass.getEmail())) {
+							newEntity.setProperty(propertyConfig.getCode(),
+									DEFAULT_EMAIL);
+						}
+					} else {
+						newEntity.setProperty(propertyConfig.getCode(), "");
 					}
-				} else {
-					newEntity.setProperty(propertyConfig.getCode(), "");
+				} else if (propertyConfig.getPropertyClass().equals(
+						PropertyClass.getInteger())
+						|| propertyConfig.getPropertyClass().equals(
+								PropertyClass.getLong())) {
+					newEntity.setProperty(propertyConfig.getCode(), 0);
+				} else if (propertyConfig.getPropertyClass().equals(
+						PropertyClass.getBoolean())) {
+					newEntity.setProperty(propertyConfig.getCode(), Boolean.FALSE);
+				} else if (propertyConfig.getPropertyClass().equals(
+						PropertyClass.getFloat())
+						|| propertyConfig.getPropertyClass().equals(
+								PropertyClass.getDouble())) {
+					newEntity.setProperty(propertyConfig.getCode(), 0);
+				} else if (propertyConfig.getPropertyClass().equals(
+						PropertyClass.getDate())) {
+					newEntity.setProperty(propertyConfig.getCode(), new Date());
+				} else if (propertyConfig.getPropertyClass().equals(
+						PropertyClass.getUrl())) {
+					newEntity.setProperty(propertyConfig.getCode(), Transformer
+							.url(DEFAULT_URL));
+				} else if (propertyConfig.getPropertyClass().equals(
+						PropertyClass.getEmail())) {
+					newEntity.setProperty(propertyConfig.getCode(), Transformer
+							.email(DEFAULT_EMAIL));
 				}
-			} else if (propertyConfig.getPropertyClass().equals(
-					PropertyClass.getInteger())
-					|| propertyConfig.getPropertyClass().equals(
-							PropertyClass.getLong())) {
-				newEntity.setProperty(propertyConfig.getCode(), 0);
-			} else if (propertyConfig.getPropertyClass().equals(
-					PropertyClass.getBoolean())) {
-				newEntity.setProperty(propertyConfig.getCode(), Boolean.FALSE);
-			} else if (propertyConfig.getPropertyClass().equals(
-					PropertyClass.getFloat())
-					|| propertyConfig.getPropertyClass().equals(
-							PropertyClass.getDouble())) {
-				newEntity.setProperty(propertyConfig.getCode(), 0);
-			} else if (propertyConfig.getPropertyClass().equals(
-					PropertyClass.getDate())) {
-				newEntity.setProperty(propertyConfig.getCode(), new Date());
-			} else if (propertyConfig.getPropertyClass().equals(
-					PropertyClass.getUrl())) {
-				newEntity.setProperty(propertyConfig.getCode(), Transformer
-						.url(DEFAULT_URL));
-			} else if (propertyConfig.getPropertyClass().equals(
-					PropertyClass.getEmail())) {
-				newEntity.setProperty(propertyConfig.getCode(), Transformer
-						.email(DEFAULT_EMAIL));
 			}
 		}
 

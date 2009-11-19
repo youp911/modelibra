@@ -103,8 +103,10 @@ public class EntityTablePanel extends ModelibraPanel {
 	}
 
 	protected void addNewButton(JPanel buttonPanel, final IEntities<?> entities) {
-		buttonPanel.add(new EntityNewButton(contentFrame, internalContext,
-				entities));
+		if (internalContext) {
+			buttonPanel.add(new EntityNewButton(contentFrame, internalContext,
+					entities));
+		}
 	}
 
 	protected void addEditButton(JPanel buttonPanel, IEntities<?> entities) {
