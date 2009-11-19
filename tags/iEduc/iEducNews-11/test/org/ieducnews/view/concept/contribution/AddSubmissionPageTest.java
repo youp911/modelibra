@@ -5,7 +5,6 @@ import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.markup.html.form.RequiredTextField;
 import org.apache.wicket.markup.html.panel.FeedbackPanel;
 import org.apache.wicket.markup.html.panel.Panel;
-import org.apache.wicket.protocol.http.WebSession;
 import org.apache.wicket.util.tester.FormTester;
 import org.apache.wicket.util.tester.WicketTester;
 import org.ieducnews.model.DomainModel;
@@ -13,8 +12,6 @@ import org.ieducnews.model.concept.contribution.Submissions;
 import org.ieducnews.model.config.ModelProperties;
 import org.ieducnews.view.HomePage;
 import org.ieducnews.view.WebApp;
-import org.ieducnews.view.WebAppSession;
-import org.ieducnews.view.concept.contribution.AddSubmissionPage;
 import org.ieducnews.view.concept.member.SignInPage;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -38,9 +35,9 @@ public class AddSubmissionPageTest {
 
 		webApp = new WebApp();
 		webApp.setDomainModel(domainModel);
-		
+
 		tester = new WicketTester(webApp);
-		tester.setupRequestAndResponse();	
+		tester.setupRequestAndResponse();
 		tester.startPage(SignInPage.class);
 		FormTester formTester = tester.newFormTester("signIn");
 		formTester.setValue("account", "pascald");
