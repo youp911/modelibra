@@ -80,8 +80,15 @@ public class EntityPropertiesPanel extends ModelibraPanel implements Observer {
 				getPropertyWithoutReferenceCount(propertyConfigList), 2, 4, 4));
 		for (PropertyConfig propertyConfig : propertyConfigList) {
 			if (!propertyConfig.isReference()) {
-				propertiesPanel.add(new EntityPropertyWidgetPanel(contentFrame,
-						displayOnly, add, entities, entity, propertyConfig));
+				if (propertyConfig.isDerived()) {
+					propertiesPanel.add(new EntityPropertyWidgetPanel(
+							contentFrame, true, add, entities, entity,
+							propertyConfig));
+				} else {
+					propertiesPanel.add(new EntityPropertyWidgetPanel(
+							contentFrame, displayOnly, add, entities, entity,
+							propertyConfig));
+				}
 			}
 		}
 		add(propertiesPanel);
