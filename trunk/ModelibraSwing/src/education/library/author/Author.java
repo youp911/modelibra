@@ -63,13 +63,18 @@ public class Author extends GenAuthor {
 	/* ============================= */
 	/* ======= SPECIFIC CODE ======= */
 	/* ============================= */
-	
+
 	public String getWriterLastName() {
 		return getWriter().getLastName();
 	}
-	
+
 	public String getWriterFirstName() {
 		return getWriter().getFirstName();
+	}
+
+	public void setWriterOid(Long writerOid) {
+		super.setWriterOid(writerOid);
+		notifyObservers(getConceptConfig().getPropertyConfig("writerOid"));
 	}
 
 }

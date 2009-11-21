@@ -76,4 +76,9 @@ public class Book extends GenBook {
 		notifyObservers(getConceptConfig().getPropertyConfig("description"));
 	}
 
+	public void setCategoryOid(Long categoryOid) {
+		super.setCategoryOid(categoryOid);
+		notifyObservers(getConceptConfig().getPropertyConfig("categoryOid"));
+	}
+
 }

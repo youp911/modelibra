@@ -2,6 +2,7 @@
 
 <books>
   <book oid="1236181029086">
+    <categoryOid>1236352594369</categoryOid>
     <isbn>1234-56785</isbn>
     <name>Modelibra</name>
     <edition>Creative Commons</edition>
@@ -10,7 +11,7 @@
 	</description>
     <authors>
       <author oid="1236194390424">
-        <writerOid>1236181333475</writerOid>
+        <writerOid>1236200664506</writerOid>
         <sequence>1</sequence>
       </author>
     </authors>
@@ -90,7 +91,6 @@ The result? Coding a web app with Wicket feels more like regular Java programmin
         <note>Page 99 has written comments.</note>
       </bookItem>
       <bookItem oid="1236185223384">
-        <memberOid>1236180482966</memberOid>
         <number>3</number>
       </bookItem>
     </bookItems>

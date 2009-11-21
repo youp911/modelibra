@@ -67,5 +67,10 @@ public class BookItem extends GenBookItem {
 	public String getBookName() {
 		return getBook().getName();
 	}
+	
+	public void setMemberOid(Long memberOid) {
+		super.setMemberOid(memberOid);
+		notifyObservers(getConceptConfig().getPropertyConfig("memberOid"));
+	}
 
 }
