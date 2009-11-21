@@ -18,7 +18,6 @@ package education.library;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.modelibra.IDomain;
-import org.modelibra.ModelSession;
 
 import education.library.category.Categories;
 import education.library.category.Category;
