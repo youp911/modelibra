@@ -32,9 +32,25 @@
           </category>
         </categories>
       </category>
+      <category oid="1258741498589">
+        <name>Databases</name>
+        <categories>
+          <category oid="1258741518838">
+            <name>Relational Databases</name>
+          </category>
+        </categories>
+      </category>
     </categories>
   </category>
   <category oid="1236181412328">
     <name>Novels</name>
+  </category>
+  <category oid="1258741919985">
+    <name>Management Information Systems</name>
+    <categories>
+      <category oid="1258741969327">
+        <name>Project Management</name>
+      </category>
+    </categories>
   </category>
 </categories>

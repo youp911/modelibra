@@ -91,7 +91,7 @@ public class EntityBridge {
 
 		if (parentNeighborConfigList != null) {
 			for (NeighborConfig parentNeighborConfig : parentNeighborConfigList) {
-				if (parentNeighborConfig.isParent()) {
+				if (parentNeighborConfig.isParent() && parentNeighborConfig.isMandatory()) {
 					if (newEntity.getParentNeighbor(parentNeighborConfig
 							.getCode()) == null) {
 						IEntity<?> firstParent = null;
