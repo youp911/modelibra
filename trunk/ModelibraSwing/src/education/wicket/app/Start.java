@@ -25,7 +25,7 @@ import org.modelibra.util.PathLocator;
 import org.mortbay.jetty.Server;
 
 /**
- * Jetty server startup class. 
+ * Jetty server startup class.
  */
 public class Start {
 
