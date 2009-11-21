@@ -98,24 +98,18 @@ public class EntityPropertiesPanel extends ModelibraPanel implements Observer {
 	public void update(Observable o, Object arg) {
 		if (o == entity) {
 			if (arg instanceof PropertyConfig) {
-				PropertyConfig propertyConfig = (PropertyConfig) arg;
 				for (Component component : getComponents()) {
 					if (component instanceof JPanel) {
 						JPanel panel = (JPanel) component;
 						for (Component subcomponent : panel.getComponents()) {
 							if (subcomponent instanceof EntityPropertyWidgetPanel) {
-								EntityPropertyWidgetPanel propertyPanel = (EntityPropertyWidgetPanel) subcomponent;
-								if (propertyPanel.getPropertyName().equals(
-										propertyConfig.getCode())) {
-									removeAll();
-									addTitle(entity, contentFrame.getApp()
-											.getNatLang());
-									addProperties(contentFrame, displayOnly,
-											add, entities, entity,
-											propertyConfigList);
-									validate();
-									contentFrame.pack();
-								}
+								removeAll();
+								addTitle(entity, contentFrame.getApp()
+										.getNatLang());
+								addProperties(contentFrame, displayOnly, add,
+										entities, entity, propertyConfigList);
+								validate();
+								contentFrame.pack();
 							}
 						}
 					}
