@@ -19,7 +19,7 @@ public class ConceptTableFrame extends ModelibraFrame {
 				exit();
 			}
 		});
-		setTitle(app.getNatLang().getText("Concepts"));
+		setTitle(app.getNatLang().getText("concepts"));
 		getContentPane().add(new ConceptTablePanel(this, conceptConfigList));
 
 		setSize(FRAME_SIZE);
