@@ -70,7 +70,7 @@ public class DomainsMenuBar extends JMenuBar implements IHistoryObserver {
 
 	private DomainsFrame domainsFrame;
 
-	private ModelSession session;
+	private ModelSession modelSession;
 
 	public DomainsMenuBar(final DomainsFrame domainsFrame) {
 		this.domainsFrame = domainsFrame;
@@ -108,8 +108,8 @@ public class DomainsMenuBar extends JMenuBar implements IHistoryObserver {
 
 			menuEditUndo.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-					if (session != null) {
-						session.getHistory().undo();
+					if (modelSession != null) {
+						modelSession.getHistory().undo();
 					}
 				}
 			});
@@ -218,13 +218,13 @@ public class DomainsMenuBar extends JMenuBar implements IHistoryObserver {
 	/**
 	 * Sets the domain model session.
 	 * 
-	 * @param session
-	 *            session
+	 * @param modelSession
+	 *            model session
 	 */
-	public void setSession(ModelSession session) {
-		this.session = session;
-		if (session != null) {
-			session.getHistory().addHistoryObserver(this);
+	public void setModelSession(ModelSession modelSession) {
+		this.modelSession = modelSession;
+		if (modelSession != null) {
+			modelSession.getHistory().addHistoryObserver(this);
 		}
 	}
 

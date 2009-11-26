@@ -38,6 +38,8 @@ public class DmGenerator {
 
 	private DmModelibraWicketGenerator dmModelibraWicketGenerator;
 
+	private DmModelibraSwingGenerator dmModelibraSwingGenerator;
+
 	/**
 	 * Creates the dm generator.
 	 */
@@ -53,6 +55,9 @@ public class DmGenerator {
 
 			dmModelibraWicketGenerator = new DmModelibraWicketGenerator(
 					domainConfig, authors, codeDirectoryPath);
+
+			dmModelibraSwingGenerator = new DmModelibraSwingGenerator(
+					domainConfig, codeDirectoryPath, true);
 		} catch (Exception e) {
 			log.error("Error in DmGenerator.constructor: " + e.getMessage());
 		}
@@ -74,6 +79,15 @@ public class DmGenerator {
 	 */
 	public DmModelibraWicketGenerator getDmModelibraWicketGenerator() {
 		return dmModelibraWicketGenerator;
+	}
+	
+	/**
+	 * Gets dm ModelibraSwing generator.
+	 * 
+	 * @return dm ModelibraSwing generator
+	 */
+	public DmModelibraSwingGenerator getDmModelibraSwingGenerator() {
+		return dmModelibraSwingGenerator;
 	}
 
 	public static void main(String[] args) {
@@ -113,12 +127,12 @@ public class DmGenerator {
 			// .generateSpecificDomainConfig();
 
 			// *** 3. Generate what you do not want by using comments ***
-			dmGenerator.getDmModelibraGenerator().generateModelibraPartially();
+			//dmGenerator.getDmModelibraGenerator().generateModelibraPartially();
 
 			// *** ModelibraWicket ***
 
 			// *** 1. Generate all ***
-			dmGenerator.getDmModelibraWicketGenerator().generate();
+			//dmGenerator.getDmModelibraWicketGenerator().generate();
 
 			// *** 2. Generate new with preserving specific ***
 			// dmGenerator.getDmModelibraWicketGenerator().generateConceptPageClasses("Model");
@@ -133,6 +147,11 @@ public class DmGenerator {
 			// *** 3. Generate what you do not want by using comments ***
 			// dmGenerator.getDmModelibraWicketGenerator()
 			// .generateModelibraWicketPartially();
+			
+			// *** ModelibraSwing ***
+
+			// *** 1. Generate all ***
+			dmGenerator.getDmModelibraSwingGenerator().generate();
 		} catch (Exception e) {
 			log.error("Error in DmGenerator.main: " + e.getMessage());
 		}
