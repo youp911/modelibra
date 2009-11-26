@@ -37,7 +37,7 @@ public abstract class ModelibraFrame extends JFrame implements IConstants {
 	}
 
 	/**
-	 * Displays a child frame down and right of this panel.
+	 * Displays a child frame down and right of this frame.
 	 * 
 	 * @param child
 	 *            frame
