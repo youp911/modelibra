@@ -10,10 +10,13 @@ import javax.swing.BoxLayout;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
+import org.modelibra.IDomainModel;
+import org.modelibra.ModelSession;
 import org.modelibra.config.ConceptConfig;
 import org.modelibra.config.ModelConfig;
 import org.modelibra.swing.app.App;
 import org.modelibra.swing.app.IConstants;
+import org.modelibra.swing.app.MainFrame;
 import org.modelibra.swing.domain.model.concept.ConceptTablePanel;
 import org.modelibra.swing.widget.ModelibraFrame;
 import org.modelibra.util.NatLang;
@@ -28,9 +31,12 @@ public class ModelEntryConceptsTableFrame extends ModelibraFrame implements
 
 	private ConceptTablePanel entryConceptTablePanel;
 
-	public ModelEntryConceptsTableFrame(App app,
+	private MainFrame mainFrame;
+
+	public ModelEntryConceptsTableFrame(App app, MainFrame mainFrame,
 			List<ModelConfig> modelConfigList) {
 		super(app);
+		this.mainFrame = mainFrame;
 
 		addWindowListener(new WindowAdapter() {
 			public void windowClosing(WindowEvent e) {
@@ -68,6 +74,12 @@ public class ModelEntryConceptsTableFrame extends ModelibraFrame implements
 		if (e.getSource() == modelTable) {
 			ModelConfig modelConfig = modelTable.getCurrentModelConfig();
 			if (modelConfig != null) {
+				IDomainModel model = getApp().getDomainModel(
+						modelConfig.getCode());
+				ModelSession modelSession = model.getNewSession();
+				getApp().setModelSession(modelSession);
+				mainFrame.getMainMenuBar().setSession(modelSession);
+
 				container.remove(entryConceptTablePanel);
 				List<ConceptConfig> entryConceptConfigList = modelConfig
 						.getConceptsConfig().getEntryConceptConfigList();

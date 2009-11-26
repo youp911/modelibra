@@ -5,7 +5,7 @@ import org.modelibra.IDomainModel;
 import org.modelibra.ModelSession;
 import org.modelibra.util.NatLang;
 
-public class App implements IConstants {
+public class App {
 
 	private IDomain domain;
 
@@ -13,14 +13,9 @@ public class App implements IConstants {
 
 	private NatLang natLang;
 
-	private MainFrame mainFrame;
-
 	public App(IDomain domain, NatLang natLang) {
 		this.domain = domain;
 		this.natLang = natLang;
-		mainFrame = new MainFrame(this);
-		mainFrame.setLocation(MAIN_FRAME_X, MAIN_FRAME_Y);
-		mainFrame.setVisible(true);
 	}
 
 	public IDomain getDomain() {
@@ -36,7 +31,6 @@ public class App implements IConstants {
 
 	public void setModelSession(ModelSession modelSession) {
 		this.modelSession = modelSession;
-		mainFrame.getMainMenuBar().setSession(modelSession);
 	}
 
 	public ModelSession getModelSession() {
