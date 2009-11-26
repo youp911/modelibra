@@ -12,6 +12,7 @@ import java.awt.event.WindowEvent;
 import java.util.List;
 import java.util.Observable;
 import java.util.Observer;
+import java.util.Properties;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -26,6 +27,7 @@ import modelibra.ModelibraData;
 import modelibra.designer.Designer;
 import modelibra.designer.metadomain.MetaDomain;
 import modelibra.designer.metadomain.MetaDomains;
+import modelibra.swing.app.Start;
 import modelibra.swing.app.config.Para;
 import modelibra.swing.app.util.FileSelector;
 import modelibra.swing.designer.metamodel.ModelsFrame;
@@ -33,11 +35,14 @@ import modelibra.swing.designer.metamodel.ModelsFrame;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.modelibra.IEntities;
+import org.modelibra.ModelSession;
 import org.modelibra.action.AddAction;
 import org.modelibra.action.EntitiesAction;
 import org.modelibra.action.RemoveAction;
 import org.modelibra.action.Transaction;
 import org.modelibra.action.UpdateAction;
+import org.modelibra.swing.app.App;
+import org.modelibra.util.PropertiesLoader;
 
 /**
  * Domains window with a table of domains. You can add a new domain, remove the
@@ -72,6 +77,8 @@ public class DomainsFrame extends JFrame implements ListSelectionListener {
 	private String selectedFile;
 	private FileSelector fileSelector;
 
+	private App app;
+
 	private ModelsFrame modelsFrame;
 
 	public DomainsFrame() {
@@ -82,7 +89,17 @@ public class DomainsFrame extends JFrame implements ListSelectionListener {
 		});
 
 		ModelibraData modelibraData = ModelibraData.getOne();
-		domainsMenuBar.setSession(modelibraData.getDesigner().getSession());
+		ModelSession modelSession = modelibraData.getDesigner().getSession();
+		domainsMenuBar.setModelSession(modelSession);
+
+		org.modelibra.util.NatLang natLang = new org.modelibra.util.NatLang();
+		Properties configurator = PropertiesLoader.load(Start.class,
+				Start.APP_CONFIG_LOCAL_PATH);
+		String language = configurator.getProperty("lang");
+		String textResources = configurator.getProperty("textResources");
+		natLang.setNaturalLanguage(language, textResources);
+		app = new App(modelibraData.getModelibra(), natLang);
+		app.setModelSession(modelSession);
 
 		setJMenuBar(domainsMenuBar);
 		// setTitle(appTitle);
@@ -146,6 +163,10 @@ public class DomainsFrame extends JFrame implements ListSelectionListener {
 		});
 
 		fileSelector = new FileSelector();
+	}
+
+	public App getApp() {
+		return app;
 	}
 
 	private void setSelectedRow(int ix) {

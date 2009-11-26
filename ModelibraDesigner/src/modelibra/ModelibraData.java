@@ -87,7 +87,7 @@ public class ModelibraData {
 		}
 	}
 
-	private Modelibra getModelibra() {
+	public Modelibra getModelibra() {
 		return modelibra;
 	}
 

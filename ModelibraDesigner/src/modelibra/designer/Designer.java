@@ -59,14 +59,14 @@ public class Designer extends GenDesigner {
 	/* ======= SPECIFIC CODE ======= */
 	/* ============================= */
 
-	private ModelSession session;
+	private ModelSession modelSession;
 
 	public ModelSession getSession() {
-		if (session != null) {
-			return session;
+		if (modelSession != null) {
+			return modelSession;
 		} else {
-			session = super.getNewSession();
-			return session;
+			modelSession = super.getNewSession();
+			return modelSession;
 		}
 	}
 
