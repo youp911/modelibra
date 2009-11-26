@@ -12,7 +12,6 @@ import javax.swing.JScrollPane;
 
 import org.modelibra.IDomainModel;
 import org.modelibra.IEntities;
-import org.modelibra.ModelSession;
 import org.modelibra.config.ConceptConfig;
 import org.modelibra.config.ModelConfig;
 import org.modelibra.swing.domain.model.concept.entity.EntityTableFrame;
@@ -81,11 +80,8 @@ public class ConceptTablePanel extends ModelibraPanel {
 					if (currentConceptConfig.isUpdate()) {
 						ModelConfig modelConfig = currentConceptConfig
 								.getModelConfig();
-
 						IDomainModel model = contentFrame.getApp()
 								.getDomainModel(modelConfig.getCode());
-						ModelSession modelSession = model.getNewSession();
-						contentFrame.getApp().setModelSession(modelSession);
 						IEntities<?> entities = model
 								.getEntry(currentConceptConfig.getCode());
 

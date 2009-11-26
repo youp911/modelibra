@@ -75,10 +75,9 @@ public class MainMenuBar extends JMenuBar implements IHistoryObserver {
 			public void actionPerformed(ActionEvent e) {
 				App app = mainFrame.getApp();
 				IDomain domain = app.getDomain();
-				// Config config =
-				// app.getDomain().getDomainConfig().getConfig();
 				ModelEntryConceptsTableFrame modelEntryConceptsDisplayTableFrame = new ModelEntryConceptsTableFrame(
-						app, domain.getDomainConfig().getModelConfigList());
+						app, getMainFrame(), domain.getDomainConfig()
+								.getModelConfigList());
 				displayDownRight(mainFrame, modelEntryConceptsDisplayTableFrame);
 			}
 		});

@@ -5,9 +5,6 @@ import java.awt.Dimension;
 
 public interface IConstants {
 
-	public static final int MAIN_FRAME_X = 0;
-	public static final int MAIN_FRAME_Y = 0;
-
 	public static final Color BACKGROUND_COLOR = Color.LIGHT_GRAY;
 	public static final String MODELIBRA_IMAGE_RELATIVE_PATH = "modelibra.jpg";
 
