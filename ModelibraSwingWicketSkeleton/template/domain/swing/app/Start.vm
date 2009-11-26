@@ -30,7 +30,7 @@ public class Start {
 		NatLang natLang = new NatLang();
 		natLang.setNaturalLanguage(language, textResources);
 
-		new App(education, natLang);
+		new App(${domainCode}, natLang);
 	}
 
 	/**
