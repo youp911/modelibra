@@ -118,6 +118,8 @@
 								<code>x</code>
 								<extension>true</extension>
 								<extensionProperty>x</extensionProperty>
+								
+								<essential>true</essential>
 
 							</property>
 
@@ -125,6 +127,8 @@
 								<code>y</code>
 								<extension>true</extension>
 								<extensionProperty>y</extensionProperty>
+								
+								<essential>true</essential>
 
 							</property>
 
@@ -132,6 +136,8 @@
 								<code>width</code>
 								<extension>true</extension>
 								<extensionProperty>width</extensionProperty>
+								
+								<essential>true</essential>
 
 							</property>
 
@@ -139,6 +145,8 @@
 								<code>height</code>
 								<extension>true</extension>
 								<extensionProperty>height</extensionProperty>
+								
+								<essential>true</essential>
 
 							</property>
 					
