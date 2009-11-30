@@ -15,7 +15,6 @@ import org.modelibra.ModelSession;
 import org.modelibra.config.ModelConfig;
 import org.modelibra.swing.app.App;
 import org.modelibra.swing.domain.model.concept.ConceptTableFrame;
-import org.modelibra.swing.widget.ModelibraFrame;
 import org.modelibra.swing.widget.ModelibraPanel;
 import org.modelibra.util.NatLang;
 
@@ -41,7 +40,7 @@ public class ModelTablePanel extends ModelibraPanel {
 		JPanel buttonPanel = new JPanel();
 		buttonPanel.setBackground(Color.WHITE);
 		add(buttonPanel, BorderLayout.SOUTH);
-		
+
 		NatLang natLang = contentFrame.getApp().getNatLang();
 		JButton conceptsButton = new JButton(natLang.getText("concepts"));
 		buttonPanel.add(conceptsButton);
@@ -51,15 +50,18 @@ public class ModelTablePanel extends ModelibraPanel {
 		conceptsButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				App app = contentFrame.getApp();
-				ModelConfig modelConfig = getModelTable().getCurrentModelConfig();
-				
+				ModelConfig modelConfig = getModelTable()
+						.getCurrentModelConfig();
+
 				IDomainModel model = app.getDomainModel(modelConfig.getCode());
 				ModelSession modelSession = model.getNewSession();
 				app.setModelSession(modelSession);
-				contentFrame.getMainFrame().getMainMenuBar().setSession(modelSession);
-				
+				contentFrame.getMainFrame().getMainMenuBar().setSession(
+						modelSession);
+
 				ConceptTableFrame conceptTableFrame = new ConceptTableFrame(
-						app, modelConfig.getConceptsConfig().getEntryConceptConfigList());
+						app, modelConfig.getConceptsConfig()
+								.getEntryConceptConfigList());
 				displayDownRight(conceptTableFrame);
 				contentFrame.addChildFrame(conceptTableFrame);
 			}
