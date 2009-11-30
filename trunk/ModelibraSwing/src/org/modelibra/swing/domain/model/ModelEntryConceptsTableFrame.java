@@ -56,6 +56,12 @@ public class ModelEntryConceptsTableFrame extends ModelibraFrame implements
 					new ArrayList<ConceptConfig>());
 		} else {
 			ModelConfig modelConfig = modelConfigList.get(0);
+			IDomainModel model = getApp().getDomainModel(
+					modelConfig.getCode());
+			ModelSession modelSession = model.getNewSession();
+			getApp().setModelSession(modelSession);
+			mainFrame.getMainMenuBar().setSession(modelSession);
+			
 			List<ConceptConfig> entryConceptConfigList = modelConfig
 					.getConceptsConfig().getEntryConceptConfigList();
 			entryConceptTablePanel = new ConceptTablePanel(this,
