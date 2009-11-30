@@ -16,7 +16,7 @@ public interface IConstants {
 			PANEL_HEIGHT);
 
 	public static final int FRAME_WIDTH = 560;
-	public static final int FRAME_HEIGHT = 560;
+	public static final int FRAME_HEIGHT = 280;
 	public static final Dimension FRAME_SIZE = new Dimension(FRAME_WIDTH,
 			FRAME_HEIGHT);
 
