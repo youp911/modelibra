@@ -2,7 +2,7 @@
 
 <project name="ModelibraWicketProject" default="copy-template-dir">	
 
-	<property name="from-template-dir" value="../ModelibraWicketSkeleton/template"/>
+	<property name="from-template-dir" value="../ModelibraSwingWicketSkeleton/template"/>
 	<property name="to-template-dir" value="template"/>
 			
 	<target name="create-template-dir">
