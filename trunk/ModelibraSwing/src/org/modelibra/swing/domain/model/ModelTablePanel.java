@@ -61,6 +61,7 @@ public class ModelTablePanel extends ModelibraPanel {
 				ConceptTableFrame conceptTableFrame = new ConceptTableFrame(
 						app, modelConfig.getConceptsConfig().getEntryConceptConfigList());
 				displayDownRight(conceptTableFrame);
+				contentFrame.addChildFrame(conceptTableFrame);
 			}
 		});
 	}
