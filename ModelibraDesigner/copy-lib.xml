@@ -2,7 +2,7 @@
 
 <project name="ModelibraWicketProject" default="copy-lib-dir">	
 	
-	<property name="from-lib-dir" value="../ModelibraWicketSkeleton/WEB-INF/lib"/>
+	<property name="from-lib-dir" value="../ModelibraSwingWicketSkeleton/WEB-INF/lib"/>
 	<property name="to-lib-dir" value="WEB-INF/lib"/>
 		
 	<target name="create-lib-dir">
