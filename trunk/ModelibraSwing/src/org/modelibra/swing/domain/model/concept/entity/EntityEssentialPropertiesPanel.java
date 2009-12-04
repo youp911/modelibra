@@ -11,9 +11,9 @@ import org.modelibra.swing.widget.ModelibraFrame;
 import org.modelibra.swing.widget.ModelibraPanel;
 
 @SuppressWarnings("serial")
-public class EntityEssentialPropertiesDisplayPanel extends ModelibraPanel {
+public class EntityEssentialPropertiesPanel extends ModelibraPanel {
 
-	public EntityEssentialPropertiesDisplayPanel(ModelibraFrame contentFrame,
+	public EntityEssentialPropertiesPanel(ModelibraFrame contentFrame,
 			IEntities<?> entities, IEntity<?> entity) {
 		JPanel entityPropertiesPanel;
 		if (entities.size() > 0) {
