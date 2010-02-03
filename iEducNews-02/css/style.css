@@ -1,4 +1,5 @@
-/*Tag*/
+/* tag */
+
 body {
 	text-align: center;
 	background-color: #f2f1f0;
@@ -19,57 +20,59 @@ a:hover {
 	color: #796649;
 }
 
-/* divisions */
+/* division */
 
-#container{
+#container {
 	width: 980px;
 	margin-right: auto;
 	margin-left: auto;
 	text-align: left;
 }
 
-#header{
+#header {
 	background-image: url(img/header.png);
 	height: 111px;
 	padding-bottom:10px;
 	background-repeat: no-repeat;
 }
 
-#header_logo{
+#header_logo {
 	height: 75px;
 	float: left;
 	width: auto;
 }
 
-#content{
+#content {
 	background-image: url(img/content_top.png);
 	background-repeat: no-repeat;
 	background-position: top;
 	padding-top:1px;
-	background-color: #FFF;
+	background-color: #ffffff;
 }
 
-/*Liste de liens*/
-#liste_liens{
+/* liste de liens */
+
+#liste_liens {
 	background-image: url(img/content_bottom.png);
 	background-repeat: no-repeat;
 	background-position: bottom;
-	background-color: #FFF;
+	background-color: #ffffff;
 	padding-right: 15px;
 	min-height:600px;
 }
 
-#liste_liens li{
+#liste_liens li {
 	color: gray;
 	border-bottom-width: 1px;
 	border-bottom-style: dotted;
-	border-bottom-color: #CCC;
+	border-bottom-color: #cccccc;
 	padding-top: 5px;
 	padding-bottom: 5px;
 }
 
-/*Menu*/
-#menu{
+/* menu */
+
+#menu {
 	float: left;
 	clear: both;
 	font-size: 16px;
@@ -93,21 +96,20 @@ a:hover {
 	padding-left: 15px;
 	border-right-width: 1px;
 	border-right-style: dashed;
-	border-right-color: #CCC;	
+	border-right-color: #cccccc;	
 	
 }
 
-#menu ul li a
-{
+#menu ul li a {
 	color: white;
 }
 
-#menu ul li a:hover
-{
+#menu ul li a:hover {
 	color: #f6dfba;
 }
 
-/*Class*/
+/* class */
+
 .specifications {
 	font-size: 12px;
 }
