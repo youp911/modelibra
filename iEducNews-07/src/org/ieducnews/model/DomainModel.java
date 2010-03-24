@@ -3,7 +3,6 @@ package org.ieducnews.model;
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
 import java.io.File;
-
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -75,12 +74,11 @@ public class DomainModel implements Serializable {
 			if (!file.exists()) {
 				init();
 				save();
-			} 
+			}
 			BufferedInputStream buffer = new BufferedInputStream(
 					new FileInputStream(file));
 			ObjectInput i = new ObjectInputStream(buffer);
 			return (DomainModel) i.readObject();
-			
 		} catch (ClassNotFoundException e1) {
 			throw new RuntimeException(e1);
 		} catch (IOException e2) {
@@ -91,7 +89,6 @@ public class DomainModel implements Serializable {
 	public void save() {
 		try {
 			if (!file.exists()) {
-				
 				file.createNewFile();
 				System.out.println("Model file created: "
 						+ file.getAbsolutePath());
