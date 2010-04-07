@@ -11,7 +11,7 @@ SignInPage
         PasswordTextField
     SignUpForm
 
-EditMemberPage
+MemberPage
     PasswordTextField
         setResetPassword
 
