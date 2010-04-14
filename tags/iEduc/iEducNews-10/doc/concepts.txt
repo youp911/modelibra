@@ -25,13 +25,13 @@ MenuMemberPanel
     AccountLink
         Account name label
     add panel to basepage
-    add an id="menuMember" to css
+    add an id="menu_member" to css
 
 Remove a link in HomePage
     add a link to the listitem
     RemoveLink
         SimpleAttributeModifier (dialogbox)
-    CSS adminList
+    CSS remove_icon 
         
 Security roles
     Regular member and administrator options
