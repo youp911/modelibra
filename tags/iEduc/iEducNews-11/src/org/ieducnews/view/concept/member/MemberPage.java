@@ -38,6 +38,7 @@ public class MemberPage extends BasePage {
 			super("email", Email.class);
 		}
 
+		@Override
 		public IConverter getConverter(final Class<?> type) {
 			return new EmailConverter();
 		}
