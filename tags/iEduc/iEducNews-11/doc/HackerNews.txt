@@ -1,4 +1,5 @@
-
+http://news.ycombinator.com/
+http://news.learnboost.com/
 
 Formula: 
 
