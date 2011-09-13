@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+	<!-- ========================================== -->
+	<!-- Reusable Domain Config                     -->
+	<!-- ========================================== -->
+
+<domains>
+
+	<domain oid="1315949418573">
+		<code>Universite</code>
+		<type>Reusable</type>
+	    
+		<models>
+
+			<model oid="1315949476395">
+				<code>Biblio</code>
+				<author>Dzenan Ridjanovic</author>
+				<persistenceType>xml</persistenceType>
+				<persistenceRelativePath>data/xml/universite/biblio</persistenceRelativePath>
+				<defaultLoadSave>true</defaultLoadSave>
+	    
+				<concepts>
+			
+					<concept oid="1315949489425">
+						<code>Livre</code>					
+						<entitiesCode>Livres</entitiesCode>
+						<entry>true</entry>
+			    
+						<properties>
+							<property oid="1315949502190">
+								<code>titre</code>
+								<propertyClass>java.lang.String</propertyClass>
+								<required>true</required>
+								<unique>true</unique>
+
+								<essential>true</essential>
+							</property>
+						</properties>
+
+						<neighbors>
+						</neighbors>
+			    
+					</concept>		    
+		
+				</concepts>
+		
+			</model>
+    
+		</models>
+
+	</domain>
+		
+</domains>

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+	<!-- ========================================== -->
+	<!-- Specific Domain Config                     -->
+	<!-- ========================================== -->
+
+<domains>
+
+	<domain oid="1315949418573">
+		<code>Universite</code>
+		<type>Specific</type>
+
+		<models>
+
+			<model oid="1315949476395">
+				<code>Biblio</code>
+				<extension>true</extension>
+				<extensionDomain>Universite</extensionDomain>
+				<extensionDomainType>Reusable</extensionDomainType>
+				<extensionModel>Biblio</extensionModel>
+				<session>true</session>
+				
+				<concepts>
+
+					<concept oid="1315949489425">
+						<code>Livre</code>
+						<extension>true</extension>
+						<extensionConcept>Livre</extensionConcept>
+			    
+						<properties>
+
+							<property oid="1315949502190">
+								<code>titre</code>
+								<extension>true</extension>
+								<extensionProperty>titre</extensionProperty>
+
+							</property>
+					
+						</properties>
+						
+					</concept>
+				
+				</concepts>
+		
+			</model>
+   
+		</models>
+
+	</domain>
+		
+</domains>
