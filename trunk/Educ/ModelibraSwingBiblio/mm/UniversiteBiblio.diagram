@@ -1,0 +1,22 @@
+ 
+C, === Diagrams === 
+ 
+ 
+C, --- Diagram --- 
+ 
+D,1315949476306,89,biblio,biblios,universite,255,255,255,Dzenan Ridjanovic,false,?,false,xml,true,true,800,600
+ 
+C, === Boxes === 
+ 
+ 
+C, --- Box --- 
+ 
+B,1315949476306,89,false,?,false,true,199,118,128,140,1315949489335,90,Livre,Livres,?,0,153,0,true,false
+ 
+C, === Items === 
+ 
+I,1315949489335,90,960496657960,1,Oid,1315949489335,91,oid,?,?,255,204,102,1,1,true,false,?,false
+I,1315949489335,90,1165588261375,80,String,1315949502098,92,titre,titres,?,255,204,102,1,1,false,true,?,false
+ 
+C, === Lines === 
+ 
