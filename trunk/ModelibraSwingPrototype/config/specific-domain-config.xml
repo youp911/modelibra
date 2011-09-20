@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+	<!-- ========================================== -->
+	<!-- Specific Domain Config                     -->
+	<!-- ========================================== -->
+
+<domains>
+
+	<domain oid="1316545260859">
+		<code>Proto</code>
+		<type>Specific</type>
+
+		<models>
+
+			<model oid="1316545278713">
+				<code>WebLink</code>
+				<extension>true</extension>
+				<extensionDomain>Proto</extensionDomain>
+				<extensionDomainType>Reusable</extensionDomainType>
+				<extensionModel>WebLink</extensionModel>
+				<session>true</session>
+				
+				<concepts>
+
+					<concept oid="1316545294494">
+						<code>Url</code>
+						<extension>true</extension>
+						<extensionConcept>Url</extensionConcept>
+			    
+						<properties>
+
+							<property oid="1316545305262">
+								<code>link</code>
+								<extension>true</extension>
+								<extensionProperty>link</extensionProperty>
+
+							</property>
+
+							<property oid="1316545308574">
+								<code>description</code>
+								<extension>true</extension>
+								<extensionProperty>description</extensionProperty>
+
+							</property>
+					
+						</properties>
+						
+					</concept>
+				
+				</concepts>
+		
+			</model>
+   
+		</models>
+
+	</domain>
+		
+</domains>
