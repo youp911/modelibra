@@ -1,3 +1,8 @@
-Your notes.
+Modelibra Swing Prototype
+
+Domain: Proto
+Model: WebLink
+Concept: Url
+Concept properties: oid (Oid), link (not null String), description (string)
 
 
