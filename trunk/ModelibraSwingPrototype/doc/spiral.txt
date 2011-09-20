@@ -1,5 +1,7 @@
 Modelibra Swing Prototype
 
+Spiral 0
+
 Domain: Proto
 Model: WebLink
 Concept: Url
