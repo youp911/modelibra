@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+	<!-- ========================================== -->
+	<!-- Reusable Domain Config                     -->
+	<!-- ========================================== -->
+
+<domains>
+
+	<domain oid="1316545260859">
+		<code>Proto</code>
+		<type>Reusable</type>
+	    
+		<models>
+
+			<model oid="1316545278713">
+				<code>WebLink</code>
+				<author>Dzenan Ridjanovic</author>
+				<persistenceType>xml</persistenceType>
+				<persistenceRelativePath>data/xml/proto/weblink</persistenceRelativePath>
+				<defaultLoadSave>true</defaultLoadSave>
+	    
+				<concepts>
+			
+					<concept oid="1316545294494">
+						<code>Url</code>					
+						<entitiesCode>Urls</entitiesCode>
+						<entry>true</entry>
+			    
+						<properties>
+							<property oid="1316545305262">
+								<code>link</code>
+								<propertyClass>java.lang.String</propertyClass>
+								<required>true</required>
+
+								<essential>true</essential>
+							</property>
+							<property oid="1316545308574">
+								<code>description</code>
+								<propertyClass>java.lang.String</propertyClass>
+
+								<essential>false</essential>
+							</property>
+						</properties>
+
+						<neighbors>
+						</neighbors>
+			    
+					</concept>		    
+		
+				</concepts>
+		
+			</model>
+    
+		</models>
+
+	</domain>
+		
+</domains>
