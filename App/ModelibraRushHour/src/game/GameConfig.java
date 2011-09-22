@@ -19,8 +19,7 @@ import org.modelibra.config.Config;
 import org.modelibra.config.DomainConfig;
 
 /**
- * Provides the Game configuration. The dmConfig.properties file must be
- * included in the same directory.
+ * Provides the Game configuration.
  * 
  * @author Dzenan Ridjanovic
  * @version 2007-10-08
