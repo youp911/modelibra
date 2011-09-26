@@ -98,8 +98,9 @@
 								<code>entry</code>
 								<extension>true</extension>
 								<extensionProperty>entry</extensionProperty>
-								
 								<defaultValue>true</defaultValue>
+								
+								<essential>true</essential>
 
 							</property>
 					
