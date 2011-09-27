@@ -66,7 +66,8 @@
 								<code>author</code>
 								<extension>true</extension>
 								<extensionProperty>author</extensionProperty>
-
+								
+								<essential>true</essential>
 							</property>
 
 							<property oid="1211145869092">
@@ -101,7 +102,6 @@
 								<defaultValue>true</defaultValue>
 								
 								<essential>true</essential>
-
 							</property>
 					
 						</properties>
@@ -121,7 +121,6 @@
 								<extensionProperty>x</extensionProperty>
 								
 								<essential>true</essential>
-
 							</property>
 
 							<property oid="1208025971663">
@@ -130,7 +129,6 @@
 								<extensionProperty>y</extensionProperty>
 								
 								<essential>true</essential>
-
 							</property>
 
 							<property oid="1208025976897">
@@ -139,7 +137,6 @@
 								<extensionProperty>width</extensionProperty>
 								
 								<essential>true</essential>
-
 							</property>
 
 							<property oid="1208025979097">
@@ -148,7 +145,6 @@
 								<extensionProperty>height</extensionProperty>
 								
 								<essential>true</essential>
-
 							</property>
 					
 						</properties>
@@ -180,7 +176,8 @@
 								<code>id</code>
 								<extension>true</extension>
 								<extensionProperty>id</extensionProperty>
-
+								
+								<essential>true</essential>
 							</property>
 
 							<property oid="1211139463943">
@@ -201,7 +198,8 @@
 								<code>init</code>
 								<extension>true</extension>
 								<extensionProperty>init</extensionProperty>
-
+								
+								<essential>true</essential>
 							</property>
 					
 						</properties>
@@ -226,14 +224,16 @@
 								<code>base</code>
 								<extension>true</extension>
 								<extensionProperty>base</extensionProperty>
-
+								
+								<essential>true</essential>
 							</property>
 
 							<property oid="1211140044232">
 								<code>length</code>
 								<extension>true</extension>
 								<extensionProperty>length</extensionProperty>
-
+								
+								<essential>true</essential>
 							</property>
 					
 						</properties>
