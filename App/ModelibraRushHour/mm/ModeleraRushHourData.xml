@@ -21,6 +21,7 @@
             <metaProperties>
               <metaProperty oid="1317051691389">
                 <code>code</code>
+                <metaTypeOid>1211380856705</metaTypeOid>
                 <id>true</id>
                 <increment>false</increment>
                 <value>true</value>
