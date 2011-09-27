@@ -73,7 +73,7 @@ public class ModelsFrame extends JFrame implements ListSelectionListener {
 	private JButton diagramButton = new JButton(Para.getOne()
 			.getText("diagram"));
 	private JButton conceptsButton = new JButton(Para.getOne().getText(
-			"concepts"));
+			"admin"));
 
 	private DomainsFrame domainsFrame;
 	private DiagramFrame diagramFrame;
