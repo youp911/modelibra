@@ -1,20 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <metaDomains>
-  <metaDomain oid="1317133557781">
+  <metaDomain oid="1317051415709">
     <code>Game</code>
-    <description>Games developped with Modelibra.</description>
     <metaModels>
-      <metaModel oid="1317133579948">
+      <metaModel oid="1317051521281">
         <code>RushHour</code>
-        <author>Dzenan Ridjanovic</author>
-        <description>Modelibra Rush Hour.</description>
         <metaConcepts>
-          <metaConcept oid="1317133614471">
+          <metaConcept oid="1317051560413">
             <code>Area</code>
             <entry>true</entry>
+            <metaConceptGraphics>
+              <metaConceptGraphic oid="1317051560426">
+                <x>18</x>
+                <y>24</y>
+                <width>140</width>
+                <height>140</height>
+              </metaConceptGraphic>
+            </metaConceptGraphics>
             <metaProperties>
-              <metaProperty oid="1317135105744">
+              <metaProperty oid="1317051691389">
                 <code>code</code>
                 <metaTypeOid>1211380856705</metaTypeOid>
                 <id>true</id>
@@ -22,18 +27,164 @@
                 <value>true</value>
               </metaProperty>
             </metaProperties>
+            <metaDestinationNeighbors>
+              <metaNeighbor oid="1317052063296">
+                <code>Parkings</code>
+                <metaDestinationConceptOid>1317051597088</metaDestinationConceptOid>
+                <id>false</id>
+                <min>0</min>
+                <max>N</max>
+                <internal>false</internal>
+              </metaNeighbor>
+            </metaDestinationNeighbors>
           </metaConcept>
-          <metaConcept oid="1317133621527">
+          <metaConcept oid="1317051597088">
             <code>Parking</code>
             <entry>true</entry>
+            <metaConceptGraphics>
+              <metaConceptGraphic oid="1317051597089">
+                <x>101</x>
+                <y>319</y>
+                <width>140</width>
+                <height>140</height>
+              </metaConceptGraphic>
+            </metaConceptGraphics>
+            <metaProperties>
+              <metaProperty oid="1317051742939">
+                <code>number</code>
+                <id>true</id>
+                <increment>false</increment>
+                <value>true</value>
+              </metaProperty>
+            </metaProperties>
+            <metaDestinationNeighbors>
+              <metaNeighbor oid="1317052063297">
+                <code>Area</code>
+                <metaDestinationConceptOid>1317051560413</metaDestinationConceptOid>
+                <id>true</id>
+                <min>1</min>
+                <max>1</max>
+                <internal>false</internal>
+              </metaNeighbor>
+              <metaNeighbor oid="1317052461628">
+                <code>Cars</code>
+                <metaDestinationConceptOid>1317051643322</metaDestinationConceptOid>
+                <id>false</id>
+                <min>0</min>
+                <max>N</max>
+                <internal>true</internal>
+              </metaNeighbor>
+            </metaDestinationNeighbors>
           </metaConcept>
-          <metaConcept oid="1317133644082">
+          <metaConcept oid="1317051613056">
             <code>CarModel</code>
             <entry>true</entry>
+            <metaConceptGraphics>
+              <metaConceptGraphic oid="1317051613057">
+                <x>199</x>
+                <y>24</y>
+                <width>140</width>
+                <height>160</height>
+              </metaConceptGraphic>
+            </metaConceptGraphics>
+            <metaProperties>
+              <metaProperty oid="1317051767738">
+                <code>code</code>
+                <id>true</id>
+                <increment>false</increment>
+                <value>true</value>
+              </metaProperty>
+              <metaProperty oid="1317051771059">
+                <code>length</code>
+                <id>false</id>
+                <increment>false</increment>
+                <value>true</value>
+              </metaProperty>
+              <metaProperty oid="1317051780009">
+                <code>colorName</code>
+                <id>false</id>
+                <increment>false</increment>
+                <value>false</value>
+              </metaProperty>
+              <metaProperty oid="1317051785724">
+                <code>red</code>
+                <id>false</id>
+                <increment>false</increment>
+                <value>true</value>
+              </metaProperty>
+              <metaProperty oid="1317051787293">
+                <code>green</code>
+                <id>false</id>
+                <increment>false</increment>
+                <value>true</value>
+              </metaProperty>
+              <metaProperty oid="1317051788952">
+                <code>blue</code>
+                <id>false</id>
+                <increment>false</increment>
+                <value>true</value>
+              </metaProperty>
+            </metaProperties>
+            <metaDestinationNeighbors>
+              <metaNeighbor oid="1317052401965">
+                <code>Cars</code>
+                <metaDestinationConceptOid>1317051643322</metaDestinationConceptOid>
+                <id>false</id>
+                <min>0</min>
+                <max>N</max>
+                <internal>false</internal>
+              </metaNeighbor>
+            </metaDestinationNeighbors>
           </metaConcept>
-          <metaConcept oid="1317133654571">
+          <metaConcept oid="1317051643322">
             <code>Car</code>
             <entry>false</entry>
+            <metaConceptGraphics>
+              <metaConceptGraphic oid="1317051643323">
+                <x>462</x>
+                <y>319</y>
+                <width>140</width>
+                <height>140</height>
+              </metaConceptGraphic>
+            </metaConceptGraphics>
+            <metaProperties>
+              <metaProperty oid="1317051867637">
+                <code>orientation</code>
+                <id>false</id>
+                <increment>false</increment>
+                <value>true</value>
+              </metaProperty>
+              <metaProperty oid="1317051877689">
+                <code>startRow</code>
+                <id>false</id>
+                <increment>false</increment>
+                <value>true</value>
+              </metaProperty>
+              <metaProperty oid="1317051885530">
+                <code>startColumn</code>
+                <id>false</id>
+                <increment>false</increment>
+                <value>true</value>
+              </metaProperty>
+            </metaProperties>
+            <metaDestinationNeighbors>
+              <metaNeighbor oid="1317052401966">
+                <code>CarModel</code>
+                <metaDestinationConceptOid>1317051613056</metaDestinationConceptOid>
+                <id>true</id>
+                <min>1</min>
+                <max>1</max>
+                <internal>false</internal>
+              </metaNeighbor>
+              <metaNeighbor oid="1317052461629">
+                <code>Parking</code>
+                <metaDestinationConceptOid>1317051597088</metaDestinationConceptOid>
+                <id>true</id>
+                <min>1</min>
+                <max>1</max>
+                <internal>true</internal>
+              </metaNeighbor>
+            </metaDestinationNeighbors>
           </metaConcept>
         </metaConcepts>
       </metaModel>
