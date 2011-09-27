@@ -1,11 +1,41 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <metaDomains>
-  <metaDomain oid="1208115976646">
-    <code>Modelibra</code>
+  <metaDomain oid="1317133557781">
+    <code>Game</code>
+    <description>Games developped with Modelibra.</description>
     <metaModels>
-      <metaModel oid="1208115976663">
-        <code>Designer</code>
+      <metaModel oid="1317133579948">
+        <code>RushHour</code>
+        <author>Dzenan Ridjanovic</author>
+        <description>Modelibra Rush Hour.</description>
+        <metaConcepts>
+          <metaConcept oid="1317133614471">
+            <code>Area</code>
+            <entry>true</entry>
+            <metaProperties>
+              <metaProperty oid="1317135105744">
+                <code>code</code>
+                <metaTypeOid>1211380856705</metaTypeOid>
+                <id>true</id>
+                <increment>false</increment>
+                <value>true</value>
+              </metaProperty>
+            </metaProperties>
+          </metaConcept>
+          <metaConcept oid="1317133621527">
+            <code>Parking</code>
+            <entry>true</entry>
+          </metaConcept>
+          <metaConcept oid="1317133644082">
+            <code>CarModel</code>
+            <entry>true</entry>
+          </metaConcept>
+          <metaConcept oid="1317133654571">
+            <code>Car</code>
+            <entry>false</entry>
+          </metaConcept>
+        </metaConcepts>
       </metaModel>
     </metaModels>
   </metaDomain>

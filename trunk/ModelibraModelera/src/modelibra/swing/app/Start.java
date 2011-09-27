@@ -30,6 +30,7 @@ import modelibra.PersistentModelibra;
 public class Start {
 
     public static final String APP_CONFIG_LOCAL_PATH = "Start.properties";
+    public static final String MODEL_CODE = "Designer";
     
     public static final int MAIN_FRAME_X = 0;
     public static final int MAIN_FRAME_Y = 0;
@@ -37,6 +38,7 @@ public class Start {
     public Start() {
         ModelibraConfig modelibraConfig = new ModelibraConfig();
         DomainConfig domainConfig = modelibraConfig.getDomainConfig();
+        domainConfig.getModelConfig(MODEL_CODE).setDefaultLoadSave(true);
         Modelibra modelibra = new Modelibra(domainConfig);
         new PersistentModelibra(modelibra);
 
