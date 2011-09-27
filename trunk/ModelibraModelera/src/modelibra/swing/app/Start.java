@@ -15,16 +15,16 @@ import org.modelibra.util.PropertiesLoader;
  * @author Dzenan Ridjanovic
  * @version 2009-11-26
  */
-public class StartModelibraDesigner extends JApplet {
+public class Start extends JApplet {
 
-	public static final String APP_CONFIG_LOCAL_PATH = "StartModelibraDesigner.properties";
+	public static final String APP_CONFIG_LOCAL_PATH = "Start.properties";
 
 	private DomainsFrame domainsFrame;
 
 	/**
 	 * Default constructor.
 	 */
-	public StartModelibraDesigner() {
+	public Start() {
 		super();
 	}
 
@@ -65,11 +65,11 @@ public class StartModelibraDesigner extends JApplet {
 	 */
 	private String obtainLang() {
 		Properties configurator = PropertiesLoader.load(
-				StartModelibraDesigner.class,
-				StartModelibraDesigner.APP_CONFIG_LOCAL_PATH);
+				Start.class,
+				Start.APP_CONFIG_LOCAL_PATH);
 
 		String language = configurator.getProperty("lang");
-		String textResources = configurator.getProperty("textResources");
+		String textResources = configurator.getProperty("specificTextResources");
 
 		Para.getOne().setNaturalLanguage(language, textResources);
 
@@ -83,7 +83,7 @@ public class StartModelibraDesigner extends JApplet {
 	 *            args not used
 	 */
 	public static void main(String[] args) {
-		StartModelibraDesigner app = new StartModelibraDesigner();
+		Start app = new Start();
 		app.init();
 		app.start();
 	}
