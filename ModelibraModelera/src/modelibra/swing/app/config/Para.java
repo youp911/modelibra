@@ -7,7 +7,7 @@ import java.util.Properties;
 
 import javax.swing.ImageIcon;
 
-import modelibra.swing.app.StartModelibraDesigner;
+import modelibra.swing.app.Start;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -130,8 +130,8 @@ public class Para {
 		Log4jConfigurator log4jConfigurator = new Log4jConfigurator();
 		log4jConfigurator.configure();
 
-		Properties configurator = PropertiesLoader.load(StartModelibraDesigner.class,
-				StartModelibraDesigner.APP_CONFIG_LOCAL_PATH);
+		Properties configurator = PropertiesLoader.load(Start.class,
+				Start.APP_CONFIG_LOCAL_PATH);
 
 		String language = configurator.getProperty("lang");
 		String textResources = configurator.getProperty("textResources");
