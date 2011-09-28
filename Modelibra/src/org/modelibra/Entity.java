@@ -1173,8 +1173,12 @@ public abstract class Entity<T extends IEntity<T>> extends Observable implements
 			for (PropertyConfig essentialPropertyConfig : essentialPropertyConfigList) {
 				Object parentProperty = getProperty(essentialPropertyConfig
 						.getCode());
-				essentialPropertiesString = essentialPropertiesString
-						+ parentProperty.toString() + " ";
+				if (parentProperty != null) {
+					essentialPropertiesString = essentialPropertiesString
+							+ parentProperty.toString() + " ";
+				} else {
+					essentialPropertiesString = toString();
+				}
 			}
 		}
 		return essentialPropertiesString;
