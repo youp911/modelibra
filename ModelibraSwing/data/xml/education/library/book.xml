@@ -7,6 +7,7 @@
     <name>Modelibra</name>
     <edition>Creative Commons</edition>
     <year>2009</year>
+    <price>0.0</price>
     <description>Free book.
 	</description>
     <authors>
@@ -87,17 +88,19 @@ The result? Coding a web app with Wicket feels more like regular Java programmin
         <note>Book is in a very good condition.</note>
       </bookItem>
       <bookItem oid="1236185218092">
+        <memberOid>1236180482966</memberOid>
         <number>2</number>
         <note>Page 99 has written comments.</note>
       </bookItem>
       <bookItem oid="1236185223384">
         <number>3</number>
+        <note>Good book.</note>
       </bookItem>
     </bookItems>
     <reviews>
       <review oid="1236184254924">
         <webLink>http://bluxte.net/blog/2008-09/28-10-58.html</webLink>
-        <reviewDate>2008-09-28</reviewDate>
+        <reviewDate>2008-09-29</reviewDate>
       </review>
       <review oid="1236184543292">
         <webLink>http://www.mysticcoders.com/blog/2008/09/09/book-review-wicket-in-action/</webLink>
