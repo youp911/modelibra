@@ -46,10 +46,9 @@
     <name>Novels</name>
   </category>
   <category oid="1258741919985">
-    <name>Management Information Systems</name>
-    <categories>
-      <category oid="1258741969327">
-        <name>Project Management</name>
+    <name>MIS</name>
+    <note>Management Information Systems
+</note>    <categories>      <category oid="1258741969327">        <name>Project Management</name>
       </category>
     </categories>
   </category>
