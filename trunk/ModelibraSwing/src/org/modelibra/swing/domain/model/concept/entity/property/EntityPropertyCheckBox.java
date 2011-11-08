@@ -18,7 +18,7 @@ public abstract class EntityPropertyCheckBox extends JCheckBox {
 	private PropertyBridge propertyBridge;
 
 	public EntityPropertyCheckBox(final ModelibraFrame contentFrame,
-			boolean displayOnly, final boolean add,
+			final boolean displayOnly, final boolean add,
 			final IEntities<?> entities, final IEntity<?> entity,
 			final PropertyConfig propertyConfig) {
 		if (add) {

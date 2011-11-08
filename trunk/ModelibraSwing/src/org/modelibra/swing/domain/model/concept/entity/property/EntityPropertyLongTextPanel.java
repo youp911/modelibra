@@ -53,12 +53,8 @@ public class EntityPropertyLongTextPanel extends ModelibraPanel {
 					ModelibraFrame modelibraFrame = new EntityPropertyTextAreaFrame(
 							contentFrame.getApp(), displayOnly, add, entities,
 							entity, propertyConfig);
-					if (contentFrame == null) {
-						displayDownRight(modelibraFrame);
-					} else {
-						contentFrame.displayDownRight(modelibraFrame);
-						contentFrame.addChildFrame(modelibraFrame);
-					}
+					contentFrame.displayDownRight(modelibraFrame);
+					contentFrame.addChildFrame(modelibraFrame);
 				}
 			});
 			add(textButton);
