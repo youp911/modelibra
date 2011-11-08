@@ -14,11 +14,11 @@ import org.modelibra.swing.widget.ModelibraFrame;
 import org.modelibra.util.NatLang;
 
 @SuppressWarnings("serial")
-public class ModelEntryConceptsTableFrame extends ModelibraFrame {
+public class ModelTableFrame extends ModelibraFrame {
 
 	private MainFrame mainFrame;
 
-	public ModelEntryConceptsTableFrame(App app, MainFrame mainFrame,
+	public ModelTableFrame(App app, MainFrame mainFrame,
 			List<ModelConfig> modelConfigList) {
 		super(app);
 		this.mainFrame = mainFrame;
