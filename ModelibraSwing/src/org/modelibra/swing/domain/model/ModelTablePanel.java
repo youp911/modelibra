@@ -23,7 +23,7 @@ public class ModelTablePanel extends ModelibraPanel {
 
 	private ModelTable modelTable;
 
-	public ModelTablePanel(final ModelEntryConceptsTableFrame contentFrame,
+	public ModelTablePanel(final ModelTableFrame contentFrame,
 			List<ModelConfig> modelConfigList) {
 		ModelTableModel modelDisplayTableModel = new ModelTableModel(
 				modelConfigList) {
