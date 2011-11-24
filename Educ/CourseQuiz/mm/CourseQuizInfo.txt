@@ -1,0 +1,2 @@
+CourseQuizData.xml and CourseQuizTypes.xml are two model data files where the Course Quiz models designed in 
+Modelera are saved.
