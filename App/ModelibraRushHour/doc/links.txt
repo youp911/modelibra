@@ -3,3 +3,9 @@ Java Games
 http://www.pmilne.net/SuDoku/
 http://mpowerplayer.com/
 
+Battleship
+
+http://en.wikipedia.org/wiki/Battleship_(game)
+http://thevirtuosi.blogspot.com/2011/10/linear-theory-of-battleship.html
+http://pages.physics.cornell.edu/~aalemi/battleship/
+
