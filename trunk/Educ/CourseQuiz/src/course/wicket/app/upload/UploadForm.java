@@ -68,8 +68,8 @@ public class UploadForm extends Form {
 			public void onSubmit() {
 				FileUpload upload = uploadField.getFileUpload();
 				if (upload != null) {
-					File newFile = new File(uploadPrivateFolder, upload
-							.getClientFileName());
+					File newFile = new File(uploadPrivateFolder,
+							upload.getClientFileName());
 					if (!newFile.exists()) {
 						try {
 							newFile.createNewFile();
@@ -82,12 +82,10 @@ public class UploadForm extends Form {
 						} catch (Exception e) {
 							String uploadMessage = LocalizedText.getText(this,
 									"upload.no");
-							throw new IllegalStateException(upload
-									.getClientFileName()
-									+ " "
-									+ uploadMessage
-									+ ": "
-									+ e.getMessage());
+							throw new IllegalStateException(
+									upload.getClientFileName() + " "
+											+ uploadMessage + ": "
+											+ e.getMessage());
 						}
 					} else {
 						String uploadMessage = LocalizedText.getText(this,

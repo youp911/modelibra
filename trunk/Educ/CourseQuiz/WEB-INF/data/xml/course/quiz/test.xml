@@ -265,7 +265,7 @@ Only the seven questions out of twenty are entered.</description>
         <memberOid>1146253298836</memberOid>
         <number>4</number>
         <type>true or false</type>
-        <text>Does Moedlibra have a query language?</text>
+        <text>Does Modelibra have a query language?</text>
         <response>true</response>
         <points>0.5</points>
         <creationDate>2007-12-27</creationDate>

@@ -1,0 +1,369 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<metaDomains>
+  <metaDomain oid="1319726578431">
+    <code>Course</code>
+    <metaModels>
+      <metaModel oid="1319726608452">
+        <code>Quiz</code>
+        <metaConcepts>
+          <metaConcept oid="1319727078899">
+            <code>Test</code>
+            <entry>true</entry>
+            <metaConceptGraphics>
+              <metaConceptGraphic oid="1319727078900">
+                <x>19</x>
+                <y>14</y>
+                <width>140</width>
+                <height>140</height>
+              </metaConceptGraphic>
+            </metaConceptGraphics>
+            <metaProperties>
+              <metaProperty oid="1319727090803">
+                <code>name</code>
+                <id>true</id>
+                <increment>false</increment>
+                <value>true</value>
+              </metaProperty>
+              <metaProperty oid="1319727094275">
+                <code>description</code>
+                <id>false</id>
+                <increment>false</increment>
+                <value>false</value>
+              </metaProperty>
+            </metaProperties>
+            <metaDestinationNeighbors>
+              <metaNeighbor oid="1319727146634">
+                <code>Documents</code>
+                <metaDestinationConceptOid>1319727107287</metaDestinationConceptOid>
+                <id>false</id>
+                <min>0</min>
+                <max>N</max>
+                <internal>false</internal>
+              </metaNeighbor>
+              <metaNeighbor oid="1319727215158">
+                <code>Questions</code>
+                <metaDestinationConceptOid>1319727164546</metaDestinationConceptOid>
+                <id>false</id>
+                <min>0</min>
+                <max>N</max>
+                <internal>true</internal>
+              </metaNeighbor>
+            </metaDestinationNeighbors>
+          </metaConcept>
+          <metaConcept oid="1319727107287">
+            <code>Document</code>
+            <entry>false</entry>
+            <metaConceptGraphics>
+              <metaConceptGraphic oid="1319727107288">
+                <x>328</x>
+                <y>121</y>
+                <width>140</width>
+                <height>140</height>
+              </metaConceptGraphic>
+            </metaConceptGraphics>
+            <metaProperties>
+              <metaProperty oid="1319727123141">
+                <code>fileName</code>
+                <id>true</id>
+                <increment>false</increment>
+                <value>true</value>
+              </metaProperty>
+              <metaProperty oid="1319727126757">
+                <code>uploadDate</code>
+                <id>false</id>
+                <increment>false</increment>
+                <value>true</value>
+              </metaProperty>
+            </metaProperties>
+            <metaDestinationNeighbors>
+              <metaNeighbor oid="1319727146635">
+                <code>Test</code>
+                <metaDestinationConceptOid>1319727078899</metaDestinationConceptOid>
+                <id>false</id>
+                <min>0</min>
+                <max>1</max>
+                <internal>false</internal>
+              </metaNeighbor>
+              <metaNeighbor oid="1319727325201">
+                <code>Member</code>
+                <metaDestinationConceptOid>1319727230990</metaDestinationConceptOid>
+                <id>false</id>
+                <min>1</min>
+                <max>1</max>
+                <internal>true</internal>
+              </metaNeighbor>
+            </metaDestinationNeighbors>
+          </metaConcept>
+          <metaConcept oid="1319727164546">
+            <code>Question</code>
+            <entry>false</entry>
+            <metaConceptGraphics>
+              <metaConceptGraphic oid="1319727164547">
+                <x>129</x>
+                <y>351</y>
+                <width>140</width>
+                <height>160</height>
+              </metaConceptGraphic>
+            </metaConceptGraphics>
+            <metaProperties>
+              <metaProperty oid="1319727175743">
+                <code>number</code>
+                <id>true</id>
+                <increment>false</increment>
+                <value>true</value>
+              </metaProperty>
+              <metaProperty oid="1319727177299">
+                <code>type</code>
+                <id>false</id>
+                <increment>false</increment>
+                <value>true</value>
+              </metaProperty>
+              <metaProperty oid="1319727178518">
+                <code>text</code>
+                <id>false</id>
+                <increment>false</increment>
+                <value>true</value>
+              </metaProperty>
+              <metaProperty oid="1319727191485">
+                <code>response</code>
+                <id>false</id>
+                <increment>false</increment>
+                <value>false</value>
+              </metaProperty>
+              <metaProperty oid="1319727192989">
+                <code>points</code>
+                <id>false</id>
+                <increment>false</increment>
+                <value>false</value>
+              </metaProperty>
+              <metaProperty oid="1319727202093">
+                <code>creationDate</code>
+                <id>false</id>
+                <increment>false</increment>
+                <value>true</value>
+              </metaProperty>
+            </metaProperties>
+            <metaDestinationNeighbors>
+              <metaNeighbor oid="1319727215159">
+                <code>Test</code>
+                <metaDestinationConceptOid>1319727078899</metaDestinationConceptOid>
+                <id>true</id>
+                <min>1</min>
+                <max>1</max>
+                <internal>true</internal>
+              </metaNeighbor>
+              <metaNeighbor oid="1319727347547">
+                <code>Member</code>
+                <metaDestinationConceptOid>1319727230990</metaDestinationConceptOid>
+                <id>false</id>
+                <min>0</min>
+                <max>1</max>
+                <internal>false</internal>
+              </metaNeighbor>
+              <metaNeighbor oid="1319727385675">
+                <code>Items</code>
+                <metaDestinationConceptOid>1319727366080</metaDestinationConceptOid>
+                <id>false</id>
+                <min>0</min>
+                <max>N</max>
+                <internal>true</internal>
+              </metaNeighbor>
+            </metaDestinationNeighbors>
+          </metaConcept>
+          <metaConcept oid="1319727230990">
+            <code>Member</code>
+            <entry>true</entry>
+            <metaConceptGraphics>
+              <metaConceptGraphic oid="1319727230991">
+                <x>658</x>
+                <y>29</y>
+                <width>140</width>
+                <height>180</height>
+              </metaConceptGraphic>
+            </metaConceptGraphics>
+            <metaProperties>
+              <metaProperty oid="1319727242681">
+                <code>code</code>
+                <id>true</id>
+                <increment>false</increment>
+                <value>true</value>
+              </metaProperty>
+              <metaProperty oid="1319727244914">
+                <code>password</code>
+                <id>false</id>
+                <increment>false</increment>
+                <value>true</value>
+              </metaProperty>
+              <metaProperty oid="1319727246994">
+                <code>lastName</code>
+                <id>false</id>
+                <increment>false</increment>
+                <value>true</value>
+              </metaProperty>
+              <metaProperty oid="1319727249950">
+                <code>firstName</code>
+                <id>false</id>
+                <increment>false</increment>
+                <value>true</value>
+              </metaProperty>
+              <metaProperty oid="1319727275609">
+                <code>email</code>
+                <id>false</id>
+                <increment>false</increment>
+                <value>true</value>
+              </metaProperty>
+              <metaProperty oid="1319727279301">
+                <code>receiveEmail</code>
+                <id>false</id>
+                <increment>false</increment>
+                <value>true</value>
+              </metaProperty>
+              <metaProperty oid="1319727280561">
+                <code>role</code>
+                <id>false</id>
+                <increment>false</increment>
+                <value>true</value>
+              </metaProperty>
+              <metaProperty oid="1319727294083">
+                <code>startDate</code>
+                <id>false</id>
+                <increment>false</increment>
+                <value>true</value>
+              </metaProperty>
+            </metaProperties>
+            <metaDestinationNeighbors>
+              <metaNeighbor oid="1319727325200">
+                <code>Documents</code>
+                <metaDestinationConceptOid>1319727107287</metaDestinationConceptOid>
+                <id>false</id>
+                <min>0</min>
+                <max>N</max>
+                <internal>true</internal>
+              </metaNeighbor>
+              <metaNeighbor oid="1319727347546">
+                <code>Questions</code>
+                <metaDestinationConceptOid>1319727164546</metaDestinationConceptOid>
+                <id>false</id>
+                <min>0</min>
+                <max>N</max>
+                <internal>false</internal>
+              </metaNeighbor>
+            </metaDestinationNeighbors>
+          </metaConcept>
+          <metaConcept oid="1319727366080">
+            <code>Item</code>
+            <entry>false</entry>
+            <metaConceptGraphics>
+              <metaConceptGraphic oid="1319727366081">
+                <x>452</x>
+                <y>356</y>
+                <width>140</width>
+                <height>140</height>
+              </metaConceptGraphic>
+            </metaConceptGraphics>
+            <metaProperties>
+              <metaProperty oid="1319727376827">
+                <code>number</code>
+                <id>true</id>
+                <increment>false</increment>
+                <value>true</value>
+              </metaProperty>
+              <metaProperty oid="1319727378071">
+                <code>text</code>
+                <id>false</id>
+                <increment>false</increment>
+                <value>true</value>
+              </metaProperty>
+              <metaProperty oid="1319727379923">
+                <code>correct</code>
+                <id>false</id>
+                <increment>false</increment>
+                <value>true</value>
+              </metaProperty>
+            </metaProperties>
+            <metaDestinationNeighbors>
+              <metaNeighbor oid="1319727385676">
+                <code>Question</code>
+                <metaDestinationConceptOid>1319727164546</metaDestinationConceptOid>
+                <id>true</id>
+                <min>1</min>
+                <max>1</max>
+                <internal>true</internal>
+              </metaNeighbor>
+            </metaDestinationNeighbors>
+          </metaConcept>
+        </metaConcepts>
+      </metaModel>
+      <metaModel oid="1319726627711">
+        <code>Reference</code>
+        <metaConcepts>
+          <metaConcept oid="1319726645097">
+            <code>SecurityRole</code>
+            <entry>true</entry>
+            <metaConceptGraphics>
+              <metaConceptGraphic oid="1319726645109">
+                <x>20</x>
+                <y>26</y>
+                <width>140</width>
+                <height>140</height>
+              </metaConceptGraphic>
+            </metaConceptGraphics>
+            <metaProperties>
+              <metaProperty oid="1319726718444">
+                <code>code</code>
+                <id>true</id>
+                <increment>false</increment>
+                <value>true</value>
+              </metaProperty>
+              <metaProperty oid="1319726719644">
+                <code>role</code>
+                <id>false</id>
+                <increment>false</increment>
+                <value>true</value>
+              </metaProperty>
+              <metaProperty oid="1319726724262">
+                <code>description</code>
+                <id>false</id>
+                <increment>false</increment>
+                <value>false</value>
+              </metaProperty>
+            </metaProperties>
+          </metaConcept>
+          <metaConcept oid="1319726648008">
+            <code>QuestionType</code>
+            <entry>true</entry>
+            <metaConceptGraphics>
+              <metaConceptGraphic oid="1319726648009">
+                <x>185</x>
+                <y>28</y>
+                <width>140</width>
+                <height>140</height>
+              </metaConceptGraphic>
+            </metaConceptGraphics>
+            <metaProperties>
+              <metaProperty oid="1319726749442">
+                <code>code</code>
+                <id>false</id>
+                <increment>false</increment>
+                <value>false</value>
+              </metaProperty>
+              <metaProperty oid="1319726750901">
+                <code>type</code>
+                <id>false</id>
+                <increment>false</increment>
+                <value>false</value>
+              </metaProperty>
+              <metaProperty oid="1319726754150">
+                <code>description</code>
+                <id>false</id>
+                <increment>false</increment>
+                <value>false</value>
+              </metaProperty>
+            </metaProperties>
+          </metaConcept>
+        </metaConcepts>
+      </metaModel>
+    </metaModels>
+  </metaDomain>
+</metaDomains>
